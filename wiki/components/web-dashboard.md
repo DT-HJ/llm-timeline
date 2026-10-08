@@ -2,7 +2,7 @@
 title: Web Dashboard
 type: component
 status: current
-updated: 2026-10-01
+updated: 2026-10-08
 ---
 
 # Web Dashboard
@@ -19,7 +19,7 @@ updated: 2026-10-01
 
 ## Current Implementation
 
-- `index.html`: 헤더(검색·비교·정렬·스크롤 버튼·GitHub 링크), 월 내비게이션 subbar(2026-01~09 버튼 하드코딩), `.timeline-viewport` 스크롤 컨테이너, 비교 dock, 모델 모달·비교 모달, 모바일 하단 nav.
+- `index.html`: 헤더(검색·비교·정렬·스크롤 버튼·GitHub 링크), 월 내비게이션 subbar(2026-01~10 버튼 하드코딩), `.timeline-viewport` 스크롤 컨테이너, 비교 dock, 모델 모달·비교 모달, 모바일 하단 nav.
 - `app.js`: 전역 상태(`searchQuery`, `sortOrder`, `compareList` 등) + 렌더 함수.
   - `renderTimeline`: 날짜별 그룹핑 → 수평 시간축 + 일자 컬럼 + 모델 카드. `SCOPE_DATA.period`에서 헤더 기준 기간을 파생(`auditPeriodLabel`).
   - `getFilteredModels`: 검색어를 모델명·제공사·패밀리 + 한국어 별칭(회사별 수동 alias 맵)과 매칭.
@@ -46,7 +46,7 @@ updated: 2026-10-01
 ## Known Limitations
 
 - `FAMILY_FLOWS` 데이터는 주입되지만 그리는 뷰가 없다(README도 미구현으로 명시). Generational Flow/Grid/Matrix 뷰, CSV 내보내기, 기업/유형/상태/오픈웨이트 필터 미구현.
-- 월 목록이 `index.html` 버튼과 `app.js` `months` 배열에 2026-01~09로 하드코딩 — 기간 외 월 추가 시 두 곳 수정 필요. 날짜 모델 없이 월을 먼저 넣으면 `jumpToMonth`가 대상 컬럼을 찾지 못해 해당 버튼에 active 표시만 남는다(`jumpToMonth`가 `targetCol` null일 때 아무 것도 하지 않음).
+- 월 목록이 `index.html` 버튼과 `app.js` `months` 배열에 2026-01~10로 하드코딩 — 기간 외 월 추가 시 두 곳 수정 필요. 날짜 모델 없이 월을 먼저 넣으면 `jumpToMonth`가 대상 컬럼을 찾지 못해 해당 버튼에 active 표시만 남는다(`jumpToMonth`가 `targetCol` null일 때 아무 것도 하지 않음).
 - 한국어 별칭 검색은 회사별 수동 맵이라 신규 조직 추가 시 alias를 손으로 넣어야 검색이 걸린다.
 
 ## Related Pages

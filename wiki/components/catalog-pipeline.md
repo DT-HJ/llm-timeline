@@ -2,7 +2,7 @@
 title: Catalog Pipeline
 type: component
 status: current
-updated: 2026-10-01
+updated: 2026-10-08
 ---
 
 # Catalog Pipeline
@@ -26,7 +26,7 @@ updated: 2026-10-01
 - `FORBIDDEN_BENCHMARK_TERMS`(`arena`, `elo`, `artificial analysis`, `aaii`, `codearena` 등)가 벤치마크명에 포함되면 `ALLOWED_BENCHMARK_NAMES` 정확 명칭 예외가 없는 한 오류.
 - `STALE_TEXT`: 과거 정정된 잘못된 표기(예: `~30B`, `MiMo-V2-Pro`)가 활성 레코드/생성물에 재등장하면 오류.
 - `check_urls`: 호스트별 직렬화 + 재시도. 429·503은 경고, `BOT_PROTECTED_HOSTS`(`ifm.ai`, `openai.com`)의 지속 403도 경고, 그 외 호스트의 지속 403과 404/410은 실패.
-- CI: `deploy-pages.yml`이 push마다 `python3 validate_data.py`를 실행하도록 선언돼 있다(워크플로 파일은 `c2de7f5` 이후 변경 없음). 선언과 실제 실행은 다르다 — 2026-09-19 이후 이 워크플로의 `deploy` job은 2026-09-23 실행이 동시성 그룹 `pages`를 붙잡은 `waiting`(0 step) 상태로 남아 다시 돌지 않고, 이후 실행은 대기하다 취소되거나 `pending`에 머문다. 그래서 이 게이트는 실행되지 않고 사이트 반영은 네이티브 `pages build and deployment`가 처리한다(관측 2026-10-01, host local, `gh run list`; 상세·미확인 사유는 `current.md` Active Risks).
+- CI: `deploy-pages.yml`이 push마다 `python3 validate_data.py`를 실행하도록 선언돼 있다(워크플로 파일은 `c2de7f5` 이후 변경 없음). 선언과 실제 실행은 다르다 — 2026-09-19~10-01 사이 이 워크플로의 `deploy` job은 동시성 그룹 `pages`를 붙잡은 `waiting` 잔여 job 추정으로 `waiting`/`pending`에 머물렀으나, 2026-10-08 `23d27cf` 푸시에는 22초 만에 success로 복귀했다(간헐 상태 — 관측 2026-10-08, host local, `gh run list`; 상세·미확인 사유는 `current.md` Active Risks). 사이트 반영은 네이티브 `pages build and deployment`가 처리한다.
 
 ## Important Invariants
 
@@ -35,7 +35,7 @@ updated: 2026-10-01
 - 신규 발행사 도메인을 출처로 쓰기 전에 `OFFICIAL_HOSTS`에 추가한다(서브도메인은 접미 일치로 자동 허용).
 - 제외 판정 항목은 삭제하지 않고 `excluded` 원장에 사유·공식 출처와 함께 보존한다. 되돌림 시 활성 레코드로 이관 + README 되돌림 각주.
 - 점수는 % 척도만. Elo·가격·속도 같은 비% 지표는 `note`/`benchmark_note`에 서술형으로만 기록.
-- **System One / structured decision 예외(2026-09-23 선례)**: 산문을 생성하지 않는 결정 모델도 독립 API 제품·별도 모델 ID로 공식 출시되면 수록 대상이다(Jev `model-184`, Solar Jev `model-185`, Laya `model-188`, JEV-9B `model-189`, JEV-27B `model-197`). `type`에 `System One / structured decision`, `category: LLM`으로 분류한다. Laya는 2026-09-29 재검토로 되돌림 이관했다 — pip/npm 배포·self-host 서버·3종 공개 체크포인트를 갖춘 독립 제품이라고 판정.
+- **System One / structured decision 예외(2026-09-23 선례)**: 산문을 생성하지 않는 결정 모델도 독립 API 제품·별도 모델 ID로 공식 출시되면 수록 대상이다(Jev `model-184`, Solar Jev `model-185`, Laya `model-188`, JEV-9B `model-189`, JEV-27B `model-197`, Strands Decider 2B `model-203`, Clef `model-204`, Clef-flash `model-205`). `type`에 `System One / structured decision`, `category: LLM`으로 분류한다. Laya는 2026-09-29 재검토로 되돌림 이관했다 — pip/npm 배포·self-host 서버·3종 공개 체크포인트를 갖춘 독립 제품이라고 판정. 반대로 같은 엔드포인트라도 기존 가중치의 제품 계층이면 별도 모델로 집계하지 않는다(OpenAI Decisions API — `gpt-6-luna` 사용, 제외 원장 2026-10-08).
 - **JS 셸 공식 출처 2종(2026-09-30 확인)**: (1) openai.com `/index/*` 발표문은 봇 챌린지로 403을 주지만 HTML의 RSC 페이로드에 차트 데이터(`\"data\":{\"values\":[...]}`)가 JSON으로 들어 있어, 본문에 절대값을 적지 않는 발표문에서도 effort별 점수를 추출할 수 있다. (2) 자체 조직 GitHub Pages 사이트(`*.github.io`)는 정적 HTML이 React 셸이면 본문이 `assets/App-*.js` 번들에 들어 있다. 둘 다 `OFFICIAL_HOSTS`에 호스트(각각 `openai.com`, `github.io`)가 있어야 통과한다.
 - **고속 서빙 티어 재판정(2026-09-30)**: 동일 가중치의 속도 전용 서빙 티어(GLM-5.3-FlashX, Qwen3.8-Max-Prime)는 별도 모델 코드가 공식 문서에 있어도 기존 판정을 유지해 제외 원장에 둔다.
 
@@ -56,6 +56,7 @@ updated: 2026-10-01
 - Upstage Console 문서처럼 JS 셸만 응답하는 공식 페이지는 정적 HTML에 내용이 없어, 페이지의 RSC/Next.js 페이로드를 파싱해야 실제 스펙을 읽을 수 있다(2026-09-23 Solar Jev 조사에서 사용). 같은 이유로 openai.com 발표문 차트와 `*.github.io` 프로젝트 사이트는 `assets/*.js` 번들을 파싱한다(2026-09-30 GPT-6.1 Sol·IQuest-Q1 조사).
 - `company_meta.country`는 ISO 국가 코드로만 채운 관례가 있었으나, 2026-09-30에 IQuest를 `country: "미공개"`·`flag: "🌐"`로 추가했다 — 1차 출처에 본사가 없는 조직은 추정하지 않고 미상으로 둔다.
 - 공식 모델 카드·API 문서보다 발표문이 먼저 나오는 릴리스가 있다 — Gemini 4 Argon(2026-09-30)은 2026-10-01 확인 시점에 `deepmind.google` 모델 카드와 Gemini API·Vertex AI 문서에 미등재여서 발표문(`blog.google`)이 유일한 1차 출처였다. 이 경우 `release_date_source`·`parameter_source`도 발표문으로 두고, 카드가 공개되면 재확인한다.
+- HF 리포 `createdAt`은 공개일이 아닐 수 있다 — 비공개 생성 후 공개 전환이면 전환일을 출시일로 쓰고 근거를 `note`에 남긴다(선례: Strands Decider 2B — `createdAt` 2026-09-30이나 공개 전환 10/1을 출시일로 기록). 가중치 공개가 예고만 된 API 프리뷰는 `open_weights: false`로 두고 가중치가 나오면 갱신한다(선례: Mistral Large 4 — "이달 말 공개 예정"이라 false).
 
 ## Related Pages
 

@@ -82,3 +82,21 @@ Open:
 - 보류 3종 재조사: Ling-3.1-flash(Ant Ling 문서·가격표 미등재) · OpenCSG Agentic-27B(날짜 근거 불일치) · Heimr 570M(가중치·API 미공개)
 - 미등록 후보: ZGCM-1(arXiv v1 2026-09-11 — 이번 창구 밖) · Kimi K3.1 · GPT-6.1 Astra · 스텔스 Space Bunny Alpha·Union Alpha/Pareto 26.9(10/10 발표 예고)
 - SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
+
+## [2026-10-08] update | 10/8 감사 반영 (Haiku 5.5·Mistral Large 4·Kolibri-1·Clef·Strands Decider·Tiny Aya L2-Thinker 신규 7종)
+
+Source HEAD: 23d27cf5ef9a05da2135e7d58426e84df6bb965b
+Wiki:
+- updated current.md — 활성 모델 192→199, 제외 원장 29→33, 표기 조직 54→57, 공식 점수 173→178개 모델·3,065→3,125점, as_of·범위 2026-10-08, CI 게이트 복귀 관측·리스크·다음 작업 재계산
+- updated components/catalog-pipeline.md — System One 수록 예외에 Strands Decider 2B·Clef·Clef-flash 추가, 기존 가중치 API 계층 미수록 판정(Decisions API), HF 공개 전환일·가중치 예고 프리뷰 관례, CI 10/8 success 관측 기록
+- updated components/web-dashboard.md — 월 칩 하드코딩 범위 2026-01~09 → ~10
+- updated overview.md — 배포 게이트 hard constraint를 10/8 success 관측으로 qualify, System One 예시 갱신
+Validation:
+- python3 validate_data.py — PASS (OK: 199 models, 33 excluded, 178 with official scores; 같은 작업 단위에서 실행)
+- python3 validate_data.py --check-urls — PASS (285 URL 스윕, HF 429·ifm.ai 403 경고만, 실패 없음; 같은 작업 단위에서 실행)
+- python3 /Users/studio/.claude/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 1 warning: schema-version 0.3.1 vs template 0.4.0)
+Open:
+- Reflection AI Beam 가중치·기술 보고서·모델 카드 2026-10월 말 공개 예고 — 공개 시 재조사해 수록 판정
+- 보류 3종 재조사: Ling-3.1-flash · OpenCSG Agentic-27B · Heimr 570M
+- 스텔스 Space Bunny Alpha·Union Alpha/Pareto 26.9 발표 2026-10-10 예고 — 발표 후 재조사. Mistral Large 4 가중치 공개 시 `open_weights` 갱신
+- SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지

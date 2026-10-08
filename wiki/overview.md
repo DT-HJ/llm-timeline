@@ -2,7 +2,7 @@
 title: Overview
 type: overview
 status: current
-updated: 2026-10-01
+updated: 2026-10-08
 ---
 
 # Overview
@@ -26,7 +26,7 @@ updated: 2026-10-01
 - 공식 1차 출처만 인용한다: `validate_data.py`의 `OFFICIAL_HOSTS`에 등록된 개발사 자체 도메인만 출처 URL로 허용. 신규 발행사 도메인은 목록에 추가해야 검증을 통과한다.
 - `models_catalog.json`이 유일한 SSOT다. `data.js`와 `조사 자료`는 `python3 build_data.py`로만 재생성하며 직접 편집하지 않는다.
 - 파라미터·벤치마크는 공식 자료에 인쇄된 값만 기록한다. 미공개는 `정확한 수치 미공개`로 표시하고, 빈 점수에는 `benchmark_note`로 사유를 남긴다.
-- 배포 파이프라인(`deploy-pages.yml`)은 push 시 `validate_data.py`를 실행하도록 선언돼 있지만, 커스텀 워크플로의 `deploy` job이 `waiting`에 멈춰 있어 이 게이트는 실행되지 않는다(2026-10-01 관측) — 푸시 전 로컬 `validate_data.py`가 유일한 게이트이고, 사이트 반영은 네이티브 `pages build and deployment`가 처리한다(`current.md` Active Risks).
+- 배포 파이프라인(`deploy-pages.yml`)은 push 시 `validate_data.py`를 실행하도록 선언돼 있다. `deploy` job은 2026-09-19~10-01 사이 `waiting`/`pending`으로 멈춰 있다가 2026-10-08 푸시에 success로 복귀했다 — 간헐 상태이므로 푸시 전 로컬 `validate_data.py`가 실질 게이트이고, 사이트 반영은 네이티브 `pages build and deployment`가 처리한다(`current.md` Active Risks).
 
 ## Canonical References
 
@@ -52,7 +52,7 @@ updated: 2026-10-01
 - **SSOT**: `models_catalog.json` — 모델명·출시일·파라미터·공식 점수·출처의 단일 진실 공급원.
 - **제외 원장(excluded ledger)**: 수록 범위 밖으로 판정한 항목의 사유·출처 기록. 되돌림(reversal) 시 활성 레코드로 이관하고 README 각주에 경위를 남긴다(선례: Muse Spark 1.2/1.3, Jev·Solar Jev, Laya).
 - **parameter_status**: `verified` / `publisher-approximate` / `publisher-partial` / `undisclosed` — 파라미터 값의 공식 근거 수준.
-- **System One / structured decision**: 산문을 생성하지 않고 choice/score/noul 결정+확률만 반환하는 모델 부류(Jev, Solar Jev, Laya, JEV-9B/27B). 독립 API 제품·별도 모델 ID로 출시되면 수록한다는 재검토 판정이 있다.
+- **System One / structured decision**: 산문을 생성하지 않고 choice/score/noul 결정+확률만 반환하는 모델 부류(Jev, Solar Jev, Laya, JEV-9B/27B, Strands Decider 2B, Clef/Clef-flash). 독립 API 제품·별도 모델 ID로 출시되면 수록한다는 재검토 판정이 있다.
 - **OFFICIAL_HOSTS / FORBIDDEN_BENCHMARK_TERMS / ALLOWED_BENCHMARK_NAMES / STALE_TEXT / BOT_PROTECTED_HOSTS**: `validate_data.py`의 검증 목록들.
 
 ## Quality Requirements
