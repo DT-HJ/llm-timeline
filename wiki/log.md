@@ -112,7 +112,7 @@ Wiki:
 - updated runbooks/audit-update.md — 수록 판정 3단계를 중요도 기준으로 개정, Failure Modes에 "부류로 자동 제외" 추가
 Validation:
 - python3 validate_data.py — PASS (OK: 206 models, 33 excluded, 182 with official scores; 10/15 감사 작업 단위에서 실행)
-- python3 validate_data.py --check-urls — 302 URL 스윕에서 `www.qwencloud.com/models/qwen3.6-max-preview` 404 1건 발견 → 출처 제거·파라미터 출처를 Qwen 블로그로 교체 후 재스윕 실행. HF 429·ifm.ai 봇 보호 403은 경고
+- python3 validate_data.py --check-urls — 1차 302 URL 스윕에서 `www.qwencloud.com/models/qwen3.6-max-preview` 404 1건 발견 → 출처 제거·파라미터 출처를 Qwen 블로그로 교체 후 **재실측 301 URL PASS(실패 0건)**. HF 429·ifm.ai 봇 보호 403은 경고
 - wiki_lint.py — 스킬 디렉터리가 이 머신에 없어 미실행
 Open:
 - 라이브 배포: `47b8247` 푸시 직후 `deploy-pages.yml`(Deploy GitHub Pages)과 네이티브 `pages build and deployment`가 모두 in_progress로 관측됨 — 구 주소(hojin12312.github.io/llm-timeline)는 404, 새 주소(dt-hj.github.io/llm-timeline)는 200
