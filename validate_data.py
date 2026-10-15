@@ -93,11 +93,18 @@ OFFICIAL_HOSTS = {
     # weights pending). Added 2026-10-08.
     "reflection.ai",
     "research.meta.ai",
+    # Meta Model API developer site — model pages, model IDs, availability and
+    # the printed Muse Wonder benchmark table. Added 2026-10-15.
+    "dev.meta.ai",
     # Salesforce newsroom (Koa reasoning model announcement). Added 2026-09-16.
     "salesforce.com",
     "sarvam.ai",
     "seed.bytedance.com",
-    "static.stepfun.com",
+    # StepFun official site (model pages, launch posts) and its developer
+    # documentation host. `stepfun.com` also covers the static.stepfun.com
+    # blog CDN that already backed Step 3.5 Flash. Added 2026-10-15.
+    "stepfun.com",
+    "stepfun.ai",
     "tech.meituan.com",
     "thinkingmachines.ai",
     # TypeSafe AI official blog (typesafe.ai) and docs (docs.typesafe.ai)

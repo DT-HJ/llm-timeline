@@ -4670,7 +4670,7 @@ const TIMELINE_DATA = [
     "variants": [],
     "reasoning_effort": [],
     "availability": "",
-    "note": "",
+    "note": "2026-10-15 출처 재점검: `--check-urls` 전수 스윕에서 qwencloud.com 모델 페이지(`/models/qwen3.6-max-preview`)가 HTTP 404로 사망한 것을 확인(같은 호스트의 `/models/qwen3.7-max`·`/models/qwen3.6-plus`는 200이라 봇 챌린지가 아니라 실제 삭제)해 공식 1차 출처 목록에서 제거하고, 파라미터 출처를 Qwen 공식 블로그로 교체했습니다. 파라미터는 원래부터 `정확한 수치 미공개`라 값 변경은 없습니다.",
     "benchmarks": {
       "SuperGPQA": 73.9,
       "QwenChineseBench": 84.0,
@@ -4685,16 +4685,12 @@ const TIMELINE_DATA = [
     "official_id": "qwen3.6-max-preview",
     "official_sources": [
       {
-        "label": "공식 1차 출처",
-        "url": "https://www.qwencloud.com/models/qwen3.6-max-preview"
-      },
-      {
         "label": "공식 출시 발표",
         "url": "https://qwen.ai/blog?id=qwen3.6-max-preview"
       }
     ],
     "release_date_source": "https://qwen.ai/blog?id=qwen3.6-max-preview",
-    "parameter_source": "https://www.qwencloud.com/models/qwen3.6-max-preview",
+    "parameter_source": "https://qwen.ai/blog?id=qwen3.6-max-preview",
     "benchmark_sources": {
       "SuperGPQA": "https://qwen.ai/blog?id=qwen3.6-max-preview",
       "QwenChineseBench": "https://qwen.ai/blog?id=qwen3.6-max-preview",
@@ -4710,7 +4706,7 @@ const TIMELINE_DATA = [
     "parameter_status": "undisclosed",
     "verification": {
       "status": "reviewed",
-      "reviewed_on": "2026-09-16",
+      "reviewed_on": "2026-10-15",
       "policy": "official-primary-only"
     }
   },
@@ -16419,6 +16415,614 @@ const TIMELINE_DATA = [
       "reviewed_on": "2026-10-08",
       "policy": "official-primary-only"
     }
+  },
+  {
+    "id": "model-210",
+    "name": "Muse Image",
+    "date": "2026-07-07",
+    "sortDate": "2026-07-07",
+    "month": "2026-07",
+    "monthName": "July",
+    "company": "Meta",
+    "family": "Muse Image",
+    "type": "Image generation / editing model",
+    "category": "Image generation",
+    "status": "GA",
+    "parameters": "정확한 수치 미공개",
+    "parameter_status": "undisclosed",
+    "architecture": "에이전트형 이미지 생성 — 프롬프트를 바로 렌더링하지 않고 검색·코드 실행 도구를 호출해 실제 레퍼런스와 최신 사실을 모으고 레이아웃을 계획한 뒤 생성·자기수정. Muse Spark와 툴·플랜을 공유하는 공동 계획(joint planning) 지원",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "focus": [
+      "agentic image generation",
+      "image editing",
+      "multi-reference composition",
+      "content provenance"
+    ],
+    "open_weights": false,
+    "license": "Proprietary (Meta Model API)",
+    "context": "",
+    "languages": "",
+    "variants": [
+      "muse-image-1.0"
+    ],
+    "reasoning_effort": [],
+    "availability": "Meta AI 앱·meta.ai·Instagram Stories(미국)·WhatsApp 일부 국가(2026-07-07), Meta Model API(muse-image-1.0, 이미지당 $0.01, /v1/images/generations·/v1/images/edits, 2026-08-25)",
+    "note": "Meta Superintelligence Labs의 첫 미디어 생성 모델(내부 코드명 Mango)로 2026-07-07 Meta AI 앱·meta.ai·Instagram Stories·WhatsApp에 출시됐고, 2026-08-25 Meta Model API로 개발자 직접 호출이 열리며 이미지당 $0.01로 책정됐습니다. 2026-10-15 범위 정책 개정(중요도 예외)에 따라 Muse 계열 전수 점검에서 소급 수록했습니다 — 개정 전에는 image-generation-only로 분류돼 수록 검토 대상이 아니었습니다. 같은 발표에서 예고한 Muse Video는 프리뷰 예고만 있어 미수록입니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 발표문이 성능 근거로 제시한 값이 Chatbot Arena 인간 선호 Elo 순위(텍스트→이미지·단일 이미지 편집·다중 이미지 편집 2위)뿐이고 정책상 Elo·Arena 지표는 점수표에 넣지 않아 빈 점수로 둡니다. 대신 이미지 출처 검증용 무결성 워터마크 Content Seal과 검출 도구를 함께 공개했습니다.",
+    "official_id": "muse-image-1.0",
+    "official_sources": [
+      {
+        "label": "공식 발표문 (MSL 첫 미디어 생성 모델)",
+        "url": "https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/"
+      },
+      {
+        "label": "공식 모델 문서 (Model API 모델 ID·엔드포인트)",
+        "url": "https://dev.meta.ai/docs/models"
+      }
+    ],
+    "release_date_source": "https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/",
+    "parameter_source": "https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-15",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-211",
+    "name": "MiniMax Music 3.0",
+    "date": "2026-08-13",
+    "sortDate": "2026-08-13",
+    "month": "2026-08",
+    "monthName": "August",
+    "company": "MiniMax",
+    "family": "MiniMax Music",
+    "type": "Music generation model",
+    "category": "Music generation",
+    "status": "GA",
+    "parameters": "8B Global LLM + 0.6B Local LLM + 2.4B flow-matching 모듈 + 123M Flow-VAE (구성 요소별 공개, 전체 합계 미공개)",
+    "parameter_status": "publisher-partial",
+    "architecture": "Hybrid-LM + 연속 hidden-state 합성 — 8층 RVQ(1층 16,384-entry codebook은 핵심 의미·구조, 2~8층은 각 1,024-entry로 잔차 acoustic 정보). 8B Global LLM이 프레임별 semantic 토큰과 전곡 컨텍스트를, 0.6B Local LLM이 프레임 내 acoustic 토큰을 depth 축으로 예측하고, 두 LLM의 연속 hidden state를 융합해 2.4B flow-matching → 123M Flow-VAE로 파형을 복원",
+    "modalities": [
+      "text",
+      "audio"
+    ],
+    "focus": [
+      "music generation",
+      "songwriting",
+      "vocal synthesis",
+      "long-form audio"
+    ],
+    "open_weights": true,
+    "license": "MiniMax-Music3 Community License",
+    "context": "",
+    "languages": "",
+    "variants": [
+      "MiniMax-Music3 (BF16, full pipeline)",
+      "SGLang-Omni 서빙",
+      "Diffusers 모듈형 파이프라인"
+    ],
+    "reasoning_effort": [],
+    "availability": "Hugging Face MiniMaxAI/MiniMax-Music3(오픈 웨이트, SGLang-Omni·Diffusers 자체 서빙), MiniMax Audio 호스팅. 유료 음악·가사 API는 2026-08-20부터 신규 사용자 접수 중단",
+    "note": "2026-08-13 MiniMax Research 공식 블로그로 공개한 차세대 음악 생성 모델입니다(가중치는 Hugging Face 저장소 생성일 기준 2026-08-07부터 공개, 호스팅 Music-3.0은 7월 제공). 가사와 구조화 캡션(Structured Caption)으로 최대 5분짜리 완성곡을 한 번에 생성하며, 구간 태그로 곡 구조를 지정합니다. 2026-10-15 범위 정책 개정(중요도 예외)에 따라 수록했습니다. 구성 요소 파라미터는 공식 블로그가 명시하지만 전체 합계는 인쇄돼 있지 않아 publisher-partial로 두었고, Global LLM 초기화 베이스는 블로그가 Qwen3.5-8B, Hugging Face 카드·GitHub README가 Qwen3-8B로 서로 다르게 적어 블로그 표기를 채택하고 불일치를 남깁니다. 출력 표본율도 44.1kHz(모델 카드)와 32kHz·16-bit(README)로 갈려 확정하지 않았습니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 블로그·모델 카드·GitHub 저장소에 % 척도 평가표가 없어 빈 점수로 둡니다. 제3자 블라인드 아레나 순위(Artificial Analysis 음악 아레나 오픈웨이트 최상위 등)는 정책상 점수표에서 제외했습니다.",
+    "official_id": "MiniMaxAI/MiniMax-Music3",
+    "official_sources": [
+      {
+        "label": "공식 발표문 (기술 아키텍처·구성 요소 파라미터)",
+        "url": "https://www.minimax.io/blog/minimax-music-3-0-next-generation-open-weights-production-ready-versatile-music-model"
+      },
+      {
+        "label": "공식 모델 카드",
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-Music3"
+      },
+      {
+        "label": "공식 추론 저장소",
+        "url": "https://github.com/MiniMax-AI/MiniMax-Music3"
+      },
+      {
+        "label": "공식 자체 서빙 가이드",
+        "url": "https://platform.minimax.io/docs/guides/local-deploy-music-3"
+      }
+    ],
+    "release_date_source": "https://www.minimax.io/blog/minimax-music-3-0-next-generation-open-weights-production-ready-versatile-music-model",
+    "parameter_source": "https://www.minimax.io/blog/minimax-music-3-0-next-generation-open-weights-production-ready-versatile-music-model",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-15",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-212",
+    "name": "Step 5 Preview",
+    "date": "2026-09-20",
+    "sortDate": "2026-09-20",
+    "month": "2026-09",
+    "monthName": "September",
+    "company": "StepFun",
+    "family": "Step",
+    "type": "MLLM",
+    "category": "MLLM",
+    "status": "Preview",
+    "parameters": "600B (27B 활성, ~4.5% sparsity)",
+    "parameter_status": "verified",
+    "architecture": "Sparse MoE 92층 narrow-deep Transformer — Sparse GQA + block-wise token merging으로 1M 컨텍스트 처리(인덱서·top-k 비용을 dense 기준 약 1/8로 축소 주장), 텍스트·이미지·비디오 프레임을 공유 잠재공간으로 인코딩하는 통합 멀티모달 인코더(비디오는 적응형 프레임 샘플링 + 시간축 attention)",
+    "modalities": [
+      "text",
+      "image",
+      "video"
+    ],
+    "focus": [
+      "agentic coding",
+      "software engineering",
+      "professional knowledge work",
+      "finance",
+      "long-horizon agent runs"
+    ],
+    "open_weights": true,
+    "license": "StepFun Community License",
+    "context": "1M (최대 입력 1M · 최대 출력 64K)",
+    "languages": "",
+    "variants": [
+      "step-5-preview (API)",
+      "BF16 (stepfun-ai/Step-5-Preview-BF16)",
+      "FP8 (stepfun-ai/Step-5-Preview)"
+    ],
+    "reasoning_effort": [
+      "low",
+      "medium",
+      "high",
+      "xhigh"
+    ],
+    "availability": "StepFun Open Platform API(step-5-preview, OpenAI 호환·최대 60장 이미지·비디오 128MB/5분 권장), Hugging Face stepfun-ai 가중치(BF16·FP8), vLLM·SGLang(reasoning parser stepfun)",
+    "note": "2026-09-20 공식 출시된 StepFun 차세대 플래그십(Step 4.x 세대를 건너뛰고 Step-3.7-Flash에서 바로 Step 5로 이동). API는 출시 당일 열렸고 가중치는 2026-10-15 공개 예고 후 stepfun-ai 저장소에 BF16·FP8 체크포인트로 올라왔습니다(BF16 약 610GB, 8×H100 권장). 산문 생성 모델이면서 이미지·비디오 입력과 병렬 툴콜·strict JSON Schema를 지원합니다.",
+    "benchmarks": {
+      "GPQA Diamond": 93.5,
+      "Humanity's Last Exam": 46.5,
+      "CritPt": 20.9,
+      "DeepSWE v1.1": 67.7,
+      "Terminal-Bench 2.1": 85.0,
+      "Terminal-Bench 4": 33.3,
+      "CyberGym": 84.7,
+      "SciCode": 58.9,
+      "RoadmapBench": 54.3,
+      "ProgramBench": 80.5,
+      "SWE-Marathon v1.1": 72.7,
+      "MLS-Bench-Lite": 40.5,
+      "SWE-Atlas-QnA": 63.6,
+      "SWE-Atlas-Test-writing": 50.8,
+      "StepCodeBench": 49.0,
+      "StepCode-Bench-Daily": 64.9,
+      "StepCode-Bench-General": 65.0,
+      "Agents' Last Exam (ALE-CLI)": 29.5,
+      "τ³-Banking": 42.5,
+      "AutomationBench Public": 44.0,
+      "Toolathlon-Verified": 74.1,
+      "MCP-Atlas": 85.6,
+      "PresentBench": 76.8,
+      "JobBench": 59.0,
+      "Apex-Agents": 37.8,
+      "Draco": 83.3,
+      "BrowseComp": 88.7,
+      "HLE w/ tools": 59.4,
+      "FrontierFinance": 66.4,
+      "FinStepBench-LiveSearch": 74.5,
+      "FinStepBench-CorporateValuation": 60.6,
+      "FinStepBench-FinanceDR": 55.8,
+      "OfficeQA Pro": 60.3,
+      "Spreadsheet v2": 29.4,
+      "GDP.pdf": 14.8,
+      "MMMU-Pro": 76.0
+    },
+    "benchmark_sources": {
+      "GPQA Diamond": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Humanity's Last Exam": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "CritPt": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "DeepSWE v1.1": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Terminal-Bench 2.1": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Terminal-Bench 4": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "CyberGym": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "SciCode": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "RoadmapBench": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "ProgramBench": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "SWE-Marathon v1.1": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "MLS-Bench-Lite": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "SWE-Atlas-QnA": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "SWE-Atlas-Test-writing": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "StepCodeBench": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "StepCode-Bench-Daily": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "StepCode-Bench-General": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Agents' Last Exam (ALE-CLI)": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "τ³-Banking": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "AutomationBench Public": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Toolathlon-Verified": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "MCP-Atlas": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "PresentBench": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "JobBench": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Apex-Agents": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Draco": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "BrowseComp": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "HLE w/ tools": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "FrontierFinance": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "FinStepBench-LiveSearch": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "FinStepBench-CorporateValuation": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "FinStepBench-FinanceDR": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "OfficeQA Pro": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "Spreadsheet v2": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "GDP.pdf": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16",
+      "MMMU-Pro": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16"
+    },
+    "benchmark_note": "Hugging Face 공식 모델 카드의 Step-5-Preview(high effort) 열 값입니다. 카드가 결과 출처를 Artificial Analysis로 밝힌 AA-LCR v1.1 88.3 · AutomationBench-AA 51.0 · Terminal-Bench 4.0-AA, 비% 척도인 GDPval-AA v2 1571 · AA-Briefcase 1417, 그리고 AA Intelligence Index는 제3자·비% 지표라 점수표에서 제외했습니다. 말미에 공개한 StepCodeBench 계열은 StepFun 자체 벤치마크(553개 저장소·33개 언어)입니다. MMMU-Pro 76.0은 카드가 다음 릴리스의 주 개선 목표로 지목한 약점입니다.",
+    "official_id": "stepfun-ai/Step-5-Preview-BF16",
+    "official_sources": [
+      {
+        "label": "공식 모델 페이지 (출시·파라미터)",
+        "url": "https://www.stepfun.com/step-5-preview"
+      },
+      {
+        "label": "공식 모델 카드 (벤치마크 전체 표)",
+        "url": "https://huggingface.co/stepfun-ai/Step-5-Preview-BF16"
+      },
+      {
+        "label": "공식 개발자 문서 (모델 ID·입출력·기능)",
+        "url": "https://platform.stepfun.ai/docs/en/guides/models/step-5-preview"
+      }
+    ],
+    "release_date_source": "https://www.stepfun.com/step-5-preview",
+    "parameter_source": "https://www.stepfun.com/step-5-preview",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-15",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-213",
+    "name": "Qwen-Image-2.1",
+    "date": "2026-09-20",
+    "sortDate": "2026-09-20",
+    "month": "2026-09",
+    "monthName": "September",
+    "company": "Alibaba",
+    "family": "Qwen-Image",
+    "type": "Image generation / editing model",
+    "category": "Image generation",
+    "status": "GA",
+    "parameters": "7B (비주얼 생성 컴포넌트, 32 Single-Stream DiT 레이어)",
+    "parameter_status": "verified",
+    "architecture": "통합 텍스트→이미지 생성·이미지 편집 DiT — 혼합 세분도(mixed-granularity) attention과 prefix KV cache 재사용, 투명(RGBA) 이미지 네이티브 생성·편집, 최대 10장 레퍼런스 이미지와 원·페인트 주석·마스크로 국소 편집 지정",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "focus": [
+      "text-to-image",
+      "image editing",
+      "transparent (RGBA) generation",
+      "multi-reference composition",
+      "typography"
+    ],
+    "open_weights": true,
+    "license": "Qwen Research License Agreement",
+    "context": "",
+    "languages": "",
+    "variants": [
+      "Qwen/Qwen-Image-2.1 (가중치)",
+      "Alibaba Cloud Model Studio API (Pro·Turbo)",
+      "Diffusers QwenImage21Pipeline"
+    ],
+    "reasoning_effort": [],
+    "availability": "Hugging Face Qwen/Qwen-Image-2.1·ModelScope 오픈 웨이트, Diffusers(QwenImage21Pipeline), Alibaba Cloud Model Studio 호스팅 API(Pro·Turbo)",
+    "note": "2026-09-20 Qwen-Image 계열의 통합 생성·편집 모델로 오픈 웨이트 공개(같은 릴리스에 프롬프트 리라이팅용 9B 모듈 2종 동봉). 2026-10-15 범위 정책 개정(중요도 예외)에 따라 수록했습니다 — 개정 전에는 image-generation-only로 분류돼 수록 검토 대상이 아니었습니다. 라이선스는 Apache 계열이 아닌 Qwen Research License Agreement입니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 모델 카드·저장소·블로그에 % 척도 평가표가 없어 빈 점수로 둡니다. 제3자 이미지 리더보드 수치는 정책상 인용하지 않았습니다.",
+    "official_id": "Qwen/Qwen-Image-2.1",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드 (가중치·아키텍처·라이선스)",
+        "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
+      },
+      {
+        "label": "공식 공개 저장소 (릴리스 노트·추론 코드)",
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1"
+      },
+      {
+        "label": "공식 발표 블로그",
+        "url": "https://qwen.ai/blog?id=qwen-image-2.1"
+      }
+    ],
+    "release_date_source": "https://github.com/QwenLM/Qwen-Image-2.1",
+    "parameter_source": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-15",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-214",
+    "name": "EmbeddingGemma 2",
+    "date": "2026-10-06",
+    "sortDate": "2026-10-06",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Google DeepMind",
+    "family": "Gemma",
+    "type": "Multimodal embedding model",
+    "category": "Embedding",
+    "status": "GA",
+    "parameters": "740M (텍스트 backbone 130M + embedder 140M + 비전 170M + 오디오 300M, 모듈 선택 로드)",
+    "parameter_status": "verified",
+    "architecture": "Gemma 4 기반 24층 인코더 — model dim 512·hidden 2048·sliding window 1024·GQA/MQA·mean pooling, 512→768 projection. Matryoshka Representation Learning으로 768/512/256/128차원 절단 지원, 비전·오디오 인코더를 개별 로드해 텍스트 전용 270M부터 전체 740M까지 운용",
+    "modalities": [
+      "text",
+      "image",
+      "video",
+      "audio"
+    ],
+    "focus": [
+      "on-device multimodal retrieval",
+      "semantic search",
+      "retrieval-augmented generation",
+      "classification and clustering",
+      "cross-modal search"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "8,192 토큰 (이미지 280토큰/장 ≈ 29장 · 비디오 140토큰/프레임 ≈ 58프레임 · 오디오 25토큰/초)",
+    "languages": "100개 이상 언어(학습 데이터 140개 이상 언어)",
+    "variants": [
+      "768d (full multimodal)",
+      "512d · 256d · 128d (MRL 절단)",
+      "Google AI Edge LiteRT·MediaPipe 최적화"
+    ],
+    "reasoning_effort": [],
+    "availability": "Hugging Face google/embeddinggemma-2·Kaggle, sentence-transformers·transformers·MLX·vLLM·llama.cpp·SGLang·Ollama·LM Studio, transformers.js·WebGPU(LiteRT Community)",
+    "note": "2026-10-06 Google DeepMind가 공개한 멀티모달 임베딩 모델로, 텍스트·코드·이미지·비디오·오디오를 단일 768차원 공간에 매핑합니다. 2026-10-08 감사에서 제외 원장(excluded-2026-10-08-3)에 embedding/reranker-only로 기록했던 항목으로, 2026-10-15 범위 정책 개정(중요도 예외)에 따라 활성 레코드로 이관했습니다(되돌림 경위는 README 각주 참조). 온디바이스 기준 Google Pixel 11 Pro에서 양자화 시 텍스트 전용 약 191MB·전체 약 567MB 상주 메모리로 동작합니다.",
+    "benchmarks": {
+      "MTEB (multilingual, v2)": 61.36,
+      "MTEB (code, v1)": 78.68,
+      "MIEB (lite)": 64.64,
+      "MMEB v2 (Image)": 57.28,
+      "MMEB v2 (VisDoc)": 67.84,
+      "MMEB v2 (Video)": 50.67,
+      "MSEB (Retrieval)": 69.54,
+      "MAEB": 49.39
+    },
+    "benchmark_sources": {
+      "MTEB (multilingual, v2)": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+      "MTEB (code, v1)": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+      "MIEB (lite)": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+      "MMEB v2 (Image)": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+      "MMEB v2 (VisDoc)": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+      "MMEB v2 (Video)": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+      "MSEB (Retrieval)": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+      "MAEB": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2"
+    },
+    "benchmark_note": "공식 모델 카드의 768d full-precision 표 값입니다(MTEB는 Mean(Task), MSEB는 MRR@10, 나머지는 NDCG@10·Hit@1·Mean(TaskType) 등 카드에 적힌 metric). 공식 블로그가 든 MTEB Code 78.68은 EmbeddingGemma 1의 68.76 대비 +9.92입니다. 128/256/512차원 절단 표의 값은 동일 체크포인트의 축소 차원 재측정이라 본표와 별도로 두지 않았습니다.",
+    "official_id": "google/embeddinggemma-2",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드 (파라미터·벤치마크 전체 표)",
+        "url": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2"
+      },
+      {
+        "label": "공식 발표 블로그",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/"
+      },
+      {
+        "label": "공식 모델 가중치",
+        "url": "https://huggingface.co/google/embeddinggemma-2"
+      }
+    ],
+    "release_date_source": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/",
+    "parameter_source": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-15",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-215",
+    "name": "Muse Wonder",
+    "date": "2026-10-12",
+    "sortDate": "2026-10-12",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Meta",
+    "family": "Muse Wonder",
+    "type": "MLLM",
+    "category": "MLLM",
+    "status": "Preview",
+    "parameters": "정확한 수치 미공개",
+    "parameter_status": "undisclosed",
+    "architecture": "호스팅 멀티모달 에이전트 모델 — 텍스트·이미지·비디오·오디오·PDF 입력(공식 문서 기준), Muse Spark보다 큰 베이스에 프리트레이닝·RL 확장, reasoning effort minimal~max 지원",
+    "modalities": [
+      "text",
+      "image",
+      "video",
+      "audio"
+    ],
+    "focus": [
+      "agentic coding",
+      "long-running agents",
+      "computer use",
+      "personal and professional agents",
+      "active memory"
+    ],
+    "open_weights": false,
+    "license": "Proprietary (Meta Model API / Muse Code)",
+    "context": "1,048,576 (1M)",
+    "languages": "다국어 학습 데이터(지원 언어 목록은 미기재)",
+    "variants": [
+      "muse-wonder-1.0"
+    ],
+    "reasoning_effort": [
+      "minimal",
+      "low",
+      "medium",
+      "high",
+      "max"
+    ],
+    "availability": "Meta Model API(muse-wonder-1.0, $4 입력·$0.20 캐시 입력·$20 출력 /1M — Standard 모드만)·Muse Code(모든 플랜). Muse 앱에는 구독자 우선 순차 배포 예정",
+    "note": "2026-10-12 Meta Superintelligence Labs가 공개한 첫 프론티어급 모델(Muse Wonder 시리즈 자체는 API·Muse Code 출시 당일부터 사용 가능). Muse Spark보다 큰 베이스에 프리트레이닝·RL을 확장했고, gigawatt 규모 Prometheus 데이터센터에서 학습했습니다. Active Memory(대화 간 핵심 컨텍스트 유지·능동 검색)와 Active Focus(블로커를 통과하며 목표를 지속 추진)를 내세우며, 최대 몇 시간짜리 장기 에이전트 실행·서브에이전트 오케스트레이션·컴퓨터 유스를 지원합니다. 시스템 카드의 안전 평가는 별도 보고서로 공개됐습니다(Muse Wonder Full 기준 CyberGym 88.4% · ExploitBench 58.9% · BioTIER 영어·다국어 98.7% · MASK 87.3% 등). 파라미터 수는 1차 자료 어디에도 인쇄돼 있지 않아 정확한 수치 미공개로 둡니다. Muse Wonder Full은 설정으로 선택되지 않아 별도 레코드로 분리했습니다.",
+    "benchmarks": {
+      "Personal Superintelligence Index": 54.3,
+      "Vals Finance Agent V2": 56.6,
+      "HealthBench Pro": 60.5,
+      "GDP.pdf": 30.8,
+      "JobBench": 70.5,
+      "OSWorld V2.1 (partial)": 72.6,
+      "OSWorld V2.1 (binary)": 34.3,
+      "MemoryBench": 85.6,
+      "DeepSWE 1.1": 78.8,
+      "SWE-Marathon": 53.1,
+      "ProgramBench": 50.0
+    },
+    "benchmark_sources": {
+      "Personal Superintelligence Index": "https://dev.meta.ai/models/muse-wonder",
+      "Vals Finance Agent V2": "https://dev.meta.ai/models/muse-wonder",
+      "HealthBench Pro": "https://dev.meta.ai/models/muse-wonder",
+      "GDP.pdf": "https://dev.meta.ai/models/muse-wonder",
+      "JobBench": "https://dev.meta.ai/models/muse-wonder",
+      "OSWorld V2.1 (partial)": "https://dev.meta.ai/models/muse-wonder",
+      "OSWorld V2.1 (binary)": "https://dev.meta.ai/models/muse-wonder",
+      "MemoryBench": "https://dev.meta.ai/models/muse-wonder",
+      "DeepSWE 1.1": "https://dev.meta.ai/models/muse-wonder",
+      "SWE-Marathon": "https://dev.meta.ai/models/muse-wonder",
+      "ProgramBench": "https://dev.meta.ai/models/muse-wonder"
+    },
+    "benchmark_note": "Meta 공식 모델 페이지(dev.meta.ai/models/muse-wonder)의 max effort 열 값입니다. 같은 표에서 결과 출처가 Artificial Analysis인 Harvey LAB-AA · AutomationBench-AA · Terminal-Bench 4.0-AA와 AA Intelligence Index, 그리고 Elo 척도인 AA 계열 지표는 제3자·비% 지표라 점수표에서 제외했습니다. Personal Superintelligence Index는 Meta 내부 7개 평가 합성 지수, MemoryBench·FocusBench는 Meta 자체 벤치마크이며, DeepSWE 1.1은 Datacurve·SWE-Marathon은 Abundant AI의 제3자 실행 결과를 Meta가 인용한 값입니다.",
+    "official_id": "muse-wonder-1.0",
+    "official_sources": [
+      {
+        "label": "공식 벤치마크 표 (모델 페이지)",
+        "url": "https://dev.meta.ai/models/muse-wonder"
+      },
+      {
+        "label": "공식 모델 카드 (출시일·모달리티·안전 평가)",
+        "url": "https://research.meta.ai/static/muse-wonder-model-card"
+      },
+      {
+        "label": "공식 발표문",
+        "url": "https://research.meta.ai/blog/muse-wonder"
+      },
+      {
+        "label": "공식 모델 문서 (변형·모델 ID·가용성)",
+        "url": "https://dev.meta.ai/docs/models"
+      }
+    ],
+    "release_date_source": "https://research.meta.ai/static/muse-wonder-model-card",
+    "parameter_source": "https://research.meta.ai/static/muse-wonder-model-card",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-15",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-216",
+    "name": "Muse Wonder Full",
+    "date": "2026-10-12",
+    "sortDate": "2026-10-12",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Meta",
+    "family": "Muse Wonder",
+    "type": "MLLM",
+    "category": "MLLM",
+    "status": "Preview",
+    "parameters": "정확한 수치 미공개",
+    "parameter_status": "undisclosed",
+    "architecture": "호스팅 멀티모달 에이전트 모델(Muse Wonder의 상위 변형) — 같은 시스템 카드·모달리티·1M 컨텍스트를 공유하고 추론 량을 더 쓴다. Meta는 Muse Wonder Full이 Muse Spark 1.3 추세선보다 out-of-distribution 과제에서 더 높은 성능을 낸다고 서술",
+    "modalities": [
+      "text",
+      "image",
+      "video",
+      "audio"
+    ],
+    "focus": [
+      "agentic coding",
+      "long-running agents",
+      "computer use",
+      "SOTA coding benchmark",
+      "frontier reasoning"
+    ],
+    "open_weights": false,
+    "license": "Proprietary (Muse Code subscription)",
+    "context": "1,048,576 (1M)",
+    "languages": "다국어 학습 데이터(지원 언어 목록은 미기재)",
+    "variants": [
+      "muse-wonder-full-1.0"
+    ],
+    "reasoning_effort": [
+      "max (벤치마크 공개 기준)"
+    ],
+    "availability": "Muse Code 구독 전용 — Power Usage($50/월)·Maximum Usage($200/월) 플랜. Model API pay-as-you-go에는 제공되지 않음",
+    "note": "2026-10-12 Meta Superintelligence Labs가 공개한 첫 프론티어급 모델(Muse Wonder 시리즈 자체는 API·Muse Code 출시 당일부터 사용 가능). Muse Spark보다 큰 베이스에 프리트레이닝·RL을 확장했고, gigawatt 규모 Prometheus 데이터센터에서 학습했습니다. Active Memory(대화 간 핵심 컨텍스트 유지·능동 검색)와 Active Focus(블로커를 통과하며 목표를 지속 추진)를 내세우며, 최대 몇 시간짜리 장기 에이전트 실행·서브에이전트 오케스트레이션·컴퓨터 유스를 지원합니다. 시스템 카드의 안전 평가는 별도 보고서로 공개됐습니다(Muse Wonder Full 기준 CyberGym 88.4% · ExploitBench 58.9% · BioTIER 영어·다국어 98.7% · MASK 87.3% 등). 파라미터 수는 1차 자료 어디에도 인쇄돼 있지 않아 정확한 수치 미공개로 둡니다. Muse Wonder Full은 Model API로 제공되지 않아 서드파티 게이트웨이에서도 호출할 수 없고, 벤치마크는 전부 xhigh~max effort 조건으로 공개됐습니다.",
+    "benchmarks": {
+      "Personal Superintelligence Index": 59.1,
+      "Vals Finance Agent V2": 59.1,
+      "HealthBench Pro": 62.3,
+      "GDP.pdf": 33.2,
+      "JobBench": 75.3,
+      "OSWorld V2.1 (partial)": 78.4,
+      "OSWorld V2.1 (binary)": 39.4,
+      "MemoryBench": 85.5,
+      "DeepSWE 1.1": 79.0,
+      "SWE-Marathon": 57.5,
+      "ProgramBench": 59.0
+    },
+    "benchmark_sources": {
+      "Personal Superintelligence Index": "https://dev.meta.ai/models/muse-wonder",
+      "Vals Finance Agent V2": "https://dev.meta.ai/models/muse-wonder",
+      "HealthBench Pro": "https://dev.meta.ai/models/muse-wonder",
+      "GDP.pdf": "https://dev.meta.ai/models/muse-wonder",
+      "JobBench": "https://dev.meta.ai/models/muse-wonder",
+      "OSWorld V2.1 (partial)": "https://dev.meta.ai/models/muse-wonder",
+      "OSWorld V2.1 (binary)": "https://dev.meta.ai/models/muse-wonder",
+      "MemoryBench": "https://dev.meta.ai/models/muse-wonder",
+      "DeepSWE 1.1": "https://dev.meta.ai/models/muse-wonder",
+      "SWE-Marathon": "https://dev.meta.ai/models/muse-wonder",
+      "ProgramBench": "https://dev.meta.ai/models/muse-wonder"
+    },
+    "benchmark_note": "Meta 공식 모델 페이지(dev.meta.ai/models/muse-wonder)의 max effort 열 값입니다. 같은 표에서 결과 출처가 Artificial Analysis인 Harvey LAB-AA · AutomationBench-AA · Terminal-Bench 4.0-AA와 AA Intelligence Index, 그리고 Elo 척도인 AA 계열 지표는 제3자·비% 지표라 점수표에서 제외했습니다. Personal Superintelligence Index는 Meta 내부 7개 평가 합성 지수, MemoryBench·FocusBench는 Meta 자체 벤치마크이며, DeepSWE 1.1은 Datacurve·SWE-Marathon은 Abundant AI의 제3자 실행 결과를 Meta가 인용한 값입니다.",
+    "official_id": "muse-wonder-full-1.0",
+    "official_sources": [
+      {
+        "label": "공식 벤치마크 표 (모델 페이지)",
+        "url": "https://dev.meta.ai/models/muse-wonder"
+      },
+      {
+        "label": "공식 모델 카드 (출시일·모달리티·안전 평가)",
+        "url": "https://research.meta.ai/static/muse-wonder-model-card"
+      },
+      {
+        "label": "공식 발표문",
+        "url": "https://research.meta.ai/blog/muse-wonder"
+      },
+      {
+        "label": "공식 모델 문서 (변형·모델 ID·가용성)",
+        "url": "https://dev.meta.ai/docs/models"
+      }
+    ],
+    "release_date_source": "https://research.meta.ai/static/muse-wonder-model-card",
+    "parameter_source": "https://research.meta.ai/static/muse-wonder-model-card",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-15",
+      "policy": "official-primary-only"
+    }
   }
 ];
 
@@ -16961,16 +17565,31 @@ const FAMILY_FLOWS = [
       "JEV-9B",
       "JEV-27B"
     ]
+  },
+  {
+    "family": "Step",
+    "steps": [
+      "Step 3.5 Flash",
+      "Step 5 Preview"
+    ]
+  },
+  {
+    "family": "Muse Wonder",
+    "steps": [
+      "Muse Wonder",
+      "Muse Wonder Full"
+    ]
   }
 ];
 
 const UNCONFIRMED_DATA = [];
 
 const SCOPE_DATA = {
-  "period": "2026-01-01 ~ 2026-10-08",
+  "period": "2026-01-01 ~ 2026-10-15",
   "scope": [
     "LLM (Large Language Models)",
-    "MLLM / VLM / Omni foundation models"
+    "MLLM / VLM / Omni foundation models",
+    "중요도 예외(2026-10-15 개정): 아래 excluded 부류에 속해도 업계 기준점을 세운 릴리스는 수록"
   ],
   "excluded": [
     "image-generation-only models",
@@ -16984,7 +17603,8 @@ const SCOPE_DATA = {
   ],
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-  "reviewed_on": "2026-10-08"
+  "reviewed_on": "2026-10-15",
+  "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
 };
 
 const AUDIT_EXCLUDED = [
@@ -17242,16 +17862,6 @@ const AUDIT_EXCLUDED = [
     "reviewed_on": "2026-10-08"
   },
   {
-    "id": "excluded-2026-10-08-3",
-    "name": "EmbeddingGemma 2",
-    "original_name": "google/embeddinggemma-2",
-    "date": "2026-10-06",
-    "company": "Google DeepMind",
-    "reason": "텍스트·코드·이미지·비디오·오디오를 단일 768차원 공간에 매핑하는 멀티모달 임베딩 전용 모델(740M, Gemma 4 기반, Apache 2.0) — embedding/reranker-only 수록 제외 항목에 해당.",
-    "source": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/",
-    "reviewed_on": "2026-10-08"
-  },
-  {
     "id": "excluded-2026-10-08-4",
     "name": "GPT-6 Sol / GPT-6 Luna (October 2026 update)",
     "original_name": "GPT-6 Sol (October) · GPT-6 Luna (October)",
@@ -17260,5 +17870,15 @@ const AUDIT_EXCLUDED = [
     "reason": "10/7 ChatGPT 전면 배포(GPT-6 + Intelligent UI)와 함께 반영된 기존 model-179/180의 ChatGPT 버전 갱신 — 시스템 카드가 안전 학습 업데이트된 'October' 버전으로 구분하지만, 별도 모델 ID·신규 능력 점수가 없는 배포 업데이트라 중복 집계하지 않음(Kimi K3 on Bedrock 선례).",
     "source": "https://deploymentsafety.openai.com/gpt-6-october/model-safety-training-and-evaluation",
     "reviewed_on": "2026-10-08"
+  },
+  {
+    "id": "excluded-2026-10-15-1",
+    "name": "Muse Voice Transcribe",
+    "original_name": "muse-voice-transcribe-1.0",
+    "date": "2026 (Meta Model API 등재, 공식 출시일 미표기)",
+    "company": "Meta",
+    "reason": "Meta Model API의 음성→텍스트 전사 전용 모델(실시간 WebSocket /v1/asr/realtime·파일 /v1/asr/transcribe) — ASR/TTS-only 수록 제외 항목에 해당하며 공식 문서가 음성을 합성하지 않고 speech-to-speech API도 제공하지 않는다고 명시합니다. 공식 문서에 출시일 표기가 없어 날짜도 확정하지 않았습니다. 2026-10-15 Muse 계열 전수 점검에서 기록.",
+    "source": "https://dev.meta.ai/docs/models",
+    "reviewed_on": "2026-10-15"
   }
 ];

@@ -2,7 +2,7 @@
 title: Audit Update
 type: runbook
 status: current
-updated: 2026-10-01
+updated: 2026-10-15
 ---
 
 # Runbook: Audit Update
@@ -21,7 +21,7 @@ updated: 2026-10-01
 
 1. **조사**: 공식 1차 자료만 사용 — 개발사 발표 블로그, 모델 카드(HF), 공식 문서. 릴리스 날짜·파라미터·컨텍스트·공식 점수를 원문 그대로 확보한다.
 2. **중복 판정**: `models_catalog.json`의 `models[]`와 `excluded[]`에 이미 있는지 확인. 제외 원장에 있으면 되돌림 이관 여부를 판단.
-3. **수록 판정**: `scope.excluded` 기준에 걸리면 `excluded[]`에 `id`(`excluded-YYYY-MM-DD-N`)·사유·공식 출처로 기록. 독립 API 제품·별도 모델 ID로 출시된 비전형 모델은 예외 수록 선례가 있다(System One/structured decision — `components/catalog-pipeline.md` 참조).
+3. **수록 판정**: `scope.excluded`는 **부류 분류**다 — 부류만으로 제외하지 않는다(2026-10-15 개정). ① 개발사 공식 1차 출처가 있고 ② 그 부류에서 업계 기준점(최초·최고·최대 규모)을 세운 릴리스면 활성 레코드로 수록하고 `category`에 부류값(`Embedding`·`Image generation`·`Music generation` 등)을 넣어 구분한다. 기준에 못 미치는 항목만 `excluded[]`에 `id`(`excluded-YYYY-MM-DD-N`)·사유·공식 출처로 기록한다. System One/structured decision처럼 독립 API 제품·별도 모델 ID로 출시된 비전형 모델도 같은 기준으로 판단한다(`components/catalog-pipeline.md`의 Important Invariants 참조).
 4. **카탈로그 편집**: `models_catalog.json`만 수정.
    - 신규 레코드: 다음 `model-###` ID, 필드 순서는 기존 레코드와 동일하게.
    - 파라미터: 공식 명시값 + `parameter_status`; 미공개는 `정확한 수치 미공개` + `undisclosed`.
@@ -32,7 +32,7 @@ updated: 2026-10-01
    - 기간의 새 월(예: `2026-10`)에 첫 모델을 수록하면 `index.html` 월 버튼과 `app.js` `months` 배열에 그 월을 함께 추가한다. 대상 컬럼 없는 빈 월 칩은 `jumpToMonth`가 active 표시만 남기므로 모델보다 먼저 넣지 않는다.
 5. **호스트 등록**: 새로 인용하는 발행사 도메인이 `validate_data.py`의 `OFFICIAL_HOSTS`에 없으면 추가.
 6. **재생성·검증**: `python3 build_data.py` → `python3 validate_data.py`. 가능하면 `python3 validate_data.py --check-urls`까지.
-7. **README 갱신**: 헤더 통계(모델 수·조직 수), 감사 추가분 절, 제외 원장 카운트, 조직 목록, 되돌림 각주.
+7. **README 갱신**: 헤더 통계(모델 수·조직 수), 감사 추가분 절, 제외 원장 카운트, 조직 목록, 되돌림·중요도 예외 각주. 정책을 개정했다면 `wiki/overview.md`의 Non-goals와 본 런북 3단계도 함께 고친다.
 8. **커밋·푸시**: `git diff --check` 후 기존 커밋 스타일(`feat: ... (총 N개 / M개 조직)`)로 커밋, `git push origin main`. **CI 검증 게이트를 신뢰하지 말 것** — `deploy-pages.yml`의 `validate_data.py` 실행이 멈춘 상태일 수 있으므로(사실에서 `current.md` 확인) 푸시 전에 로컬에서 통과시킨다. 라이브 반영 여부는 `gh run list`로 확인한다.
 9. **알림**: 로컬 Telegram Notice 봇으로 완료 보고(머신 로컬 설정 문서의 절차를 따른다).
 
@@ -47,6 +47,8 @@ updated: 2026-10-01
 - `--check-urls` 실패 시 해당 URL을 수동으로 열어 실제 사망(404/410)인지 봇 챌린지인지 구분.
 
 ## Failure Modes
+
+- **부류로 자동 제외**: `scope.excluded`에 이름이 걸린다는 이유만으로 수록을 건너뛰면 중요도 높은 릴리스를 놓친다(2026-10-15에 EmbeddingGemma 2·Qwen-Image-2.1·Muse Image·MiniMax Music 3.0을 소급 수록한 원인). 1차 출처가 있는데 부류만 다르면 수록 여부를 먼저 판단한다.
 
 - **JS 셸 문서 페이지**(Upstage Console 등): 정적 HTML이 비어 있으면 Next.js/RSC 페이로드에서 본문을 추출한다. 2026-09-30에 확인된 두 케이스:
   - **openai.com `/index/*` 발표문**: `curl`·일반 GET에 403이므로 본문은 미러 렌더링으로 읽는다. 본문에 절대값이 없는 발표문(개선폭만 서술)도 RSC 페이로드의 `\"data\":{\"values\":[...]}` 차트 데이터를 파싱하면 effort별 점수를 얻을 수 있다 — OpenAI 발표문은 매 감사 반복 패턴이므로 기본 가정할 것.

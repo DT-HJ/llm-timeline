@@ -2,14 +2,14 @@
 title: Overview
 type: overview
 status: current
-updated: 2026-10-08
+updated: 2026-10-15
 ---
 
 # Overview
 
 ## Purpose
 
-2026년 주요 LLM·MLLM 파운데이션 모델 출시 타임라인. 공식 1차 자료와 함께 구조화된 모델 카탈로그를 유지하고, 인터랙티브 웹 타임라인으로 제공하는 GitHub Pages 프로젝트다.
+2026년 주요 LLM·MLLM 파운데이션 모델 출시 타임라인. 공식 1차 자료와 함께 구조화된 모델 카탈로그를 유지하고, 인터랙티브 웹 타임라인으로 제공하는 GitHub Pages 프로젝트다. 2026-10-15 개정으로 수록 범위는 부류가 아니라 **중요도**로 결정한다(`scope.inclusion_exception`) — 인접 부류(임베딩·이미지/음악 생성 등) 릴리스도 업계 기준점을 세우면 수록한다.
 
 ## Primary Goal
 
@@ -18,7 +18,7 @@ updated: 2026-10-08
 ## Non-goals
 
 - 제3자 지표 수록 — Chatbot Arena/ELO, Artificial Analysis, 제3자 리더보드, 추정·역산 점수는 점수 표에 넣지 않는다(`models_catalog.json`의 `benchmark_policy`).
-- 범위 외 모델 — 이미지/비디오 단독 생성, OCR 전용, ASR/TTS 전용, 임베딩·리랭커, 보상/가드레일 전용, 단순 양자화 체크포인트, 독립 제품이 아닌 중간 체크포인트(`scope.excluded`). 예외는 제외 원장(`excluded`)에 사유·출처와 함께 보존한다.
+- 범위 외 모델 — `scope.excluded`가 이미지/비디오 단독 생성, OCR 전용, ASR/TTS 전용, 임베딩·리랭커, 보상/가드레일 전용, 단순 양자화 체크포인트, 독립 제품이 아닌 중간 체크포인트를 나열하고, 각 판정은 제외 원장(`excluded`)에 사유·출처와 함께 보존한다. **2026-10-15 개정: 이 목록은 부류 분류일 뿐 수록 차단 목록이 아니다.** 부류에 속해도 ① 개발사 공식 1차 출처가 있고 ② 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스는 수록한다(`scope.inclusion_exception`). 첫 예외 수록은 EmbeddingGemma 2(임베딩), Qwen-Image-2.1·Muse Image(이미지 생성), MiniMax Music 3.0(음악 생성) 4종이며 `category`를 각각 `Embedding`·`Image generation`·`Music generation`으로 두어 LLM/MLLM과 구분한다.
 - 서버 사이드 기능 — 빌드 도구·백엔드 없는 순수 정적 사이트다.
 
 ## Hard Constraints
@@ -52,7 +52,9 @@ updated: 2026-10-08
 - **SSOT**: `models_catalog.json` — 모델명·출시일·파라미터·공식 점수·출처의 단일 진실 공급원.
 - **제외 원장(excluded ledger)**: 수록 범위 밖으로 판정한 항목의 사유·출처 기록. 되돌림(reversal) 시 활성 레코드로 이관하고 README 각주에 경위를 남긴다(선례: Muse Spark 1.2/1.3, Jev·Solar Jev, Laya).
 - **parameter_status**: `verified` / `publisher-approximate` / `publisher-partial` / `undisclosed` — 파라미터 값의 공식 근거 수준.
-- **System One / structured decision**: 산문을 생성하지 않고 choice/score/noul 결정+확률만 반환하는 모델 부류(Jev, Solar Jev, Laya, JEV-9B/27B, Strands Decider 2B, Clef/Clef-flash). 독립 API 제품·별도 모델 ID로 출시되면 수록한다는 재검토 판정이 있다.
+- **System One / structured decision**: 산문을 생성하지 않고 choice/score/noul 결정+확률만 반환하는 모델 부류(Jev, Solar Jev, Laya, JEV-9B/27B, Strands Decider 2B, Clef/Clef-flash). 독립 API 제품·별도 모델 ID로 공식 출시되면 수록한다.
+- **중요도 예외(inclusion exception, 2026-10-15)**: `scope.excluded` 부류에 속해도 공식 1차 출처가 있고 그 부류에서 업계 기준점(최초·최고·최대)을 세우면 수록한다. 예외 수록 레코드는 `category`에 부류를 드러내는 값(`Embedding`·`Image generation`·`Music generation` 등)을 넣어 LLM/MLLM과 구분하고, 근거를 `note`에 남긴다.
+- **제외 원장 되돌림(reversal)**: 예외 수록·재판정으로 원장 항목을 활성 레코드로 옮길 때는 해당 `excluded` 항목을 삭제하고 README 각주에 경위를 남긴다(선례: Muse Spark 1.2/1.3, Jev·Solar Jev, Laya, EmbeddingGemma 2).
 - **OFFICIAL_HOSTS / FORBIDDEN_BENCHMARK_TERMS / ALLOWED_BENCHMARK_NAMES / STALE_TEXT / BOT_PROTECTED_HOSTS**: `validate_data.py`의 검증 목록들.
 
 ## Quality Requirements
