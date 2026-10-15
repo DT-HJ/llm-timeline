@@ -17,6 +17,7 @@ updated: 2026-10-15
 - 제외 원장 변경: `excluded-2026-10-08-3`(EmbeddingGemma 2) 삭제 — 되돌림 이관, `excluded-2026-10-15-1`(Muse Voice Transcribe · ASR/TTS 전용) 신규. 순증감 0이라 총계 33개 유지
 - 1차 도메인 신규: `stepfun.com`(= 기존 `static.stepfun.com`을 접미 일치로 포괄), `stepfun.ai`(platform.stepfun.ai 개발자 문서), `dev.meta.ai`(Meta Model API 모델 문서)
 - README·`index.html` 헤더 문구·`app.js` 정렬 라벨을 같은 커밋에서 10/15 기준으로 갱신(`SCOPE_DATA.period`가 헤더의 SSOT이므로 카탈로그 `scope.period`만 맞추면 나머지는 파생)
+- **저장소 이전 (2026-10-15 관측)**: 원격이 `hojin12312/llm-timeline` → **`DT-HJ/llm-timeline`** 으로 rename됐다. 푸시는 구 URL의 리다이렉트로 성공했고 로컬 `origin`을 새 URL로 갱신했다. **GitHub Pages 주소도 `hojin12312.github.io/llm-timeline/`(404)에서 `dt-hj.github.io/llm-timeline/`(200)로 변경** — README 라이브 URL·클론 URL·배포 안내와 `index.html` 헤더 GitHub 링크 2곳을 새 주소로 정정했다.
 - 배포 파이프라인(코드 읽음): `deploy-pages.yml`은 push마다 `python3 validate_data.py`를 실행하도록 선언돼 있다(워크플로 파일은 `c2de7f5`(9/8) 이후 변경 없음)
 
 ## Partially Implemented
@@ -35,6 +36,7 @@ updated: 2026-10-15
 ## Active Risks / Unknowns
 
 - **Qwen Cloud 모델 페이지 휘발성**(신규): `qwencloud.com/models/<slug>` 형태 출처가 404로 죽는 사례가 생김(2026-10-15 Qwen3.6-Max-Preview). 같은 호스트의 형제 페이지가 200이면 실제 삭제이므로 다른 공식 출처(블로그·docs)로 교체하고 경위를 `note`에 남긴다 — 다음 감사에서도 Qwencloud 출처는 우선 점검 대상.
+- **저장소 rename에 따른 구 링크 사망**: 구 Pages 주소(`hojin12312.github.io/llm-timeline/`)는 404이고 구 저장소 URL은 리다이렉트만 가능하다. 레포 내 링크는 정정했으나 외부 문서·북마크가 구 주소를 참조하면 깨진다 — README 공지 외에 대응 수단은 없음
 - **StepFun 중간 세대 공백** (신규): 카탈로그의 StepFun 레코드는 Step 3.5 Flash(`model-010`, 2026-02-12)와 Step 5 Preview(`model-212`, 2026-09-20)뿐인데, 공식 HF 조직 `stepfun-ai`에는 Step 3.7-Flash 계열(2026-05 공개)과 Step 3.5 Flash-Base 등이 있다. Step 5 카드도 "Step-3.7-Flash에서 Step 5로 이동"이라 서술하므로 중간 세대가 미수록 상태다 — 다음 감사 과제
 - **Muse Wonder 파라미터 미공개**: 시스템 카드·모델 페이지·발표문 어디에도 파라미터 수가 없다(`undisclosed`). 가중치·기술 보고서가 나오면 갱신
 - **CI 검증 게이트 간헐 정지** (관측 2026-10-08, host local, `gh run list`): `deploy` job이 2026-09-19~10-01 사이 `waiting`/`pending`에 머물렀다가 `23d27cf` 푸시에 복귀. 원인 미확인이라 간헐 상태로 본다 — **푸시 전 로컬 `validate_data.py`를 게이트로 유지**

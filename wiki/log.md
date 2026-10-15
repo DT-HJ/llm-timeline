@@ -100,3 +100,20 @@ Open:
 - 보류 3종 재조사: Ling-3.1-flash · OpenCSG Agentic-27B · Heimr 570M
 - 스텔스 Space Bunny Alpha·Union Alpha/Pareto 26.9 발표 2026-10-10 예고 — 발표 후 재조사. Mistral Large 4 가중치 공개 시 `open_weights` 갱신
 - SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
+
+## [2026-10-15] update | 10/15 감사 반영 (Step 5 Preview·Muse Wonder 2종·EmbeddingGemma 2·Qwen-Image-2.1·Muse Image·MiniMax Music 3.0 신규 7종 + 범위 정책 개정)
+
+Source HEAD: 47b824729933012853162f1f2344c5479dfd9070
+Wiki:
+- updated current.md — 활성 모델 199→206, 표기 조직 57(변동 없음), 공식 점수 178→182개 모델·3,125→3,191점, as_of·범위 2026-10-15, 범위 정책 개정(중요도 예외)과 저장소 rename 사실 추가, 리스크·다음 작업 재계산
+- updated overview.md — Purpose·Non-goals를 "부류가 아니라 중요도로 수록 판정"으로 재작성, Terminology에 중요도 예외·되돌림 항목 추가
+- updated components/catalog-pipeline.md — `scope.inclusion_exception` 인터페이스, 범위 판정 invariant, 2026-10-15 신규 도메인(stepfun.com·stepfun.ai·dev.meta.ai), AA 출처·Elo 제외 선별 규칙, dev.meta.ai CSS-in-JS 표 파싱·HF 커밋 로그로 가중치 공개 확인, qwencloud.com 404 사례
+- updated components/web-dashboard.md — `category`에 Embedding/Image generation/Music generation 값이 들어오는 경로 기록
+- updated runbooks/audit-update.md — 수록 판정 3단계를 중요도 기준으로 개정, Failure Modes에 "부류로 자동 제외" 추가
+Validation:
+- python3 validate_data.py — PASS (OK: 206 models, 33 excluded, 182 with official scores; 10/15 감사 작업 단위에서 실행)
+- python3 validate_data.py --check-urls — 302 URL 스윕에서 `www.qwencloud.com/models/qwen3.6-max-preview` 404 1건 발견 → 출처 제거·파라미터 출처를 Qwen 블로그로 교체 후 재스윕 실행. HF 429·ifm.ai 봇 보호 403은 경고
+- wiki_lint.py — 스킬 디렉터리가 이 머신에 없어 미실행
+Open:
+- 라이브 배포: `47b8247` 푸시 직후 `deploy-pages.yml`(Deploy GitHub Pages)과 네이티브 `pages build and deployment`가 모두 in_progress로 관측됨 — 구 주소(hojin12312.github.io/llm-timeline)는 404, 새 주소(dt-hj.github.io/llm-timeline)는 200
+- StepFun 중간 세대(Step 3.6·3.7-Flash, 2026-05 공개) 소급 조사 · Gemini 4 Argon 10/13 GA 출처 갱신 · 중요도 기준에 따른 기존 레코드 점검 여부(운영자 판단)

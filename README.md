@@ -78,7 +78,7 @@
 
 ## 🌐 라이브 데모 (GitHub Pages)
 
-- **URL:** [https://hojin12312.github.io/llm-timeline/](https://hojin12312.github.io/llm-timeline/)
+- **URL:** [https://dt-hj.github.io/llm-timeline/](https://dt-hj.github.io/llm-timeline/) (2026-10-15 저장소 이전 `hojin12312` → `DT-HJ`에 따라 Pages 주소도 변경 — 구 주소는 404)
 *(GitHub 레포지토리 Settings > Pages에서 배포 소스를 `main` 브랜치 또는 `GitHub Actions`로 설정 시 활성화됩니다)*
 
 ---
@@ -164,7 +164,7 @@
 
 ```bash
 # 1. 레포지토리 클론
-git clone https://github.com/hojin12312/llm-timeline.git
+git clone https://github.com/DT-HJ/llm-timeline.git
 cd llm-timeline
 
 # 2. 로컬 웹서버 실행 (Python 내장 서버)
@@ -179,13 +179,13 @@ python3 -m http.server 8000
 
 본 레포지토리의 웹 페이지를 온라인에 배포하려면:
 
-1. **GitHub 레포지토리** (`hojin12312/llm-timeline`) 방문
+1. **GitHub 레포지토리** (`DT-HJ/llm-timeline`) 방문
 2. 상단 메뉴의 **Settings** 클릭
 3. 좌측 메뉴의 **Pages** 클릭
 4. **Build and deployment** 섹션의 **Source**에서:
    - **Deploy from a branch** 선택 후, Branch를 `main` / `/ (root)` 로 지정하고 **Save**  
    *(또는 **GitHub Actions**를 선택하면 내장된 `.github/workflows/deploy-pages.yml`을 통해 자동 배포됩니다)*
-5. 잠시 후 상단에 생성된 `https://hojin12312.github.io/llm-timeline/` 주소로 접속 가능합니다.
+5. 잠시 후 상단에 생성된 `https://dt-hj.github.io/llm-timeline/` 주소로 접속 가능합니다.
 
 ---
 
