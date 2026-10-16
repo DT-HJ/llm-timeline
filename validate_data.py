@@ -27,6 +27,8 @@ OFFICIAL_HOSTS = {
     "aleph-alpha.com",
     "alibabagroup.com",
     "anthropic.com",
+    # Nemotron 3.5 Super VL / Bolt launch post. Added 2026-10-16.
+    "blogs.nvidia.com",
     # ByteDance static CDN — hosts the official Seed2.0 model-card PDF.
     "bytednsdoc.com",
     # NAVER CLOVA tech blog — official HyperCLOVA X SEED 4B benchmarks.
@@ -45,6 +47,9 @@ OFFICIAL_HOSTS = {
     "deepai.google",
     "deepmind.google",
     "deepseek.com",
+    # NVIDIA developer blog (developer.nvidia.com) — Nemotron 3.5 Super VL
+    # architecture deep-dive. Added 2026-10-16.
+    "developer.nvidia.com",
     "deploymentsafety.openai.com",
     "developers.openai.com",
     "docs.cloud.google.com",
@@ -71,7 +76,14 @@ OFFICIAL_HOSTS = {
     # and model configuration). Added 2026-09-19.
     "kimi.com",
     "lgresearch.ai",
+    # Liquid AI official blog — LFM2.5-24B-A2B launch post and the printed
+    # benchmark table (webarena verified + WebArena (vision) rows).
+    # Added 2026-10-16.
+    "liquid.ai",
     "mimo.xiaomi.com",
+    # Microsoft AI Lab Notes — MAI-Base-2 pre-training post (excluded-ledger
+    # source only). Added 2026-10-16.
+    "microsoft.ai",
     # MiniMax developer docs (platform.minimax.io) — M3.1-Flash-Preview spec
     # sheet. Added 2026-09-29.
     "minimax.io",
@@ -82,11 +94,20 @@ OFFICIAL_HOSTS = {
     # Added 2026-09-23.
     "nex-agi.com",
     "navercorp.com",
+    # Nature Will official blog — Natura-1 physical foundation model (excluded
+    # ledger source). Added 2026-10-16.
+    "naturewill.com",
     "news.sktelecom.com",
     "openai.com",
+    # Paper Instruments official blog and docs — Ultramarine 1 Flash
+    # (excluded-ledger source). Added 2026-10-16.
+    "paperinstruments.com",
     # Perceptron official blog — Mk1.5 launch post. Added 2026-09-29.
     "perceptron.inc",
     "poolside.ai",
+    # PyTorch official blog — Muse Spark Open deployment/Helion kernels post
+    # (first-party deployment guide published with Meta). Added 2026-10-16.
+    "pytorch.org",
     "qwen.ai",
     "qwencloud.com",
     # Reflection AI official blog — Beam announcement (excluded-ledger source,
@@ -132,7 +153,14 @@ FORBIDDEN_BENCHMARK_TERMS = (
 # OpenAI's GPT-5.4 announcement respectively.
 ALLOWED_BENCHMARK_NAMES = {
     "matharena apex (pass@1)",
+    # WebArena is a fixed evaluation suite published as a benchmark, not the
+    # crowdsourced Chatbot Arena, so the bare "arena" substring must not block
+    # it. Added 2026-10-16: the Liquid AI LFM2.5-24B-A2B card prints the row as
+    # "WebArena Verified" (space) and the NVIDIA Nemotron 3.5 Bolt card as
+    # "WebArena (vision)".
     "webarena-verified",
+    "webarena verified",
+    "webarena (vision)",
     # 고정 평가 스위트(리더보드가 아닌 수치 평가) — 정확 명칭 예외
     "matharena apex",
     "matharena apex 2025",

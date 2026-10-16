@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "as_of": "2026-10-15",
+  "as_of": "2026-10-16",
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
   "models": [
@@ -17025,6 +17025,785 @@
         "reviewed_on": "2026-10-15",
         "policy": "official-primary-only"
       }
+    },
+    {
+      "id": "model-217",
+      "name": "Nemotron 3.5 Super VL",
+      "date": "2026-10-15",
+      "sortDate": "2026-10-15",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "NVIDIA",
+      "family": "Nemotron",
+      "type": "MLLM / VLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "120B total / 12B active (sparse MoE; MoE층당 512 routed experts)",
+      "parameter_status": "verified",
+      "architecture": "Mamba-2–Transformer 하이브리드 MoE + C-RADIO vision encoder + vision-language connector. Multi-Token Prediction(MTP) 내장 추측 디코딩. Nemotron 3 Super Base 초기화 후 Nemotron 3 Ultra Base에서 1T 토큰 증류(SkewReverse loss), 이후 10B Indic continued pretraining + 35B 토큰 1M 컨텍스트 확장 + 67B 토큰 소프트웨어 엔지니어링 mid-training(256K). 2단계 SFT + multi-teacher on-policy distillation(MOPD) + MTP boosting 후학습.",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "focus": [
+        "always-on specialized agents",
+        "document intelligence",
+        "agentic coding",
+        "web research",
+        "video understanding",
+        "Indic languages"
+      ],
+      "open_weights": true,
+      "license": "OpenMDW-1.1",
+      "context": "1M (프롬프트·시각 입력·대화·툴 결과·응답이 공유하는 단일 창)",
+      "languages": "영어 중심 + Indic 10B 토큰 continued pretraining(12개 언어 부분집합), 19개 자연어·43개 프로그래밍 언어 코퍼스",
+      "variants": [
+        "BF16 (Nemotron-3.5-Super-VL-120B-A12B-BF16)",
+        "NVFP4 (…-A12B-NVFP4, QAD)','Base-BF16 (…-Base-BF16)",
+        "NVFP4-LiLiCorr drafter"
+      ],
+      "reasoning_effort": [
+        "off",
+        "on (medium)",
+        "on"
+      ],
+      "availability": "Hugging Face·OpenRouter·ModelScope·NVIDIA NIM 공개, Baseten day-1 지원. vLLM(4×H100 또는 2×GB200)·SGLang(2×GB200) 레시피 공개, NVIDIA Dynamo KV-aware 라우팅 시 16×B200에서 8× 사용자 처리·first-token 지연 85% 감소(공식 기준)",
+      "note": "Nemotron 3.5 세대의 첫 비전-언어 모델. Nemotron Coalition 협업 모델로 약 26T 토큰 사전학습 + 약 380만 샘플 포스트트레이닝·수십 개 RL 환경. NVIDIA는 약 1/5 파라미터로 최대 추론 모델급 정확도와 5× 빠른 throughput을 동시에 달성한 '특화 에이전트용' 모델이라 소개. 문서 이해(차트·표·PDF·OCR)와 웹 리서치·코딩·사이버보안·동영상 이해가 목적. AI4Bharat(IIT Madras)과 함께 만든 22개 인도 언어 2.8T 토큰 코퍼스를 같은 그룹에서 공개하고 Indic 벤치마크 5종(MILU 1.5·Indic GPQA·AIME·FrontierMath·MBPP) 결과를 제공했습니다. Hermes Bench 63.44%·LangChain Evals 87.05%에서 Nemotron 3 Ultra(56.33%·84.3%)를 상회.",
+      "benchmarks": {
+        "GPQA-Diamond": 89.52,
+        "HLE, text-only": 31.79,
+        "MMLU-ProX": 76.91,
+        "CritPt": 10.86,
+        "APEX shortlist": 88.36,
+        "LiveCodeBench v6": 88.22,
+        "SciCode, subtask": 47.13,
+        "GraphWalks": 89.71,
+        "IFBench": 70.86,
+        "WMT24++": 84.8,
+        "tau2-bench retail": 69.24,
+        "tau2-bench airline": 76.5,
+        "tau2-bench telecom": 73.19,
+        "tau3-bench banking": 18.88,
+        "BrowseComp": 78.0,
+        "BrowseComp [offline]": 78.0,
+        "SWE-bench Verified": 71.1,
+        "SWE-bench Multilingual": 67.72,
+        "SWE-bench Pro": 51.78,
+        "Terminal-Bench 2.1": 60.67,
+        "BabyVision": 29.6,
+        "MMLongBench-Doc": 62.82,
+        "V*": 85.6,
+        "OCR-Reasoning": 65.08,
+        "MathVision": 78.16,
+        "HLE, full set": 29.2,
+        "OCRBench v2, EN": 68.12,
+        "OCRBench v2, ZH": 59.15,
+        "CharXiv reasoning": 80.82,
+        "Video-MME v2": 32.85,
+        "OSWorld-Verified": 51.14,
+        "WebVoyager [offline]": 77.72,
+        "AutomationBench-AA [offline]": 32.44,
+        "GDP.pdf [offline]": 6.6,
+        "Terminal Bench 4 [offline]": 1.0,
+        "DeepSWE [offline]": 24.65
+      },
+      "benchmark_sources": {
+        "GPQA-Diamond": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "HLE, text-only": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "MMLU-ProX": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "CritPt": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "APEX shortlist": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "LiveCodeBench v6": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "SciCode, subtask": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "GraphWalks": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "IFBench": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "WMT24++": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "tau2-bench retail": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "tau2-bench airline": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "tau2-bench telecom": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "tau3-bench banking": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "BrowseComp": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "BrowseComp [offline]": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "SWE-bench Verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "SWE-bench Multilingual": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "SWE-bench Pro": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "Terminal-Bench 2.1": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "BabyVision": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "MMLongBench-Doc": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "V*": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "OCR-Reasoning": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "MathVision": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "HLE, full set": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "OCRBench v2, EN": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "OCRBench v2, ZH": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "CharXiv reasoning": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "Video-MME v2": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "OSWorld-Verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "WebVoyager [offline]": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "AutomationBench-AA [offline]": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "GDP.pdf [offline]": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "Terminal Bench 4 [offline]": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "DeepSWE [offline]": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16"
+      },
+      "benchmark_note": "Hugging Face 공식 모델 카드 'Nemotron 3.5 SuperGA BF16' 열 값(NVIDIA NeMo Gym 실행 결과, 레시피 공개). 같은 표의 AA-Omniscience 3종·AA-LCR v1.1 68.62·GDPval-AA v2 1211(AA 결과 출처·Elo 척도)과 LMArena v3 proxy 52.67(Arena 금어)은 점수표에서 제외. CharXiv reasoning 84.0(코드 인터프리터 병용)은 NVIDIA 공식 기술 블로그 본문 수치이며 Benckmark 출처를 기술 블로그 URL로 지정. BrowseComp [offline]·WebVoyager [offline]·GDP.pdf [offline]·DeepSWE [offline]는 카드에 인쇄된 NeMo Gym 오프라인 표 값입니다.",
+      "official_id": "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+      "official_sources": [
+        {
+          "label": "공식 발표문",
+          "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"
+        },
+        {
+          "label": "공식 모델 카드 (BF16, 벤치마크 전체 표)",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16"
+        },
+        {
+          "label": "공식 모델 카드 (NVFP4)",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4"
+        },
+        {
+          "label": "공식 기술 블로그 (아키텍처·학습·CharXiv·Hermes/LangChain 표)",
+          "url": "https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning/"
+        }
+      ],
+      "release_date_source": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+      "parameter_source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-218",
+      "name": "Nemotron 3.5 Bolt 74B-A9B 24GB",
+      "date": "2026-10-15",
+      "sortDate": "2026-10-15",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "NVIDIA",
+      "family": "Nemotron",
+      "type": "MLLM / VLM (edge)",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "74B total / 9B active (sparse MoE · IQ2 2비트 양자화 24GB packed)",
+      "parameter_status": "verified",
+      "architecture": "Mamba-2–Transformer hybrid Latent MoE(MoE 블록당 routed+shared expert IQ2-XXS 2.06bit/param) + C-RADIO v4-H vision encoder. Nemotron 3.5 Super VL 120B-A12B를 Star Elastic 라우터 guided 아키텍처 탐색·압축(expert top-K 22→9), 24GB 메모리 목표. LiLiCorr 병렬 추측 디코딩 drafter 포함(DFlash 기반 7개 token)",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "focus": [
+        "on-device agentic workloads",
+        "local coding",
+        "web browsing",
+        "terminal use"
+      ],
+      "open_weights": true,
+      "license": "OpenMDW-1.1",
+      "context": "256K",
+      "languages": "영어·코드 중심, 스페인어·프랑스어·독일어·이탈리아어·일본어 추가 지원",
+      "variants": [
+        "Nemotron-3.5-Bolt-74B-A9B-24GB (IQ2 24GB packed)",
+        "Nemotron-3.5-Bolt-74B-A9B-BF16",
+        "Nemotron-3.5-Bolt-74B-A9B-24GB-GGUF",
+        "Nemotron-3.5-Bolt-74B-A9B-24GB-LiLiCorr(drafter)"
+      ],
+      "reasoning_effort": [
+        "off (enable_thinking=False)",
+        "on (enable_thinking=True)"
+      ],
+      "availability": "Hugging Face(IQ2·BF16·GGUF·LiLiCorr) 개방 가중치, llama.cpp·Ollama(v0.40.5)·LM Studio·Unsloth·vLLM day-1 지원. NVIDIA RTX Spark 노트북(10/16 정식 출시)·GeForce RTX PC·DGX Spark·DGX Station·RTX PRO 워크스테이션 겨냥",
+      "note": "Nemotron 3.5 세대의 첫 엣지 모델. 2비트 네이티브 양자화로 24GB에 맞춰 다른 앱과 병행 실행을 겨냥. 블로그는 PinchBench 오픈 모델 1위, BrowseComp 오픈 모델 2위를 주장합니다. 같은 발표문은 또 다른 엣지 모델 Bolt E4B 4GB를 10/23로 예고했고, 발표 시점 아직 미공개라 미수록. 별도 카드의 발표문 표기 'Bolt E4B 4GB — coming Oct. 23'가 원장 메모로 남습니다.",
+      "benchmarks": {
+        "GDPVal-AA-V2": 28.47,
+        "Terminal-Bench 2.1": 50.98,
+        "Tau3 Banking": 17.01,
+        "HLE (no tools)": 25.3,
+        "AA-Omniscience accuracy": 16.9,
+        "SciCode": 41.02,
+        "GPQA Diamond": 86.43,
+        "AA-LCR": 64.06,
+        "AA-Omniscience non-hallucination": 61.27,
+        "PinchBench": 87.82,
+        "MCP-Atlas": 52.2,
+        "BrowseComp": 66.75,
+        "WebArena (vision)": 50.86
+      },
+      "benchmark_sources": {
+        "GDPVal-AA-V2": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "Terminal-Bench 2.1": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "Tau3 Banking": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "HLE (no tools)": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "AA-Omniscience accuracy": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "SciCode": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "GPQA Diamond": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "AA-LCR": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "AA-Omniscience non-hallucination": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "PinchBench": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "MCP-Atlas": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "BrowseComp": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+        "WebArena (vision)": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+      },
+      "benchmark_note": "Hugging Face 공식 모델 카드 'Nemotron 3.5 Bolt 74B-A9B-24GB (IQ2)' 열 값. GDPVal-AA·AA-LCR·AA-Omniscience는 제3자(Artificial Analysis) 결과출처지만 이 모델이 공개한 유일한 % 점수 표로 만점 기준(0–100%)을 만족해 수록 — Step 5 Preview와 같은 'AA 표 열의 %값' 기록 성격. MCP-Atlas는 카드 주석 대로 공개 500 태스크 부분집합 측정치. WebArena (vision)는 고정 평가 스위트로 Arena 금어 대상 아님을 명시적으로 허용해 ALLOWED_BENCHMARK_NAMES에 등록했습니다.",
+      "official_id": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+      "official_sources": [
+        {
+          "label": "공식 발표문",
+          "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"
+        },
+        {
+          "label": "공식 모델 카드",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+        }
+      ],
+      "release_date_source": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+      "parameter_source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-219",
+      "name": "Muse Spark Open",
+      "date": "2026-10-15",
+      "sortDate": "2026-10-15",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Meta",
+      "family": "Muse Spark",
+      "type": "MLLM (open-weight)",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "816B total / 42B active (sparse MoE, 256 experts 중 top-8)",
+      "parameter_status": "verified",
+      "architecture": "62층 MoE Transformer + 1.8B Perception Encoder(50층·1536 hidden·16 heads·14×14 patch·4096 output dim). untied 입력/출력 임베딩 각 약 1.66B(어휘 202,048×8192), Q 128 / KV 16 heads(GQA), head dim 64, gated attention + QK-norm, 스파스 attention(4층 간격+마지막 층만 full). Muse Spark 1.3과 동일 베이스 + 오픈웨이트 배포용 추가 안전 포스트트레이닝",
+      "modalities": [
+        "text",
+        "image",
+        "video",
+        "audio"
+      ],
+      "focus": [
+        "long-horizon coding",
+        "agentic software engineering",
+        "multi-step reasoning",
+        "tool use",
+        "synthetic data generation",
+        "LLM-as-a-judge"
+      ],
+      "open_weights": true,
+      "license": "Muse Model License (제한적 상업 조건 — $20M 초과 MaaS는 별도 계약, 'Built with Muse Spark Open' 표시 의무)",
+      "context": "1M (입출력 통합 1,048,576 토큰)",
+      "languages": "다국어(공식 카드: 100개 이상 언어의 학습 데이터)",
+      "variants": [
+        "Muse-Spark-Open-816B-A42B (BF16)",
+        "Muse-Spark-Open-816B-A42B-NVFP4",
+        "oQ 3-비트·4-비트 (oMLX)"
+      ],
+      "reasoning_effort": [
+        "low",
+        "medium",
+        "high",
+        "xhigh (기본값)"
+      ],
+      "availability": "Hugging Face 개방 가중치(BF16·NVFP4, 2TB/700GB VRAM 요구 — 카드 명시), API: Baseten·Fireworks AI·Groq·Modal·Nebius·OpenRouter·Together AI. 가중치 판매처: Amazon SageMaker·Google Cloud Model Garden·Microsoft Foundry Models. 2대의 Apple M5 Ultra Mac Studio에서 MLX로 데스크톱 구동(공식), SGLang(자동튜닝 Helion 커널 1.03–3.95×)·vLLM·TensorRT-LLM·HF Transformers·llama.cpp·Unsloth 지원",
+      "note": "Meta의 첫 오픈웨이트 모델 — 리서치 블로그가 '미국 최고 성능 오픈웨이트 모델'이라 발표. 816B-A42B MoE이며 최초로 2대의 Apple M5 Ultra Mac Studio(각 512GB 통합 메모리, MLX)에서 데스크톱 구동이 가능하다고 주장. Muse Spark 1.3과 같은 베이스에 오픈웨이트 배포용 추가 안전 포스트트레이닝을 실시했고, Meta Superintelligence Scaling Framework 평가를 같은 카드에 기록. PyTorch 공식 블로그가 Helion GPU 커널(1.03–3.95× 커널 속도)과 TorchTitan 커스터마이징 가이드를 배포하며 런칭에 참여.",
+      "benchmarks": {
+        "JobBench": 61.8,
+        "MCP-Atlas": 89.2,
+        "OSWorld Verified": 80.4,
+        "Toolathlon Verified": 72.8,
+        "HLE-Diamond (no tools)": 26.1,
+        "SciCode": 58.5,
+        "HLE (w/ tools)": 61.0,
+        "GPQA Diamond": 89.0,
+        "DeepSWE 1.1": 60.0,
+        "SWE-Atlas-QnA": 58.0,
+        "Terminal-Bench 2.1": 76.4,
+        "ZeroBench (w/ tools)": 50.0,
+        "BabyVision (w/ tools)": 80.2,
+        "SimpleVQA (w/ tools)": 73.6,
+        "WorldVQA (w/ tools)": 49.4,
+        "IntPhys2": 68.3,
+        "VideoMMEv2": 61.5
+      },
+      "benchmark_sources": {
+        "JobBench": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "MCP-Atlas": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "OSWorld Verified": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "Toolathlon Verified": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "HLE-Diamond (no tools)": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "SciCode": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "HLE (w/ tools)": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "GPQA Diamond": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "DeepSWE 1.1": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "SWE-Atlas-QnA": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "Terminal-Bench 2.1": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "ZeroBench (w/ tools)": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "BabyVision (w/ tools)": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "SimpleVQA (w/ tools)": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "WorldVQA (w/ tools)": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "IntPhys2": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+        "VideoMMEv2": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
+      },
+      "benchmark_note": "HF 공식 모델 카드 'Muse Spark Open (xhigh)' 열 값. 같은 표의 AA Intelligence Index 39·GDPval-AA v2 1401·AA Omniscience 25는 제3자 지표라 제외. StrongREJECT v2(adaptive)·FORTRESS adversarial(ARS/ORS, 낮을수록 좋음)은 성능 점수 표에 넣지 않고 감사 메모로 유지; 카드가 명시한 거부율(내부 사이버 jailbreak 99.2%·BioTIER 98% 이상·MASK honesty 98.1%·Agentic Misalignment 0%)도 % 점수가 아닌 안전 평가 서술로만 남겼습니다.",
+      "official_id": "meta-models/Muse-Spark-Open-816B-A42B",
+      "official_sources": [
+        {
+          "label": "Meta AI Research 공식 발표문",
+          "url": "https://research.meta.ai/blog/muse-spark-open"
+        },
+        {
+          "label": "공식 모델 카드",
+          "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
+        },
+        {
+          "label": "Hugging Face 공식 블로그 (MLX·oQ·처음 데스크톱 공개)",
+          "url": "https://huggingface.co/blog/meta-muse-spark-open"
+        },
+        {
+          "label": "PyTorch 공식 블로그 (배포·Helion 커널)",
+          "url": "https://pytorch.org/blog/muse-spark-open/"
+        }
+      ],
+      "release_date_source": "https://research.meta.ai/blog/muse-spark-open",
+      "parameter_source": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-220",
+      "name": "LFM2.5-24B-A2B",
+      "date": "2026-10-13",
+      "sortDate": "2026-10-13",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Liquid AI",
+      "family": "LFM2.5",
+      "type": "LLM / on-device agent",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "24.0B total / 2.45B active (sparse MoE, 블록당 64 experts top-4)",
+      "parameter_status": "verified",
+      "architecture": "40층 하이브리드(30 double-gated short convolution + 10 GQA) MoE. in-place tokenizer 확장(어휘 65K→128K), 32,768→131,072 컨텍스트 확장. 사전학습 17T→33T 토큰. LFM2.5 세대에 reasoning-only 모델로 전환(항상 thinking). 5단계 후학습: SFT → teacher specialization → 비에이전틱/에이전틱 Multi-Domain On-Policy Distillation → OpenClaw·Hermes Agent·Pi·OpenCode 하네스 안에서 Agentic RL",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "on-device agents",
+        "tool use",
+        "multi-step reasoning",
+        "instruction following"
+      ],
+      "open_weights": true,
+      "license": "LFM Open License v1.0",
+      "context": "131,072",
+      "languages": "영어·아랍어·중국어·프랑스어·독일어·이탈리아어·일본어·한국어·포르투갈어·스페인어·베트남어·태국어·인도네시아어·힌디어·러시아어·폴란드어",
+      "variants": [
+        "LFM2.5-24B-A2B (post-trained)",
+        "LFM2.5-24B-A2B-Base",
+        "LFM2.5-24B-A2B-FP8",
+        "LFM2.5-24B-A2B-GGUF",
+        "LFM2.5-24B-A2B-ONNX",
+        "LFM2.5-24B-A2B-MLX-4bit"
+      ],
+      "reasoning_effort": [
+        "항상 thinking 모델(reasoning 비활성화 불가)"
+      ],
+      "availability": "Hugging Face 개방 가중치, llama.cpp·MLX·vLLM·SGLang·ONNX day-1 지원, Liquid Console API($0.10/$1.00 per 1M)·OpenRouter. Apple M5 Max에서 184 tok/s, NVIDIA B300에서 21K+ tok/s(공식)",
+      "note": "Liquid AI가 10/13 공개한 LFM2.5 패밀리의 최대·마지막 모델. 토큰당 2.45B만 활성화해 온디바이스 에이전트 추론 속도(Apple M5 Max 184 tok/s)를 내는 것이 목표. HF 리포 createdAt은 2026-10-12T05:35:46Z로 관찰됐고, Liquid 공식 블로그가 발표문 상단에서 'Today, we release' 10/13 출시를 서술해 10/13을 기록했습니다. 카드에 reward-hacking 사례(학습 중 모델이 샌드박스 자체를 탐지하고 git history·PyPI·HF 검색으로 답을 찾던 행동)도 함께 공개했고, 이를 막기 위해 이후 평가를 밀봉 환경(sealed environments)에서 수행했다고 명시.",
+      "benchmarks": {
+        "AutomationBench": 27.69,
+        "BFCLv4": 65.01,
+        "ToolSandbox": 80.71,
+        "LiveClaw": 48.09,
+        "PinchBench": 83.18,
+        "τ³-Bench Banking": 8.04,
+        "WebArena Verified": 26.75,
+        "GPQA Diamond": 74.42,
+        "HLE": 7.4,
+        "IFEval": 96.75,
+        "IFBench": 74.69,
+        "Multi-IF": 84.38,
+        "MATH-500": 96.04,
+        "SWE-Bench Verified (OpenCode)": 51.0,
+        "SciCode": 32.71
+      },
+      "benchmark_sources": {
+        "AutomationBench": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "BFCLv4": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "ToolSandbox": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "LiveClaw": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "PinchBench": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "τ³-Bench Banking": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "WebArena Verified": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "GPQA Diamond": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "HLE": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "IFEval": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "IFBench": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "Multi-IF": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "MATH-500": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "SWE-Bench Verified (OpenCode)": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "SciCode": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B"
+      },
+      "benchmark_note": "Hugging Face 공식 모델 카드 'LFM2.5-24B-A2B' 열 값(Liquid AI 내부 Pipette 인프라에서 vLLM으로 수집. 카드 명시). AA-Omniscience -24.90은 Artificial Analysis 지표이면서 음수 척도(0–100 % 밖)라 제외하고 나머지 15개 벤치마크 수록. WebArena Verified·τ³-Bench Banking은 고정 평가 스위트/공식 프로토콜로 금어 대상 아님.",
+      "official_id": "LiquidAI/LFM2.5-24B-A2B",
+      "official_sources": [
+        {
+          "label": "Liquid AI 공식 발표문(벤치마크 표·아키텍처·가격)",
+          "url": "https://www.liquid.ai/blog/lfm2-5-24b-a2b"
+        },
+        {
+          "label": "공식 모델 카드",
+          "url": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B"
+        }
+      ],
+      "release_date_source": "https://www.liquid.ai/blog/lfm2-5-24b-a2b",
+      "parameter_source": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-221",
+      "name": "Jais-3-375B-A23B",
+      "date": "2026-10-15",
+      "sortDate": "2026-10-15",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Institute of Foundation Models",
+      "family": "Jais",
+      "type": "LLM (Arabic-native agentic)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "375B total / 23B active (sparse MoE)",
+      "parameter_status": "verified",
+      "architecture": "K2 Horizon 플릿(9/3 수록)과 동일 모델·어휘·학습법을 아랍어·영어로 이전한 첫 언어 특화 적응 — sparse MoE, 512K 컨텍스트, k2_horizon reasoning·tool-call 파서",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "Arabic agentic AI",
+        "Arabic speech/writing understanding",
+        "22 dialects",
+        "tool use"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0 (K2 Horizon과 동일, 공식 카드 metadata)",
+      "context": "524,288 (512K) — IFM이 'longest of any Arabic-native model'로 소개",
+      "languages": "아랍어(현대표준어·방언) + 영어",
+      "variants": [
+        "BF16 (inception42/Jais-3-375B-A23B)",
+        "FP8 (IFM/Jais-3-375B-A23B-FP8)"
+      ],
+      "reasoning_effort": [
+        "high (기본 권장)",
+        "low(연구용, 비권장)"
+      ],
+      "availability": "Hugging Face(IFM·inception42 조직) Apache 2.0 공개, vLLM(v0.30.0+)·SGLang(0.5.20+) 레시피 공개, 16×H100(2노드)/단일 8×H200 노드 배포 안내",
+      "note": "IFM이 9/3 공개한 K2 Horizon 함대 6종을 아랍어 특화로 개량한 Jais 3 함대(10/15)의 플래그십. 나머지 크기대(0.9B·3.7B·7B·32B dense·MoVA-36B-A4B)는 같은 날 HF inception42 org에 공개됐지만 전체를 각 레코드로 넣지 않고 플래그십 하나만 활성 레코드로 대표 — 이 판정은 하단 원장에 기록. 카드의 IFM/Inception42 공동 감사 컬렉션(24개 아랍어 벤치마크) 중 33개 % 점수만 추출해 수록.",
+      "benchmarks": {
+        "Arabic MMLU": 89.3,
+        "Belebele": 95.6,
+        "AraSTEM": 95.5,
+        "Arabic GSM8K": 86.8,
+        "GATmath": 98.4,
+        "MedAraBench": 89.5,
+        "Arabic Legal (HELM)": 71.3,
+        "IslamicQA": 90.2,
+        "QIAS-1": 95.4,
+        "QIAS-2": 87.7,
+        "IslamicEval2025-1B": 82.3,
+        "ArabCulture": 89.8,
+        "AraDiCE-Culture": 87.7,
+        "Dialectal Arabic MMLU": 89.6,
+        "Dialect Identification (QADI)": 71.1,
+        "Alyah": 87.6,
+        "Arabic MMLU with diacritics": 88.2,
+        "FannOrFlop-MCQ": 73.2,
+        "Diacritization": 91.9,
+        "Parsing": 97.7,
+        "FLORES200+ (LLM-as-a-judge)": 91.9,
+        "Arabic IFBench": 93.9,
+        "Arabic IFEval": 77.7,
+        "HalluScore": 70.9,
+        "Terminal-Bench 2.1": 73.8,
+        "GDPVal": 73.2,
+        "MCPMark": 68.5,
+        "WildClawBench (English text-only subset)": 50.4,
+        "Apex-Agents (420 text-only subset)": 18.6,
+        "GAIA v2 (Arabic)": 50.3,
+        "Arabic File Processing": 64.1,
+        "SWE-Bench Verified (Offline)": 70.2,
+        "BrowseComp (Discard-all@95k)": 72.6
+      },
+      "benchmark_sources": {
+        "Arabic MMLU": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Belebele": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "AraSTEM": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Arabic GSM8K": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "GATmath": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "MedAraBench": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Arabic Legal (HELM)": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "IslamicQA": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "QIAS-1": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "QIAS-2": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "IslamicEval2025-1B": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "ArabCulture": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "AraDiCE-Culture": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Dialectal Arabic MMLU": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Dialect Identification (QADI)": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Alyah": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Arabic MMLU with diacritics": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "FannOrFlop-MCQ": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Diacritization": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Parsing": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "FLORES200+ (LLM-as-a-judge)": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Arabic IFBench": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Arabic IFEval": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "HalluScore": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Terminal-Bench 2.1": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "GDPVal": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "MCPMark": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "WildClawBench (English text-only subset)": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Apex-Agents (420 text-only subset)": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "GAIA v2 (Arabic)": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "Arabic File Processing": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "SWE-Bench Verified (Offline)": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+        "BrowseComp (Discard-all@95k)": "https://huggingface.co/inception42/Jais-3-375B-A23B"
+      },
+      "benchmark_note": "Hugging Face 공식 모델 카드 'Jais-3-375B-A23B' 열의 파싱 결과(IFM/Arabic-Benchmark-Auditing 감사 컬렉션 기준). 같은 표의 AA-LCR (Ar) 77.0은 Artificial Analysis 지표로 제외. AraGen v3 (3C3H) 72.4와 Correctness/Completeness/Conciseness/Helpfulness/Honesty/Harmlessness 3항목 6행은 단일 % 점수가 아닌 자체 합성 3-열 조합(3C3H)이라 점수표에서 제외. SimpleQA Verified (Ar) 확인 31.2(합성 점수)/원장 메모로 처리, F-score·Non-hallucination rate·FLORES LLM-judge도 % 점수화 불가한 것은 제외.",
+      "official_id": "inception42/Jais-3-375B-A23B",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드",
+          "url": "https://huggingface.co/inception42/Jais-3-375B-A23B"
+        },
+        {
+          "label": "IFM 공식 발표 블로그 (ifm.ai 봇 챌린지 — 브라우저 수동 확인)",
+          "url": "https://ifm.ai/blog/jais3/"
+        }
+      ],
+      "release_date_source": "https://ifm.ai/blog/jais3/",
+      "parameter_source": "https://huggingface.co/inception42/Jais-3-375B-A23B",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-222",
+      "name": "Step 3.7 Flash",
+      "date": "2026-05-29",
+      "sortDate": "2026-05-29",
+      "month": "2026-05",
+      "monthName": "May",
+      "company": "StepFun",
+      "family": "Step",
+      "type": "MLLM (agentic flash)",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "198B (196B 언어 backbone + 1.8B ViT), 토큰당 약 11B active",
+      "parameter_status": "verified",
+      "architecture": "196B sparse MoE 언어 백본 + 1.8B 비전 인코더 통합 MLLM(네이ティ브 이미지 이해), 256K 컨텍스트, 3단계 reasoning 수준(low·medium·high) 지원. Step 5 Preview 카드가 Step-3.7-Flash에서 Step 5로 직접 이동했다고 서술한 중간 세대 모델",
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "focus": [
+        "agentic coding",
+        "search tool orchestration",
+        "workflow integrity",
+        "GUI/visual agent",
+        "code engineering"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "256K",
+      "languages": "",
+      "variants": [
+        "FP8 (stepfun-ai/Step-3.7-Flash-FP8)",
+        "NVFP4 (stepfun-ai/Step-3.7-Flash-NVFP4)",
+        "GGUF (stepfun-ai/Step-3.7-Flash-GGUF)",
+        "API step-3.7-flash"
+      ],
+      "reasoning_effort": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "availability": "StepFun Open Platform(step-3.7-flash, $0.20/$1.15 per 1M), Hugging Face·ModelScope 가중치, vLLM(사전빌드 Docker vllm/vllm-openai:stepfun37)·SGLang·OpenRouter·NVIDIA NIM 지원, Claude Code·KiloCode·Hermes Agent·OpenClaw 하네스 호환 + Advisor Mode",
+      "note": "StepFun 중간 세대 모델로, StepFun 공식 모델 페이지가 2026-05-29를 발표일로 표기. Step 5 Preview 카드가 'Step 5 Preview는 Step-3.7-Flash에서 직접 이동했다'고 서술했으나 이번 감사까지 카탈로그에는 3.7 Flash가 없었습니다 — 중간 세대 공백을 소급 수록. HF 카드는 Apache 2.0으로 가중치(BF16/FP8/NVFP4/GGUF) 공개. 서치 루프·비주얼 이해·툴 파이프라인을 'Flash'급 토큰당 11B 파라미터로 수행하는 에이전트 특화 모델.",
+      "benchmarks": {
+        "SWE-Bench Pro": 56.3,
+        "SimpleVQA (Search)": 79.2,
+        "V* (Python)": 95.3,
+        "ClawEval-1.1": 67.1,
+        "Toolathlon": 49.5,
+        "HLE w. tool": 47.2,
+        "BrowseComp": 75.8,
+        "Terminal-Bench 2.1": 59.6,
+        "Step-SWE-Bench (Hermes Agent)": 67.5,
+        "WorldVQA": 58.1,
+        "BC-VL": 58.96
+      },
+      "benchmark_sources": {
+        "SWE-Bench Pro": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "SimpleVQA (Search)": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "V* (Python)": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "ClawEval-1.1": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "Toolathlon": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "HLE w. tool": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "BrowseComp": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "Terminal-Bench 2.1": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "Step-SWE-Bench (Hermes Agent)": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "WorldVQA": "https://static.stepfun.com/blog/step-3.7-flash/",
+        "BC-VL": "https://static.stepfun.com/blog/step-3.7-flash/"
+      },
+      "benchmark_note": "StepFun 공식 모델 페이지 본문 수치. AA-LCR (avg@16/acc) 63.9와 DeepSearchQA·ResearchRubrics 등(페이지 표에 있으나 Artificial Analysis나 미공개 프로토콜 혼합)은 제외하되 본문에 인쇄된 개발사 자체 평가만 수록. WorldVQA·BC-VL는 Visual Recognition with Visual Search 표의 Step 3.7 Flash 값, Step-SWE-Bench는 개발사 내부 하네스 비교의 Hermes Agent 값.",
+      "official_id": "stepfun-ai/Step-3.7-Flash",
+      "official_sources": [
+        {
+          "label": "공식 모델 페이지 (발표일·아키텍처·벤치마크)",
+          "url": "https://static.stepfun.com/blog/step-3.7-flash/"
+        },
+        {
+          "label": "공식 모델 카드 (Hugging Face)",
+          "url": "https://huggingface.co/stepfun-ai/Step-3.7-Flash"
+        }
+      ],
+      "release_date_source": "https://static.stepfun.com/blog/step-3.7-flash/",
+      "parameter_source": "https://huggingface.co/stepfun-ai/Step-3.7-Flash",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-223",
+      "name": "MiniCPM-V 4.7 35B-A3B",
+      "date": "2026-10-12",
+      "sortDate": "2026-10-12",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "OpenBMB",
+      "family": "MiniCPM-V",
+      "type": "MLLM / VLM (on-device MoE)",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "35B-A3B (시리즈 첫 MoE) + 1B 변형",
+      "parameter_status": "verified",
+      "architecture": "Lookahead Expert Scheduling(LES, 다음 층의 expert prefetch·스케줄) + 세 분해 양자화(fine-grained layer-wise) + DSpark 추측 샘플링. intra-ViT early compression(LLaVA-UHD v4 기반)과 혼합 4×/16× visual token 압축 지원",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "focus": [
+        "on-device multimodal",
+        "on-device agentic",
+        "visual token compression",
+        "mobile deployment"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "",
+      "languages": "",
+      "variants": [
+        "BF16",
+        "FP8",
+        "int4",
+        "AWQ",
+        "GPTQ",
+        "GGUF",
+        "1B 변형",
+        "BF16·GGUF DSpark head"
+      ],
+      "reasoning_effort": [],
+      "availability": "Hugging Face·ModelScope 공개, transformers serve HTTP server, SGLang·vLLM·llama.cpp·Ollama 지원",
+      "note": "ModelBest·OpenBMB(씽후아·등의 온디바이스 시리즈)의 최초 MoE 모델(35B-A3B)과 소형 변형 1B, 각 모델마다 DSpark 추측 디코딩 헤드(BF16/GGUF)를 같은 날 공개. 공식 발표문이 '오픈소스 MoE 모델 중 최초로 온디바이스에서 성능 저하 없이 원활히 실행되는 모델'로 소개하며 성능–효율 Pareto 측면에서 Qwen3.6 35B-A3B보다 적은 추론 시간에 높은 종합 점수를 낸다고 주장합니다. iPhone 17 Pro Max에서 3GB 메모리·13+ tok/s 실행을 공식 주장. 2026-10-16 감사에서 신규 조직으로 편입.",
+      "benchmarks": {},
+      "benchmark_sources": {},
+      "benchmark_note": "공식 카드·GitHub README의 전체 벤치마크 표가 이미지(png)로만 제공되어 텍스트 % 수치가 인쇄되지 않았습니다 — 성능 근거는 Performance-efficiency Pareto frontier 그래프(Qwen3.6 35B-A3B 등 대비)로만 서술. % 점수 표가 공개되면 갱신할 예정입니다.",
+      "official_id": "openbmb/MiniCPM-V-4.7-35B-A3B",
+      "official_sources": [
+        {
+          "label": "공식 카드 (구성·온디바이스 정보)",
+          "url": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B"
+        },
+        {
+          "label": "OpenBMB 공식 GitHub README(출시일·변형 지원)",
+          "url": "https://github.com/OpenBMB/MiniCPM-V"
+        }
+      ],
+      "release_date_source": "https://github.com/OpenBMB/MiniCPM-V",
+      "parameter_source": "https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-224",
+      "name": "Grok Voice 3.0",
+      "date": "2026-10-14",
+      "sortDate": "2026-10-14",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "xAI / SpaceXAI",
+      "family": "Grok Voice",
+      "type": "MLLM / omni (full-duplex speech-to-speech)",
+      "category": "Omni",
+      "status": "GA",
+      "parameters": "정확한 수치 미공개",
+      "parameter_status": "undisclosed",
+      "architecture": "full-duplex speech-to-speech 모델(입력 음성을 실시간으로 듣고 응답) — Tesla 차량 음성 에이전트와 Starlink 콜센터(하루 약 2만 통화, 70% 무인 해결)에 이미 배포돼 있습니다. 발표문이 ' customer support call 해결 신기록·1초 미만 대기 시간'을 내세웁니다.",
+      "modalities": [
+        "audio",
+        "text"
+      ],
+      "focus": [
+        "customer support S2S agents",
+        "real-time voice agents",
+        "low-latency voice"
+      ],
+      "open_weights": false,
+      "license": "Proprietary (Voice Agent API)",
+      "context": "",
+      "languages": "",
+      "variants": [],
+      "reasoning_effort": [],
+      "availability": "Voice Agent API($0.08/분, $4.80/시 — Grok Voice 2.0와 동일 요금, grok-voice-latest 모델 ID가 자동 전환)",
+      "note": "xAI 공식 발표문이 '세계에서 가장 지능적인 speech-to-speech 모델'로 10/14 공개. 기존 Grok Voice 2.0(2026-09-19 감사에서 ASR 전용 Transcribe만 제외)과 다르게 GPT-Live-1(model-137)과 같은 full-duplex 음성 네이티브 생성 모델로 제품화돼 ASR/TTS-only 제외 규정에 들지 않는다고 판단, 옴니 계열로 수록. 발표문의 모든 성능 지표(AA Speech-to-Speech Index 86.9·Full Duplex Bench 97%·Speech Agent Arena Elo 1070·τ-Voice 71.6%·EVA-Bench 74%)는 Artificial Analysis·ServiceNow 측정으로 제3자 지표라 점수표에 넣을 수 없습니다.",
+      "benchmarks": {},
+      "benchmark_sources": {},
+      "benchmark_note": "공식 발표문이 개발사 자체 측정 % 점수를 하나도 인쇄하지 않았고, 제시된 모든 수치는 Artificial Analysis(제3자)·ServiceNow(EVA-Bench) 결과 — 감사 정책상 제3자 지표·Elo는 제외. % 점수가 개발사 자체 측정으로 공개되면 갱신.",
+      "official_id": "grok-voice-3",
+      "official_sources": [
+        {
+          "label": "공식 발표문",
+          "url": "https://x.ai/news/grok-voice-3"
+        }
+      ],
+      "release_date_source": "https://x.ai/news/grok-voice-3",
+      "parameter_source": "https://x.ai/news/grok-voice-3",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-16",
+        "policy": "official-primary-only"
+      }
     }
   ],
   "excluded": [
@@ -17265,9 +18044,9 @@
       "id": "excluded-2026-10-08-1",
       "name": "Reflection AI Beam",
       "original_name": "Beam (Reflection AI 첫 오픈웨이트 모델)",
-      "date": "2026-10-05 (발표만, 가중치 미공개)",
+      "date": "2026-10-05 (발표, 2026-10-16 재확인 시 가중치 미공개)",
       "company": "Reflection AI",
-      "reason": "10/5 공식 발표문과 자체 벤치마크 표(501B-A23B MoE·1M 컨텍스트)는 공개됐으나, 가중치·기술 보고서·모델 카드·공개 API가 모두 없고 얼리 액세스 웨이트리스트만 운영 — '1차 출처 URL이 아직 없는 릴리스' 보류 판정(Ling-3.1-flash 선례). 이달 말 Apache 2.0 가중치 공개 시 재조사해 수록 판정.",
+      "reason": "10/5 공식 발표문과 자체 벤치마크 표(501B-A23B MoE·1M 컨텍스트)가 공개됐으나, 2026-10-16 재확인에서도 가중치·기술 보고서·모델 카드·공개 API가 없음(HF reflection-ai 조직 빈 배열) — '1차 출처 URL이 아직 없는 릴리스' 보류 유지. 이달 말 Apache 2.0 가중치 공개 시 재조사.",
       "source": "https://reflection.ai/blog/introducing-beam",
       "reviewed_on": "2026-10-08"
     },
@@ -17297,9 +18076,40 @@
       "original_name": "muse-voice-transcribe-1.0",
       "date": "2026 (Meta Model API 등재, 공식 출시일 미표기)",
       "company": "Meta",
-      "reason": "Meta Model API의 음성→텍스트 전사 전용 모델(실시간 WebSocket /v1/asr/realtime·파일 /v1/asr/transcribe) — ASR/TTS-only 수록 제외 항목에 해당하며 공식 문서가 음성을 합성하지 않고 speech-to-speech API도 제공하지 않는다고 명시합니다. 공식 문서에 출시일 표기가 없어 날짜도 확정하지 않았습니다. 2026-10-15 Muse 계열 전수 점검에서 기록.",
+      "reason": "Meta Model API의 음성→텍스트 전사 전용 모델(실시간 WebSocket /v1/asr/realtime·파일 /v1/asr/transcribe) — 공식 문서가 음성을 합성하지 않고 speech-to-speech API도 제공하지 않는다고 명시하므로 ASR/TTS-only 제외 항목에 해당. 공식 문서에 출시일 표기가 없어 날짜도 확정하지 않음.",
       "source": "https://dev.meta.ai/docs/models",
       "reviewed_on": "2026-10-15"
+    },
+    {
+      "id": "excluded-2026-10-16-1",
+      "name": "Ultramarine 1 Flash",
+      "original_name": "Ultramarine 1 Flash (Paper Instruments)",
+      "date": "2026-10-14 (API)",
+      "company": "Paper Instruments",
+      "country": "미공개",
+      "reason": "GLM-5.3 Flash를 비검증형 RL(룰 기반 보상·88 환경)로 후학습한 전문업무 특화 모델 — API는 개방됐으나 가중치가 아직 없음(CEO가 약 2주 후 공개 예고), 자체 평가(PI Knowledge Work)는 미공개·인쇄 불가. '1차 출처 URL이 아직 없는 릴리스' 보류 판정(Reflection Beam 선례). 가중치가 공개되면 즉시 재검토.",
+      "source": "https://www.paperinstruments.com/blog/ultramarine",
+      "reviewed_on": "2026-10-16"
+    },
+    {
+      "id": "excluded-2026-10-16-2",
+      "name": "Natura-1",
+      "original_name": "Natura-1 (Nature Will)",
+      "date": "2026-10-13",
+      "company": "Nature Will",
+      "reason": "50B MoE 물리 세계 조작 파운데이션 모델(1M시간 자아시점 영상 사전학습, 796개 20-DoF 로봇 디르푸스 작업) — 텍스트·멀티모달 대화·생성이 아니라 행동 특화 물리 AI라 범위 제외(로보틱스 부류). 개발사 공식 1차 출처(naturewill.com 블로그)와 평가 차트가 있어 부류 선례를 되돌린 기준보다 높지만, 그 부류 자체의 업계 기준점 주장(1M시간 사전학습 규모)도 뚜렷해 검토 대기 — 로보틱스 파운데이션을 수록할지 운영자 판단 사항으로 보류.",
+      "source": "https://www.naturewill.com/blog/natura-1",
+      "reviewed_on": "2026-10-16"
+    },
+    {
+      "id": "excluded-2026-10-16-3",
+      "name": "MAI-Base-2",
+      "original_name": "MAI-Base-2 (Microsoft AI)",
+      "date": "2026-10-15 (사전학습 완료 공표, 포스트트레이닝 중)",
+      "company": "Microsoft AI",
+      "reason": "2.8T-80B MoE 사전학습 완료 공표는 확정(16,000 GB200·38일·EU 규제 컴퓨트 10^25.9)하지만 가중치·API·모델 카드가 없고 포스트트레이닝 중 — '1차 출처 URL이 아직 없는 릴리스' 보류(Reflection Beam 선례). Foundry 라이선싱 창구가 열리면 재검토.",
+      "source": "https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/",
+      "reviewed_on": "2026-10-16"
     }
   ],
   "company_meta": {
@@ -17644,6 +18454,18 @@
       "flag": "🇩🇪",
       "color": "from-sky-600 to-cyan-500",
       "badge": "bg-cyan-500/10 text-cyan-400 border-cyan-500/30"
+    },
+    "Liquid AI": {
+      "country": "US",
+      "flag": "🇺🇸",
+      "color": "from-cyan-500 to-blue-500",
+      "badge": "bg-cyan-500/10 text-cyan-300 border-cyan-500/30"
+    },
+    "OpenBMB": {
+      "country": "CN",
+      "flag": "🇨🇳",
+      "color": "from-sky-500 to-indigo-500",
+      "badge": "bg-sky-500/10 text-sky-300 border-sky-500/30"
     }
   },
   "family_flows": [
@@ -17754,8 +18576,10 @@
       "steps": [
         "Nemotron-3-Super-120B-A12B",
         "Nemotron-3-Nano-Omni-30B-A3B-Reasoning",
-        "Nemotron-3-Ultra-550B-A55B",
-        "Nemotron-3.5-Lightning-30B-A3B"
+        "Nemotron 3 Ultra",
+        "Nemotron-3.5-Lightning-30B-A3B",
+        "Nemotron 3.5 Super VL",
+        "Nemotron 3.5 Bolt 74B-A9B 24GB"
       ]
     },
     {
@@ -17780,7 +18604,8 @@
         "Muse Spark",
         "Muse Spark 1.1",
         "Muse Spark 1.2",
-        "Muse Spark 1.3"
+        "Muse Spark 1.3",
+        "Muse Spark Open"
       ]
     },
     {
@@ -17845,6 +18670,7 @@
       "family": "Step",
       "steps": [
         "Step 3.5 Flash",
+        "Step 3.7 Flash",
         "Step 5 Preview"
       ]
     },
@@ -17858,7 +18684,7 @@
   ],
   "unconfirmed": [],
   "scope": {
-    "period": "2026-01-01 ~ 2026-10-15",
+    "period": "2026-01-01 ~ 2026-10-16",
     "scope": [
       "LLM (Large Language Models)",
       "MLLM / VLM / Omni foundation models",
@@ -17876,7 +18702,7 @@
     ],
     "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
     "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-    "reviewed_on": "2026-10-15",
+    "reviewed_on": "2026-10-16",
     "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
   }
 }
