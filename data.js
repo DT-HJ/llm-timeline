@@ -12390,7 +12390,7 @@ const TIMELINE_DATA = [
       "1-100 연속 조절(평가는 100=max)"
     ],
     "availability": "Hugging Face deepseek-ai/DeepSeek-V4.1-Flash, deepseek-recipe 툴킷",
-    "note": "V4-Flash 후속. CED 아키텍처로 prefill 8B/decode 16B 활성화, KV 캐시를 V4-Flash 대비 약 1/4로 축소. 45T 토큰 멀티모달 사전학습, 1M 컨텍스트. Jinja 채팅 템플릿 대신 encoding.py·deepseek-recipe 제공.",
+    "note": "V4-Flash 후속. CED 아키텍처로 prefill 8B/decode 16B 활성화, KV 캐시를 V4-Flash 대비 약 1/4로 축소. 45T 토큰 멀티모달 사전학습, 1M 컨텍스트. Jinja 채팅 템플릿 대신 encoding.py·deepseek-recipe 제공. 2026-10-17에 동일 모델명(deepseek-flash)의 서빙이 V4.1-Flash-1017 리비전으로 교체됐습니다(model-225) — 이 레코드의 수치는 2026-09-10 리비전 기준입니다.",
     "benchmarks": {
       "GPQA Diamond (Pass@1)": 90.9,
       "HLE (Pass@1)": 36.8,
@@ -17802,6 +17802,90 @@ const TIMELINE_DATA = [
       "reviewed_on": "2026-10-16",
       "policy": "official-primary-only"
     }
+  },
+  {
+    "id": "model-225",
+    "name": "DeepSeek-V4.1-Flash-1017",
+    "date": "2026-10-17",
+    "sortDate": "2026-10-17",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "DeepSeek",
+    "family": "DeepSeek V4",
+    "type": "MLLM",
+    "category": "MLLM",
+    "status": "GA",
+    "parameters": "정확한 수치 미공개 (1017 리비전 공식 카드에 총/활성 파라미터 별도 표기 없음 — V4.1-Flash 백본 계승)",
+    "architecture": "CED 인과 인코더-디코더 MoE — V4.1-Flash와 동일 백본",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "focus": [
+      "에이전틱 코딩",
+      "성능–비용 파레토 개선",
+      "실행 시간·출력 길이 단축"
+    ],
+    "open_weights": true,
+    "license": "MIT",
+    "context": "1M (1,000,000)",
+    "languages": "",
+    "variants": [],
+    "reasoning_effort": [
+      "1-100 연속 조절(문자열 별칭 low 50 · high 75 · max 100, 기본 high)"
+    ],
+    "availability": "Hugging Face deepseek-ai/DeepSeek-V4.1-Flash-1017, DeepSeek API·웹·앱(모델명 deepseek-flash), deepseek-recipe 툴킷",
+    "note": "V4.1-Flash(2026-09-10)의 1017 리비전 — 공식 표현은 minor update입니다. 같은 날 동일 모델명(deepseek-flash)의 서빙이 이 리비전으로 교체되고 웹·앱 모델도 함께 갱신됐으며(API 호출 방식·가격 불변), 공식 API에는 검색·fetch가 함께 열렸습니다. 구 리비전 대비 11개 공식 벤치마크가 개선된 파레토 개선판이라 0731·0813 스냅샷과 같은 기준(별도 공식 모델 ID + 신규 공식 점수)으로 별도 레코드로 수록했습니다 — 구 리비전은 model-152에 그대로 보존됩니다. 카드가 task execution time·output length 단축을 명시하며, 가중치는 MIT로 공개됐고 Jinja 채팅 템플릿 없이 encoding.py·deepseek-recipe를 사용합니다.",
+    "benchmarks": {
+      "HLE w/o tools": 42.6,
+      "Terminal-Bench 4.0": 42.3,
+      "DeepSWE v1.1": 77.0,
+      "ProgramBench": 29.1,
+      "NL2Repo-Bench": 68.2,
+      "Automation-Bench v1.0.6": 60.5,
+      "Agents' Last Exam": 35.4,
+      "Apex Bench v1.1": 72.1,
+      "Chartography (w/tools)": 83.0,
+      "BabyVision (w/tools)": 92.5,
+      "ZeroBench-main (w/tools)": 51.0
+    },
+    "official_id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+    "official_sources": [
+      {
+        "label": "공식 1차 출처",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+      },
+      {
+        "label": "공식 체인지로그(2026-10-17 리비전 업그레이드)",
+        "url": "https://api-docs.deepseek.com/updates/"
+      },
+      {
+        "label": "공식 프롬프트 인코딩 문서(reasoning effort 1-100)",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/blob/main/encoding/README.md"
+      }
+    ],
+    "release_date_source": "https://api-docs.deepseek.com/updates/",
+    "parameter_source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+    "benchmark_sources": {
+      "HLE w/o tools": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "Terminal-Bench 4.0": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "DeepSWE v1.1": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "ProgramBench": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "NL2Repo-Bench": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "Automation-Bench v1.0.6": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "Agents' Last Exam": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "Apex Bench v1.1": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "Chartography (w/tools)": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "BabyVision (w/tools)": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "ZeroBench-main (w/tools)": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    "benchmark_note": "공식 1017 카드의 DS-V4.1-Flash-1017 열 값입니다(11개). 같은 표에 병기된 개선 전 리비전 값은 HLE w/o tools 36.8, Terminal-Bench 4.0 31.2, DeepSWE v1.1 74.2, ProgramBench 20.3, NL2Repo-Bench 65.4, Automation-Bench v1.0.6 54.8, Agents' Last Exam 31.8, Apex Bench v1.1 64.6, Chartography 78.9, BabyVision 89.6, ZeroBench-main 49.0이며 구 리비전 레코드(model-152)에 보존돼 있습니다. HLE 괄호값 44.0†는 텍스트 전용 부분집합(구 리비전 39.1†)입니다. Terminal-Bench 4.0은 Claude Code 하니스, DeepSWE v1.1은 Mini-SWE-V2 하니스 측정입니다. 카드가 비교용으로 함께 인쇄한 제3자 모델(Kimi K3·GLM-5.3·GPT-5.6 Sol·Opus 5) 열은 인용하지 않았습니다.",
+    "parameter_status": "undisclosed",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-17",
+      "policy": "official-primary-only"
+    }
   }
 ];
 
@@ -18181,7 +18265,8 @@ const FAMILY_FLOWS = [
       "DeepSeek-V4-Flash-0731",
       "DeepSeek-V4-Pro-0813",
       "DeepSeek-V4-Flash-Vision-Exp",
-      "DeepSeek-V4.1-Flash"
+      "DeepSeek-V4.1-Flash",
+      "DeepSeek-V4.1-Flash-1017"
     ]
   },
   {
@@ -18380,7 +18465,7 @@ const FAMILY_FLOWS = [
 const UNCONFIRMED_DATA = [];
 
 const SCOPE_DATA = {
-  "period": "2026-01-01 ~ 2026-10-16",
+  "period": "2026-01-01 ~ 2026-10-17",
   "scope": [
     "LLM (Large Language Models)",
     "MLLM / VLM / Omni foundation models",
@@ -18398,7 +18483,7 @@ const SCOPE_DATA = {
   ],
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-  "reviewed_on": "2026-10-16",
+  "reviewed_on": "2026-10-17",
   "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
 };
 

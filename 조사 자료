@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-10-16** | 활성 레코드: **214개** | 제외 원장: **36개** | 공식 점수가 확인된 모델: **188개** | 공식 점수: **3316개**
+> 최종 감사일: **2026-10-17** | 활성 레코드: **215개** | 제외 원장: **36개** | 공식 점수가 확인된 모델: **189개** | 공식 점수: **3327개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -5529,7 +5529,7 @@
 - `BabyVision w/ tools (Pass@1)`: **89.6%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
 - `ZeroBench-main w/ tools (Pass@5)`: **49.0%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
 - 점수 메모: 공식 카드(기술 보고서)의 instruct 비교 표 DS-V4.1-Flash 열 값입니다(모두 reasoning_effort=100, temperature=1.0, top_p=0.95). HLE 36.8은 전체 세트이며 괄호의 39.1†은 텍스트 전용 부분집합입니다. Codeforces(3471 rating)는 % 척도가 아니라 제외했습니다. 별도 'Performance across agent scaffolds' 표(DeepSWE v1.1·Terminal-Bench 2.1을 8개 하니스로 측정)는 동일 벤치마크의 프로토콜 변형이라 수록하지 않고, DeepSWE v1.1 74.2는 mini-SWE 하니스, 기타 코드 에이전트 지표는 DSH Minimal 기준입니다. Base 모델 표는 미배포 DeepSeek-V4.1-Flash-Base 기준이라 이 레코드에 포함하지 않았습니다.
-- 모델 메모: V4-Flash 후속. CED 아키텍처로 prefill 8B/decode 16B 활성화, KV 캐시를 V4-Flash 대비 약 1/4로 축소. 45T 토큰 멀티모달 사전학습, 1M 컨텍스트. Jinja 채팅 템플릿 대신 encoding.py·deepseek-recipe 제공.
+- 모델 메모: V4-Flash 후속. CED 아키텍처로 prefill 8B/decode 16B 활성화, KV 캐시를 V4-Flash 대비 약 1/4로 축소. 45T 토큰 멀티모달 사전학습, 1M 컨텍스트. Jinja 채팅 템플릿 대신 encoding.py·deepseek-recipe 제공. 2026-10-17에 동일 모델명(deepseek-flash)의 서빙이 V4.1-Flash-1017 리비전으로 교체됐습니다(model-225) — 이 레코드의 수치는 2026-09-10 리비전 기준입니다.
 - 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-09-16`
 
 ### 147. 2026-09-10 — Ling-3.0-flash-VL
@@ -7556,6 +7556,37 @@
 - 모델 메모: xAI 공식 발표문이 '세계에서 가장 지능적인 speech-to-speech 모델'로 10/14 공개. 기존 Grok Voice 2.0(2026-09-19 감사에서 ASR 전용 Transcribe만 제외)과 다르게 GPT-Live-1(model-137)과 같은 full-duplex 음성 네이티브 생성 모델로 제품화돼 ASR/TTS-only 제외 규정에 들지 않는다고 판단, 옴니 계열로 수록. 발표문의 모든 성능 지표(AA Speech-to-Speech Index 86.9·Full Duplex Bench 97%·Speech Agent Arena Elo 1070·τ-Voice 71.6%·EVA-Bench 74%)는 Artificial Analysis·ServiceNow 측정으로 제3자 지표라 점수표에 넣을 수 없습니다.
 - 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-16`
 
+### 215. 2026-10-17 — DeepSeek-V4.1-Flash-1017
+
+- 레코드 ID: `model-225`
+- **공식 모델명:** `DeepSeek-V4.1-Flash-1017`
+- 제공사 / 패밀리: `DeepSeek` / `DeepSeek V4`
+- 모델 유형 / 상태: `MLLM` / `GA`
+- 공개일(레포 기준): `2026-10-17` — [출시일 공식 출처](https://api-docs.deepseek.com/updates/)
+- **파라미터:** `정확한 수치 미공개 (1017 리비전 공식 카드에 총/활성 파라미터 별도 표기 없음 — V4.1-Flash 백본 계승)` — 공식 수치 미공개
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- 아키텍처: `CED 인과 인코더-디코더 MoE — V4.1-Flash와 동일 백본`
+- 공식 모델 ID: `deepseek-ai/DeepSeek-V4.1-Flash-1017`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 1차 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017), [공식 체인지로그(2026-10-17 리비전 업그레이드)](https://api-docs.deepseek.com/updates/), [공식 프롬프트 인코딩 문서(reasoning effort 1-100)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/blob/main/encoding/README.md)
+
+#### 공식 발표 벤치마크 점수
+
+- `HLE w/o tools`: **42.6%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `Terminal-Bench 4.0`: **42.3%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `DeepSWE v1.1`: **77.0%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `ProgramBench`: **29.1%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `NL2Repo-Bench`: **68.2%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `Automation-Bench v1.0.6`: **60.5%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `Agents' Last Exam`: **35.4%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `Apex Bench v1.1`: **72.1%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `Chartography (w/tools)`: **83.0%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `BabyVision (w/tools)`: **92.5%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- `ZeroBench-main (w/tools)`: **51.0%** — [공식 출처](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+- 점수 메모: 공식 1017 카드의 DS-V4.1-Flash-1017 열 값입니다(11개). 같은 표에 병기된 개선 전 리비전 값은 HLE w/o tools 36.8, Terminal-Bench 4.0 31.2, DeepSWE v1.1 74.2, ProgramBench 20.3, NL2Repo-Bench 65.4, Automation-Bench v1.0.6 54.8, Agents' Last Exam 31.8, Apex Bench v1.1 64.6, Chartography 78.9, BabyVision 89.6, ZeroBench-main 49.0이며 구 리비전 레코드(model-152)에 보존돼 있습니다. HLE 괄호값 44.0†는 텍스트 전용 부분집합(구 리비전 39.1†)입니다. Terminal-Bench 4.0은 Claude Code 하니스, DeepSWE v1.1은 Mini-SWE-V2 하니스 측정입니다. 카드가 비교용으로 함께 인쇄한 제3자 모델(Kimi K3·GLM-5.3·GPT-5.6 Sol·Opus 5) 열은 인용하지 않았습니다.
+- 모델 메모: V4.1-Flash(2026-09-10)의 1017 리비전 — 공식 표현은 minor update입니다. 같은 날 동일 모델명(deepseek-flash)의 서빙이 이 리비전으로 교체되고 웹·앱 모델도 함께 갱신됐으며(API 호출 방식·가격 불변), 공식 API에는 검색·fetch가 함께 열렸습니다. 구 리비전 대비 11개 공식 벤치마크가 개선된 파레토 개선판이라 0731·0813 스냅샷과 같은 기준(별도 공식 모델 ID + 신규 공식 점수)으로 별도 레코드로 수록했습니다 — 구 리비전은 model-152에 그대로 보존됩니다. 카드가 task execution time·output length 단축을 명시하며, 가중치는 MIT로 공개됐고 Jinja 채팅 템플릿 없이 encoding.py·deepseek-recipe를 사용합니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-17`
+
 ## 제외·보류한 기존 레코드
 
 ### `model-045` — LongCat-2.0 Preview
@@ -7777,7 +7808,7 @@
 ## 패밀리 흐름
 
 - **Qwen:** `Qwen3.5` → `Qwen3.6` → `Qwen3.7` → `Qwen3.8` → `Qwen3.8-Flash-Next` → `Qwen3.8-Omni-Flash`
-- **DeepSeek:** `DeepSeek-V4 Preview` → `DeepSeek-V4-Flash-0731` → `DeepSeek-V4-Pro-0813` → `DeepSeek-V4-Flash-Vision-Exp` → `DeepSeek-V4.1-Flash`
+- **DeepSeek:** `DeepSeek-V4 Preview` → `DeepSeek-V4-Flash-0731` → `DeepSeek-V4-Pro-0813` → `DeepSeek-V4-Flash-Vision-Exp` → `DeepSeek-V4.1-Flash` → `DeepSeek-V4.1-Flash-1017`
 - **Claude:** `Opus 4.6` → `Sonnet 4.6` → `Opus 4.7` → `Opus 4.8` → `Fable/Mythos 5` → `Sonnet 5` → `Opus 5` → `Fable/Mythos 5.1` → `Opus 5.5` → `Sonnet 5.5` → `Haiku 5.5`
 - **GPT:** `GPT-5.3` → `GPT-5.4` → `GPT-5.5` → `GPT-5.6` → `GPT-6 Astra` → `GPT-6 Astra Pro` → `GPT-6 Sol` → `GPT-6 Luna` → `GPT-6.1 Sol`
 - **Gemini:** `Gemini 3.5 Flash` → `Gemini 3.6 Flash` → `Gemini 3.7 Flash` → `Gemini 3.8 Flash` → `Gemini 3.8 Live` → `Gemini 3.8 Live Extended Thinking` → `Gemini 4 Argon`
