@@ -2,7 +2,7 @@
 title: Audit Update
 type: runbook
 status: current
-updated: 2026-10-15
+updated: 2026-10-17
 ---
 
 # Runbook: Audit Update
@@ -21,7 +21,7 @@ updated: 2026-10-15
 
 1. **조사**: 공식 1차 자료만 사용 — 개발사 발표 블로그, 모델 카드(HF), 공식 문서. 릴리스 날짜·파라미터·컨텍스트·공식 점수를 원문 그대로 확보한다.
 2. **중복 판정**: `models_catalog.json`의 `models[]`와 `excluded[]`에 이미 있는지 확인. 제외 원장에 있으면 되돌림 이관 여부를 판단.
-3. **수록 판정**: `scope.excluded`는 **부류 분류**다 — 부류만으로 제외하지 않는다(2026-10-15 개정). ① 개발사 공식 1차 출처가 있고 ② 그 부류에서 업계 기준점(최초·최고·최대 규모)을 세운 릴리스면 활성 레코드로 수록하고 `category`에 부류값(`Embedding`·`Image generation`·`Music generation` 등)을 넣어 구분한다. 기준에 못 미치는 항목만 `excluded[]`에 `id`(`excluded-YYYY-MM-DD-N`)·사유·공식 출처로 기록한다. System One/structured decision처럼 독립 API 제품·별도 모델 ID로 출시된 비전형 모델도 같은 기준으로 판단한다(`components/catalog-pipeline.md`의 Important Invariants 참조).
+3. **수록 판정**: `scope.excluded`는 **부류 분류**다 — 부류만으로 제외하지 않는다(2026-10-15 개정). ① 개발사 공식 1차 출처가 있고 ② 그 부류에서 업계 기준점(최초·최고·최대 규모)을 세운 릴리스면 활성 레코드로 수록하고 `category`에 부류값(`Embedding`·`Image generation`·`Music generation` 등)을 넣어 구분한다. 기준에 못 미치는 항목만 `excluded[]`에 `id`(`excluded-YYYY-MM-DD-N`)·사유·공식 출처로 기록한다. System One/structured decision처럼 독립 API 제품·별도 모델 ID로 출시된 비전형 모델도 같은 기준으로 판단한다. **같은 모델 라인의 공식 스냅샷 리비전**(예: `DeepSeek-V4.1-Flash-1017`)은 별도 공식 모델 ID(HF 리포) + 신규 공식 점수가 있으면 별도 레코드로 수록하고 구 리비전 레코드를 보존한다(2026-10-17 선례 — 판정 규칙·선례 목록은 `components/catalog-pipeline.md`의 Important Invariants 참조).
 4. **카탈로그 편집**: `models_catalog.json`만 수정.
    - 신규 레코드: 다음 `model-###` ID, 필드 순서는 기존 레코드와 동일하게.
    - 파라미터: 공식 명시값 + `parameter_status`; 미공개는 `정확한 수치 미공개` + `undisclosed`.

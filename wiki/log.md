@@ -117,3 +117,22 @@ Validation:
 Open:
 - 라이브 배포: `47b8247` 푸시 직후 `deploy-pages.yml`(Deploy GitHub Pages)과 네이티브 `pages build and deployment`가 모두 in_progress로 관측됨 — 구 주소(hojin12312.github.io/llm-timeline)는 404, 새 주소(dt-hj.github.io/llm-timeline)는 200
 - StepFun 중간 세대(Step 3.6·3.7-Flash, 2026-05 공개) 소급 조사 · Gemini 4 Argon 10/13 GA 출처 갱신 · 중요도 기준에 따른 기존 레코드 점검 여부(운영자 판단)
+
+## [2026-10-17] update | 10/15~10/17 감사 반영 (신규 16종 · 범위 정책 개정 · 스냅샷 리비전 규칙)
+
+Source HEAD: 3fe306ef9c463b01be1764355b4bc5d234572005
+Wiki:
+- updated current.md — 활성 모델 206→215, 제외 원장 33→36, 공식 점수 182→189개 모델·3,191→3,327점, as_of·범위 2026-10-17, 10/17 배포 관측(`3fe306e` success + 라이브 data.js 반영) 추가, README 제외 원장 누계 정정(38→36) 리스크 신규, StepFun 중간 세대 공백 해소로 해당 리스크 제거, Next Logical Work 재계산 (추정 2382→1692/2000)
+- updated components/catalog-pipeline.md — `OFFICIAL_HOSTS` 10/16 등록분(7개 호스트), 스냅샷 리비전 별도 레코드 수록 규칙(선례 0731·0813·1017 ↔ 배포 갱신 미집계 선례)과 스냅샷 ID 미노출 서빙 경로 판정 금지, `WebArena` 고정 평가 스위트 예외 3건, 제외 원장 누계가 기계 검증 대상이 아님(10/16 불일치 사례), 스냅샷 리비전 출처 3종 세트
+- updated runbooks/audit-update.md — 수록 판정 3단계에 스냅샷 리비전 별도 수록 규칙 추가
+- reviewed, no edit: components/web-dashboard.md·overview.md·index.md — 10/15·10/16 hand-written 변경(월 칩 2026-01~10, `category` 분기, 배포 게이트 qualify, 중요도 예외)을 코드·카탈로그와 대조해 정확함을 확인하고 그대로 두었다. log.md의 10/15 hand-written entry(`03cb112`가 Source HEAD 조정)도 내용을 바꾸지 않았다
+Validation:
+- python3 validate_data.py — PASS (`OK: 215 models, 36 excluded, 189 with official scores`, 생성물 일치 검사 포함; 10/17 감사 작업 단위에서 실행)
+- python3 validate_data.py --check-urls — PASS (325 URL 스윕, 실패 0건. HF 429 rate-limit 다수·`ifm.ai` 봇 보호 403 2건은 경고 — 같은 작업 단위에서 실행)
+- python3 <skill-dir>/core/scripts/wiki_lint.py . — PASS (0 errors, 1 warning: schema-version 0.3.1 vs template 0.4.0)
+Open:
+- 라이브 배포는 10/17 작업 단위에서 확인함(커스텀 `Deploy GitHub Pages` success 22초, 네이티브 `pages build and deployment` success 27초, `dt-hj.github.io/llm-timeline/data.js`에 신규 레코드 포함) — 이 wiki 런은 네트워크 확인을 새로 수행하지 않았다
+- 제외 원장 미등재 2건(**GPT-Live-1.1 / 1.1 Quip**, 커밋 메시지에만 있는 **Timestral**)을 원장에 등재할지 — 운영자 판단 대기
+- "포함 부류라도 중요도가 낮은 파생·스냅샷은 보류할 수 있다" 조항을 기존 215개 레코드에 적용할지 — 운영자 판단(자동 정리 금지)
+- 보류·재조사: Reflection AI Beam(10월 말 가중치 공개 예고) · Ling-3.1-flash · OpenCSG Agentic-27B · Heimr 570M · Muse Video · Gemini 4 Argon(2026-10-13 전면 GA 후 모델 카드·API 문서 공개 여부)
+- SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
