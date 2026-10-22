@@ -2,135 +2,180 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>LLM 출시 타임라인 (2026)</title>
-  <meta name="description" content="2026년 파운데이션 모델 출시 타임라인">
+  <meta name="description" content="2026년 파운데이션 모델 출시 타임라인 — 개발사 공식 1차 출처로 감사한 출시일·파라미터·공식 벤치마크">
   <meta name="theme-color" content="#0f172a">
-  <link rel="stylesheet" href="style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LLM 출시 타임라인 (2026)">
+  <meta property="og:description" content="2026년 파운데이션 모델 출시 순서와 공식 벤치마크를 한눈에 — 공식 1차 출처 감사">
+  <meta property="og:url" content="https://dt-hj.github.io/llm-timeline/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    // Apply a saved theme before first paint (THEME_KEY in app.js).
+    try {
+      var savedTheme = localStorage.getItem('llm-timeline-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.setAttribute('data-theme', savedTheme);
+    } catch (e) {}
+  </script>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Webfonts load without blocking first paint; system fonts render until they swap in. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap">
+  </noscript>
+  <!-- Bump ?v= whenever style.css or app.js changes: Pages caches assets for 10 minutes. -->
+  <link rel="stylesheet" href="style.css?v=20261022">
 </head>
 <body>
+
+  <!-- Icon sprite (Lucide, ISC License) -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-sort" viewBox="0 0 24 24"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
+  </svg>
 
   <!-- Header -->
   <header class="app-header">
     <div class="header-title-group">
-      <h1 class="header-title">LLM 출시 타임라인 (2026)</h1>
-      <p class="header-subtitle" id="header-subtitle">2026년 1월 1일 ~ 10월 17일 주요 파운데이션 모델 데이터 로딩 중</p>
+      <h1 class="header-title">
+        <img class="header-logo" src="assets/favicon.svg" alt="" width="24" height="24">
+        LLM 출시 타임라인 <span class="header-year">2026</span>
+      </h1>
+      <p class="header-subtitle" id="header-subtitle">주요 파운데이션 모델 데이터 로딩 중</p>
     </div>
 
     <div class="header-controls">
-      <!-- Search Input -->
       <div class="search-box">
-        <input 
-          type="text" 
-          id="search-input" 
-          class="search-input" 
-          placeholder="모델명 또는 기업 검색..." 
-          oninput="handleSearch(this.value)"
+        <svg class="icon search-icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="모델·기업 검색"
+          aria-label="모델명 또는 기업 검색"
+          autocomplete="off"
         >
-        <button id="search-clear-btn" class="search-clear hidden" onclick="clearSearch()">✕</button>
+        <kbd class="search-kbd" aria-hidden="true">/</kbd>
+        <button id="search-clear-btn" class="search-clear hidden" onclick="clearSearch()" aria-label="검색어 지우기">
+          <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
       </div>
 
-      <!-- Comparison Launch Button -->
-      <button class="nav-btn header-compare-btn" onclick="openCompareModal()" style="border: 1px solid #111827; background: #111827; color: #ffffff; border-radius: 6px; padding: 6px 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;" title="두 모델 벤치마크 및 스펙 직접 비교">
-        <span>⚖️</span>
+      <button class="btn-primary header-compare-btn" onclick="openCompareModal()" title="두 모델 벤치마크 및 스펙 직접 비교">
+        <svg class="icon" aria-hidden="true"><use href="#i-scale"/></svg>
         <span>두 모델 비교</span>
       </button>
 
-      <!-- Sort Order Toggle Button -->
-      <button id="sort-toggle-btn" class="nav-btn" onclick="toggleSortOrder()" style="border: 1px solid #d1d5db; border-radius: 6px; padding: 6px 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; background: #f9fafb;" title="출시 순서 전환 (최신순 ⇄ 과거순)">
-        <span id="sort-toggle-icon">↓</span>
-        <span id="sort-toggle-label">최신순 (10월→1월)</span>
+      <button id="sort-toggle-btn" class="btn-secondary" onclick="toggleSortOrder()" title="출시 순서 전환 (최신순 ⇄ 과거순)">
+        <svg class="icon" aria-hidden="true"><use href="#i-sort"/></svg>
+        <span id="sort-toggle-label">최신순</span>
       </button>
 
-      <!-- Left / Right Scroll Buttons -->
       <div class="nav-button-group">
-        <button class="nav-btn" onclick="scrollTimeline(-1)" title="이전으로 스크롤">← 이전</button>
-        <button class="nav-btn" onclick="scrollTimeline(1)" title="다음으로 스크롤">다음 →</button>
+        <button class="nav-btn" onclick="scrollTimeline(-1)" title="이전으로 스크롤" aria-label="이전으로 스크롤">
+          <svg class="icon" aria-hidden="true"><use href="#i-left"/></svg>
+        </button>
+        <button class="nav-btn" onclick="scrollTimeline(1)" title="다음으로 스크롤" aria-label="다음으로 스크롤">
+          <svg class="icon" aria-hidden="true"><use href="#i-right"/></svg>
+        </button>
       </div>
 
-      <!-- GitHub Link -->
-      <a href="https://github.com/DT-HJ/llm-timeline" target="_blank" rel="noopener noreferrer" class="github-link">
-        GitHub
-      </a>
+      <a href="https://github.com/DT-HJ/llm-timeline" target="_blank" rel="noopener noreferrer" class="github-link">GitHub</a>
+
+      <button class="btn-secondary theme-toggle" onclick="toggleTheme()" title="라이트/다크 테마 전환" aria-label="라이트/다크 테마 전환">
+        <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
 
       <div class="mobile-tools" aria-label="모바일 빠른 동작">
-        <button class="mobile-tool-btn" onclick="toggleSortOrder()" title="정렬 순서 전환">
-          <span id="mobile-sort-icon">↓</span>
+        <button class="mobile-tool-btn" onclick="toggleSortOrder()" title="정렬 순서 전환" aria-label="정렬 순서 전환">
+          <svg class="icon" aria-hidden="true"><use href="#i-sort"/></svg>
           <span id="mobile-sort-label">최신순</span>
         </button>
         <a href="https://github.com/DT-HJ/llm-timeline" target="_blank" rel="noopener noreferrer" class="mobile-tool-btn mobile-tool-link">GitHub</a>
+        <button class="mobile-tool-btn theme-toggle" onclick="toggleTheme()" title="라이트/다크 테마 전환" aria-label="라이트/다크 테마 전환">
+          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Month Navigation Subbar -->
+  <!-- Month & Filter Subbar (chips rendered by app.js from TIMELINE_DATA) -->
   <div class="month-subbar">
-    <div class="month-buttons">
-      <button class="month-btn active" data-month="all" onclick="jumpToMonth('all')">전체</button>
-      <button class="month-btn" data-month="2026-01" onclick="jumpToMonth('2026-01')">1월</button>
-      <button class="month-btn" data-month="2026-02" onclick="jumpToMonth('2026-02')">2월</button>
-      <button class="month-btn" data-month="2026-03" onclick="jumpToMonth('2026-03')">3월</button>
-      <button class="month-btn" data-month="2026-04" onclick="jumpToMonth('2026-04')">4월</button>
-      <button class="month-btn" data-month="2026-05" onclick="jumpToMonth('2026-05')">5월</button>
-      <button class="month-btn" data-month="2026-06" onclick="jumpToMonth('2026-06')">6월</button>
-      <button class="month-btn" data-month="2026-07" onclick="jumpToMonth('2026-07')">7월</button>
-      <button class="month-btn" data-month="2026-08" onclick="jumpToMonth('2026-08')">8월</button>
-      <button class="month-btn" data-month="2026-09" onclick="jumpToMonth('2026-09')">9월</button>
-      <button class="month-btn" data-month="2026-10" onclick="jumpToMonth('2026-10')">10월</button>
+    <div class="month-buttons" role="toolbar" aria-label="월 이동"></div>
+    <div class="filter-chips" role="toolbar" aria-label="유형·기업 필터">
+      <span id="filter-chips" class="filter-chip-items"></span>
+      <span class="filter-divider" aria-hidden="true"></span>
+      <select id="company-filter" class="filter-select" aria-label="기업 필터" onchange="setCompanyFilter(this.value)"></select>
     </div>
-
-    <div class="scroll-hint">
-      <span class="desktop-scroll-hint">마우스 휠이나 트랙패드로 좌우 스크롤 가능 · 카드의 <strong>[+ 비교]</strong>로 두 모델 선택 가능</span>
-      <span class="mobile-scroll-hint">월을 선택해 바로 이동 · 카드를 눌러 상세 확인</span>
-    </div>
+    <span class="scroll-hint">타임라인 축 위에서 휠 = 좌우 이동 · 카드 영역에서 휠 = 위아래 · <kbd>/</kbd> 검색</span>
   </div>
 
   <!-- Main Horizontal Timeline Viewport -->
   <main class="timeline-viewport" id="timeline-scroll-container">
-    <div class="timeline-track" id="timeline-track-inner">
-      <!-- Continuous horizontal line & date columns rendered by app.js -->
-    </div>
+    <div class="timeline-track" id="timeline-track-inner"></div>
   </main>
 
   <!-- Floating Comparison Dock -->
   <div id="compare-dock" class="compare-dock hidden">
-    <span style="font-size: 12px; font-weight: 700; color: #111827;">⚖️ 비교할 모델 (<span id="compare-count">0</span>/2):</span>
-    <div id="compare-dock-items" style="display: flex; gap: 8px;"></div>
-    <button class="btn-primary" onclick="openCompareModal()" id="btn-dock-compare" disabled style="opacity: 0.5;">상호 비교하기</button>
-    <button class="nav-btn" onclick="clearCompareList()" style="font-size: 11px;">초기화</button>
+    <span class="compare-dock-label">
+      <svg class="icon" aria-hidden="true"><use href="#i-scale"/></svg>
+      비교할 모델 (<span id="compare-count">0</span>/2)
+    </span>
+    <div id="compare-dock-items" class="compare-dock-items"></div>
+    <button class="btn-primary" onclick="openCompareModal()" id="btn-dock-compare" disabled>상호 비교하기</button>
+    <button class="btn-ghost" onclick="clearCompareList()">초기화</button>
   </div>
 
   <!-- Detail Modal -->
   <div id="model-modal" class="modal-overlay hidden" onclick="handleModalBackdropClick(event)">
-    <div id="modal-content-card" class="modal-card" onclick="event.stopPropagation()">
-      <!-- Populated dynamically -->
-    </div>
+    <div id="modal-content-card" class="modal-card" role="dialog" aria-modal="true" onclick="event.stopPropagation()"></div>
   </div>
 
   <!-- Model Benchmark Comparison Modal -->
   <div id="compare-modal" class="modal-overlay hidden" onclick="handleCompareBackdropClick(event)">
-    <div id="compare-modal-content" class="compare-modal-card" onclick="event.stopPropagation()">
-      <!-- Populated dynamically -->
-    </div>
+    <div id="compare-modal-content" class="compare-modal-card" role="dialog" aria-modal="true" onclick="event.stopPropagation()"></div>
   </div>
 
   <nav class="mobile-bottom-nav" aria-label="모바일 빠른 메뉴">
-    <button class="mobile-bottom-btn active" onclick="jumpToMonth('all')">
-      <span class="mobile-bottom-icon">⌁</span>
+    <button class="mobile-bottom-btn active" data-nav="all" onclick="jumpToMonth('all')">
+      <svg class="icon mobile-bottom-icon" aria-hidden="true"><use href="#i-layers"/></svg>
       <span>전체</span>
     </button>
-    <button class="mobile-bottom-btn" onclick="focusSearchInput()">
-      <span class="mobile-bottom-icon">⌕</span>
+    <button class="mobile-bottom-btn" data-nav="search" onclick="focusSearchInput()">
+      <svg class="icon mobile-bottom-icon" aria-hidden="true"><use href="#i-search"/></svg>
       <span>검색</span>
     </button>
-    <button class="mobile-bottom-btn" onclick="openCompareModal()">
-      <span class="mobile-bottom-icon">⚖</span>
+    <button class="mobile-bottom-btn" data-nav="compare" onclick="openCompareModal()">
+      <svg class="icon mobile-bottom-icon" aria-hidden="true"><use href="#i-scale"/></svg>
       <span>비교</span>
     </button>
   </nav>
 
-  <!-- Scripts -->
   <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=20261022"></script>
 </body>
 </html>
