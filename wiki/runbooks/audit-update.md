@@ -2,7 +2,7 @@
 title: Audit Update
 type: runbook
 status: current
-updated: 2026-10-17
+updated: 2026-10-22
 ---
 
 # Runbook: Audit Update
@@ -21,7 +21,7 @@ updated: 2026-10-17
 
 1. **조사**: 공식 1차 자료만 사용 — 개발사 발표 블로그, 모델 카드(HF), 공식 문서. 릴리스 날짜·파라미터·컨텍스트·공식 점수를 원문 그대로 확보한다.
 2. **중복 판정**: `models_catalog.json`의 `models[]`와 `excluded[]`에 이미 있는지 확인. 제외 원장에 있으면 되돌림 이관 여부를 판단.
-3. **수록 판정**: `scope.excluded`는 **부류 분류**다 — 부류만으로 제외하지 않는다(2026-10-15 개정). ① 개발사 공식 1차 출처가 있고 ② 그 부류에서 업계 기준점(최초·최고·최대 규모)을 세운 릴리스면 활성 레코드로 수록하고 `category`에 부류값(`Embedding`·`Image generation`·`Music generation` 등)을 넣어 구분한다. 기준에 못 미치는 항목만 `excluded[]`에 `id`(`excluded-YYYY-MM-DD-N`)·사유·공식 출처로 기록한다. System One/structured decision처럼 독립 API 제품·별도 모델 ID로 출시된 비전형 모델도 같은 기준으로 판단한다. **같은 모델 라인의 공식 스냅샷 리비전**(예: `DeepSeek-V4.1-Flash-1017`)은 별도 공식 모델 ID(HF 리포) + 신규 공식 점수가 있으면 별도 레코드로 수록하고 구 리비전 레코드를 보존한다(2026-10-17 선례 — 판정 규칙·선례 목록은 `components/catalog-pipeline.md`의 Important Invariants 참조).
+3. **수록 판정**: `scope.excluded`는 **부류 분류**다 — 부류만으로 제외하지 않는다(2026-10-15 개정). ① 개발사 공식 1차 출처가 있고 ② 그 부류에서 업계 기준점(최초·최고·최대 규모)을 세운 릴리스면 활성 레코드로 수록하고 `category`에 부류값(`Embedding`·`Image generation`·`Music generation`·`Memory` 등)을 넣어 구분한다. 메모리 특화 모델은 외부 메모리 프레임워크의 write path를 전담하는 독립 제품이면 `Memory`로 수록한다(2026-10-22 Hy-Memory-30B-A3B 선례 — 0~100 집계·20% 서브샘플 점수는 점수표 대신 `benchmark_note`). 기준에 못 미치는 항목만 `excluded[]`에 `id`(`excluded-YYYY-MM-DD-N`)·사유·공식 출처로 기록한다. System One/structured decision처럼 독립 API 제품·별도 모델 ID로 출시된 비전형 모델도 같은 기준으로 판단한다. **같은 모델 라인의 공식 스냅샷 리비전**(예: `DeepSeek-V4.1-Flash-1017`)은 별도 공식 모델 ID(HF 리포) + 신규 공식 점수가 있으면 별도 레코드로 수록하고 구 리비전 레코드를 보존한다(2026-10-17 선례 — 판정 규칙·선례 목록은 `components/catalog-pipeline.md`의 Important Invariants 참조).
 4. **카탈로그 편집**: `models_catalog.json`만 수정.
    - 신규 레코드: 다음 `model-###` ID, 필드 순서는 기존 레코드와 동일하게.
    - 파라미터: 공식 명시값 + `parameter_status`; 미공개는 `정확한 수치 미공개` + `undisclosed`.
@@ -59,6 +59,9 @@ updated: 2026-10-17
 - **검증 실패 커밋**: 워크플로는 배포 차단으로 선언돼 있으나 실제 게이트가 멈춘 적이 있다(2026-09-30 기준, 사실은 `current.md` 참조) — 무조건 push 전에 로컬 검증을 통과시킨다. 검증 실패를 CI에 맡기지 않는다.
 - **1차 출처 URL이 아직 없는 릴리스**: 공개 발표는 있지만 공식 문서·모델 카드·가중치가 모두 없으면 수록하지 않고 `excluded[]`에 보류로 기록한다(선례: Ling-3.1-flash 2026-09-30 — Ant Ling 공식 문서·가격표 미등재, iFLYTEK Spark X2.5 2026-09-07). 공식 페이지가 나오면 재조사한다.
 - **릴리스 날짜의 1차 출처가 없음**: 모델 카드에 날짜 표기가 없고 저장소 생성일과 발표일이 어긋나면 날짜를 확정하지 않고 보류한다(선례: OpenCSG Agentic-27B — Hugging Face 저장소 2026-09-11 vs 발표 2026-09-30). 저장소 공개일을 `date`로 쓰는 경우는 그 근거(Hugging Face API `createdAt`)를 `note`에 남긴다(선례: Darwin-180B-RSI `model-200`).
+
+- **감사 시점과 카드 최종 갱신의 경합**: HF 저장소가 감사 직전에 열리고 모델 카드·벤치마크가 감사 커밋 이후에 완성되면 후보에서 누락된다(선례: Hy-Memory-30B-A3B — 10/15 HF 공개, 10/16 17:12 KST 카드 갱신, 10/16 12:29 KST 감사). 다음 감사에서 직전 창구의 HF 신규 repo를 재확인하고, 늦게 완성된 카드는 소급 수록 + README 각주로 남긴다.
+- **공식 조직 귀속이 불확실한 HF 조직**: 개발사 자체 사이트의 모델 등재로 교차 확인한다(선례: iFLYTEK Spark-X2.6 — `xfyun.cn` MaaS 모델 스퀘어 등재로 `XHToken` 공식 귀속 확인).
 
 ## Relevant Files
 

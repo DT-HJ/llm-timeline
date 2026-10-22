@@ -136,3 +136,21 @@ Open:
 - "포함 부류라도 중요도가 낮은 파생·스냅샷은 보류할 수 있다" 조항을 기존 215개 레코드에 적용할지 — 운영자 판단(자동 정리 금지)
 - 보류·재조사: Reflection AI Beam(10월 말 가중치 공개 예고) · Ling-3.1-flash · OpenCSG Agentic-27B · Heimr 570M · Muse Video · Gemini 4 Argon(2026-10-13 전면 GA 후 모델 카드·API 문서 공개 여부)
 - SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
+
+## [2026-10-22] update | 10/22 감사 반영 (신규 9종 · Hy-Memory-30B-A3B 소급 · Memory 카테고리)
+
+Source HEAD: 37b83e1905219a8b8edecfd542021f5abb95bf16
+Wiki:
+- updated current.md — 활성 모델 215→225, 제외 원장 39, 표기 조직 65, 공식 점수 190개 모델·3,342점, as_of·범위 2026-10-22, 10/22 감사 10종(신규 9 + Hy-Memory 소급)과 배포·URL 스윕 관측, Memory 카테고리·감사 타이밍 리스크 반영, 감사 검증(`validate_data.py`·`--check-urls`) 기록 (추정 1692→1465/2000)
+- updated overview.md — Purpose/Non-goals/Terminology에 Memory 예외·Hy-Memory 예시, System One decision·extraction(Clairic·H2O-Lightning-31B), 0~100 집계·서브샘플 점수 원칙 추가
+- updated components/catalog-pipeline.md — 2026-10-22 신규 호스트 6개, Memory 특화 모델 예외 invariant, 감사 시점 vs HF 카드 갱신 경합·Tencent TLS 재시도, CI 10/22 success 관측
+- updated components/web-dashboard.md — category 값에 Memory(Hy-Memory-30B-A3B) 추가
+- updated runbooks/audit-update.md — 수록 판정에 Memory 예외, Failure Modes에 감사 타이밍·공식 조직 귀속 확인 추가
+- updated AGENTS.md — managed block의 `/wiki-update` 트리거 문장을 현재 canonical 문장으로 교체
+- reviewed, no edit: index.md — 페이지 추가·이름 변경 없음, Current State 요약 유지
+Validation:
+- python3 /Users/studio/.agents/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 1 warning: schema-version 0.3.1 vs template 0.4.0)
+Open:
+- SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
+- 제외 원장 미등재 2건(**GPT-Live-1.1 / 1.1 Quip**, **Timestral**) 등재 여부 — 운영자 판단 대기
+- 다음 감사에서 직전 창구(10/15~10/16) HF 신규 repo 재확인 · 보류·재조사: Reflection AI Beam · Ling-3.1-flash · OpenCSG Agentic-27B · Heimr 570M · Muse Video · Gemini 4 Argon

@@ -2,7 +2,7 @@
 title: Web Dashboard
 type: component
 status: current
-updated: 2026-10-15
+updated: 2026-10-22
 ---
 
 # Web Dashboard
@@ -23,7 +23,7 @@ updated: 2026-10-15
 - `app.js`: 전역 상태(`searchQuery`, `sortOrder`, `compareList` 등) + 렌더 함수.
   - `renderTimeline`: 날짜별 그룹핑 → 수평 시간축 + 일자 컬럼 + 모델 카드. `SCOPE_DATA.period`에서 헤더 기준 기간을 파생(`auditPeriodLabel`).
   - `getFilteredModels`: 검색어를 모델명·제공사·패밀리 + 한국어 별칭(회사별 수동 alias 맵)과 매칭.
-  - 카드 태그는 `m.category || m.type`, `status !== 'GA'`일 때 상태 표시, `COMPANY_META`의 `flag`/`badge`/`color`로 조직 스타일링. 2026-10-15부터 `category`에 LLM/MLLM 외 값(`Embedding`·`Image generation`·`Music generation`)이 들어오며 코드 변경 없이 그대로 태그로 표시된다.
+  - 카드 태그는 `m.category || m.type`, `status !== 'GA'`일 때 상태 표시, `COMPANY_META`의 `flag`/`badge`/`color`로 조직 스타일링. 2026-10-15부터 `category`에 LLM/MLLM 외 값(`Embedding`·`Image generation`·`Music generation`)이 들어오고, 2026-10-22에는 `Memory`(Hy-Memory-30B-A3B)가 추가됐다. 모두 코드 변경 없이 그대로 태그로 표시된다.
   - 모달: 스펙(`parameter_status` 한국어 라벨), 공식 점수+출처 링크, Markdown 인용 복사.
   - 비교: 최대 2개 모델의 스펙·공식 벤치마크 병합표 + Markdown 복사.
   - 스크롤: 마우스 위치로 축 분리 — 시간축 라인 위에서 휠=좌우, 그 아래=카드 세로. `content-visibility`로 렌더 비용 절감.
