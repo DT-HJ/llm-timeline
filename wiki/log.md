@@ -183,3 +183,15 @@ Validation:
 - python3 /Users/studio/.claude/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 0 warnings)
 Open:
 - Push and the live Pages check for `7e7dfde`/`fa34940` and this entry are done after this commit, outside the wiki run
+
+## [2026-10-22] maintenance | finish English migration of the remaining pages
+
+Source HEAD: fa349406b3cbba3a843cf88a64268c5f95b0bda1
+Wiki:
+- rewrote components/catalog-pipeline.md, components/web-dashboard.md, runbooks/audit-update.md in English at the user's request (meaning preserved; Korean kept only for file names, data strings, and the commit-message format example); catalog-pipeline.md also corrects the excluded-ledger ID note (older entries keep `model-###` IDs) and records the 2026-10-22 URL sweep; audit-update.md adds the "exclusion recorded outside the ledger" failure mode
+- updated current.md — replaced the "language migration in progress" risk with the finished state
+- left old log.md entries in their original language (audit history is not rewritten, protocol §10)
+Validation:
+- python3 /Users/studio/.claude/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 0 warnings)
+Open:
+- none

@@ -9,38 +9,38 @@ updated: 2026-10-22
 
 ## Responsibility
 
-`data.js`의 카탈로그 데이터를 월별·일자별 인터랙티브 타임라인으로 렌더링하고, 검색·유형/오픈웨이트/기업 필터·월 이동·정렬·모델 상세·두 모델 비교·라이트/다크 테마를 제공하는 순수 정적 프론트엔드.
+A purely static frontend that renders the catalog data in `data.js` as an interactive month-by-month, day-by-day timeline, with search, type/open-weights/company filters, month navigation, sort order, model details, two-model comparison, and a light/dark theme.
 
 ## Interface
 
-- 입력: `data.js`가 선언하는 전역 상수 `TIMELINE_DATA`(모델 배열), `COMPANY_META`(UI는 `country`만 사용 — `flag`/`color`/`badge`는 미사용), `FAMILY_FLOWS`, `UNCONFIRMED_DATA`, `SCOPE_DATA`, `AUDIT_EXCLUDED`.
-- 출력: 없음(읽기 전용 뷰). URL 해시 딥링크 `#model=<id>`·`#compare=<idA>,<idB>` — 모달을 열면 `history.replaceState`로 해시를 갱신하고 닫으면 지운다.
-- 로컬 실행: `python3 -m http.server 8000` — 빌드 도구 없음. CSS는 정적 `style.css`(Tailwind 미사용).
-- 외부 리소스: 웹폰트 CSS 2개(jsDelivr Pretendard dynamic-subset, Google Fonts JetBrains Mono)만 `media="print" onload` 패턴으로 비동기 로드. 국기 SVG·파비콘·아이콘은 저장소 내 `assets/`·인라인 SVG sprite(Lucide)로 자체 보관.
+- Input: the global constants `data.js` declares — `TIMELINE_DATA` (model array), `COMPANY_META` (the UI uses only `country`; `flag`/`color`/`badge` are unused), `FAMILY_FLOWS`, `UNCONFIRMED_DATA`, `SCOPE_DATA`, `AUDIT_EXCLUDED`.
+- Output: none (read-only view). URL hash deep links `#model=<id>` and `#compare=<idA>,<idB>` — opening a modal updates the hash via `history.replaceState`, and closing it clears the hash.
+- Local run: `python3 -m http.server 8000` — no build tool. CSS is the static `style.css` (no Tailwind).
+- External resources: only two webfont stylesheets (jsDelivr Pretendard dynamic-subset, Google Fonts JetBrains Mono), loaded asynchronously with the `media="print" onload` pattern. Flag SVGs, the favicon, and icons are kept in the repository (`assets/`) or as an inline SVG sprite (Lucide).
 
 ## Current Implementation
 
-- `index.html`: `<head>` 인라인 스크립트가 저장된 테마(`localStorage` `llm-timeline-theme`)를 첫 페인트 전에 `data-theme`으로 적용. 헤더(검색·비교·정렬·스크롤 버튼·GitHub·테마 토글), subbar(월 칩 컨테이너 + 유형 칩 `#filter-chips` + 기업 `<select id="company-filter">`), `.timeline-viewport`, 비교 dock, 모달 2종, 모바일 하단 nav. `style.css`·`app.js`는 `?v=<날짜>`로 참조(캐시 무효화용 수동 버전).
-- `app.js`: 전역 상태(`searchQuery`·`activeGroup`·`openOnly`·`activeCompany`·`activeMonth`·`sortOrder`·`compareList`) + 문자열 렌더 함수. 데이터 문자열은 모두 `esc()`로 HTML 이스케이프.
-  - `buildIndexes`: `MODEL_BY_ID`·검색 텍스트(`SEARCH_TEXT`, 한국어 alias 규칙 포함)·`ALL_MONTHS`(데이터에서 도출)·비교 `<option>` HTML·기업 옵션을 1회 생성.
-  - `renderAll` → `renderTimeline` + `renderMonthButtons`(월별 개수, 0개 월 disabled) + `renderFilterChips`(각 칩 개수는 나머지 필터 기준) + `updateScrollSpy`.
-  - `CATEGORY_GROUPS`: `category` → 5색 그룹(`llm`·`reasoning`·`mllm`(MLLM/Multimodal)·`omni`·`special`). 목록에 없는 카테고리는 자동으로 `special` — 새 중요도 예외 부류도 코드 변경 없이 색이 붙는다.
-  - 카드 클릭·비교 버튼은 트랙 1곳에서 이벤트 위임. 비교 토글은 전체 재렌더 없이 `syncCompareButtons`로 제자리 갱신. 카드 제목은 `<button class="card-open">`(키보드 진입점), 카드 자체에는 role 없음.
-  - 스크롤: 마우스 위치로 축 분리 — 시간축 라인 위에서 휠=좌우, 그 아래=카드 세로. 축 위치는 `AXIS_TRACK_PAD_TOP`·`AXIS_HEAD_PAD_TOP`·`AXIS_NODE_SIZE` 상수와 `containerTop`(resize·`document.fonts.ready`·컨테이너 `ResizeObserver` 시 재측정)으로 계산.
-  - 스크롤스파이(데스크톱만): 가로 스크롤 위치의 첫 컬럼 월을 이진 탐색해 월 칩 강조. 칩 클릭·정렬 전환의 smooth scroll 동안은 `lockScrollSpy`로 정지(스크롤 이벤트마다 150ms 재무장).
-  - 테마: `toggleTheme`이 `data-theme`을 명시 지정하고 `localStorage`에 저장, `meta[name=theme-color]` 동기화. 미지정 시 OS `prefers-color-scheme`을 따른다.
-- `style.css`: 모든 색은 `:root` 토큰(다크는 `@media (prefers-color-scheme: dark) :root:not([data-theme="light"])`와 `:root[data-theme="dark"]` 두 곳에 같은 값). 카테고리 색은 `[data-cat]` 속성으로 `--cat`/`--cat-soft` 주입. 모바일(≤760px)은 세로 스트림·한 줄 가로 스크롤 칩 행·바텀시트 모달·하단 nav.
-- `assets/flags/*.svg`: flag-icons 7.2.3(MIT) 10개국. `app.js` `FLAG_CODES`에 있는 코드만 이미지로, 나머지(`미공개` 등)는 지구본 아이콘.
-- 배포: Pages `build_type`은 `legacy`(main 브랜치 `/` 원본 그대로 서빙, 관측 2026-10-22 `gh api repos/DT-HJ/llm-timeline/pages`). 커스텀 워크플로가 산출물을 바꿔도 라이브에 반영되지 않으므로, 캐시 무효화는 저장소의 `index.html` `?v=`를 손으로 올리는 방식이다.
+- `index.html`: an inline `<head>` script applies the saved theme (`localStorage` key `llm-timeline-theme`) as `data-theme` before first paint. Header (search, compare, sort, scroll buttons, GitHub, theme toggle); subbar (month-chip container + type chips `#filter-chips` + company `<select id="company-filter">`); `.timeline-viewport`; compare dock; two modals; mobile bottom nav. `style.css` and `app.js` are referenced with `?v=<date>` (a manual cache-busting version).
+- `app.js`: global state (`searchQuery`, `activeGroup`, `openOnly`, `activeCompany`, `activeMonth`, `sortOrder`, `compareList`) plus string-building render functions. Every data string is HTML-escaped with `esc()`.
+  - `buildIndexes`: builds once `MODEL_BY_ID`, the search text (`SEARCH_TEXT`, including the Korean alias rules), `ALL_MONTHS` (derived from the data), the compare `<option>` HTML, and the company options.
+  - `renderAll` → `renderTimeline` + `renderMonthButtons` (per-month counts; months with 0 results disabled) + `renderFilterChips` (each chip's count is computed under the other filters) + `updateScrollSpy`.
+  - `CATEGORY_GROUPS`: maps `category` to 5 colour groups (`llm`, `reasoning`, `mllm` (MLLM/Multimodal), `omni`, `special`). Unlisted categories fall into `special` automatically — a new inclusion-exception category gets a colour without code changes.
+  - Card clicks and compare buttons are delegated from a single listener on the track. Compare toggles update in place via `syncCompareButtons` instead of re-rendering everything. The card title is a `<button class="card-open">` (the keyboard entry point); the card itself has no role.
+  - Scrolling: the wheel axis splits by pointer position — on or above the time axis line, the wheel scrolls horizontally; below it, the cards scroll vertically. The axis position is computed from the `AXIS_TRACK_PAD_TOP`, `AXIS_HEAD_PAD_TOP`, `AXIS_NODE_SIZE` constants and `containerTop` (re-measured on resize, on `document.fonts.ready`, and via a `ResizeObserver` on the container).
+  - Scrollspy (desktop only): binary-searches the first column at the current horizontal scroll offset and highlights its month chip. During smooth scrolls triggered by a chip click or sort toggle it is paused with `lockScrollSpy` (re-armed for 150 ms on every scroll event).
+  - Theme: `toggleTheme` sets `data-theme` explicitly, stores it in `localStorage`, and syncs `meta[name=theme-color]`. Without an explicit choice it follows the OS `prefers-color-scheme`.
+- `style.css`: every colour is a `:root` token (dark values appear twice with the same content: under `@media (prefers-color-scheme: dark) :root:not([data-theme="light"])` and under `:root[data-theme="dark"]`). Category colours are injected as `--cat`/`--cat-soft` through the `[data-cat]` attribute. Mobile (≤760px) switches to a vertical stream, single-row horizontally scrolling chip rows, bottom-sheet modals, and a bottom nav.
+- `assets/flags/*.svg`: flag-icons 7.2.3 (MIT), 10 countries. Only codes listed in `app.js` `FLAG_CODES` render as images; others (`미공개`, ...) show a globe icon.
+- Deployment: Pages `build_type` is `legacy` (serves the raw `main` branch at `/`, observed 2026-10-22 via `gh api repos/DT-HJ/llm-timeline/pages`). A custom workflow cannot change what goes live, so cache busting is done by bumping `?v=` in the repository's `index.html` by hand.
 
 ## Important Invariants
 
-- 프론트엔드는 `data.js` 전역 상수만 읽는다. 카탈로그 스키마를 바꾸면 `build_data.py`의 생성 형태와 `app.js`의 참조를 함께 맞춰야 한다.
-- `SCOPE_DATA.period`가 헤더 문구의 기준이므로 카탈로그 `scope.period` 갱신이 곧 UI 갱신이다.
-- 휠 축 분리 상수는 CSS와 쌍이다: `.timeline-track` padding-top(24) = `AXIS_TRACK_PAD_TOP`, `.date-head` padding-top(12) = `AXIS_HEAD_PAD_TOP`, `.station-node` 크기(16) = `AXIS_NODE_SIZE`, `.date-head::before` top(20 = 12+8). 하나를 바꾸면 모두 바꾼다.
-- `content-visibility: auto`는 `.cards-stack`에만 건다 — `.date-column`에 걸면 paint containment가 컬럼 간 축 선분을 잘라 시간축이 끊긴다.
-- 테마 저장 키 `llm-timeline-theme`은 `index.html` `<head>` 스크립트와 `app.js` `THEME_KEY` 두 곳에 있다.
-- `style.css`·`app.js`를 바꾸면 `index.html`의 `?v=` 값을 함께 올린다 — Pages가 자산을 10분 캐시해 새 HTML과 옛 CSS/JS가 섞이면 레이아웃이 깨진다(로컬에서 아이콘이 화면 크기로 커지는 형태로 관측). `data.js`는 감사마다 바뀌고 혼합돼도 깨지지 않아 버전을 붙이지 않는다.
+- The frontend reads only the global constants in `data.js`. A catalog schema change must be matched in both `build_data.py`'s generated shape and `app.js`'s references.
+- `SCOPE_DATA.period` drives the header text, so updating the catalog's `scope.period` is the UI update.
+- The wheel axis-split constants pair with CSS: `.timeline-track` padding-top (24) = `AXIS_TRACK_PAD_TOP`, `.date-head` padding-top (12) = `AXIS_HEAD_PAD_TOP`, `.station-node` size (16) = `AXIS_NODE_SIZE`, `.date-head::before` top (20 = 12 + 8). Change one, change all.
+- `content-visibility: auto` goes on `.cards-stack` only — on `.date-column`, paint containment would clip the axis segments between columns and break the time axis.
+- The theme storage key `llm-timeline-theme` lives in two places: the `<head>` script in `index.html` and `THEME_KEY` in `app.js`.
+- When `style.css` or `app.js` changes, bump the `?v=` value in `index.html` with it — Pages caches assets for 10 minutes, and new HTML mixed with old CSS/JS breaks the layout (observed locally as icons blown up to screen size). `data.js` changes every audit and does not break when mixed, so it carries no version.
 
 ## Relevant Paths
 
@@ -48,16 +48,16 @@ updated: 2026-10-22
 
 ## Tests / Validation
 
-- 전용 프론트엔드 테스트 없음. 검증은 `validate_data.py`(데이터 일치) + 브라우저 수동 확인(1440·1024·820·390px, 라이트/다크).
-- 로컬 확인 시 브라우저가 `/`를 예전 HTML로 캐시할 수 있다 — `index.html?t=<n>`처럼 새 URL로 열거나 캐시를 비운다.
+- No dedicated frontend tests. Validation is `validate_data.py` (data equality) plus manual browser checks: 2026-10-22, host local, Playwright — light at 1440·1024·820·390px, dark at 1440·1280·1024·820·390px, wheel axis split, filter counts, month-chip persistence across resize, scrollspy, hash updates, focus restore, 0 console errors.
+- In local checks the browser may cache `/` as old HTML — open a fresh URL such as `index.html?t=<n>` or clear the cache.
 
 ## Known Limitations
 
-- `FAMILY_FLOWS` 데이터는 주입되지만 그리는 뷰가 없다. Generational Flow/Grid/Matrix 뷰, CSV 내보내기, 상태 필터 미구현(`status` 값이 자유 텍스트라 그룹 기준 미정).
-- 한국어 별칭 검색은 `buildIndexes`의 수동 규칙이라 신규 조직은 alias를 손으로 넣어야 한국어 검색이 걸린다.
-- 새 국가 코드는 `assets/flags/`에 SVG를 받고 `FLAG_CODES`에 추가해야 국기가 나온다(안 하면 지구본).
-- 스크롤스파이는 모바일에서 동작하지 않는다(모바일 월 칩 행은 sticky가 아니라 스크롤 후 화면 밖).
-- `data.js`의 `benchmark_sources`가 점수마다 URL을 반복해 원본 약 247KB를 차지한다(gzip 전송 약 145KB). 중복 제거는 `build_data.py`·`validate_data.py`의 `TIMELINE_DATA == catalog.models` 동치 검사를 함께 바꿔야 해 보류.
+- `FAMILY_FLOWS` data is injected but no view draws it. Generational Flow/Grid/Matrix views, CSV export, and a status filter are not implemented (`status` is free text, so no grouping rule is settled).
+- Korean alias search uses hand-written rules in `buildIndexes`, so a new organization needs its aliases added by hand before Korean queries match it.
+- A new country code needs its SVG downloaded into `assets/flags/` and an entry in `FLAG_CODES` before a flag shows (otherwise a globe).
+- Scrollspy does not run on mobile (the mobile month-chip row is not sticky and scrolls off screen).
+- `benchmark_sources` in `data.js` repeats a URL per score and takes about 247 KB raw (about 145 KB gzipped in transfer). Deduplicating it was deferred because it would require changing `build_data.py` together with `validate_data.py`'s `TIMELINE_DATA == catalog.models` equality check.
 
 ## Related Pages
 

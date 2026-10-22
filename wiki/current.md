@@ -17,6 +17,7 @@ updated: 2026-10-22
 - Deployment: Pages `build_type` is `legacy` (branch `main`, path `/`) — the live site is the raw branch; `deploy-pages.yml` additionally runs `validate_data.py` on push. The `3be62fb` push on 2026-10-22 had both `Deploy GitHub Pages` and the native `pages build and deployment` succeed, and the live page served `style.css?v=20261022`, `app.js?v=20261022`, the new assets (200), and 225 cards with no console errors (observed 2026-10-22, host local, `gh run`, `gh api`, `curl`, Playwright)
 - Repository move (2026-10-15): `hojin12312/llm-timeline` → **`DT-HJ/llm-timeline`**, Pages at `dt-hj.github.io/llm-timeline/` (200). The old address returns 404; in-repo links were corrected
 - The header period in README and `index.html` derives from `SCOPE_DATA.period` — keep the period right and the rest is generated
+- Wiki: SCHEMA 0.4.0, `wiki-language: en` (2026-10-22, user-approved). All pages except `log.md` history are English; Korean remains only for file names (`조사 자료`), data strings (`정확한 수치 미공개`, `미공개`), and commit-style examples
 - Dashboard UI overhaul (2026-10-22): webfonts, SVG flags, 5-colour category groups, type/open-weights/company filters, data-driven month chips, desktop scrollspy, light/dark theme, URL hash updates, manual `?v=` cache version on `style.css`/`app.js`. Browser-checked light at 1440·1024·820·390px and dark at 1440·1280·1024·820·390px, 0 console errors (2026-10-22, host local, Playwright). Structure and invariants are canonical in `components/web-dashboard.md`
 
 ## Partially Implemented
@@ -41,7 +42,6 @@ updated: 2026-10-22
 - **External webfont dependency**: if jsDelivr or Google Fonts is unreachable, system fonts are used (no functional impact)
 - **UI asset cache version is manual**: because Pages is `legacy` (raw branch), a workflow cannot stamp asset versions. Bump `?v=` in `index.html` whenever `style.css` or `app.js` changes, or old and new assets may mix for up to 10 minutes after a deploy
 - **Source volatility and parsing traps** (canonical: `components/catalog-pipeline.md` Known Limitations): `qwencloud.com` 404 (2026-10-15, `model-043`), HF 429, intermittent TLS timeouts on `memory.hunyuan.tencent.com` (once on 10/22, 200 on retry), CSS-in-JS tables on `dev.meta.ai`, React shells on `*.github.io`
-- **Wiki language migration in progress**: `wiki-language` became `en` on 2026-10-22 (SCHEMA 0.4.0). The bootstrap set is English; `components/` and `runbooks/` pages remain largely Korean until substantively rewritten — a normal state under SCHEMA §5, not a defect
 
 ## Next Logical Work
 

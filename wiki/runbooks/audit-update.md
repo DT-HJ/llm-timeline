@@ -9,59 +9,58 @@ updated: 2026-10-22
 
 ## Purpose
 
-주기적으로 신규 LLM/MLLM 릴리스를 조사해 카탈로그를 최신 상태로 갱신하고 GitHub에 푸시하는 반복 절차.
+The recurring procedure for researching new LLM/MLLM releases, bringing the catalog up to date, and pushing it to GitHub.
 
 ## Preconditions
 
-- `main` 브랜치가 clean하고 `origin`과 동기화돼 있을 것.
-- `.playwright-mcp/` 등 미추적 산출물은 커밋 대상에서 제외.
-- 완료 알림용 Telegram Notice 봇 설정(머신 로컬 개인 구성 파일 — 경로·자격은 이 레포에 기록하지 않음).
+- The `main` branch is clean and in sync with `origin`.
+- Untracked outputs such as `.playwright-mcp/` (ignored via `.gitignore`) stay out of commits.
+- The Telegram Notice bot for completion reports is configured (a machine-local personal config file — its path and credentials are not recorded in this repository).
 
 ## Procedure
 
-1. **조사**: 공식 1차 자료만 사용 — 개발사 발표 블로그, 모델 카드(HF), 공식 문서. 릴리스 날짜·파라미터·컨텍스트·공식 점수를 원문 그대로 확보한다.
-2. **중복 판정**: `models_catalog.json`의 `models[]`와 `excluded[]`에 이미 있는지 확인. 제외 원장에 있으면 되돌림 이관 여부를 판단.
-3. **수록 판정**: `scope.excluded`는 **부류 분류**다 — 부류만으로 제외하지 않는다(2026-10-15 개정). ① 개발사 공식 1차 출처가 있고 ② 그 부류에서 업계 기준점(최초·최고·최대 규모)을 세운 릴리스면 활성 레코드로 수록하고 `category`에 부류값(`Embedding`·`Image generation`·`Music generation`·`Memory` 등)을 넣어 구분한다. 메모리 특화 모델은 외부 메모리 프레임워크의 write path를 전담하는 독립 제품이면 `Memory`로 수록한다(2026-10-22 Hy-Memory-30B-A3B 선례 — 0~100 집계·20% 서브샘플 점수는 점수표 대신 `benchmark_note`). 기준에 못 미치는 항목만 `excluded[]`에 `id`(`excluded-YYYY-MM-DD-N`)·사유·공식 출처로 기록한다. System One/structured decision처럼 독립 API 제품·별도 모델 ID로 출시된 비전형 모델도 같은 기준으로 판단한다. **같은 모델 라인의 공식 스냅샷 리비전**(예: `DeepSeek-V4.1-Flash-1017`)은 별도 공식 모델 ID(HF 리포) + 신규 공식 점수가 있으면 별도 레코드로 수록하고 구 리비전 레코드를 보존한다(2026-10-17 선례 — 판정 규칙·선례 목록은 `components/catalog-pipeline.md`의 Important Invariants 참조).
-4. **카탈로그 편집**: `models_catalog.json`만 수정.
-   - 신규 레코드: 다음 `model-###` ID, 필드 순서는 기존 레코드와 동일하게.
-   - 파라미터: 공식 명시값 + `parameter_status`; 미공개는 `정확한 수치 미공개` + `undisclosed`.
-   - 점수: 공식 인쇄분만 `benchmarks{}`에, 각각 `benchmark_sources{}`에 출처 URL. 없으면 빈 객체 + `benchmark_note`에 사유.
-   - `release_date_source`·`parameter_source`는 반드시 `official_sources`에도 나열.
-   - 신규 조직은 `company_meta`에 `country`/`flag`/`color`/`badge` 추가(뒤에 append 관례 — UI는 `country`만 사용). 처음 보는 국가 코드면 `assets/flags/<code>.svg`를 받고 `app.js` `FLAG_CODES`에 추가(`assets/flags/README.md`). 검색 별칭이 필요하면 `app.js` `buildIndexes`의 한국어 alias 규칙도 갱신.
-   - 패밀리 세대 진전이 있으면 `family_flows` 갱신. `as_of`, `scope.reviewed_on` 갱신.
-   - 월 칩은 `TIMELINE_DATA`의 날짜에서 자동 생성된다(2026-10-22부터) — 새 월 첫 수록 시 `index.html`·`app.js` 수정 불필요.
-5. **호스트 등록**: 새로 인용하는 발행사 도메인이 `validate_data.py`의 `OFFICIAL_HOSTS`에 없으면 추가.
-6. **재생성·검증**: `python3 build_data.py` → `python3 validate_data.py`. 가능하면 `python3 validate_data.py --check-urls`까지.
-7. **README 갱신**: 헤더 통계(모델 수·조직 수), 감사 추가분 절, 제외 원장 카운트, 조직 목록, 되돌림·중요도 예외 각주. 정책을 개정했다면 `wiki/overview.md`의 Non-goals와 본 런북 3단계도 함께 고친다.
-8. **커밋·푸시**: `git diff --check` 후 기존 커밋 스타일(`feat: ... (총 N개 / M개 조직)`)로 커밋, `git push origin main`. **CI 검증 게이트를 신뢰하지 말 것** — `deploy-pages.yml`의 `validate_data.py` 실행이 멈춘 상태일 수 있으므로(사실에서 `current.md` 확인) 푸시 전에 로컬에서 통과시킨다. 라이브 반영 여부는 `gh run list`로 확인한다.
-9. **알림**: 로컬 Telegram Notice 봇으로 완료 보고(머신 로컬 설정 문서의 절차를 따른다).
+1. **Research**: use official first-party material only — developer announcement blogs, model cards (HF), official docs. Capture release date, parameters, context, and official scores verbatim.
+2. **Duplicate check**: check whether the release is already in `models_catalog.json` `models[]` or `excluded[]`. If it is in the excluded ledger, decide whether to move it back (reversal).
+3. **Inclusion judgment**: `scope.excluded` is a **category classification** — never exclude on category alone (2026-10-15 revision). If (1) there is an official first-party source from the developer and (2) the release sets an industry reference point in its category (first, best, largest), add it as an active record with the category value (`Embedding`, `Image generation`, `Music generation`, `Memory`, ...) in `category`. A memory-specialized model is included as `Memory` when it is a standalone product dedicated to the write path of an external memory framework (2026-10-22 Hy-Memory-30B-A3B precedent — 0–100 aggregate / 20% subsample scores go into `benchmark_note`, not the score table). Only items that miss the bar go into `excluded[]` with an `id` (`excluded-YYYY-MM-DD-N`), reason, and official source — **in the same commit that reports the judgment** (two judgments once lived only in README/commit messages; see `components/catalog-pipeline.md`). Atypical models released as standalone API products with their own model IDs, such as System One / structured decision models, are judged by the same criteria. **An official snapshot revision of the same model line** (e.g. `DeepSeek-V4.1-Flash-1017`) gets its own record when it has its own official model ID (HF repo) and new official scores, and the old revision's record is kept (2026-10-17 precedent — rules and the precedent list are in Important Invariants of `components/catalog-pipeline.md`).
+4. **Edit the catalog**: change `models_catalog.json` only.
+   - New record: the next `model-###` ID, with fields in the same order as existing records.
+   - Parameters: the officially stated value + `parameter_status`; undisclosed values are `정확한 수치 미공개` + `undisclosed`.
+   - Scores: only officially printed ones go into `benchmarks{}`, each with its source URL in `benchmark_sources{}`. Otherwise an empty object + the reason in `benchmark_note`.
+   - `release_date_source` and `parameter_source` must also be listed in `official_sources`.
+   - A new organization gets `country`/`flag`/`color`/`badge` in `company_meta` (appended at the end by convention — the UI uses only `country`). For a country code not seen before, download `assets/flags/<code>.svg` and add the code to `app.js` `FLAG_CODES` (`assets/flags/README.md`). If search aliases are needed, also update the Korean alias rules in `app.js` `buildIndexes`.
+   - Update `family_flows` when a family advances a generation. Update `as_of` and `scope.reviewed_on`.
+   - Month chips are generated from the dates in `TIMELINE_DATA` (since 2026-10-22) — the first model of a new month needs no change to `index.html` or `app.js`.
+5. **Register hosts**: if a newly cited publisher domain is missing from `OFFICIAL_HOSTS` in `validate_data.py`, add it.
+6. **Regenerate and validate**: `python3 build_data.py` → `python3 validate_data.py`. If possible, also `python3 validate_data.py --check-urls`.
+7. **Update README**: header statistics (model and organization counts), the audit-additions section, the excluded-ledger count (count the catalog directly), the organization list, and reversal / importance-exception footnotes. If a policy was revised, also fix the Non-goals in `wiki/overview.md` and step 3 of this runbook.
+8. **Commit and push**: after `git diff --check`, commit in the existing style (`feat: ... (총 N개 / M개 조직)`) and `git push origin main`. **Do not rely on the CI validation gate** — the `validate_data.py` run in `deploy-pages.yml` may be stalled (check the facts in `current.md`), so pass validation locally before pushing. Confirm the live deploy with `gh run list`.
+9. **Notify**: report completion through the local Telegram Notice bot (follow the procedure in the machine-local config doc).
 
 ## Expected Output
 
-- `validate_data.py` 출력: `OK: N models, M excluded, K with official scores`.
-- push 후 `git status -sb`가 `## main...origin/main` 동기 상태.
+- `validate_data.py` prints `OK: N models, M excluded, K with official scores`.
+- After the push, `git status -sb` shows `## main...origin/main` in sync.
 
 ## Verification
 
-- `python3 validate_data.py` PASS가 배포 게이트와 동일 조건.
-- `--check-urls` 실패 시 해당 URL을 수동으로 열어 실제 사망(404/410)인지 봇 챌린지인지 구분.
+- `python3 validate_data.py` PASS is the same condition as the deploy gate.
+- If `--check-urls` fails, open the URL manually to tell a real dead link (404/410) from a bot challenge.
 
 ## Failure Modes
 
-- **부류로 자동 제외**: `scope.excluded`에 이름이 걸린다는 이유만으로 수록을 건너뛰면 중요도 높은 릴리스를 놓친다(2026-10-15에 EmbeddingGemma 2·Qwen-Image-2.1·Muse Image·MiniMax Music 3.0을 소급 수록한 원인). 1차 출처가 있는데 부류만 다르면 수록 여부를 먼저 판단한다.
-
-- **JS 셸 문서 페이지**(Upstage Console 등): 정적 HTML이 비어 있으면 Next.js/RSC 페이로드에서 본문을 추출한다. 2026-09-30에 확인된 두 케이스:
-  - **openai.com `/index/*` 발표문**: `curl`·일반 GET에 403이므로 본문은 미러 렌더링으로 읽는다. 본문에 절대값이 없는 발표문(개선폭만 서술)도 RSC 페이로드의 `\"data\":{\"values\":[...]}` 차트 데이터를 파싱하면 effort별 점수를 얻을 수 있다 — OpenAI 발표문은 매 감사 반복 패턴이므로 기본 가정할 것.
-  - **자체 조직 GitHub Pages 사이트(`*.github.io`)**: 정적 HTML이 React 셸이면 본문이 `assets/App-*.js` 번들에 있다. HF 모델 카드가 같은 표를 이미지로만 주는 경우가 많아 텍스트 인용 출처로 프로젝트 사이트를 쓴다. `OFFICIAL_HOSTS`에 `github.io`가 있어야 통과한다.
-- **봇 챌린지 403**: `BOT_PROTECTED_HOSTS` 등록 호스트는 경고로 통과. 미등록 호스트의 지속 403은 실패 — 다른 공식 출처로 교체하거나 수동 확인 후 호스트 추가.
-- **차트만 있고 인쇄 표가 없음**: 벤치마크가 차트 이미지로만 제공되면 점수를 추측하지 말고 빈 점수 + `benchmark_note` 사유로 남긴다. 반대로 차트 JSON이 텍스트로 있으면 그 값을 1차 출처로 인용한다.
-- **금지 지표**: `FORBIDDEN_BENCHMARK_TERMS`에 걸리는 벤치마크명은 점수 표에 넣지 않고 `note`/`benchmark_note`에 서술. 고정 평가 스위트면 `ALLOWED_BENCHMARK_NAMES`에 정확 명칭 예외를 추가.
-- **검증 실패 커밋**: 워크플로는 배포 차단으로 선언돼 있으나 실제 게이트가 멈춘 적이 있다(2026-09-30 기준, 사실은 `current.md` 참조) — 무조건 push 전에 로컬 검증을 통과시킨다. 검증 실패를 CI에 맡기지 않는다.
-- **1차 출처 URL이 아직 없는 릴리스**: 공개 발표는 있지만 공식 문서·모델 카드·가중치가 모두 없으면 수록하지 않고 `excluded[]`에 보류로 기록한다(선례: Ling-3.1-flash 2026-09-30 — Ant Ling 공식 문서·가격표 미등재, iFLYTEK Spark X2.5 2026-09-07). 공식 페이지가 나오면 재조사한다.
-- **릴리스 날짜의 1차 출처가 없음**: 모델 카드에 날짜 표기가 없고 저장소 생성일과 발표일이 어긋나면 날짜를 확정하지 않고 보류한다(선례: OpenCSG Agentic-27B — Hugging Face 저장소 2026-09-11 vs 발표 2026-09-30). 저장소 공개일을 `date`로 쓰는 경우는 그 근거(Hugging Face API `createdAt`)를 `note`에 남긴다(선례: Darwin-180B-RSI `model-200`).
-
-- **감사 시점과 카드 최종 갱신의 경합**: HF 저장소가 감사 직전에 열리고 모델 카드·벤치마크가 감사 커밋 이후에 완성되면 후보에서 누락된다(선례: Hy-Memory-30B-A3B — 10/15 HF 공개, 10/16 17:12 KST 카드 갱신, 10/16 12:29 KST 감사). 다음 감사에서 직전 창구의 HF 신규 repo를 재확인하고, 늦게 완성된 카드는 소급 수록 + README 각주로 남긴다.
-- **공식 조직 귀속이 불확실한 HF 조직**: 개발사 자체 사이트의 모델 등재로 교차 확인한다(선례: iFLYTEK Spark-X2.6 — `xfyun.cn` MaaS 모델 스퀘어 등재로 `XHToken` 공식 귀속 확인).
+- **Automatic exclusion by category**: skipping a release only because its category is named in `scope.excluded` misses important releases (the reason EmbeddingGemma 2, Qwen-Image-2.1, Muse Image, and MiniMax Music 3.0 were added retroactively on 2026-10-15). When a first-party source exists and only the category differs, judge inclusion first.
+- **Exclusion recorded outside the ledger**: a judgment written only in README or a commit message is invisible to the catalog and to the validator (GPT-Live-1.1 / 1.1 Quip and Timestral, judged 10/16, entered 10/22). Always add the `excluded[]` entry in the same commit.
+- **JS-shell doc pages** (Upstage Console, ...): when static HTML is empty, extract the body from the Next.js/RSC payload. Two cases confirmed on 2026-09-30:
+  - **openai.com `/index/*` announcements**: `curl` and plain GETs get 403, so the body is read through a mirror rendering. Even announcements with no absolute values in the text (only improvement margins) yield per-effort scores by parsing the RSC payload's `\"data\":{\"values\":[...]}` chart data — OpenAI announcements repeat this pattern every audit, so assume it by default.
+  - **An organization's own GitHub Pages site (`*.github.io`)**: if the static HTML is a React shell, the body is in the `assets/App-*.js` bundle. HF model cards often give the same table only as an image, so the project site is used as the text source. Passing requires `github.io` in `OFFICIAL_HOSTS`.
+- **Bot-challenge 403**: hosts registered in `BOT_PROTECTED_HOSTS` pass with a warning. A persistent 403 from an unregistered host is a failure — replace it with another official source, or add the host after a manual check.
+- **Charts but no printed table**: if a benchmark is provided only as a chart image, do not guess scores; leave an empty score with the reason in `benchmark_note`. Conversely, if the chart JSON is available as text, cite those values as the first-party source.
+- **Forbidden metrics**: benchmark names caught by `FORBIDDEN_BENCHMARK_TERMS` stay out of the score table and are described in `note`/`benchmark_note`. For a fixed evaluation suite, add an exact-name exception to `ALLOWED_BENCHMARK_NAMES`.
+- **Committing a validation failure**: the workflow is declared as blocking deploys, but the real gate has stalled before (as of 2026-09-30; facts in `current.md`) — always pass local validation before pushing. Never leave validation failures to CI.
+- **A release with no first-party source URL yet**: if there is a public announcement but no official doc, model card, or weights, do not include it; record it in `excluded[]` as pending (precedents: Ling-3.1-flash 2026-09-30 — not listed in Ant Ling's official docs or price list; iFLYTEK Spark X2.5 2026-09-07). Re-investigate once an official page appears.
+- **No first-party source for the release date**: if the model card has no date and the repository creation date disagrees with the announcement date, hold the date instead of fixing it (precedent: OpenCSG Agentic-27B — Hugging Face repository 2026-09-11 vs. announcement 2026-09-30). When the repository's public date is used as `date`, record its basis (Hugging Face API `createdAt`) in `note` (precedent: Darwin-180B-RSI `model-200`).
+- **Audit timing vs. a late card update**: if an HF repository opens just before an audit and its model card and benchmarks are completed after the audit commit, it is missed as a candidate (precedent: Hy-Memory-30B-A3B — public on HF 10/15, card updated 10/16 17:12 KST, audit 10/16 12:29 KST). In the next audit, re-check the previous window's new HF repos, and record a late-completed card as a retroactive addition with a README footnote.
+- **HF organization of uncertain official attribution**: cross-check against the model's listing on the developer's own site (precedent: iFLYTEK Spark-X2.6 — official attribution of `XHToken` confirmed by its listing in the `xfyun.cn` MaaS model square).
 
 ## Relevant Files
 
