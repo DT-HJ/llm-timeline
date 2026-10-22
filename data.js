@@ -17886,6 +17886,563 @@ const TIMELINE_DATA = [
       "reviewed_on": "2026-10-17",
       "policy": "official-primary-only"
     }
+  },
+  {
+    "id": "model-226",
+    "name": "Mercury 3",
+    "date": "2026-10-19",
+    "sortDate": "2026-10-19",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Inception Labs",
+    "family": "Mercury",
+    "type": "LLM (diffusion language model)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "정확한 수치 미공개 (Mercury 1 대비 40배 이상 규모)",
+    "parameter_status": "undisclosed",
+    "architecture": "텍스트 확산(diffusion) LLM — 자기회귀 토큰 생성 대신 병렬 diffusion 디코딩. Mercury 1 대비 40배 이상 큰 파라미터 규모, NVIDIA GPU에서 1,068 tok/s.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "low-latency agents",
+      "voice/chat support",
+      "real-time search",
+      "data engineering"
+    ],
+    "open_weights": false,
+    "license": "Proprietary (Inception API)",
+    "context": "1M (1,000,000 tokens)",
+    "languages": "",
+    "variants": [],
+    "reasoning_effort": [],
+    "availability": "Inception API Platform, OpenRouter, Baseten, Vercel (OpenAI API 호환)",
+    "note": "Inception Labs의 3세대 diffusion LLM. 발표문이 '지금까지 공개된 가장 강력한 diffusion 기반 LLM'으로 소개하며, Mercury 1보다 40배 이상 큰 규모로 확산 스케일링이 자기회귀 모델과 같은 스케일링 법칙을 따른다고 주장합니다. GPT-6 Luna·Claude Haiku 5.5와 비교해 4~8배 빠른 1,000+ tok/s를 내세우고, 1M 컨텍스트·$0.20/$0.70 per 1M(출시 50% 할인 $0.10/$0.35)을 공식 명시했습니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 발표문이 벤치마크를 차트 이미지로만 제시하고 % 수치 표를 인쇄하지 않아 빈 점수로 두었습니다. 속도(1,068 tok/s)·가격은 % 척도가 아니므로 점수표에서 제외했습니다.",
+    "official_id": "mercury-3",
+    "official_sources": [
+      {
+        "label": "Inception Labs 공식 발표문",
+        "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-3"
+      },
+      {
+        "label": "Inception Labs 모델 페이지",
+        "url": "https://www.inceptionlabs.ai/models"
+      }
+    ],
+    "release_date_source": "https://www.inceptionlabs.ai/blog/introducing-mercury-3",
+    "parameter_source": "https://www.inceptionlabs.ai/blog/introducing-mercury-3",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-227",
+    "name": "MemT-1.0-Flash",
+    "date": "2026-10-19",
+    "sortDate": "2026-10-19",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "MemTensor",
+    "family": "MemT",
+    "type": "LLM (memory-native foundation model)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "288B total / 17B activated (MoE)",
+    "parameter_status": "verified",
+    "architecture": "Native Memory Block(Local Memory + trainable Hyper Memory)와 Mixture-of-Storage(MoS)를 attention과 병렬로 실행하는 memory-native 아키텍처. Gated DeltaNet-2 기반 토큰 단위 메모리 업데이트, DeepSeek-V4-Flash 백본, 3.61B trainable memory·336M dynamic memory state.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "persistent memory",
+      "personalization",
+      "long-horizon agents",
+      "agentic coding"
+    ],
+    "open_weights": true,
+    "license": "MIT",
+    "context": "",
+    "languages": "",
+    "variants": [],
+    "reasoning_effort": [],
+    "availability": "Hugging Face(MemTensor), ModelScope, GitHub, MemOS/online demo",
+    "note": "MemTensor의 memory-native foundation model 플래그십. 34B 토큰으로 continued pre-training + post-training한 2단계 학습, 128K history에서 full-context KV cache 대비 약 66배 저장 절감을 공식 보고했습니다. 기술 보고서(arXiv 2610.26825)는 11개 메모리 벤치마크에서 Flash·Nano가 평가된 parametric-memory 방법 중 각각 1·2위라고 서술합니다. Flash 가중치는 MIT, Nano는 Apache 2.0으로 공개됐으며 HF 저장소 생성일은 각각 10/17·10/15, 기술 보고서 v1은 10/19입니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "기술 보고서·모델 카드의 평가 결과가 그림(figure)으로만 제공되고 % 수치 표가 인쇄되지 않아 빈 점수로 두었습니다. 66× 저장 절감·1.86× 추론 가속은 % 성능 지표가 아니므로 점수표에서 제외했습니다.",
+    "official_id": "MemTensor/MemT-1.0-Flash",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/MemTensor/MemT-1.0-Flash"
+      },
+      {
+        "label": "공식 GitHub 저장소",
+        "url": "https://github.com/MemTensor/MemT-1.0"
+      },
+      {
+        "label": "기술 보고서(arXiv)",
+        "url": "https://arxiv.org/abs/2610.26825"
+      },
+      {
+        "label": "MemTensor 공식 사이트",
+        "url": "https://memt.memtensor.cn/"
+      }
+    ],
+    "release_date_source": "https://arxiv.org/abs/2610.26825",
+    "parameter_source": "https://github.com/MemTensor/MemT-1.0",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-228",
+    "name": "MemT-1.0-Nano",
+    "date": "2026-10-19",
+    "sortDate": "2026-10-19",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "MemTensor",
+    "family": "MemT",
+    "type": "LLM (memory-native foundation model)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "36B total / 3B activated (MoE)",
+    "parameter_status": "verified",
+    "architecture": "Native Memory Block(Local Memory + trainable Hyper Memory)와 Mixture-of-Storage(MoS)를 attention과 병렬로 실행하는 memory-native 아키텍처. Gated DeltaNet-2 기반 토큰 단위 메모리 업데이트, Qwen3.6-35B-A3B 백본, 451M trainable memory·10M dynamic memory state.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "persistent memory",
+      "personalization",
+      "on-device memory",
+      "long-horizon agents"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "",
+    "languages": "",
+    "variants": [],
+    "reasoning_effort": [],
+    "availability": "Hugging Face(MemTensor), ModelScope, GitHub, MemOS/online demo",
+    "note": "MemT-1.0 패밀리의 경량 모델. Qwen3.6-35B-A3B 백본에 native memory를 결합해 36B total/3B activated로 동작하며, 128K history에서 end-to-end 추론 약 1.86배 가속·full-context KV cache 대비 약 66배 저장 절감을 공식 보고했습니다. LoCoMo 대화 회상과 PerMemSafe 개인화 안전에서 강점을 내세우며 Apache 2.0으로 공개됐습니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "기술 보고서·모델 카드의 평가 결과가 그림(figure)으로만 제공되고 % 수치 표가 인쇄되지 않아 빈 점수로 두었습니다. 1.86× 추론 가속·66× 저장 절감은 % 성능 지표가 아니므로 점수표에서 제외했습니다.",
+    "official_id": "MemTensor/MemT-1.0-Nano",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/MemTensor/MemT-1.0-Nano"
+      },
+      {
+        "label": "공식 GitHub 저장소",
+        "url": "https://github.com/MemTensor/MemT-1.0"
+      },
+      {
+        "label": "기술 보고서(arXiv)",
+        "url": "https://arxiv.org/abs/2610.26825"
+      },
+      {
+        "label": "MemTensor 공식 사이트",
+        "url": "https://memt.memtensor.cn/"
+      }
+    ],
+    "release_date_source": "https://arxiv.org/abs/2610.26825",
+    "parameter_source": "https://github.com/MemTensor/MemT-1.0",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-229",
+    "name": "Clairic",
+    "date": "2026-10-19",
+    "sortDate": "2026-10-19",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Cloudflare",
+    "family": "Clairic",
+    "type": "System One / structured extraction",
+    "category": "LLM",
+    "status": "Preview",
+    "parameters": "정확한 수치 미공개",
+    "parameter_status": "undisclosed",
+    "architecture": "단일 forward pass로 typed field를 디코딩하는 extraction 모델 — text/number/date/time/datetime/duration/list/estimate/forecast 타입, 최대 4개 이미지 입력, 필드가 한 pass에 들어가지 않으면 병렬 pass로 분할. 토큰을 생성하지 않음.",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "focus": [
+      "typed extraction",
+      "estimation/forecasting",
+      "structured output",
+      "agent tooling"
+    ],
+    "open_weights": false,
+    "license": "Proprietary (Workers AI preview; open weights 예고)",
+    "context": "",
+    "languages": "",
+    "variants": [],
+    "reasoning_effort": [],
+    "availability": "Cloudflare Workers AI preview (@cf/cloudflare/clairic)",
+    "note": "Cloudflare가 공개한 System One extraction model의 첫 사례. 기존 decision model(Clef)이 선택지 확률을 반환하는 것과 달리, Clairic은 입력에서 값을 추출·계산·추정·예측해 타입이 보장된 값과 confidence·p_null을 반환합니다. Workers AI에 프리뷰로 공개됐고 open weights는 추후 공개 예고입니다. 날짜가 확정되지 않은 값은 null로 반환하는 등 LLM식 환각을 구조적으로 줄이는 접근을 내세웁니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 발표문에 % 척도 벤치마크 표가 없고(정성 설명·예시 JSON만) Decision Index/JevBench 같은 수치도 인쇄되지 않아 빈 점수로 두었습니다.",
+    "official_id": "clairic",
+    "official_sources": [
+      {
+        "label": "Cloudflare 공식 블로그",
+        "url": "https://blog.cloudflare.com/clairic-extraction-model/"
+      },
+      {
+        "label": "Cloudflare Workers AI 체인지로그",
+        "url": "https://developers.cloudflare.com/changelog/post/2026-10-19-clairic-workers-ai/"
+      }
+    ],
+    "release_date_source": "https://blog.cloudflare.com/clairic-extraction-model/",
+    "parameter_source": "https://blog.cloudflare.com/clairic-extraction-model/",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-230",
+    "name": "H2O-Lightning-31B",
+    "date": "2026-10-20",
+    "sortDate": "2026-10-20",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "H2O.ai",
+    "family": "H2O-Lightning",
+    "type": "System One / structured decision",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "31B",
+    "parameter_status": "verified",
+    "architecture": "Gemma 4 31B IT 기반 decision model — choice/yes-no(noul)/score를 한 번의 forward pass·한 출력 토큰으로 반환. 레코드 텍스트와 최대 이미지 입력을 함께 읽고, vLLM 0.30.0 + shim으로 서빙. 131,072 컨텍스트, FP8/BF16.",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "focus": [
+      "typed decisions",
+      "calibrated probabilities",
+      "RAG/agent routing",
+      "enterprise workflows"
+    ],
+    "open_weights": true,
+    "license": "H2O Model Non-Commercial Licence v1.1 (비상업·비프로덕션)",
+    "context": "131,072",
+    "languages": "",
+    "variants": [
+      "FP8",
+      "BF16"
+    ],
+    "reasoning_effort": [],
+    "availability": "Hugging Face(gated; non-commercial licence), vLLM 0.30.0 + lightning_31b_shim",
+    "note": "H2O.ai의 31B System One decision model. Gemma 4 31B IT를 기반으로 typed decision(choice·yes/no·score)과 이미지 입력을 지원하며, 131,072 토큰 컨텍스트에서 레코드를 통째로 읽습니다. 4B sibling(Apache 2.0)과 달리 H2O Model Non-Commercial Licence v1.1로 공개됐고, HF 저장소는 2026-10-20 생성·v1.0.7 카드 기준입니다. Decision Index·JevBench 수치는 0~100 지수/리더보드 원자료라 % 점수표에는 넣지 않았습니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 카드가 Decision Index(0~100 지수)와 JevBench 공개 문항 원자료(216/231 등)를 제시하지만 % 척도 점수표가 아니어서 빈 점수로 두었습니다. JevBench 보드 순위는 제3자 리더보드라 수록하지 않았습니다.",
+    "official_id": "h2oai/h2o-lightning-31b",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/h2oai/h2o-lightning-31b"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/h2oai/h2o-lightning-31b",
+    "parameter_source": "https://huggingface.co/h2oai/h2o-lightning-31b",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-231",
+    "name": "Eleven Realtime v1 Max",
+    "date": "2026-10-20",
+    "sortDate": "2026-10-20",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "ElevenLabs",
+    "family": "Eleven Realtime",
+    "type": "MLLM / omni (full-duplex speech-to-speech)",
+    "category": "Omni",
+    "status": "GA",
+    "parameters": "정확한 수치 미공개",
+    "parameter_status": "undisclosed",
+    "architecture": "음성 인식·턴테이킹·LLM·TTS를 end-to-end로 묶은 cascaded speech-to-speech 모델. Max는 응답 전에 추론(reasoning)하고 다단계 도구 호출을 수행. OpenAI Realtime API 호환 WebSocket.",
+    "modalities": [
+      "audio",
+      "text"
+    ],
+    "focus": [
+      "voice agents",
+      "customer support",
+      "multi-step tool use",
+      "low-latency speech"
+    ],
+    "open_weights": false,
+    "license": "Proprietary (ElevenLabs)",
+    "context": "",
+    "languages": "90+ languages (17,000+ voices)",
+    "variants": [],
+    "reasoning_effort": [],
+    "availability": "ElevenAgents, Realtime API (OpenAI Realtime-compatible WebSocket)",
+    "note": "ElevenLabs가 공개한 full-duplex speech-to-speech 모델 패밀리의 상위 모델. v1 Mini와 함께 2026-10-20 공개됐고, 90개 이상 언어·17,000개 이상 voice를 지원합니다. Max는 복잡한 지시·다단계 도구 호출을 위해 응답 전에 추론하며, 공식 문서는 Zero Retention Mode·HIPAA(US/EU)를 지원한다고 명시합니다. Grok Voice 3.0과 같은 full-duplex S2S 부류로 옴니 계열에 수록했습니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 발표문의 모든 수치가 Artificial Analysis의 독립 평가(Big Bench Audio 98.8%·Full-Duplex-Bench 94.1%)이거나 Speech Agent Arena Elo(998), 비% 지연(0.57s)이라 점수표에서 제외했습니다.",
+    "official_id": "eleven_realtime_v1_max",
+    "official_sources": [
+      {
+        "label": "ElevenLabs 공식 발표문",
+        "url": "https://elevenlabs.io/blog/realtime"
+      },
+      {
+        "label": "ElevenLabs Realtime 모델 문서",
+        "url": "https://elevenlabs.io/docs/eleven-agents/customization/realtime-models"
+      }
+    ],
+    "release_date_source": "https://elevenlabs.io/blog/realtime",
+    "parameter_source": "https://elevenlabs.io/docs/eleven-agents/customization/realtime-models",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-232",
+    "name": "Eleven Realtime v1 Mini",
+    "date": "2026-10-20",
+    "sortDate": "2026-10-20",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "ElevenLabs",
+    "family": "Eleven Realtime",
+    "type": "MLLM / omni (full-duplex speech-to-speech)",
+    "category": "Omni",
+    "status": "GA",
+    "parameters": "정확한 수치 미공개",
+    "parameter_status": "undisclosed",
+    "architecture": "음성 인식·턴테이킹·LLM·TTS를 end-to-end로 묶은 cascaded speech-to-speech 모델. Mini는 최저 지연·비용에 최적화. OpenAI Realtime API 호환 WebSocket.",
+    "modalities": [
+      "audio",
+      "text"
+    ],
+    "focus": [
+      "voice agents",
+      "assistants/tutors",
+      "low-latency speech",
+      "low cost"
+    ],
+    "open_weights": false,
+    "license": "Proprietary (ElevenLabs)",
+    "context": "",
+    "languages": "90+ languages (17,000+ voices)",
+    "variants": [],
+    "reasoning_effort": [],
+    "availability": "ElevenAgents, Realtime API (OpenAI Realtime-compatible WebSocket)",
+    "note": "ElevenLabs full-duplex speech-to-speech 패밀리의 기본(저지연·저비용) 모델. v1 Max와 함께 2026-10-20 공개됐고, 90개 이상 언어·17,000개 이상 voice를 지원합니다. ElevenAgents 기본 Realtime 모델이며, 공식 문서는 Zero Retention Mode·HIPAA(US/EU) 미지원을 명시합니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 발표문의 모든 수치가 Artificial Analysis의 독립 평가(Big Bench Audio 75.9%·Full-Duplex-Bench 95.8%)이거나 Speech Agent Arena Elo(988), 비% 지연(0.62s)·도구 성공률(60.3%)이라 점수표에서 제외했습니다.",
+    "official_id": "eleven_realtime_v1_mini",
+    "official_sources": [
+      {
+        "label": "ElevenLabs 공식 발표문",
+        "url": "https://elevenlabs.io/blog/realtime"
+      },
+      {
+        "label": "ElevenLabs Realtime 모델 문서",
+        "url": "https://elevenlabs.io/docs/eleven-agents/customization/realtime-models"
+      }
+    ],
+    "release_date_source": "https://elevenlabs.io/blog/realtime",
+    "parameter_source": "https://elevenlabs.io/docs/eleven-agents/customization/realtime-models",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-233",
+    "name": "Raon-1 mini",
+    "date": "2026-10-21",
+    "sortDate": "2026-10-21",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "KRAFTON",
+    "family": "Raon",
+    "type": "LLM (hybrid linear-attention MoE)",
+    "category": "LLM",
+    "status": "Preview",
+    "parameters": "28.8B total / 4.3B activated (30B-A4B)",
+    "parameter_status": "verified",
+    "architecture": "하이브리드 MoE — 25층 중 18층 Raon Delta Attention(RDA, Kimi Delta Attention의 erase/write gate 분리) + 7층 gated MLA. 128 routed experts 중 6개 + 1 shared 활성, Raon-mHC residual(4 streams), NoPE, SiTU-GLU, 259,840 vocab. DFlash2 draft model로 추측 디코딩 지원.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "Korean conversation",
+      "instruction following",
+      "agentic tool use",
+      "efficient long context"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "262,144",
+    "languages": "Korean, English, Japanese, Chinese, Spanish, French, Thai",
+    "variants": [
+      "BF16",
+      "MXFP8",
+      "NVFP4",
+      "GGUF",
+      "DFlash2 draft"
+    ],
+    "reasoning_effort": [
+      "thinking"
+    ],
+    "availability": "Hugging Face(gated), Raon API(OpenAI/Anthropic-compatible; free preview), playground",
+    "note": "KRAFTON AI가 모델 설계부터 학습까지 처음부터 수행한 첫 Raon 언어 모델(30B-A4B). 2026-04 Raon 브랜드(음성·비전 모델 4종) 이후 첫 텍스트 LLM으로, 18개 선형 어텐션(RDA) + 7개 gated MLA 하이브리드·262,144 컨텍스트·Apache 2.0 가중치를 공개했습니다. 프리뷰이며 정식 버전과 학습 과정·최종 성능을 담은 기술 보고서를 추후 공개한다고 밝혔습니다. HF 카드가 비교 모델(Qwen3.6-35B-A3B·Gemma 4 26B-A4B·Qwen3.8-27B·Muse Glimmer 30B)과 함께 15개 % 점수를 인쇄해 수록했습니다.",
+    "benchmarks": {
+      "MMLU Pro": 76.5,
+      "GPQA Diamond": 84.3,
+      "AIME 2026": 93.3,
+      "HMMT Feb 2026": 84.1,
+      "IFBench": 84.2,
+      "MultiChallenge": 59.0,
+      "LiveCodeBench v6": 81.6,
+      "SciCode": 38.7,
+      "SWE-Verified": 70.8,
+      "Terminal-Bench Lite": 47.0,
+      "GDPVal": 66.0,
+      "AutomationBench": 29.7,
+      "BrowseComp Plus": 55.7,
+      "BFCL v4 Overall": 59.8,
+      "Chatbot Korean (internal)": 92.9
+    },
+    "benchmark_sources": {
+      "MMLU Pro": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "GPQA Diamond": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "AIME 2026": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "HMMT Feb 2026": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "IFBench": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "MultiChallenge": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "LiveCodeBench v6": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "SciCode": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "SWE-Verified": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "Terminal-Bench Lite": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "GDPVal": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "AutomationBench": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "BrowseComp Plus": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "BFCL v4 Overall": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+      "Chatbot Korean (internal)": "https://huggingface.co/KRAFTON/Raon-1-mini-preview"
+    },
+    "benchmark_note": "HF 공식 카드의 표에서 Raon-1 mini preview 열 15개 % 점수를 수록했습니다. 같은 표의 AA-Omniscience 3.5·AA-LCR 67.3·GDP.pdf 5.8은 Artificial Analysis 결과 출처라 제외했고, GDPVal은 judge score(비 Elo), AutomationBench는 public split, Chatbot Korean (internal)은 비공개 내부 평가라는 조건을 원장 메모에 남겼습니다. judge/user simulator는 gpt-5.6-luna로 카드에 명시됐습니다.",
+    "official_id": "KRAFTON/Raon-1-mini-preview",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/KRAFTON/Raon-1-mini-preview"
+      },
+      {
+        "label": "KRAFTON AI 공식 Raon 사이트",
+        "url": "https://raon-mini.krafton.ai/en"
+      }
+    ],
+    "release_date_source": "https://raon-mini.krafton.ai/en",
+    "parameter_source": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-234",
+    "name": "Spark-X2.6-4B",
+    "date": "2026-10-21",
+    "sortDate": "2026-10-21",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "iFLYTEK",
+    "family": "Spark",
+    "type": "LLM (on-device)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "4B",
+    "parameter_status": "verified",
+    "architecture": "Spark-X2.5-4B와 동일 아키텍처를 유지하고 post-training을 개선한 4B on-device LLM. 최대 1,048,576 토큰 컨텍스트, none/low/high 3단계 thinking budget, tool calling·agentic workflow 지원.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "on-device agents",
+      "agentic coding",
+      "long context",
+      "multilingual"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "1,048,576",
+    "languages": "English, Chinese (multilingual)",
+    "variants": [
+      "FP8",
+      "INT8",
+      "GGUF"
+    ],
+    "reasoning_effort": [
+      "none",
+      "low",
+      "high"
+    ],
+    "availability": "Hugging Face, ModelScope, Ollama, AtomGit, llama.cpp/vLLM/SGLang",
+    "note": "iFLYTEK(科大讯飞) SparkLLM 팀의 온디바이스 4B 모델. X2.5-4B와 동일 아키텍처에 post-training 개선만으로 coding·agent·long-context·multilingual·reasoning을 끌어올렸다고 공식 카드가 설명합니다. 2026-10-21 Hugging Face·ModelScope·Ollama 글로벌 런칭(저장소 생성 10/19), iFLYTEK MaaS 모델 스퀘어에도 'Spark-X2.6 신세대 범용 플래그십'으로 등재돼 공식 조직 귀속을 확인했습니다. 2026-09-08 감사에서 1차 출처 미확보로 보류했던 Spark X2.5의 후속 세대입니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 카드의 벤치마크가 SVG 이미지(all_benchmark.svg·benchmark.svg)로만 제공되어 텍스트 % 수치가 인쇄되지 않았습니다. 성능 근거는 카드의 서술·차트이며 점수표에는 넣지 않았습니다.",
+    "official_id": "XHToken/Spark-X2.6-4B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
+      },
+      {
+        "label": "SparkLLM 공식 Hugging Face 조직",
+        "url": "https://huggingface.co/XHToken"
+      },
+      {
+        "label": "iFLYTEK MaaS 모델 페이지",
+        "url": "https://maas.xfyun.cn/modelSquare/base/2628905721051136?sort=0"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/XHToken",
+    "parameter_source": "https://huggingface.co/XHToken/Spark-X2.6-4B",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
   }
 ];
 
@@ -18243,6 +18800,42 @@ const COMPANY_META = {
     "flag": "🇨🇳",
     "color": "from-sky-500 to-indigo-500",
     "badge": "bg-sky-500/10 text-sky-300 border-sky-500/30"
+  },
+  "KRAFTON": {
+    "country": "KR",
+    "flag": "🇰🇷",
+    "gradient": "linear-gradient(135deg,#0f172a,#e11d48)",
+    "badge": "KRAFTON AI · Raon 오픈웨이트 LLM"
+  },
+  "MemTensor": {
+    "country": "CN",
+    "flag": "🇨🇳",
+    "gradient": "linear-gradient(135deg,#7c3aed,#06b6d4)",
+    "badge": "메모리 네이티브 파운데이션 모델"
+  },
+  "Inception Labs": {
+    "country": "US",
+    "flag": "🇺🇸",
+    "gradient": "linear-gradient(135deg,#111827,#22d3ee)",
+    "badge": "확산(diffusion) LLM · Mercury"
+  },
+  "ElevenLabs": {
+    "country": "US",
+    "flag": "🇺🇸",
+    "gradient": "linear-gradient(135deg,#111827,#a3e635)",
+    "badge": "실시간 음성 에이전트 S2S"
+  },
+  "H2O.ai": {
+    "country": "US",
+    "flag": "🇺🇸",
+    "gradient": "linear-gradient(135deg,#f59e0b,#ef4444)",
+    "badge": "System One 결정 모델 · Lightning"
+  },
+  "iFLYTEK": {
+    "country": "CN",
+    "flag": "🇨🇳",
+    "gradient": "linear-gradient(135deg,#dc2626,#f59e0b)",
+    "badge": "Spark 온디바이스 LLM"
   }
 };
 
@@ -18459,13 +19052,62 @@ const FAMILY_FLOWS = [
       "Muse Wonder",
       "Muse Wonder Full"
     ]
+  },
+  {
+    "family": "Raon",
+    "steps": [
+      "Raon-1 mini"
+    ]
+  },
+  {
+    "family": "Mercury",
+    "steps": [
+      "Mercury 1",
+      "Mercury 2",
+      "Mercury 2.5",
+      "Mercury 3"
+    ]
+  },
+  {
+    "family": "MemT",
+    "steps": [
+      "MemT-1.0-Nano",
+      "MemT-1.0-Flash"
+    ]
+  },
+  {
+    "family": "Clairic",
+    "steps": [
+      "Clairic"
+    ]
+  },
+  {
+    "family": "H2O-Lightning",
+    "steps": [
+      "H2O-Lightning-4B",
+      "H2O-Lightning-31B"
+    ]
+  },
+  {
+    "family": "Eleven Realtime",
+    "steps": [
+      "Eleven Realtime v1 Mini",
+      "Eleven Realtime v1 Max"
+    ]
+  },
+  {
+    "family": "Spark",
+    "steps": [
+      "Spark-X2.5",
+      "Spark-X2.6-4B"
+    ]
   }
 ];
 
 const UNCONFIRMED_DATA = [];
 
 const SCOPE_DATA = {
-  "period": "2026-01-01 ~ 2026-10-17",
+  "period": "2026-01-01 ~ 2026-10-22",
   "scope": [
     "LLM (Large Language Models)",
     "MLLM / VLM / Omni foundation models",
@@ -18483,7 +19125,7 @@ const SCOPE_DATA = {
   ],
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-  "reviewed_on": "2026-10-17",
+  "reviewed_on": "2026-10-22",
   "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
 };
 
@@ -18791,5 +19433,38 @@ const AUDIT_EXCLUDED = [
     "reason": "2.8T-80B MoE 사전학습 완료 공표는 확정(16,000 GB200·38일·EU 규제 컴퓨트 10^25.9)하지만 가중치·API·모델 카드가 없고 포스트트레이닝 중 — '1차 출처 URL이 아직 없는 릴리스' 보류(Reflection Beam 선례). Foundry 라이선싱 창구가 열리면 재검토.",
     "source": "https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/",
     "reviewed_on": "2026-10-16"
+  },
+  {
+    "id": "excluded-2026-10-21-1",
+    "name": "Cohere Rerank 5 (Pro · Fast)",
+    "original_name": "rerank-v5.0-pro · rerank-v5.0-fast",
+    "date": "2026-10-21",
+    "company": "Cohere",
+    "country": "CA",
+    "reason": "임베딩·리랭커 부류의 검색 리랭킹 모델 — Cohere가 '가장 진보한 엔터프라이즈 retrieval 모델'이라며 ViDoRe V3·nanoMTEB·BRIGHT·BEIR 선두를 주장하지만, 공개 수치가 RCP-nDCG@10(비% 척도)이고 LLM/MLLM 파운데이션 모델이 아니라 검색 파이프라인 구성요소입니다. 2026-10-15 중요도 예외는 멀티모달 통합 임베딩(EmbeddingGemma 2)에 적용한 선례이며, 리랭커에는 같은 기준을 적용하지 않았습니다. % 점수표가 공개되면 재검토.",
+    "source": "https://cohere.com/blog/rerank-5",
+    "reviewed_on": "2026-10-22"
+  },
+  {
+    "id": "excluded-2026-10-20-1",
+    "name": "Nemotron 3.5 Embed 1B·8B / Rerank 8B",
+    "original_name": "Nemotron-3.5-Embed-8B-BF16 · Embed-1B-BF16 · Embed-1B-NVFP4 · Rerank-8B-BF16",
+    "date": "2026-10-20",
+    "company": "NVIDIA",
+    "country": "US",
+    "reason": "멀티모달 임베딩·리랭커 부류(8.38B/1.55B, ViDoRe v3.1·MIRACL Vision nDCG@10) — 검색 파이프라인 구성요소로 LLM/MLLM 파운데이션 모델 수록 범위 밖입니다. 1B NVFP4·8B reranker가 retrieval benchmark 선두를 주장하지만, 수치가 nDCG@10(비%)이고 중요도 예외를 적용할 업계 최초·최대 기준점 주장은 확인하지 못했습니다. Nemotron 3.5 Parse(631M)도 문서 추출 전용이라 함께 제외했습니다.",
+    "source": "https://huggingface.co/blog/nvidia/nemotron-retriever-world-class-agentic-retrieval",
+    "reviewed_on": "2026-10-22"
+  },
+  {
+    "id": "excluded-2026-10-20-2",
+    "name": "Voxtral 3 (Transcribe · TTS · Realtime)",
+    "original_name": "Voxtral Small Transcribe 3 · Mini Transcribe 3 · Mini Transcribe Realtime 3 · Mini TTS 3",
+    "date": "2026-10-20",
+    "company": "Mistral AI",
+    "country": "FR",
+    "reason": "음성→텍스트 전사·텍스트→음성 합성 전용 모델군 — ASR/TTS-only 제외 항목에 해당합니다. 같은 발표의 Voxtral 3 Voice Agent SDK는 Mistral Small 4 등 기존 LLM을 오케스트레이션하는 제품 계층이라 별도 모델로 집계하지 않았습니다. 벤치마크도 FLEURS WER·TTS 선호도 등 비% 지표 중심입니다.",
+    "source": "https://mistral.ai/news/voxtral-3/",
+    "reviewed_on": "2026-10-22"
   }
 ];

@@ -57,6 +57,8 @@ OFFICIAL_HOSTS = {
     "ernie.baidu.com",
     # Gensyn open-1b verification record. Added 2026-09-16.
     "gensyn.ai",
+    # Inception Labs official blog/model pages — Mercury 3. Added 2026-10-22.
+    "inceptionlabs.ai",
     "huggingface.co",
     "arxiv.org",
     # Contrastive-LM CLM-8B launch repo (System One model). Added 2026-09-27.
@@ -75,11 +77,16 @@ OFFICIAL_HOSTS = {
     # Moonshot AI official Kimi Code documentation (K2.8 Preview release notes
     # and model configuration). Added 2026-09-19.
     "kimi.com",
+    # KRAFTON AI official Raon site — Raon-1 mini preview. Added 2026-10-22.
+    "krafton.ai",
     "lgresearch.ai",
     # Liquid AI official blog — LFM2.5-24B-A2B launch post and the printed
     # benchmark table (webarena verified + WebArena (vision) rows).
     # Added 2026-10-16.
     "liquid.ai",
+    # MemTensor official site — MemT-1.0 memory-native model family.
+    # Added 2026-10-22.
+    "memtensor.cn",
     "mimo.xiaomi.com",
     # Microsoft AI Lab Notes — MAI-Base-2 pre-training post (excluded-ledger
     # source only). Added 2026-10-16.
@@ -87,6 +94,9 @@ OFFICIAL_HOSTS = {
     # MiniMax developer docs (platform.minimax.io) — M3.1-Flash-Preview spec
     # sheet. Added 2026-09-29.
     "minimax.io",
+    # ElevenLabs official blog/docs — Eleven Realtime v1 Mini/Max.
+    # Added 2026-10-22.
+    "elevenlabs.io",
     # Mistral AI official site (announcement + docs.mistral.ai model pages) —
     # Mistral Large 4 public preview. Added 2026-10-08.
     "mistral.ai",
@@ -135,6 +145,9 @@ OFFICIAL_HOSTS = {
     # — Solar Pro 4 / Solar Mini 4 releases. Added 2026-09-23.
     "upstage.ai",
     "x.ai",
+    # iFLYTEK MaaS model square (maas.xfyun.cn) — Spark-X2.6 official listing.
+    # Added 2026-10-22.
+    "xfyun.cn",
 }
 
 FORBIDDEN_BENCHMARK_TERMS = (

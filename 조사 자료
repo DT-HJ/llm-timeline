@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-10-17** | 활성 레코드: **215개** | 제외 원장: **36개** | 공식 점수가 확인된 모델: **189개** | 공식 점수: **3327개**
+> 최종 감사일: **2026-10-22** | 활성 레코드: **224개** | 제외 원장: **39개** | 공식 점수가 확인된 모델: **190개** | 공식 점수: **3342개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -7587,6 +7587,209 @@
 - 모델 메모: V4.1-Flash(2026-09-10)의 1017 리비전 — 공식 표현은 minor update입니다. 같은 날 동일 모델명(deepseek-flash)의 서빙이 이 리비전으로 교체되고 웹·앱 모델도 함께 갱신됐으며(API 호출 방식·가격 불변), 공식 API에는 검색·fetch가 함께 열렸습니다. 구 리비전 대비 11개 공식 벤치마크가 개선된 파레토 개선판이라 0731·0813 스냅샷과 같은 기준(별도 공식 모델 ID + 신규 공식 점수)으로 별도 레코드로 수록했습니다 — 구 리비전은 model-152에 그대로 보존됩니다. 카드가 task execution time·output length 단축을 명시하며, 가중치는 MIT로 공개됐고 Jinja 채팅 템플릿 없이 encoding.py·deepseek-recipe를 사용합니다.
 - 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-17`
 
+### 216. 2026-10-19 — Mercury 3
+
+- 레코드 ID: `model-226`
+- **공식 모델명:** `Mercury 3`
+- 제공사 / 패밀리: `Inception Labs` / `Mercury`
+- 모델 유형 / 상태: `LLM (diffusion language model)` / `GA`
+- 공개일(레포 기준): `2026-10-19` — [출시일 공식 출처](https://www.inceptionlabs.ai/blog/introducing-mercury-3)
+- **파라미터:** `정확한 수치 미공개 (Mercury 1 대비 40배 이상 규모)` — 공식 수치 미공개
+- 파라미터 출처: [공식 파라미터 출처](https://www.inceptionlabs.ai/blog/introducing-mercury-3)
+- 아키텍처: `텍스트 확산(diffusion) LLM — 자기회귀 토큰 생성 대신 병렬 diffusion 디코딩. Mercury 1 대비 40배 이상 큰 파라미터 규모, NVIDIA GPU에서 1,068 tok/s.`
+- 공식 모델 ID: `mercury-3`
+- 오픈 웨이트: `아니오/호스팅`
+- 공식 모델 출처: [Inception Labs 공식 발표문](https://www.inceptionlabs.ai/blog/introducing-mercury-3), [Inception Labs 모델 페이지](https://www.inceptionlabs.ai/models)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 공식 발표문이 벤치마크를 차트 이미지로만 제시하고 % 수치 표를 인쇄하지 않아 빈 점수로 두었습니다. 속도(1,068 tok/s)·가격은 % 척도가 아니므로 점수표에서 제외했습니다.
+- 모델 메모: Inception Labs의 3세대 diffusion LLM. 발표문이 '지금까지 공개된 가장 강력한 diffusion 기반 LLM'으로 소개하며, Mercury 1보다 40배 이상 큰 규모로 확산 스케일링이 자기회귀 모델과 같은 스케일링 법칙을 따른다고 주장합니다. GPT-6 Luna·Claude Haiku 5.5와 비교해 4~8배 빠른 1,000+ tok/s를 내세우고, 1M 컨텍스트·$0.20/$0.70 per 1M(출시 50% 할인 $0.10/$0.35)을 공식 명시했습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 217. 2026-10-19 — MemT-1.0-Flash
+
+- 레코드 ID: `model-227`
+- **공식 모델명:** `MemT-1.0-Flash`
+- 제공사 / 패밀리: `MemTensor` / `MemT`
+- 모델 유형 / 상태: `LLM (memory-native foundation model)` / `GA`
+- 공개일(레포 기준): `2026-10-19` — [출시일 공식 출처](https://arxiv.org/abs/2610.26825)
+- **파라미터:** `288B total / 17B activated (MoE)` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://github.com/MemTensor/MemT-1.0)
+- 아키텍처: `Native Memory Block(Local Memory + trainable Hyper Memory)와 Mixture-of-Storage(MoS)를 attention과 병렬로 실행하는 memory-native 아키텍처. Gated DeltaNet-2 기반 토큰 단위 메모리 업데이트, DeepSeek-V4-Flash 백본, 3.61B trainable memory·336M dynamic memory state.`
+- 공식 모델 ID: `MemTensor/MemT-1.0-Flash`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/MemTensor/MemT-1.0-Flash), [공식 GitHub 저장소](https://github.com/MemTensor/MemT-1.0), [기술 보고서(arXiv)](https://arxiv.org/abs/2610.26825), [MemTensor 공식 사이트](https://memt.memtensor.cn/)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 기술 보고서·모델 카드의 평가 결과가 그림(figure)으로만 제공되고 % 수치 표가 인쇄되지 않아 빈 점수로 두었습니다. 66× 저장 절감·1.86× 추론 가속은 % 성능 지표가 아니므로 점수표에서 제외했습니다.
+- 모델 메모: MemTensor의 memory-native foundation model 플래그십. 34B 토큰으로 continued pre-training + post-training한 2단계 학습, 128K history에서 full-context KV cache 대비 약 66배 저장 절감을 공식 보고했습니다. 기술 보고서(arXiv 2610.26825)는 11개 메모리 벤치마크에서 Flash·Nano가 평가된 parametric-memory 방법 중 각각 1·2위라고 서술합니다. Flash 가중치는 MIT, Nano는 Apache 2.0으로 공개됐으며 HF 저장소 생성일은 각각 10/17·10/15, 기술 보고서 v1은 10/19입니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 218. 2026-10-19 — MemT-1.0-Nano
+
+- 레코드 ID: `model-228`
+- **공식 모델명:** `MemT-1.0-Nano`
+- 제공사 / 패밀리: `MemTensor` / `MemT`
+- 모델 유형 / 상태: `LLM (memory-native foundation model)` / `GA`
+- 공개일(레포 기준): `2026-10-19` — [출시일 공식 출처](https://arxiv.org/abs/2610.26825)
+- **파라미터:** `36B total / 3B activated (MoE)` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://github.com/MemTensor/MemT-1.0)
+- 아키텍처: `Native Memory Block(Local Memory + trainable Hyper Memory)와 Mixture-of-Storage(MoS)를 attention과 병렬로 실행하는 memory-native 아키텍처. Gated DeltaNet-2 기반 토큰 단위 메모리 업데이트, Qwen3.6-35B-A3B 백본, 451M trainable memory·10M dynamic memory state.`
+- 공식 모델 ID: `MemTensor/MemT-1.0-Nano`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/MemTensor/MemT-1.0-Nano), [공식 GitHub 저장소](https://github.com/MemTensor/MemT-1.0), [기술 보고서(arXiv)](https://arxiv.org/abs/2610.26825), [MemTensor 공식 사이트](https://memt.memtensor.cn/)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 기술 보고서·모델 카드의 평가 결과가 그림(figure)으로만 제공되고 % 수치 표가 인쇄되지 않아 빈 점수로 두었습니다. 1.86× 추론 가속·66× 저장 절감은 % 성능 지표가 아니므로 점수표에서 제외했습니다.
+- 모델 메모: MemT-1.0 패밀리의 경량 모델. Qwen3.6-35B-A3B 백본에 native memory를 결합해 36B total/3B activated로 동작하며, 128K history에서 end-to-end 추론 약 1.86배 가속·full-context KV cache 대비 약 66배 저장 절감을 공식 보고했습니다. LoCoMo 대화 회상과 PerMemSafe 개인화 안전에서 강점을 내세우며 Apache 2.0으로 공개됐습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 219. 2026-10-19 — Clairic
+
+- 레코드 ID: `model-229`
+- **공식 모델명:** `Clairic`
+- 제공사 / 패밀리: `Cloudflare` / `Clairic`
+- 모델 유형 / 상태: `System One / structured extraction` / `Preview`
+- 공개일(레포 기준): `2026-10-19` — [출시일 공식 출처](https://blog.cloudflare.com/clairic-extraction-model/)
+- **파라미터:** `정확한 수치 미공개` — 공식 수치 미공개
+- 파라미터 출처: [공식 파라미터 출처](https://blog.cloudflare.com/clairic-extraction-model/)
+- 아키텍처: `단일 forward pass로 typed field를 디코딩하는 extraction 모델 — text/number/date/time/datetime/duration/list/estimate/forecast 타입, 최대 4개 이미지 입력, 필드가 한 pass에 들어가지 않으면 병렬 pass로 분할. 토큰을 생성하지 않음.`
+- 공식 모델 ID: `clairic`
+- 오픈 웨이트: `아니오/호스팅`
+- 공식 모델 출처: [Cloudflare 공식 블로그](https://blog.cloudflare.com/clairic-extraction-model/), [Cloudflare Workers AI 체인지로그](https://developers.cloudflare.com/changelog/post/2026-10-19-clairic-workers-ai/)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 공식 발표문에 % 척도 벤치마크 표가 없고(정성 설명·예시 JSON만) Decision Index/JevBench 같은 수치도 인쇄되지 않아 빈 점수로 두었습니다.
+- 모델 메모: Cloudflare가 공개한 System One extraction model의 첫 사례. 기존 decision model(Clef)이 선택지 확률을 반환하는 것과 달리, Clairic은 입력에서 값을 추출·계산·추정·예측해 타입이 보장된 값과 confidence·p_null을 반환합니다. Workers AI에 프리뷰로 공개됐고 open weights는 추후 공개 예고입니다. 날짜가 확정되지 않은 값은 null로 반환하는 등 LLM식 환각을 구조적으로 줄이는 접근을 내세웁니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 220. 2026-10-20 — H2O-Lightning-31B
+
+- 레코드 ID: `model-230`
+- **공식 모델명:** `H2O-Lightning-31B`
+- 제공사 / 패밀리: `H2O.ai` / `H2O-Lightning`
+- 모델 유형 / 상태: `System One / structured decision` / `GA`
+- 공개일(레포 기준): `2026-10-20` — [출시일 공식 출처](https://huggingface.co/h2oai/h2o-lightning-31b)
+- **파라미터:** `31B` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/h2oai/h2o-lightning-31b)
+- 아키텍처: `Gemma 4 31B IT 기반 decision model — choice/yes-no(noul)/score를 한 번의 forward pass·한 출력 토큰으로 반환. 레코드 텍스트와 최대 이미지 입력을 함께 읽고, vLLM 0.30.0 + shim으로 서빙. 131,072 컨텍스트, FP8/BF16.`
+- 공식 모델 ID: `h2oai/h2o-lightning-31b`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/h2oai/h2o-lightning-31b)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 공식 카드가 Decision Index(0~100 지수)와 JevBench 공개 문항 원자료(216/231 등)를 제시하지만 % 척도 점수표가 아니어서 빈 점수로 두었습니다. JevBench 보드 순위는 제3자 리더보드라 수록하지 않았습니다.
+- 모델 메모: H2O.ai의 31B System One decision model. Gemma 4 31B IT를 기반으로 typed decision(choice·yes/no·score)과 이미지 입력을 지원하며, 131,072 토큰 컨텍스트에서 레코드를 통째로 읽습니다. 4B sibling(Apache 2.0)과 달리 H2O Model Non-Commercial Licence v1.1로 공개됐고, HF 저장소는 2026-10-20 생성·v1.0.7 카드 기준입니다. Decision Index·JevBench 수치는 0~100 지수/리더보드 원자료라 % 점수표에는 넣지 않았습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 221. 2026-10-20 — Eleven Realtime v1 Max
+
+- 레코드 ID: `model-231`
+- **공식 모델명:** `Eleven Realtime v1 Max`
+- 제공사 / 패밀리: `ElevenLabs` / `Eleven Realtime`
+- 모델 유형 / 상태: `MLLM / omni (full-duplex speech-to-speech)` / `GA`
+- 공개일(레포 기준): `2026-10-20` — [출시일 공식 출처](https://elevenlabs.io/blog/realtime)
+- **파라미터:** `정확한 수치 미공개` — 공식 수치 미공개
+- 파라미터 출처: [공식 파라미터 출처](https://elevenlabs.io/docs/eleven-agents/customization/realtime-models)
+- 아키텍처: `음성 인식·턴테이킹·LLM·TTS를 end-to-end로 묶은 cascaded speech-to-speech 모델. Max는 응답 전에 추론(reasoning)하고 다단계 도구 호출을 수행. OpenAI Realtime API 호환 WebSocket.`
+- 공식 모델 ID: `eleven_realtime_v1_max`
+- 오픈 웨이트: `아니오/호스팅`
+- 공식 모델 출처: [ElevenLabs 공식 발표문](https://elevenlabs.io/blog/realtime), [ElevenLabs Realtime 모델 문서](https://elevenlabs.io/docs/eleven-agents/customization/realtime-models)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 공식 발표문의 모든 수치가 Artificial Analysis의 독립 평가(Big Bench Audio 98.8%·Full-Duplex-Bench 94.1%)이거나 Speech Agent Arena Elo(998), 비% 지연(0.57s)이라 점수표에서 제외했습니다.
+- 모델 메모: ElevenLabs가 공개한 full-duplex speech-to-speech 모델 패밀리의 상위 모델. v1 Mini와 함께 2026-10-20 공개됐고, 90개 이상 언어·17,000개 이상 voice를 지원합니다. Max는 복잡한 지시·다단계 도구 호출을 위해 응답 전에 추론하며, 공식 문서는 Zero Retention Mode·HIPAA(US/EU)를 지원한다고 명시합니다. Grok Voice 3.0과 같은 full-duplex S2S 부류로 옴니 계열에 수록했습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 222. 2026-10-20 — Eleven Realtime v1 Mini
+
+- 레코드 ID: `model-232`
+- **공식 모델명:** `Eleven Realtime v1 Mini`
+- 제공사 / 패밀리: `ElevenLabs` / `Eleven Realtime`
+- 모델 유형 / 상태: `MLLM / omni (full-duplex speech-to-speech)` / `GA`
+- 공개일(레포 기준): `2026-10-20` — [출시일 공식 출처](https://elevenlabs.io/blog/realtime)
+- **파라미터:** `정확한 수치 미공개` — 공식 수치 미공개
+- 파라미터 출처: [공식 파라미터 출처](https://elevenlabs.io/docs/eleven-agents/customization/realtime-models)
+- 아키텍처: `음성 인식·턴테이킹·LLM·TTS를 end-to-end로 묶은 cascaded speech-to-speech 모델. Mini는 최저 지연·비용에 최적화. OpenAI Realtime API 호환 WebSocket.`
+- 공식 모델 ID: `eleven_realtime_v1_mini`
+- 오픈 웨이트: `아니오/호스팅`
+- 공식 모델 출처: [ElevenLabs 공식 발표문](https://elevenlabs.io/blog/realtime), [ElevenLabs Realtime 모델 문서](https://elevenlabs.io/docs/eleven-agents/customization/realtime-models)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 공식 발표문의 모든 수치가 Artificial Analysis의 독립 평가(Big Bench Audio 75.9%·Full-Duplex-Bench 95.8%)이거나 Speech Agent Arena Elo(988), 비% 지연(0.62s)·도구 성공률(60.3%)이라 점수표에서 제외했습니다.
+- 모델 메모: ElevenLabs full-duplex speech-to-speech 패밀리의 기본(저지연·저비용) 모델. v1 Max와 함께 2026-10-20 공개됐고, 90개 이상 언어·17,000개 이상 voice를 지원합니다. ElevenAgents 기본 Realtime 모델이며, 공식 문서는 Zero Retention Mode·HIPAA(US/EU) 미지원을 명시합니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 223. 2026-10-21 — Raon-1 mini
+
+- 레코드 ID: `model-233`
+- **공식 모델명:** `Raon-1 mini`
+- 제공사 / 패밀리: `KRAFTON` / `Raon`
+- 모델 유형 / 상태: `LLM (hybrid linear-attention MoE)` / `Preview`
+- 공개일(레포 기준): `2026-10-21` — [출시일 공식 출처](https://raon-mini.krafton.ai/en)
+- **파라미터:** `28.8B total / 4.3B activated (30B-A4B)` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- 아키텍처: `하이브리드 MoE — 25층 중 18층 Raon Delta Attention(RDA, Kimi Delta Attention의 erase/write gate 분리) + 7층 gated MLA. 128 routed experts 중 6개 + 1 shared 활성, Raon-mHC residual(4 streams), NoPE, SiTU-GLU, 259,840 vocab. DFlash2 draft model로 추측 디코딩 지원.`
+- 공식 모델 ID: `KRAFTON/Raon-1-mini-preview`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/KRAFTON/Raon-1-mini-preview), [KRAFTON AI 공식 Raon 사이트](https://raon-mini.krafton.ai/en)
+
+#### 공식 발표 벤치마크 점수
+
+- `MMLU Pro`: **76.5%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `GPQA Diamond`: **84.3%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `AIME 2026`: **93.3%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `HMMT Feb 2026`: **84.1%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `IFBench`: **84.2%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `MultiChallenge`: **59.0%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `LiveCodeBench v6`: **81.6%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `SciCode`: **38.7%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `SWE-Verified`: **70.8%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `Terminal-Bench Lite`: **47.0%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `GDPVal`: **66.0%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `AutomationBench`: **29.7%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `BrowseComp Plus`: **55.7%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `BFCL v4 Overall`: **59.8%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- `Chatbot Korean (internal)`: **92.9%** — [공식 출처](https://huggingface.co/KRAFTON/Raon-1-mini-preview)
+- 점수 메모: HF 공식 카드의 표에서 Raon-1 mini preview 열 15개 % 점수를 수록했습니다. 같은 표의 AA-Omniscience 3.5·AA-LCR 67.3·GDP.pdf 5.8은 Artificial Analysis 결과 출처라 제외했고, GDPVal은 judge score(비 Elo), AutomationBench는 public split, Chatbot Korean (internal)은 비공개 내부 평가라는 조건을 원장 메모에 남겼습니다. judge/user simulator는 gpt-5.6-luna로 카드에 명시됐습니다.
+- 모델 메모: KRAFTON AI가 모델 설계부터 학습까지 처음부터 수행한 첫 Raon 언어 모델(30B-A4B). 2026-04 Raon 브랜드(음성·비전 모델 4종) 이후 첫 텍스트 LLM으로, 18개 선형 어텐션(RDA) + 7개 gated MLA 하이브리드·262,144 컨텍스트·Apache 2.0 가중치를 공개했습니다. 프리뷰이며 정식 버전과 학습 과정·최종 성능을 담은 기술 보고서를 추후 공개한다고 밝혔습니다. HF 카드가 비교 모델(Qwen3.6-35B-A3B·Gemma 4 26B-A4B·Qwen3.8-27B·Muse Glimmer 30B)과 함께 15개 % 점수를 인쇄해 수록했습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
+### 224. 2026-10-21 — Spark-X2.6-4B
+
+- 레코드 ID: `model-234`
+- **공식 모델명:** `Spark-X2.6-4B`
+- 제공사 / 패밀리: `iFLYTEK` / `Spark`
+- 모델 유형 / 상태: `LLM (on-device)` / `GA`
+- 공개일(레포 기준): `2026-10-21` — [출시일 공식 출처](https://huggingface.co/XHToken)
+- **파라미터:** `4B` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/XHToken/Spark-X2.6-4B)
+- 아키텍처: `Spark-X2.5-4B와 동일 아키텍처를 유지하고 post-training을 개선한 4B on-device LLM. 최대 1,048,576 토큰 컨텍스트, none/low/high 3단계 thinking budget, tool calling·agentic workflow 지원.`
+- 공식 모델 ID: `XHToken/Spark-X2.6-4B`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/XHToken/Spark-X2.6-4B), [SparkLLM 공식 Hugging Face 조직](https://huggingface.co/XHToken), [iFLYTEK MaaS 모델 페이지](https://maas.xfyun.cn/modelSquare/base/2628905721051136?sort=0)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 공식 카드의 벤치마크가 SVG 이미지(all_benchmark.svg·benchmark.svg)로만 제공되어 텍스트 % 수치가 인쇄되지 않았습니다. 성능 근거는 카드의 서술·차트이며 점수표에는 넣지 않았습니다.
+- 모델 메모: iFLYTEK(科大讯飞) SparkLLM 팀의 온디바이스 4B 모델. X2.5-4B와 동일 아키텍처에 post-training 개선만으로 coding·agent·long-context·multilingual·reasoning을 끌어올렸다고 공식 카드가 설명합니다. 2026-10-21 Hugging Face·ModelScope·Ollama 글로벌 런칭(저장소 생성 10/19), iFLYTEK MaaS 모델 스퀘어에도 'Spark-X2.6 신세대 범용 플래그십'으로 등재돼 공식 조직 귀속을 확인했습니다. 2026-09-08 감사에서 1차 출처 미확보로 보류했던 Spark X2.5의 후속 세대입니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
 ## 제외·보류한 기존 레코드
 
 ### `model-045` — LongCat-2.0 Preview
@@ -7805,6 +8008,24 @@
 - 제외 사유: 2.8T-80B MoE 사전학습 완료 공표는 확정(16,000 GB200·38일·EU 규제 컴퓨트 10^25.9)하지만 가중치·API·모델 카드가 없고 포스트트레이닝 중 — '1차 출처 URL이 아직 없는 릴리스' 보류(Reflection Beam 선례). Foundry 라이선싱 창구가 열리면 재검토.
 - 확인 출처: [공식 1차 출처](https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/)
 
+### `excluded-2026-10-21-1` — Cohere Rerank 5 (Pro · Fast)
+
+- 원래 이름: `rerank-v5.0-pro · rerank-v5.0-fast`
+- 제외 사유: 임베딩·리랭커 부류의 검색 리랭킹 모델 — Cohere가 '가장 진보한 엔터프라이즈 retrieval 모델'이라며 ViDoRe V3·nanoMTEB·BRIGHT·BEIR 선두를 주장하지만, 공개 수치가 RCP-nDCG@10(비% 척도)이고 LLM/MLLM 파운데이션 모델이 아니라 검색 파이프라인 구성요소입니다. 2026-10-15 중요도 예외는 멀티모달 통합 임베딩(EmbeddingGemma 2)에 적용한 선례이며, 리랭커에는 같은 기준을 적용하지 않았습니다. % 점수표가 공개되면 재검토.
+- 확인 출처: [공식 1차 출처](https://cohere.com/blog/rerank-5)
+
+### `excluded-2026-10-20-1` — Nemotron 3.5 Embed 1B·8B / Rerank 8B
+
+- 원래 이름: `Nemotron-3.5-Embed-8B-BF16 · Embed-1B-BF16 · Embed-1B-NVFP4 · Rerank-8B-BF16`
+- 제외 사유: 멀티모달 임베딩·리랭커 부류(8.38B/1.55B, ViDoRe v3.1·MIRACL Vision nDCG@10) — 검색 파이프라인 구성요소로 LLM/MLLM 파운데이션 모델 수록 범위 밖입니다. 1B NVFP4·8B reranker가 retrieval benchmark 선두를 주장하지만, 수치가 nDCG@10(비%)이고 중요도 예외를 적용할 업계 최초·최대 기준점 주장은 확인하지 못했습니다. Nemotron 3.5 Parse(631M)도 문서 추출 전용이라 함께 제외했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/blog/nvidia/nemotron-retriever-world-class-agentic-retrieval)
+
+### `excluded-2026-10-20-2` — Voxtral 3 (Transcribe · TTS · Realtime)
+
+- 원래 이름: `Voxtral Small Transcribe 3 · Mini Transcribe 3 · Mini Transcribe Realtime 3 · Mini TTS 3`
+- 제외 사유: 음성→텍스트 전사·텍스트→음성 합성 전용 모델군 — ASR/TTS-only 제외 항목에 해당합니다. 같은 발표의 Voxtral 3 Voice Agent SDK는 Mistral Small 4 등 기존 LLM을 오케스트레이션하는 제품 계층이라 별도 모델로 집계하지 않았습니다. 벤치마크도 FLEURS WER·TTS 선호도 등 비% 지표 중심입니다.
+- 확인 출처: [공식 1차 출처](https://mistral.ai/news/voxtral-3/)
+
 ## 패밀리 흐름
 
 - **Qwen:** `Qwen3.5` → `Qwen3.6` → `Qwen3.7` → `Qwen3.8` → `Qwen3.8-Flash-Next` → `Qwen3.8-Omni-Flash`
@@ -7829,6 +8050,13 @@
 - **JEV:** `JEV-9B` → `JEV-27B`
 - **Step:** `Step 3.5 Flash` → `Step 3.7 Flash` → `Step 5 Preview`
 - **Muse Wonder:** `Muse Wonder` → `Muse Wonder Full`
+- **Raon:** `Raon-1 mini`
+- **Mercury:** `Mercury 1` → `Mercury 2` → `Mercury 2.5` → `Mercury 3`
+- **MemT:** `MemT-1.0-Nano` → `MemT-1.0-Flash`
+- **Clairic:** `Clairic`
+- **H2O-Lightning:** `H2O-Lightning-4B` → `H2O-Lightning-31B`
+- **Eleven Realtime:** `Eleven Realtime v1 Mini` → `Eleven Realtime v1 Max`
+- **Spark:** `Spark-X2.5` → `Spark-X2.6-4B`
 
 ## 재현 명령
 
