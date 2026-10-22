@@ -170,3 +170,16 @@ Validation:
 Open:
 - SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
 - 제외 원장 미등재 2건(**GPT-Live-1.1 / 1.1 Quip**, **Timestral**) 등재 여부 — 운영자 판단 대기
+
+## [2026-10-22] update | UI overhaul review, excluded-ledger additions, SCHEMA 0.4.0 and English migration
+
+Source HEAD: fa349406b3cbba3a843cf88a64268c5f95b0bda1
+Wiki:
+- reviewed, no edit: components/web-dashboard.md, runbooks/audit-update.md, current.md and log.md as changed in `3be62fb` (hand-made commit without the run trailer) — checked against `app.js` (`FLAG_CODES`, `THEME_KEY`, `CATEGORY_GROUPS`, `AXIS_*`, `lockScrollSpy`, `buildIndexes`, `setCompanyFilter`), `style.css` axis padding and `index.html` `?v=20261022`; accurate, kept as is
+- reviewed, no edit: SCHEMA.md, index.md, overview.md, current.md, components/catalog-pipeline.md as changed in `fa34940` (user-approved work-unit commit made before this run's commit)
+- SCHEMA migrated 0.3.1 → 0.4.0 (in `fa34940`); `wiki-language` ko → en by user approval — bootstrap set (index, overview, current) is English; components/ and runbooks/ stay largely Korean until substantively rewritten
+- source range `37b83e1..fa34940` (20 paths: UI overhaul `fef579e`, excluded-ledger additions `7e7dfde`) is reflected in web-dashboard.md, current.md, and catalog-pipeline.md
+Validation:
+- python3 /Users/studio/.claude/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 0 warnings)
+Open:
+- Push and the live Pages check for `7e7dfde`/`fa34940` and this entry are done after this commit, outside the wiki run
