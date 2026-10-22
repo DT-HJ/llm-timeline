@@ -18443,6 +18443,70 @@ const TIMELINE_DATA = [
       "reviewed_on": "2026-10-22",
       "policy": "official-primary-only"
     }
+  },
+  {
+    "id": "model-235",
+    "name": "Hy-Memory-30B-A3B",
+    "date": "2026-10-15",
+    "sortDate": "2026-10-15",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Tencent",
+    "family": "Hy-Memory",
+    "type": "LLM (memory-specialized writer)",
+    "category": "Memory",
+    "status": "GA",
+    "parameters": "30B total / 3B active (A3B MoE)",
+    "parameter_status": "verified",
+    "architecture": "Hy3-A3B 기반 MoE 메모리 writer — 외부 메모리 프레임워크의 write path를 전담해 보존할 정보·표현 방식·기존 메모리 갱신을 결정. Memory On-Policy Distillation(OPD) → Attributed Memory Reinforcement Learning 2단계 학습, vLLM 0.31.0·OpenAI 호환 API.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "long-term memory",
+      "memory writing/update",
+      "agent memory",
+      "personalization"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "",
+    "languages": "English, Chinese",
+    "variants": [],
+    "reasoning_effort": [
+      "no_think"
+    ],
+    "availability": "Hugging Face(tencent/Hy-Memory-30B-A3B), Hy-Memory framework(GitHub), vLLM 0.31.0 OpenAI-compatible server",
+    "note": "Tencent Hunyuan의 Hy-Memory 2.0 모델 파트. 일반 채팅 LLM이 아니라 Mem0·MemOS·Hy-Memory(Chat/Working/Coding)의 write path에서 범용 LLM을 대체하는 메모리 writer 특화 모델입니다. Hy3-A3B Base를 기반으로 30B total/3B active MoE로 동작하며, OPD와 attributed memory RL 2단계 학습으로 메모리 뱅크를 갱신하고 학습에 없던 EverMemOS로 전이됩니다. 공식 카드는 4개 하네스 6지표 동일 비중 평균 55.49(Opus 5 54.62·DeepSeek V4.1 Flash 53.64·Hy3 51.63·Qwen3.6-35B-A3B 50.37·Hy3-A3B Base 47.66)를 보고합니다. Apache 2.0 가중치가 2026-10-15 HF에 공개됐고, 10/16 감사 커밋(12:29 KST)이 카드 최종 갱신(17:12 KST)보다 앞서 당시 후보에서 누락됐다가 이번 재조사에서 소급 수록했습니다.",
+    "benchmarks": {},
+    "benchmark_sources": {},
+    "benchmark_note": "공식 카드의 55.49는 Mem0·Hy-Memory·MemOS·EverMemOS 4개 하네스에서 6개 지표(LoCoMo Judge·LongMemEval·PersonaMem-v2·Travel SPS·Shopping PS·CMB)를 동일 비중으로 평균한 0~100 집계이며, 전체가 아닌 고정 20% 서브샘플 결과입니다. % 단일 벤치마크 표가 아니어서 점수표에는 넣지 않았습니다.",
+    "official_id": "tencent/Hy-Memory-30B-A3B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/tencent/Hy-Memory-30B-A3B"
+      },
+      {
+        "label": "Hy-Memory 2.0 공식 페이지",
+        "url": "https://memory.hunyuan.tencent.com/en/"
+      },
+      {
+        "label": "공식 GitHub 저장소",
+        "url": "https://github.com/Tencent-Hunyuan/Hy-Memory"
+      },
+      {
+        "label": "기술 보고서(arXiv)",
+        "url": "https://arxiv.org/pdf/2610.22196"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+    "parameter_source": "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-22",
+      "policy": "official-primary-only"
+    }
   }
 ];
 
@@ -19100,6 +19164,13 @@ const FAMILY_FLOWS = [
     "steps": [
       "Spark-X2.5",
       "Spark-X2.6-4B"
+    ]
+  },
+  {
+    "family": "Hy-Memory",
+    "steps": [
+      "Hy3-A3B Base",
+      "Hy-Memory-30B-A3B"
     ]
   }
 ];

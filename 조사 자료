@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-10-22** | 활성 레코드: **224개** | 제외 원장: **39개** | 공식 점수가 확인된 모델: **190개** | 공식 점수: **3342개**
+> 최종 감사일: **2026-10-22** | 활성 레코드: **225개** | 제외 원장: **39개** | 공식 점수가 확인된 모델: **190개** | 공식 점수: **3342개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -7790,6 +7790,27 @@
 - 모델 메모: iFLYTEK(科大讯飞) SparkLLM 팀의 온디바이스 4B 모델. X2.5-4B와 동일 아키텍처에 post-training 개선만으로 coding·agent·long-context·multilingual·reasoning을 끌어올렸다고 공식 카드가 설명합니다. 2026-10-21 Hugging Face·ModelScope·Ollama 글로벌 런칭(저장소 생성 10/19), iFLYTEK MaaS 모델 스퀘어에도 'Spark-X2.6 신세대 범용 플래그십'으로 등재돼 공식 조직 귀속을 확인했습니다. 2026-09-08 감사에서 1차 출처 미확보로 보류했던 Spark X2.5의 후속 세대입니다.
 - 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
 
+### 225. 2026-10-15 — Hy-Memory-30B-A3B
+
+- 레코드 ID: `model-235`
+- **공식 모델명:** `Hy-Memory-30B-A3B`
+- 제공사 / 패밀리: `Tencent` / `Hy-Memory`
+- 모델 유형 / 상태: `LLM (memory-specialized writer)` / `GA`
+- 공개일(레포 기준): `2026-10-15` — [출시일 공식 출처](https://huggingface.co/tencent/Hy-Memory-30B-A3B)
+- **파라미터:** `30B total / 3B active (A3B MoE)` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/tencent/Hy-Memory-30B-A3B)
+- 아키텍처: `Hy3-A3B 기반 MoE 메모리 writer — 외부 메모리 프레임워크의 write path를 전담해 보존할 정보·표현 방식·기존 메모리 갱신을 결정. Memory On-Policy Distillation(OPD) → Attributed Memory Reinforcement Learning 2단계 학습, vLLM 0.31.0·OpenAI 호환 API.`
+- 공식 모델 ID: `tencent/Hy-Memory-30B-A3B`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/tencent/Hy-Memory-30B-A3B), [Hy-Memory 2.0 공식 페이지](https://memory.hunyuan.tencent.com/en/), [공식 GitHub 저장소](https://github.com/Tencent-Hunyuan/Hy-Memory), [기술 보고서(arXiv)](https://arxiv.org/pdf/2610.22196)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 공식 카드의 55.49는 Mem0·Hy-Memory·MemOS·EverMemOS 4개 하네스에서 6개 지표(LoCoMo Judge·LongMemEval·PersonaMem-v2·Travel SPS·Shopping PS·CMB)를 동일 비중으로 평균한 0~100 집계이며, 전체가 아닌 고정 20% 서브샘플 결과입니다. % 단일 벤치마크 표가 아니어서 점수표에는 넣지 않았습니다.
+- 모델 메모: Tencent Hunyuan의 Hy-Memory 2.0 모델 파트. 일반 채팅 LLM이 아니라 Mem0·MemOS·Hy-Memory(Chat/Working/Coding)의 write path에서 범용 LLM을 대체하는 메모리 writer 특화 모델입니다. Hy3-A3B Base를 기반으로 30B total/3B active MoE로 동작하며, OPD와 attributed memory RL 2단계 학습으로 메모리 뱅크를 갱신하고 학습에 없던 EverMemOS로 전이됩니다. 공식 카드는 4개 하네스 6지표 동일 비중 평균 55.49(Opus 5 54.62·DeepSeek V4.1 Flash 53.64·Hy3 51.63·Qwen3.6-35B-A3B 50.37·Hy3-A3B Base 47.66)를 보고합니다. Apache 2.0 가중치가 2026-10-15 HF에 공개됐고, 10/16 감사 커밋(12:29 KST)이 카드 최종 갱신(17:12 KST)보다 앞서 당시 후보에서 누락됐다가 이번 재조사에서 소급 수록했습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-22`
+
 ## 제외·보류한 기존 레코드
 
 ### `model-045` — LongCat-2.0 Preview
@@ -8057,6 +8078,7 @@
 - **H2O-Lightning:** `H2O-Lightning-4B` → `H2O-Lightning-31B`
 - **Eleven Realtime:** `Eleven Realtime v1 Mini` → `Eleven Realtime v1 Max`
 - **Spark:** `Spark-X2.5` → `Spark-X2.6-4B`
+- **Hy-Memory:** `Hy3-A3B Base` → `Hy-Memory-30B-A3B`
 
 ## 재현 명령
 

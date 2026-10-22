@@ -141,6 +141,9 @@ OFFICIAL_HOSTS = {
     # TypeSafe AI official blog (typesafe.ai) and docs (docs.typesafe.ai)
     # — Jev / System One launch. Added 2026-09-23.
     "typesafe.ai",
+    # Tencent Hunyuan official site (memory.hunyuan.tencent.com) — Hy-Memory 2.0
+    # and the Hy-Memory-30B-A3B memory writer. Added 2026-10-22.
+    "tencent.com",
     # Upstage official blog (upstage.ai) and Console docs (console.upstage.ai)
     # — Solar Pro 4 / Solar Mini 4 releases. Added 2026-09-23.
     "upstage.ai",
