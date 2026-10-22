@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-10-22** | 활성 레코드: **225개** | 제외 원장: **39개** | 공식 점수가 확인된 모델: **190개** | 공식 점수: **3342개**
+> 최종 감사일: **2026-10-22** | 활성 레코드: **225개** | 제외 원장: **41개** | 공식 점수가 확인된 모델: **190개** | 공식 점수: **3342개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -8046,6 +8046,18 @@
 - 원래 이름: `Voxtral Small Transcribe 3 · Mini Transcribe 3 · Mini Transcribe Realtime 3 · Mini TTS 3`
 - 제외 사유: 음성→텍스트 전사·텍스트→음성 합성 전용 모델군 — ASR/TTS-only 제외 항목에 해당합니다. 같은 발표의 Voxtral 3 Voice Agent SDK는 Mistral Small 4 등 기존 LLM을 오케스트레이션하는 제품 계층이라 별도 모델로 집계하지 않았습니다. 벤치마크도 FLEURS WER·TTS 선호도 등 비% 지표 중심입니다.
 - 확인 출처: [공식 1차 출처](https://mistral.ai/news/voxtral-3/)
+
+### `excluded-2026-10-15-2` — GPT-Live-1.1 / GPT-Live-1.1 Quip
+
+- 원래 이름: `GPT-Live-1.1 · GPT-Live-1.1 Quip`
+- 제외 사유: 기존 GPT-Live-1(model-137)·GPT-Live-1 mini(model-138)의 후속 버전으로 ChatGPT 음성(Codex·Dots 포함)의 기본 음성 모델을 교체한 배포 갱신 — 공식 시스템 카드는 안전·정렬 평가만 담고 별도 API 모델 ID·신규 능력 벤치마크 점수가 없으며, API 제공도 아직 열리지 않았습니다. 별도 모델 ID·신규 점수가 없는 배포 갱신은 중복 집계하지 않는 선례(GPT-6 Sol/Luna October update)에 따라 제외합니다. API 모델 ID나 공식 능력 점수가 공개되면 재검토.
+- 확인 출처: [공식 1차 출처](https://deploymentsafety.openai.com/gpt-live-1-1)
+
+### `excluded-2026-10-15-3` — Timestral (5M · 28M · 123M · 209M)
+
+- 원래 이름: `Timestral-5M · Timestral-28M · Timestral-123M · Timestral-209M`
+- 제외 사유: 시계열 예측 전용 모델군(5M~209M, 32,768 step 컨텍스트, 21분위 확률·다변량 예측, Modified MIT 가중치 공개) — 텍스트·멀티모달 이해/생성 능력이 없는 수치 예측 모델이라 LLM/MLLM 수록 범위 밖입니다. 209M이 GIFT-Eval·TIME·fev-bench 제로샷 1위를 주장하지만 지표가 MASE·WQL·CRPS(비% 척도)이고, 2026-10-15 중요도 예외는 언어·멀티모달 인접 부류(임베딩·이미지/음악 생성·메모리)에 적용한 선례라 시계열 예측 부류로 넓히지 않았습니다. 10/16 감사에서 제외로 판정했으나 원장 등재가 누락돼 2026-10-22 운영자 결정으로 등재.
+- 확인 출처: [공식 1차 출처](https://mistral.ai/news/timestral)
 
 ## 패밀리 흐름
 
