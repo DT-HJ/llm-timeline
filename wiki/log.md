@@ -154,3 +154,19 @@ Open:
 - SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
 - 제외 원장 미등재 2건(**GPT-Live-1.1 / 1.1 Quip**, **Timestral**) 등재 여부 — 운영자 판단 대기
 - 다음 감사에서 직전 창구(10/15~10/16) HF 신규 repo 재확인 · 보류·재조사: Reflection AI Beam · Ling-3.1-flash · OpenCSG Agentic-27B · Heimr 570M · Muse Video · Gemini 4 Argon
+
+## [2026-10-22] update | 대시보드 UI 개편 (필터·다크 모드·스크롤스파이·월 칩 자동화·자산 캐시 버전)
+
+Source HEAD: fef579e915de05eac859a92a845ba3f74a55efca
+Wiki:
+- updated components/web-dashboard.md — 현 구현으로 재작성: 필터 상태(activeGroup·openOnly·activeCompany), CATEGORY_GROUPS, 데이터 기반 월 칩, 스크롤스파이 잠금, 테마 키, 휠 축 상수-CSS 쌍 불변식, assets/flags·FLAG_CODES, Pages legacy 서빙과 수동 `?v=` 캐시 버전, benchmark_sources 중복 제거 보류 사유
+- updated current.md — Working에 UI 개편·브라우저 확인 관측 추가, 카테고리 색상/필터 미구현 항목 삭제, 미구현 목록을 상태 필터·뷰·CSV로 축소, "월 칩 하드코딩" 리스크를 신규 국가·별칭 수동·웹폰트 의존·수동 캐시 버전 리스크로 교체
+- updated runbooks/audit-update.md — 신규 국가 코드 시 국기 SVG·FLAG_CODES 추가, 월 칩 수동 추가 단계 삭제(자동 생성)
+- reviewed, no edit: index.md·overview.md — 페이지 구성·상위 아키텍처(index.html + app.js + style.css 정적 대시보드) 변화 없음
+Validation:
+- python3 validate_data.py — PASS (`OK: 225 models, 39 excluded, 190 with official scores`)
+- Playwright 수동 확인 — 라이트 1440·1024·820·390px, 다크 1440·1280·1024·820·390px; 휠 축 분리·필터 개수·월 칩 유지·스크롤스파이·해시·포커스 복원, 콘솔 에러 0 (host local)
+- gh api repos/DT-HJ/llm-timeline/pages — build_type `legacy` (main `/`) → 워크플로 산출물 변형은 라이브에 반영되지 않음을 확인하고 SHA 스탬프 대신 수동 버전 채택
+Open:
+- SCHEMA 0.3.1 → 0.4.0 마이그레이션(언어 정책 문단) — 사용자 승인 대기, 매 런 Open에 유지
+- 제외 원장 미등재 2건(**GPT-Live-1.1 / 1.1 Quip**, **Timestral**) 등재 여부 — 운영자 판단 대기

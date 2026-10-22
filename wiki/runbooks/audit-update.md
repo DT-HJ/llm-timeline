@@ -27,9 +27,9 @@ updated: 2026-10-22
    - 파라미터: 공식 명시값 + `parameter_status`; 미공개는 `정확한 수치 미공개` + `undisclosed`.
    - 점수: 공식 인쇄분만 `benchmarks{}`에, 각각 `benchmark_sources{}`에 출처 URL. 없으면 빈 객체 + `benchmark_note`에 사유.
    - `release_date_source`·`parameter_source`는 반드시 `official_sources`에도 나열.
-   - 신규 조직은 `company_meta`에 `country`/`flag`/`color`/`badge` 추가(뒤에 append 관례). 검색 별칭이 필요하면 `app.js`의 한국어 alias 맵도 갱신.
+   - 신규 조직은 `company_meta`에 `country`/`flag`/`color`/`badge` 추가(뒤에 append 관례 — UI는 `country`만 사용). 처음 보는 국가 코드면 `assets/flags/<code>.svg`를 받고 `app.js` `FLAG_CODES`에 추가(`assets/flags/README.md`). 검색 별칭이 필요하면 `app.js` `buildIndexes`의 한국어 alias 규칙도 갱신.
    - 패밀리 세대 진전이 있으면 `family_flows` 갱신. `as_of`, `scope.reviewed_on` 갱신.
-   - 기간의 새 월(예: `2026-10`)에 첫 모델을 수록하면 `index.html` 월 버튼과 `app.js` `months` 배열에 그 월을 함께 추가한다. 대상 컬럼 없는 빈 월 칩은 `jumpToMonth`가 active 표시만 남기므로 모델보다 먼저 넣지 않는다.
+   - 월 칩은 `TIMELINE_DATA`의 날짜에서 자동 생성된다(2026-10-22부터) — 새 월 첫 수록 시 `index.html`·`app.js` 수정 불필요.
 5. **호스트 등록**: 새로 인용하는 발행사 도메인이 `validate_data.py`의 `OFFICIAL_HOSTS`에 없으면 추가.
 6. **재생성·검증**: `python3 build_data.py` → `python3 validate_data.py`. 가능하면 `python3 validate_data.py --check-urls`까지.
 7. **README 갱신**: 헤더 통계(모델 수·조직 수), 감사 추가분 절, 제외 원장 카운트, 조직 목록, 되돌림·중요도 예외 각주. 정책을 개정했다면 `wiki/overview.md`의 Non-goals와 본 런북 3단계도 함께 고친다.
