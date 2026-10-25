@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "as_of": "2026-10-22",
+  "as_of": "2026-10-25",
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
   "models": [
@@ -15152,7 +15152,7 @@
         "max"
       ],
       "availability": "MiniMax Code·Token Plan",
-      "note": "MiniMax의 최신 텍스트 생성 모델 — 9/27 MiniMax Code에 선공개 후 9/28 공개 테스트. 네이티브 멀티모달 입력(텍스트·이미지·비디오, 텍스트 출력)·1M 컨텍스트·5단계 thinking depth. 현재 MiniMax Code·Token Plan에서만 제공(종량제 API 미오픈). 개발자 커뮤니티는 OpenRouter 스텔스 'Space Bunny Alpha'와 동일 모델 가능성을 추정했으나 공식 확인 없음(제외 원장 참조).",
+      "note": "MiniMax의 최신 텍스트 생성 모델 — 9/27 MiniMax Code에 선공개 후 9/28 공개 테스트. 네이티브 멀티모달 입력(텍스트·이미지·비디오, 텍스트 출력)·1M 컨텍스트·5단계 thinking depth. 현재 MiniMax Code·Token Plan에서만 제공(종량제 API 미오픈). 개발자 커뮤니티는 OpenRouter 스텔스 'Space Bunny Alpha'와 동일 모델 가능성을 추정했으나 공식 확인 없음(제외 원장 참조). [2026-10-25 승계] 2026-10-17 HF에 오픈웨이트 정식 릴리스 MiniMax M3.1-Flash(model-239, 428B-A23B·MiniMax Community License·공식 벤치마크 14개)가 공개돼 별도 레코드로 추가했습니다 — 이 Preview 레코드는 스냅샷 선례에 따라 유지합니다.",
       "benchmarks": {},
       "benchmark_sources": {},
       "benchmark_note": "모델 카드·공식 벤치마크 미공개 — 공식 문서에 사양(1M 컨텍스트·멀티모달·thinking depth)만 기재.",
@@ -18509,6 +18509,558 @@
         "reviewed_on": "2026-10-22",
         "policy": "official-primary-only"
       }
+    },
+    {
+      "id": "model-236",
+      "name": "Recursive Flint",
+      "date": "2026-10-21",
+      "sortDate": "2026-10-21",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Recursive",
+      "family": "Flint",
+      "type": "LLM (coding agent MoE)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "39.8B total / ~2.5B active per token (40B-A2.5B)",
+      "architecture": "디코더 전용 MoE Transformer — 49층(dense 2 + MoE 47), 층당 라우팅 전문가 256개 중 6개 선택 + 상시 활성 공유 전문가 1개. 슬라이딩 윈도 어텐션 35층(윈도 513 토큰) + 풀 어텐션 14층, 32 query / 4 KV 헤드, 헤드별 QK RMSNorm·학습형 attention sink, 슬라이딩 층만 RoPE. 어휘 150,144. pretraining → mid-training → SFT → RL을 베이스 모델 없이 처음부터 학습했습니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "코딩 에이전트",
+        "코드베이스 조사·버그 수정",
+        "기능 구현·테스트 작성",
+        "로컬(노트북) 실행"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "262,144 (HF 카드 문서화 설정) — 블로그는 최대 512K 토큰, 256K 이내 권장",
+      "languages": "",
+      "variants": [
+        "flint-int4",
+        "flint-int4-gguf",
+        "flint-nvfp4-gguf"
+      ],
+      "reasoning_effort": [
+        "reasoning"
+      ],
+      "availability": "Hugging Face RecursiveSI/flint(BF16, SGLang 서빙 키트 포함)·flint-int4·flint-int4-gguf·flint-nvfp4-gguf, 로컬 엔진(recursive-oss/rec), 호스티드 API(약관 별도)",
+      "note": "Recursive의 첫 공개 모델 — 코딩 에이전트용 40B-A2.5B MoE로, 노트북급 하드웨어에서 돌리는 것을 내세웁니다. 블로그는 최종 모델이 NVFP4 양자화본이며 16-bit 대비 평균 0.7점 이내라고 밝히고, 큰 폐쇄형 코딩 모델보다 분해된 명시적 지시가 더 필요할 수 있다고 한계를 적었습니다. 공개일은 블로그에 별도 표기가 없어 HF 저장소 생성 시각(HF API createdAt 2026-10-21 14:20 UTC, 양자화 저장소 13:51 UTC)을 근거로 했습니다.",
+      "benchmarks": {
+        "Terminal-Bench 2.1": 54.9,
+        "SWE-bench Pro v2": 89.7,
+        "SWE-bench Verified": 74.2
+      },
+      "official_id": "RecursiveSI/flint",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/RecursiveSI/flint"
+        },
+        {
+          "label": "공식 블로그",
+          "url": "https://www.recursive.com/updates/introducing-recursive-flint"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/RecursiveSI/flint",
+      "parameter_source": "https://huggingface.co/RecursiveSI/flint",
+      "benchmark_sources": {
+        "Terminal-Bench 2.1": "https://huggingface.co/RecursiveSI/flint",
+        "SWE-bench Pro v2": "https://huggingface.co/RecursiveSI/flint",
+        "SWE-bench Verified": "https://huggingface.co/RecursiveSI/flint"
+      },
+      "benchmark_note": "공식 카드 본문에 인쇄된 3개 점수만 수록했습니다. 조건: temperature 1.0·top-p 0.95·top-k 20, 에이전트 점수는 5회 이상 평균 pass@1, Terminal-Bench는 Terminus 2 하니스(웹 검색으로 얻은 정답은 실패 처리), SWE-bench는 mini-swe-agent(인터넷 차단). 비교 모델 점수가 들어 있는 벤치마크 이미지와 LiveCodeBench v6·IFBench·IFEval 수치는 이미지 한정이라 수록하지 않았습니다. 모든 수치는 개발사 자체 보고입니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-25",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-237",
+      "name": "Beam 1.0",
+      "date": "2026-10-16",
+      "sortDate": "2026-10-16",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Reflection AI",
+      "family": "Beam",
+      "type": "LLM (open-weight reasoning MoE)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "501.3B total / 23.4B active (MoE)",
+      "architecture": "희소 MoE — 52층(dense 3 + MoE 49), 전문가 256개, Gated GQA + 슬라이딩 윈도 어텐션, 어휘 152K, 변형된 Harmony 채팅 템플릿. 중간 학습으로 컨텍스트를 1M까지 확장했고 지식 컷오프는 2026-06-30입니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "토큰 효율적 추론",
+        "소프트웨어 엔지니어링",
+        "에이전틱 도구 사용",
+        "수학·과학 추론"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "1M (1,000,000)",
+      "languages": "English (주로 영어 대상)",
+      "variants": [
+        "Beam-1.0-501B-A23B-FP8",
+        "Beam-1.0-501B-A23B-NVFP4",
+        "Beam-1.0-501B-A23B-DFlash2 (추측 디코딩 드래프터)"
+      ],
+      "reasoning_effort": [],
+      "availability": "Hugging Face reflection/Beam-1.0-501B-A23B(BF16)·FP8·NVFP4·DFlash2, Baseten 등 호스팅",
+      "note": "Reflection AI의 첫 오픈웨이트 모델. 2026-10-05 발표문(제외 원장 excluded-2026-10-08-1에서 가중치 미공개로 보류)에 이어 2026-10-16 HF 저장소 커밋 'Beam is available'로 Apache 2.0 가중치가 공개돼 보류를 해제하고 활성 레코드로 이관했습니다. 카드는 인스트럭션 튜닝 모델만 포함하며 기술 보고서는 예고 상태입니다.",
+      "benchmarks": {
+        "DeepSWE v1.1": 43.3,
+        "SWE-bench Pro v2-Hard": 76.5,
+        "SWE-bench Pro v1": 66.1,
+        "Terminal-Bench 2.1": 80.1,
+        "SWE Atlas Codebase QnA": 31.8,
+        "SWE-bench Multilingual": 78.3,
+        "SWE-bench Verified": 81.6,
+        "AIME 2026": 97.7,
+        "Humanity's Last Exam (without tools)": 36.0,
+        "Humanity's Last Exam (w/ tools)": 51.1,
+        "SciCode": 49.2,
+        "GPQA Diamond": 90.6,
+        "LiveCodeBench": 88.3,
+        "AutomationBench (public split)": 39.3,
+        "MCP-Atlas": 80.8,
+        "τ³-Bench Banking": 36.1,
+        "BrowseComp (w/ context management)": 76.8,
+        "DeepSearchQA (w/ context management)": 80.5,
+        "AA-LCR": 78.2,
+        "LongBench v2": 67.5,
+        "IFBench": 79.6
+      },
+      "official_id": "reflection/Beam-1.0-501B-A23B",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+        },
+        {
+          "label": "공식 발표문(2026-10-05)",
+          "url": "https://reflection.ai/blog/introducing-beam"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+      "parameter_source": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+      "benchmark_sources": {
+        "DeepSWE v1.1": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "SWE-bench Pro v2-Hard": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "SWE-bench Pro v1": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "Terminal-Bench 2.1": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "SWE Atlas Codebase QnA": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "SWE-bench Multilingual": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "SWE-bench Verified": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "AIME 2026": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "Humanity's Last Exam (without tools)": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "Humanity's Last Exam (w/ tools)": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "SciCode": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "GPQA Diamond": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "LiveCodeBench": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "AutomationBench (public split)": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "MCP-Atlas": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "τ³-Bench Banking": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "BrowseComp (w/ context management)": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "DeepSearchQA (w/ context management)": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "AA-LCR": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "LongBench v2": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+        "IFBench": "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+      },
+      "benchmark_note": "공식 카드 평가 표의 BF16 열 21개 값입니다(FP8·NVFP4 열은 카드에 별도 병기). 조건: temperature 0.7·top-p 0.99. CriPT AA(16.3)와 AA Omniscience index(10.8, 비% 지수)는 점수표에서 제외했습니다. 10/5 발표문의 표는 10/8 갱신 전·후 수치가 달라 최종본인 HF 카드 값만 사용했습니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-25",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-238",
+      "name": "Ling-3.1-flash",
+      "date": "2026-10-13",
+      "sortDate": "2026-10-13",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Ant Group / InclusionAI",
+      "family": "Ling 3.1",
+      "type": "LLM (hybrid reasoning MoE)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "560B total / 25B active (MoE)",
+      "architecture": "하이브리드 선형 MoE — 72층(KDA 63 + Gated MLA 9, 7:1) 중 dense 4층, 라우팅 전문가 512개 중 8개 활성 + 공유 전문가 1개, 64헤드, hidden 4096, 어휘 157,184. MTP(NEXTN) 추측 디코딩과 SGLang day-0 이미지를 제공합니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "범용 에이전트",
+        "검색",
+        "오피스 생산성",
+        "소프트웨어 엔지니어링",
+        "금융·헬스케어·재료과학"
+      ],
+      "open_weights": true,
+      "license": "MIT",
+      "context": "1M (1,000,000)",
+      "languages": "",
+      "variants": [],
+      "reasoning_effort": [
+        "hybrid reasoning (enable_thinking on/off)"
+      ],
+      "availability": "Hugging Face inclusionAI/Ling-3.1-flash(FP8), ModelScope, OpenRouter, SGLang·vLLM",
+      "note": "Ling-3.0-flash(124B-A5.1B) 후속으로 총 560B·활성 25B로 키운 하이브리드 추론 모델. 2026-09-30 보도된 공개 때는 공식 문서·HF 저장소가 없어 제외 원장(excluded-2026-10-01-1)에 보류했으나, HF inclusionAI/Ling-3.1-flash가 MIT 가중치와 모델 카드를 갖추어 보류를 해제하고 이관했습니다. 날짜는 HF 첫 가중치 커밋(2026-10-13, HF API 기준)이며 카드는 10/14 마지막 갱신, 보도상 API·OpenRouter 체험은 9/30부터였습니다.",
+      "benchmarks": {},
+      "official_id": "inclusionAI/Ling-3.1-flash",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/inclusionAI/Ling-3.1-flash",
+      "parameter_source": "https://huggingface.co/inclusionAI/Ling-3.1-flash",
+      "benchmark_sources": {},
+      "benchmark_note": "공식 카드의 평가 결과는 이미지로만 제공돼 수치를 옮기지 않았습니다. 본문에는 Terminal-Bench 4.0·SWE-bench Pro·FrontierSWE·GDPVal-AA V2.1·AutomationBench·MCP-Atlas·SkillsBench·HealthBench Professional에서 강하다고 서술하나 숫자는 인쇄돼 있지 않습니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-25",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-239",
+      "name": "MiniMax M3.1-Flash",
+      "date": "2026-10-17",
+      "sortDate": "2026-10-17",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "MiniMax",
+      "family": "MiniMax M",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "approx. 428B total / 23B active (MoE)",
+      "architecture": "네이티브 멀티모달 MoE — MiniMax Sparse Attention(MSA)을 전 층에 적용해 M3의 앞쪽 3개 풀 어텐션 층까지 희소화했고, 라우팅 전문가·어텐션 경로에 양자화 인지 학습(QAT)을 적용했습니다. 추측 디코딩은 EAGLE류 MTP 대신 DSpark(드래프트 헤드 동봉)입니다.",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "focus": [
+        "에이전틱 코딩",
+        "컴퓨터 유스",
+        "사이버보안",
+        "멀티모달 이해"
+      ],
+      "open_weights": true,
+      "license": "MiniMax Community License (minimax-community)",
+      "context": "1M (1,000,000)",
+      "languages": "",
+      "variants": [
+        "DSpark draft head 동봉"
+      ],
+      "reasoning_effort": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "availability": "Hugging Face MiniMaxAI/MiniMax-M3.1-Flash, MiniMax Agent·API(platform.minimax.io), SGLang·vLLM·TokenSpeed 레시피",
+      "note": "9/27 M3.1-Flash-Preview(model-192)의 정식 오픈웨이트 릴리스. 날짜는 HF 저장소 생성(HF API createdAt 2026-10-17 06:37 UTC)이며 일부 추적 사이트는 10/19로 적습니다(2차 출처). 라이선스는 Apache/MIT가 아닌 MiniMax 커뮤니티 라이선스입니다.",
+      "benchmarks": {
+        "Automation-Bench v1.0.6": 62.8,
+        "BankerToolBench": 76.2,
+        "Terminal-Bench 4.0": 38.1,
+        "LOCA-Bench 256K": 60.3,
+        "Agents' Last Exam": 29.6,
+        "OSWorld 2.0": 61.7,
+        "PostTrain Bench v1.1": 39.3,
+        "DeepSWE v1.1": 73.7,
+        "NL2Repo-Bench": 61.2,
+        "SWE Refactor Bench": 23.0,
+        "CyberGym": 82.2,
+        "BabyVision (with tools)": 91.0,
+        "HLE (without tools)": 43.4,
+        "CharXiv RQ": 82.5
+      },
+      "official_id": "MiniMaxAI/MiniMax-M3.1-Flash",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
+        },
+        {
+          "label": "MSA 논문(arXiv)",
+          "url": "https://arxiv.org/abs/2606.13392"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "parameter_source": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "benchmark_sources": {
+        "Automation-Bench v1.0.6": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "BankerToolBench": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "Terminal-Bench 4.0": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "LOCA-Bench 256K": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "Agents' Last Exam": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "OSWorld 2.0": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "PostTrain Bench v1.1": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "DeepSWE v1.1": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "NL2Repo-Bench": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "SWE Refactor Bench": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "CyberGym": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "BabyVision (with tools)": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "HLE (without tools)": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+        "CharXiv RQ": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
+      },
+      "benchmark_note": "공식 카드 평가 표의 M3.1 Flash 열 14개 값입니다. 'GDP.pdf AA'(20.8)는 카드가 'Artificial Analysis에서 직접 가져옴'이라고 밝힌 제3자 수치라 제외했습니다. 하니스·컨텍스트 조건(예: Terminal Bench 4.0 = Codex 0.149.1, DeepSWE v1.1 = mini-SWE-agent 2.4.5·512K, HLE = 텍스트 전용 2,158문항 서브셋)은 카드 평가 노트를 따릅니다. 카드 하이라이트의 'OSWorld V2'는 표의 'OSWorld 2.0'과 같은 61.7입니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-25",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-240",
+      "name": "Atria Dawn",
+      "date": "2026-10-23",
+      "sortDate": "2026-10-23",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Shanghai Artificial Intelligence Laboratory",
+      "family": "Atria",
+      "type": "LLM / agentic foundation model",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "744B (GLM-5.2 MoE 파운데이션 기반)",
+      "architecture": "744B 파라미터 MoE GLM-5.2 파운데이션 위에 구축한 텍스트 전용 에이전틱 모델 — Discovery(조사·연구)·Creation(소프트웨어·시각화·ML)·Delivery(보고서·프레젠테이션)·Cybersecurity 4개 차원의 종단 간 딜리버리를 겨냥합니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "딥 리서치",
+        "에이전틱 코딩",
+        "과학 자동화·오피스 업무",
+        "사이버보안"
+      ],
+      "open_weights": true,
+      "license": "MIT",
+      "context": "512K",
+      "languages": "",
+      "variants": [
+        "Atria-Dawn-FP8"
+      ],
+      "reasoning_effort": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "availability": "Hugging Face internlm/Atria-Dawn·Atria-Dawn-FP8, ModelScope, 지역별 API 콘솔(모델명 Atria-Dawn), SGLang·vLLM",
+      "note": "9/11 Atria-Dawn-Preview(model-156, 256K)의 정식 릴리스 — 컨텍스트가 512K로 늘고 텍스트 전용입니다. Preview 레코드는 공식 스냅샷 선례에 따라 그대로 두었습니다. 날짜는 HF 저장소 생성(HF API createdAt 2026-10-23, FP8 저장소 01:23 UTC·본체 03:21 UTC)입니다. 파라미터는 카드의 'GLM-5.2 기반 744B' 서술에 따릅니다.",
+      "benchmarks": {
+        "DeepSearchQA": 96.5,
+        "BrowseComp": 91.3,
+        "WideSearch": 84.6,
+        "DeepResearch Bench II": 51.2,
+        "MLE-bench Lite": 88.2,
+        "SWE-bench Pro": 61.7,
+        "Terminal-Bench 2.1": 81.0,
+        "BFCL v4": 78.4,
+        "AutomationBench": 54.7,
+        "SkillsBench": 67.8,
+        "τ³-Bench Banking": 43.3,
+        "Workspace-Bench": 66.1,
+        "Workspace-Bench-Lite": 70.0,
+        "JobBench": 57.5,
+        "CyberGym": 86.8,
+        "PaperBench": 89.6,
+        "SpreadsheetBench 2": 33.0,
+        "NL2Repo-Bench": 50.0,
+        "Harbor-Index": 17.3,
+        "DeepSWE": 49.3,
+        "Harvey LAB": 27.5,
+        "OfficeQA Pro": 67.1
+      },
+      "official_id": "internlm/Atria-Dawn",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/internlm/Atria-Dawn"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/internlm/Atria-Dawn",
+      "parameter_source": "https://huggingface.co/internlm/Atria-Dawn",
+      "benchmark_sources": {
+        "DeepSearchQA": "https://huggingface.co/internlm/Atria-Dawn",
+        "BrowseComp": "https://huggingface.co/internlm/Atria-Dawn",
+        "WideSearch": "https://huggingface.co/internlm/Atria-Dawn",
+        "DeepResearch Bench II": "https://huggingface.co/internlm/Atria-Dawn",
+        "MLE-bench Lite": "https://huggingface.co/internlm/Atria-Dawn",
+        "SWE-bench Pro": "https://huggingface.co/internlm/Atria-Dawn",
+        "Terminal-Bench 2.1": "https://huggingface.co/internlm/Atria-Dawn",
+        "BFCL v4": "https://huggingface.co/internlm/Atria-Dawn",
+        "AutomationBench": "https://huggingface.co/internlm/Atria-Dawn",
+        "SkillsBench": "https://huggingface.co/internlm/Atria-Dawn",
+        "τ³-Bench Banking": "https://huggingface.co/internlm/Atria-Dawn",
+        "Workspace-Bench": "https://huggingface.co/internlm/Atria-Dawn",
+        "Workspace-Bench-Lite": "https://huggingface.co/internlm/Atria-Dawn",
+        "JobBench": "https://huggingface.co/internlm/Atria-Dawn",
+        "CyberGym": "https://huggingface.co/internlm/Atria-Dawn",
+        "PaperBench": "https://huggingface.co/internlm/Atria-Dawn",
+        "SpreadsheetBench 2": "https://huggingface.co/internlm/Atria-Dawn",
+        "NL2Repo-Bench": "https://huggingface.co/internlm/Atria-Dawn",
+        "Harbor-Index": "https://huggingface.co/internlm/Atria-Dawn",
+        "DeepSWE": "https://huggingface.co/internlm/Atria-Dawn",
+        "Harvey LAB": "https://huggingface.co/internlm/Atria-Dawn",
+        "OfficeQA Pro": "https://huggingface.co/internlm/Atria-Dawn"
+      },
+      "benchmark_note": "공식 카드 평가 표의 Atria Dawn 열 22개 값입니다. GDPval(1594.2)은 Elo 척도라 정책상 제외했습니다. 카드는 이 표가 공식 웹사이트(atria-asi.ai)와 같다고 밝힙니다.",
+      "parameter_status": "publisher-approximate",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-25",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-241",
+      "name": "Nemotron Labs Dory 1.0 4B",
+      "date": "2026-10-16",
+      "sortDate": "2026-10-16",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "NVIDIA",
+      "family": "Nemotron Labs",
+      "type": "LLM (looped / latent-recurrent)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "4B total",
+      "architecture": "루프형(latent-recurrent) normalized-GPT — 입력 8층 + 공유 순환 블록 20층 + 출력 8층, 순환 블록을 1~4회 반복 적용해 토큰당 연산을 추론 시 조절합니다. 슬라이딩 윈도·풀 어텐션 인터리브, 마지막 루프 KV 캐시 모드로 루프 수와 무관하게 KV 오버헤드가 없고, NVFP4로 네이티브 사전학습한 뒤 BF16로 이어갔습니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "소형 범용 추론",
+        "탄력적 추론 연산",
+        "토큰 효율"
+      ],
+      "open_weights": true,
+      "license": "OpenMDW-1.1",
+      "context": "256K",
+      "languages": "English",
+      "variants": [
+        "BF16",
+        "MXFP8",
+        "NVFP4",
+        "GGUF(Q5_K_M)"
+      ],
+      "reasoning_effort": [
+        "loops 1 / 2 (권장 기본) / 4"
+      ],
+      "availability": "Hugging Face nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16·MXFP8·NVFP4·GGUF (vLLM 지원은 PR #60149 검토 중)",
+      "note": "NVIDIA Nemotron Labs의 루프형 4B 소형 모델 — 하나의 체크포인트로 루프 횟수에 따라 정확도와 연산을 맞바꿉니다. 별도 발표 블로그 없이 HF 카드로만 공개돼 카드의 Release Date(2026-10-16)를 근거로 했습니다. vLLM 공식 릴리스는 아직 미지원(PR 검토 중)입니다.",
+      "benchmarks": {
+        "SWE-bench Verified": 59.5,
+        "Terminal-Bench 2.1": 18.1,
+        "SciCode": 34.94,
+        "τ³-Bench Banking": 12.89,
+        "GPQA Diamond": 72.41,
+        "Humanity's Last Exam (without tools)": 10.89,
+        "IFBench": 77.94,
+        "AA-LCR": 71.0
+      },
+      "official_id": "nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+      "parameter_source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+      "benchmark_sources": {
+        "SWE-bench Verified": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+        "Terminal-Bench 2.1": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+        "SciCode": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+        "τ³-Bench Banking": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+        "GPQA Diamond": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+        "Humanity's Last Exam (without tools)": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+        "IFBench": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+        "AA-LCR": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16"
+      },
+      "benchmark_note": "공식 카드의 2-loop(권장 기본) 열 8개 값입니다. 1/2/4 loops — SWE-bench Verified 50.3/59.5/61.8, Terminal-Bench 2.1 12.5/18.1/22.2, GPQA Diamond 69.19/72.41/72.16, HLE 8.25/10.89/10.43, IFBench 74.29/77.94/79, AA-LCR 63/71/73. GDPval-AA-V2(Elo)와 AA-Omniscience 정확도 10.08은 점수표에서 제외했습니다. NVIDIA가 NeMo Gym/Evaluator 통일 하니스(Terminal-Bench는 Terminus-2)로 측정했고, AA v4.3.2 항목은 공식 AA 점수와 다를 수 있는 내부 추정이라고 카드가 밝힙니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-25",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-242",
+      "name": "Kimi K3.1 Pro",
+      "date": "2026-10-24",
+      "sortDate": "2026-10-24",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "Moonshot AI",
+      "family": "Kimi",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA (API) — 가중치는 2026-11-04까지 공개 예고",
+      "parameters": "정확한 수치 미공개 (3T급 오픈웨이트 모델이라고만 표기)",
+      "architecture": "Kimi K3(2.8T 총/104B 활성 MoE)에 훨씬 큰 후학습 연산을 투입한 후속 — K3.1 시리즈의 첫 모델입니다. 아키텍처 변경 여부는 발표문에 없습니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "코딩",
+        "3D 생성(BenchCAD)",
+        "금융 워크플로",
+        "환각 감소",
+        "사이버 위험 완화"
+      ],
+      "open_weights": false,
+      "license": "미공개 (가중치 공개 시 확인)",
+      "context": "1M (1,000,000)",
+      "languages": "",
+      "variants": [
+        "Kimi K3.1 Pro Highspeed (kimi-k3.1-pro-highspeed, 2~3배 고속)"
+      ],
+      "reasoning_effort": [
+        "max (벤치마크 설정)"
+      ],
+      "availability": "Kimi.com·Kimi 앱·Kimi Work·Kimi Code·Kimi API(kimi-k3.1-pro), 엔터프라이즈 관리자 활성화 필요(기본 꺼짐), Zero Data Retention 지원",
+      "note": "Moonshot AI의 K3.1 시리즈 첫 모델. 발표문(kimi.com 리서치 목록 날짜 2026-10-24)은 API 즉시 제공과 '전체 가중치 11/4까지 공개'를 밝혔고 HF moonshotai 조직에는 아직 저장소가 없어 open_weights는 false로 두었습니다 — 가중치가 공개되면 갱신해야 합니다. 일부 보도는 출시일을 10/23로 적습니다(2차 출처). 입력 모달리티는 발표문에 명시가 없어 텍스트만 기재했으나 벤치마크에 이미지 과제가 포함돼 있어 K3 계열 멀티모달 여부는 가중치 공개 후 확인이 필요합니다.",
+      "benchmarks": {
+        "Terminal-Bench 4.0": 65.7
+      },
+      "official_id": "kimi-k3.1-pro",
+      "official_sources": [
+        {
+          "label": "공식 발표문(kimi.com)",
+          "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+        }
+      ],
+      "release_date_source": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+      "parameter_source": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+      "benchmark_sources": {
+        "Terminal-Bench 4.0": "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+      },
+      "benchmark_note": "발표문 본문에 %로 인쇄된 Terminal-Bench 4.0(Claude-Code 하니스, reasoning effort max·temperature 1.0·top-p 0.95)만 수록했습니다. 그 외 OfficeQA Pro v2 64.4(SOTA 주장), Frontier Finance 58.6, BenchCAD(Voxel IoU 도구 사용 92.7/미사용 72.8), 자체 Kimi Code Bench 3.0 Long-horizon 61.2, Kimi Hallu Bench Hard, xdev-bench-hard 81.0은 척도·측정 조건이 비%이거나 내부 벤치마크라 점수표에서 제외했습니다.",
+      "parameter_status": "undisclosed",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-25",
+        "policy": "official-primary-only"
+      }
     }
   ],
   "excluded": [
@@ -18696,16 +19248,6 @@
       "reviewed_on": "2026-09-29"
     },
     {
-      "id": "excluded-2026-10-01-1",
-      "name": "Ling-3.1-flash",
-      "original_name": "inclusionAI/ling-3.1-flash (Vercel AI Gateway·OpenRouter 유통 ID)",
-      "date": "2026-09-30",
-      "company": "Ant Group / InclusionAI",
-      "reason": "2026-09-30 공개(약 560B 총 파라미터·약 25B 활성 MoE·최대 1M 컨텍스트, 2주 무료 체험은 256K)가 보도됐으나, 공식 문서(developer.ant-ling.com, 2026-09-23 갱신)의 모델 목록·가격표에 등재되지 않았고 Hugging Face 저장소·모델 카드·가중치도 아직 없어 출시일·파라미터·점수를 인용할 1차 출처 URL을 확보하지 못했습니다. 오픈소스는 체험 기간 종료 후 예고 상태입니다. 공식 문서·모델 카드가 나오면 재조사합니다.",
-      "source": "https://developer.ant-ling.com/en/docs/models/ling/",
-      "reviewed_on": "2026-10-01"
-    },
-    {
       "id": "excluded-2026-10-01-2",
       "name": "OpenCSG Agentic-27B",
       "original_name": "OpenCSG/Agentic-27B (이전 공개판 Agentic-30B-A3B 계열)",
@@ -18744,16 +19286,6 @@
       "reason": "2026-09-30 국내 보도는 2025년 EEVE ROSETTA 발표와 2025-10·11 Hugging Face 공개분(Gemma-3-4B 기반 4B 번역 특화)의 재보도로, 본 타임라인 기간(2026년) 밖입니다.",
       "source": "https://huggingface.co/yanolja/YanoljaNEXT-Rosetta-4B-2511",
       "reviewed_on": "2026-10-01"
-    },
-    {
-      "id": "excluded-2026-10-08-1",
-      "name": "Reflection AI Beam",
-      "original_name": "Beam (Reflection AI 첫 오픈웨이트 모델)",
-      "date": "2026-10-05 (발표, 2026-10-16 재확인 시 가중치 미공개)",
-      "company": "Reflection AI",
-      "reason": "10/5 공식 발표문과 자체 벤치마크 표(501B-A23B MoE·1M 컨텍스트)가 공개됐으나, 2026-10-16 재확인에서도 가중치·기술 보고서·모델 카드·공개 API가 없음(HF reflection-ai 조직 빈 배열) — '1차 출처 URL이 아직 없는 릴리스' 보류 유지. 이달 말 Apache 2.0 가중치 공개 시 재조사.",
-      "source": "https://reflection.ai/blog/introducing-beam",
-      "reviewed_on": "2026-10-08"
     },
     {
       "id": "excluded-2026-10-08-2",
@@ -18870,6 +19402,39 @@
       "reason": "시계열 예측 전용 모델군(5M~209M, 32,768 step 컨텍스트, 21분위 확률·다변량 예측, Modified MIT 가중치 공개) — 텍스트·멀티모달 이해/생성 능력이 없는 수치 예측 모델이라 LLM/MLLM 수록 범위 밖입니다. 209M이 GIFT-Eval·TIME·fev-bench 제로샷 1위를 주장하지만 지표가 MASE·WQL·CRPS(비% 척도)이고, 2026-10-15 중요도 예외는 언어·멀티모달 인접 부류(임베딩·이미지/음악 생성·메모리)에 적용한 선례라 시계열 예측 부류로 넓히지 않았습니다. 10/16 감사에서 제외로 판정했으나 원장 등재가 누락돼 2026-10-22 운영자 결정으로 등재.",
       "source": "https://mistral.ai/news/timestral",
       "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "excluded-2026-10-25-1",
+      "name": "Granite Switch 4.1 (8B · 30B)",
+      "original_name": "ibm-granite/granite-switch-4.1-8b · granite-switch-4.1-30b",
+      "date": "2026-10-14",
+      "company": "IBM",
+      "country": "US",
+      "reason": "기존 Granite 4.1(model-058) 베이스에 decision·guardian-core aLoRA 어댑터와 음성 인식 인코더(Granite Speech 5.0 470M TurboCTC)를 합성해 한 엔드포인트로 채팅·결정·STT를 전환하는 모듈형 패키징 — 새 베이스 모델이나 자체 점수가 없고, 카드가 음성 인코더와 LLM이 아직 공동 학습되지 않았다고 명시합니다. 중요도 판단상 서빙 변형·합성 배포로 보아 수록 보류(어댑터 라이브러리가 독립 모델로 승격되면 재검토).",
+      "source": "https://huggingface.co/ibm-granite/granite-switch-4.1-30b",
+      "reviewed_on": "2026-10-25"
+    },
+    {
+      "id": "excluded-2026-10-25-2",
+      "name": "Hy-Nomas",
+      "original_name": "tencent/Hy-Nomas · Hy-Nomas-Diffusers",
+      "date": "2026-10-21",
+      "company": "Tencent",
+      "country": "CN",
+      "reason": "텍스트·카메라 제어로 세그먼트 단위 자기회귀 영상(720×1280·24FPS)을 생성하는 비디오 월드 생성 모델 — 영상 생성 전용이라 범위 밖이며, 공식 카드에서 해당 부류의 최초·최고·최대 기준점을 입증하는 수치가 인쇄돼 있지 않고 기술 보고서도 'Coming Soon'이라 중요도 예외를 적용하지 않았습니다(Apache 2.0 가중치 공개).",
+      "source": "https://huggingface.co/tencent/Hy-Nomas",
+      "reviewed_on": "2026-10-25"
+    },
+    {
+      "id": "excluded-2026-10-25-3",
+      "name": "WeVisOne-VL (2B · 4B)",
+      "original_name": "tencent/WeVisOne-VL-2B · WeVisOne-VL-4B",
+      "date": "2026-10-22",
+      "company": "Tencent",
+      "country": "CN",
+      "reason": "Qwen3-VL 기반에 9.6M 픽셀 디코더를 붙여 검출·지칭·카운팅·OCR 위치·분할·알파 매팅을 수행하는 시각 인식 특화 연구 릴리스 — 범용 LLM/MLLM이 아니라 단일 턴 인식 전용 파생 모델이고 카드에 벤치마크 점수가 없어 수록하지 않았습니다.",
+      "source": "https://huggingface.co/tencent/WeVisOne-VL-4B",
+      "reviewed_on": "2026-10-25"
     }
   ],
   "company_meta": {
@@ -19262,6 +19827,18 @@
       "flag": "🇨🇳",
       "gradient": "linear-gradient(135deg,#dc2626,#f59e0b)",
       "badge": "Spark 온디바이스 LLM"
+    },
+    "Recursive": {
+      "country": "US",
+      "flag": "🇺🇸",
+      "color": "from-emerald-500 to-teal-500",
+      "badge": "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+    },
+    "Reflection AI": {
+      "country": "US",
+      "flag": "🇺🇸",
+      "color": "from-violet-500 to-fuchsia-500",
+      "badge": "bg-violet-500/10 text-violet-400 border-violet-500/30"
     }
   },
   "family_flows": [
@@ -19346,7 +19923,8 @@
         "Kimi K2.6",
         "Kimi K2.7 Code",
         "Kimi K2.8 Preview",
-        "Kimi K3"
+        "Kimi K3",
+        "Kimi K3.1 Pro"
       ]
     },
     {
@@ -19429,7 +20007,8 @@
       "steps": [
         "Ling-3.0-tiny",
         "Ling-3.0-flash",
-        "Ling-3.0-flash-VL"
+        "Ling-3.0-flash-VL",
+        "Ling-3.1-flash"
       ]
     },
     {
@@ -19533,11 +20112,26 @@
         "Hy3-A3B Base",
         "Hy-Memory-30B-A3B"
       ]
+    },
+    {
+      "family": "Atria",
+      "steps": [
+        "Atria-Dawn-Preview",
+        "Atria Dawn"
+      ]
+    },
+    {
+      "family": "MiniMax M",
+      "steps": [
+        "MiniMax-M3",
+        "MiniMax M3.1-Flash-Preview",
+        "MiniMax M3.1-Flash"
+      ]
     }
   ],
   "unconfirmed": [],
   "scope": {
-    "period": "2026-01-01 ~ 2026-10-22",
+    "period": "2026-01-01 ~ 2026-10-25",
     "scope": [
       "LLM (Large Language Models)",
       "MLLM / VLM / Omni foundation models",
@@ -19555,7 +20149,7 @@
     ],
     "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
     "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-    "reviewed_on": "2026-10-22",
+    "reviewed_on": "2026-10-25",
     "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
   }
 }

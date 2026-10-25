@@ -120,9 +120,11 @@ OFFICIAL_HOSTS = {
     "pytorch.org",
     "qwen.ai",
     "qwencloud.com",
-    # Reflection AI official blog — Beam announcement (excluded-ledger source,
-    # weights pending). Added 2026-10-08.
+    # Reflection AI official blog — Beam announcement. Added 2026-10-08 as an
+    # excluded-ledger source; Beam moved to an active record 2026-10-25.
     "reflection.ai",
+    # Recursive official site — Flint launch post. Added 2026-10-25.
+    "recursive.com",
     "research.meta.ai",
     # Meta Model API developer site — model pages, model IDs, availability and
     # the printed Muse Wonder benchmark table. Added 2026-10-15.
