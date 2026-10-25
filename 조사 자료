@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-10-25** | 활성 레코드: **232개** | 제외 원장: **42개** | 공식 점수가 확인된 모델: **196개** | 공식 점수: **3411개**
+> 최종 감사일: **2026-10-25** | 활성 레코드: **232개** | 제외 원장: **42개** | 공식 점수가 확인된 모델: **196개** | 공식 점수: **3412개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -6839,14 +6839,14 @@
 - 레코드 ID: `model-202`
 - **공식 모델명:** `Gemini 4 Argon`
 - 제공사 / 패밀리: `Google DeepMind` / `Gemini`
-- 모델 유형 / 상태: `MLLM` / `Limited release (Fairwind Program)`
+- 모델 유형 / 상태: `MLLM` / `GA`
 - 공개일(레포 기준): `2026-09-30` — [출시일 공식 출처](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)
 - **파라미터:** `정확한 수치 미공개` — 공식 수치 미공개
 - 파라미터 출처: [공식 파라미터 출처](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)
 - 아키텍처: `미기재`
 - 공식 모델 ID: `gemini-4-argon`
 - 오픈 웨이트: `아니오/호스팅`
-- 공식 모델 출처: [Google 공식 발표문](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/), [Fairwind Program 공식 안내](https://deepmind.google/fairwind-program/)
+- 공식 모델 출처: [Google 공식 발표문(9/30, Fairwind 한정 공개)](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/), [Google 공식 GA 발표문(10/13)](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/), [개발자 블로그(10/13)](https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/), [Gemini API 모델 페이지](https://ai.google.dev/gemini-api/docs/models/gemini-4-argon), [Gemini API 변경 기록(2026-10-13 GA 항목)](https://ai.google.dev/gemini-api/docs/changelog), [Fairwind Program 공식 안내](https://deepmind.google/fairwind-program/)
 
 #### 공식 발표 벤치마크 점수
 
@@ -6854,9 +6854,10 @@
 - `AutomationBench`: **51.3%** — [공식 출처](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)
 - `LVBench`: **91.7%** — [공식 출처](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)
 - `CWE-bench v1`: **68.0%** — [공식 출처](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/)
-- 점수 메모: 발표문 본문에 수치로 인쇄된 네 점수만 기록했습니다: DeepSWE v1.1 77.9%(SOTA 주장)·AutomationBench(Zapier) 51.3%·LVBench(장영상 이해) 91.7%·CWE-bench v1 68%(1위 동률). Vals Index·Vals Finance Agent v2·Harvey Legal Agent Benchmark·Gray Swan IPI 벤치마크는 우위 서술만 있고 절대값이 차트 이미지로만 제공되어 점수를 넣지 않았고, 제3자 보도의 수치도 인용하지 않았습니다.
-- 모델 메모: 2026-02 Gemini 3.1 Pro 이후 7개월 만의 Google 플래그십이자 Gemini 4 세대의 첫 모델입니다. 미국 정부의 사전 접근(pre-release) 절차에 참여하며 Fairwind Program의 신뢰된 사이버 방어자에게 먼저 배포하고, 이후 유료 API 고객·Google AI Ultra 구독자로 확대할 예정입니다. 출력 상한을 이전 세대 64K에서 1M 토큰으로 확대했고, 발표문은 내부 사용 사례(양자 서브루틴 최적화 40% 개선, 데이터센터 메모리 300 TiB 이상 회수, C/C++→Rust 대규모 마이그레이션)와 안전 조치(오남용 거부·내부 활성 모니터링·간접 프롬프트 인젝션 방어·CoT/행동 모니터링)를 설명합니다. deepmind.google 모델 카드와 Gemini API·Vertex AI 문서에는 아직 등재되지 않아(2026-10-01 확인) 발표문이 유일한 1차 출처입니다.
-- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-01`
+- `ERQA`: **87.0%** — [공식 출처](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/)
+- 점수 메모: 공식 발표문 본문에 수치로 인쇄된 점수를 기록했습니다: 9/30 발표문의 DeepSWE v1.1 77.9%(SOTA 주장)·AutomationBench(Zapier) 51.3%·LVBench(장영상 이해) 91.7%·CWE-bench v1 68%(1위 동률), 10/13 GA 발표문의 ERQA 87%(체화 추론, 다른 모델 점수 미표기). 제외: Vals Index(1위 서술만, 절대값 없음)·Gray Swan IPI(공격 성공률 0.7%, 낮을수록 좋은 비점수 지표)·Gamow Labs 비공개 평가 RareBench 57%·LabBench 52.2%(파트너 사설 평가)·내부/파트너 성능 개선 수치, 제3자 보도 수치.
+- 모델 메모: 2026-02 Gemini 3.1 Pro 이후 7개월 만의 Google 플래그십이자 Gemini 4 세대의 첫 모델입니다. 2026-09-30에 Fairwind Program 신뢰 사이버 방어자 한정으로 발표(미국 정부 사전 접근 절차 참여)한 뒤, **2026-10-13 일반 공개(GA)** — Gemini API 변경 기록에 'Gemini 4 Argon (gemini-4-argon) generally available (GA)'로 등재됐고 Gemini 앱·AI Mode·Antigravity·Vertex AI로 확대됐습니다. 레코드 날짜는 최초 발표일(9/30)을 유지하고 GA일은 이 note와 출처에 남겼습니다. Gemini API 모델 페이지는 입력 텍스트·이미지·비디오·오디오·PDF, 출력 텍스트, thinking low/medium/high, 함수 호출·코드 실행·컴퓨터 유스(Preview)·검색/지도 그라운딩·구조화 출력을 지원하고 Live API·이미지/오디오 생성·명시적 캐싱은 미지원이라고 밝힙니다. 출력 상한을 이전 세대 64K에서 최대 1M 토큰(long decode)으로 확대했습니다. 9/30 발표문은 내부 사용 사례와 안전 조치(오남용 거부·내부 활성 모니터링·간접 프롬프트 인젝션 방어·CoT/행동 모니터링)를 설명합니다. 2026-10-25 정정: 10/1 확인 당시 Gemini API·Vertex AI 문서에 미등재였던 상태가 해소됐는데 같은 날 감사 때 9/30 발표문만 보고 '한정 배포 유지'로 잘못 판단했다가 운영자 지적으로 바로잡았습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-10-25`
 
 ### 193. 2026-10-01 — Strands Decider 2B
 

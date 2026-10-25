@@ -10,7 +10,8 @@
 - 보류 해제(2): Reflection AI **Beam 1.0**(10/16, 501B-A23B MoE·1M·Apache 2.0 — 10/8 감사에서 가중치 미공개로 보류했으나 HF 저장소 커밋 'Beam is available'(10/16)로 공개돼 활성 레코드로 이관, 신규 조직 🇺🇸), Ant Group/InclusionAI **Ling-3.1-flash**(10/13, 560B-A25B 하이브리드 선형 MoE·1M·MIT — 10/1 감사에서 공식 문서·HF 저장소가 없어 보류했으나 HF 카드와 가중치가 확인돼 이관). 되돌림 경위는 하단 각주 참조.
 - 벤치마크: 공식 카드·발표문에 인쇄된 **신규 69개 점수**를 반영했습니다(누적 196개 모델·3,411개 점수). Beam은 BF16 열 21개, Atria Dawn 22개(GDPval Elo 제외), MiniMax M3.1-Flash 14개('GDP.pdf AA'는 Artificial Analysis 직접 인용이라 제외), Dory는 권장 2-loop 열 8개(1/4-loop 값은 `benchmark_note`), Kimi K3.1 Pro는 %로 인쇄된 Terminal-Bench 4.0 1개만, Ling-3.1-flash는 카드 수치가 이미지뿐이라 빈 점수로 두었습니다. Flint는 카드 본문 3개 점수만 수록했고 모든 수치는 개발사 자체 보고입니다.
 - 제외 원장: 신규 3건 — **Granite Switch 4.1**(10/14, Granite 4.1에 어댑터·STT 인코더를 합성한 모듈형 패키징·자체 점수 없음), **Hy-Nomas**(10/21, 비디오 월드 생성 전용·기준점 근거 없음), **WeVisOne-VL 2B·4B**(10/22, Qwen3-VL 기반 시각 인식 특화 연구 릴리스·점수 없음). 위 보류 해제 2건은 원장에서 삭제해 총 **42개 항목**.
-- 재조사 결과 변동 없음: **Gemini 4 Argon**(9/30 발표문이 여전히 Fairwind 한정 배포, GA 근거 없음), **OpenCSG Agentic-27B**·**Heimr 570M**(HF 공식 저장소 확인 불가 — 보류 유지). Claude Duet·GPT-6 Pro Parallel Agents는 모델이 아닌 제품 기능으로 보아 후보에서 제외했습니다.
+- 재조사 결과 변동 없음: **OpenCSG Agentic-27B**·**Heimr 570M**(HF 공식 저장소 확인 불가 — 보류 유지).
+- 기존 레코드 정정(1): Google DeepMind **Gemini 4 Argon**(`model-202`) — 같은 날 감사에서 9/30 발표문만 보고 '한정 배포 유지'라고 잘못 판단했으나 운영자 지적 후 확인한 결과 **2026-10-13 GA**였습니다(Gemini API 변경 기록 'generally available (GA)', 정식 발표문 및 `ai.google.dev` 모델 페이지). 상태를 GA로, 입력 모달리티를 텍스트·이미지·비디오·오디오·PDF로, 컨텍스트를 1,048,576 통합 한도(기본 출력 65,536 / long decode 1M)로, thinking을 low·medium·high로 갱신하고 출처 4건과 발표문 인쇄 점수 ERQA 87%를 추가했습니다. 같은 모델의 출시 단계 변화라 새 레코드를 만들지 않고 날짜는 최초 발표일(9/30)을 유지했습니다. Claude Duet·GPT-6 Pro Parallel Agents는 모델이 아닌 제품 기능으로 보아 후보에서 제외했습니다.
 - 1차 도메인 추가: `recursive.com`(Flint 발표문)
 - 기타: Kimi·Ling 3.0 `family_flows`에 후속을 잇고 Atria·MiniMax M 계보를 신설했으며 `as_of`·`scope.period`·`reviewed_on`을 2026-10-25로 갱신했습니다. 10월 월 칩은 이미 있어 `index.html`·`app.js` 변경은 없습니다.
 
