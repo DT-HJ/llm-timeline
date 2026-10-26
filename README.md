@@ -1,16 +1,16 @@
 # ⚡ 2026 LLM & MLLM Release Timeline
 
 > **2026년 주요 LLM / MLLM 파운데이션 모델 출시 타임라인 및 세대별 진화 계보**  
-> 기준 기간: **2026-01-01 ~ 2026-10-26** | 수록 모델: **236개** | 표기 조직: **70개**
+> 기준 기간: **2026-01-01 ~ 2026-10-26** | 수록 모델: **239개** | 표기 조직: **70개**
 
 본 레포지토리는 2026년에 발표된 전 세계 주요 LLM, MLLM, Omni 파운데이션 모델의 릴리즈 내역을 공식 1차 자료와 함께 구조화하여 인터랙티브한 웹 타임라인으로 제공하는 **GitHub Pages** 프로젝트입니다.
 
-**2026-10-26 감사 추가분 (4개: 신규 1 + 소급 3):**
+**2026-10-26 감사 추가분 (7개: 신규 1 + 소급 6):**
 - 신규 릴리스(1): Nanbeige **Nanbeige4.3-33B**(10/24, 4.3 시리즈 플래그십 teacher 모델 — 33B 밀집(dense)·512K 컨텍스트·Apache 2.0, 이후 소형 모델 증류의 기반, Terminal-Bench 2.1 80.9·DeepSWE 65.5·SWE-Bench Pro 60.3·GDPval 84.8·AIME 2026 95.2 — 신규 조직 🇨🇳). 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(`createdAt` 2026-10-24 02:49 UTC)을 근거로 했습니다.
-- 소급 수록(3): HF 전수 점검에서 이전 감사(10/22·10/25) 구간에 공개됐으나 후보에서 빠진 것으로 확인된 모델입니다. Shanghai AI Laboratory **Sage-A1.5**(10/15, 35B MoE 비전-언어 에이전트 모델 — Qwen3.6-35B-A3B·Agents-A1 기반·서브에이전트 오케스트레이션과 검증 모드·262,144 컨텍스트·Apache 2.0, GAIA 95.1·SWE-bench Pro 61.2·BrowseComp 81.7 — 기존 조직), **Ornith-1.5-122B**(10/16, 122B MoE·262,144 컨텍스트·MIT, Terminal-Bench 2.1 81.2·SWE-bench Pro(no-hack) 76.9·SWE-bench Verified(non-hack) 84.5 — 신규 조직, 소재지 미공개 🌐), **Terminal-RSI-27B**(10/21, Qwen3.8-27B 후학습 터미널 에이전트·Apache 2.0, Terminal-Bench 2.1 86.52·4.0 19.84 — 신규 조직, 소재지 미공개 🌐). 공개일은 세 모델 모두 카드에 표기가 없어 HF 저장소 생성 시각을 근거로 했습니다.
-- 벤치마크: 공식 카드 표에 인쇄된 **신규 62개 점수**(Nanbeige 19 + Sage-A1.5 24 + Ornith-1.5-122B 14 + Terminal-RSI-27B 5)를 반영했습니다(누적 200개 모델·3,474개 점수). Nanbeige의 YC-bench는 달러 척도라 점수표에서 제외하고 `benchmark_note`에 조건을 남겼으며, Terminal-RSI의 LHTB·파생 평균도 같은 이유로 제외했습니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.
-- 알려진 공백: Ornith-1.5의 397B·35B-A3B·9B(HF 2026-08-18 공개)는 카탈로그에 아직 없습니다.
-- 기타: `as_of`·`scope.period`·`reviewed_on`을 2026-10-26으로 갱신했습니다. 1차 도메인은 `huggingface.co`가 이미 등록돼 있어 추가가 없습니다.
+- 소급 수록(6): HF 전수 점검에서 이전 감사(10/22·10/25) 구간에 공개됐으나 후보에서 빠진 것으로 확인된 모델입니다. Shanghai AI Laboratory **Sage-A1.5**(10/15, 35B MoE 비전-언어 에이전트 모델 — Qwen3.6-35B-A3B·Agents-A1 기반·서브에이전트 오케스트레이션과 검증 모드·262,144 컨텍스트·Apache 2.0, GAIA 95.1·SWE-bench Pro 61.2·BrowseComp 81.7 — 기존 조직), **Ornith-1.5-122B**(10/16, 122B MoE·262,144 컨텍스트·MIT, Terminal-Bench 2.1 81.2·SWE-bench Pro(no-hack) 76.9·SWE-bench Verified(non-hack) 84.5 — 신규 조직, 소재지 미공개 🌐), **Ornith-1.5-397B·35B-A3B·9B**(8/18, Ornith-1.5 계열 나머지 3종 — 397B MoE(Terminal-Bench 2.1 Terminus-2 86.1·DeepSWE 56.0)·35B-A3B(활성 ~3B, 67.8)·9B 밀집(46.2), 모두 MIT·262,144 컨텍스트, 공식 블로그 `ornith.ai` 출처 추가 — 8월 공개분이 두 달간 누락), **Terminal-RSI-27B**(10/21, Qwen3.8-27B 후학습 터미널 에이전트·Apache 2.0, Terminal-Bench 2.1 86.52·4.0 19.84 — 신규 조직, 소재지 미공개 🌐). 공개일은 세 모델 모두 카드에 표기가 없어 HF 저장소 생성 시각을 근거로 했습니다.
+- 벤치마크: 공식 카드 표에 인쇄된 **신규 111개 점수**(Nanbeige 19 + Sage-A1.5 24 + Ornith-1.5-122B 14 + Ornith-1.5 397B·35B-A3B·9B 17·17·15 + Terminal-RSI-27B 5)를 반영했습니다(누적 203개 모델·3,523개 점수). Nanbeige의 YC-bench는 달러 척도라 점수표에서 제외하고 `benchmark_note`에 조건을 남겼으며, Terminal-RSI의 LHTB·파생 평균도 같은 이유로 제외했습니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.
+- 알려진 공백: Ornith-1.0 계열(HF 2026-06-26 공개, 예: Ornith-1.0-35B)은 카탈로그에 아직 없습니다. Ornith-1.5-122B의 Terminal-Bench 2.1 점수는 카드 각주상 Claude Code 하니스라 항목명을 `Terminal-Bench 2.1 (Claude Code)`로 정정했습니다.
+- 기타: `as_of`·`scope.period`·`reviewed_on`을 2026-10-26으로 갱신했습니다. 1차 도메인 추가: `ornith.ai`(Ornith-1.5 블로그).
 
 **2026-10-25 감사 추가분 (7개: 신규 5 + 보류 해제 2):**
 - 신규 릴리스(5): Recursive **Recursive Flint**(10/21, 코딩 에이전트용 첫 공개 모델 — 39.8B-A2.5B MoE(49층·전문가 256개 중 6개)·262,144 문서화 컨텍스트(블로그는 최대 512K)·베이스 없이 처음부터 학습·Apache 2.0, 최종 모델은 NVFP4 양자화본이며 16-bit 대비 평균 0.7점 이내, Terminal-Bench 2.1 54.9%·SWE-bench Pro v2 89.7%·SWE-bench Verified 74.2% — 신규 조직 🇺🇸), MiniMax **M3.1-Flash**(10/17, 428B-A23B 네이티브 멀티모달 MoE·1M 컨텍스트·전 층 희소 어텐션(MSA)+QAT+DSpark 추측 디코딩, MiniMax Community License 오픈웨이트), Shanghai AI Laboratory **Atria Dawn**(10/23, 9/11 Atria-Dawn-Preview의 정식 릴리스 — 744B GLM-5.2 기반·512K·MIT), NVIDIA **Nemotron Labs Dory 1.0 4B**(10/16, 순환 블록을 1~4회 반복하는 루프형 4B — 추론 시 연산·정확도 조절, OpenMDW-1.1), Moonshot AI **Kimi K3.1 Pro**(10/24, K3.1 시리즈 첫 모델 — API 즉시 제공, 전체 가중치는 11/4까지 공개 예고라 `open_weights`는 false)

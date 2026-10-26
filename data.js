@@ -19327,9 +19327,9 @@ const TIMELINE_DATA = [
       "reasoning (기본 <think> 블록, reasoning-parser qwen3)"
     ],
     "availability": "Hugging Face ornith-ai/Ornith-1.5-122B, Transformers ≥5.8.1·vLLM ≥0.19.1·SGLang ≥0.5.9 서빙 예시 제공",
-    "note": "Ornith-1.5 계열의 122B MoE 모델로, 카드는 가장 유능하고 효율적인 구성이며 양자화 Ornith-1.5-122B-Mobile 변형으로 모바일 배포도 가능하다고 설명합니다. 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(HF API createdAt 2026-10-16 07:14 UTC, lastModified 2026-10-21)을 근거로 했습니다. 공식 블로그(ornith.ai, 2026-08)는 397B·35B·9B만 다루고 122B는 없으며, 개발 주체의 소재지는 카드·HF 조직 정보에 없어 국가를 미공개로 표기했습니다. Ornith-1.5의 397B·35B-A3B·9B(2026-08-18 HF 공개) 등 다른 구성원은 카탈로그에 아직 없습니다.",
+    "note": "Ornith-1.5 계열의 122B MoE 모델로, 카드는 가장 유능하고 효율적인 구성이며 양자화 Ornith-1.5-122B-Mobile 변형으로 모바일 배포도 가능하다고 설명합니다. 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(HF API createdAt 2026-10-16 07:14 UTC, lastModified 2026-10-21)을 근거로 했습니다. 공식 블로그(ornith.ai, 2026-08)는 397B·35B·9B만 다루고 122B는 없으며, 개발 주체의 소재지는 카드·HF 조직 정보에 없어 국가를 미공개로 표기했습니다. 같은 계열의 Ornith-1.5-397B·35B-A3B·9B(2026-08-18 HF 공개)는 별도 레코드로 수록했습니다.",
     "benchmarks": {
-      "Terminal-Bench 2.1": 81.2,
+      "Terminal-Bench 2.1 (Claude Code)": 81.2,
       "CyberGym": 80.0,
       "NL2Repo": 51.2,
       "SWE-bench Pro (no-hack)": 76.9,
@@ -19354,7 +19354,7 @@ const TIMELINE_DATA = [
     "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
     "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
     "benchmark_sources": {
-      "Terminal-Bench 2.1": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "Terminal-Bench 2.1 (Claude Code)": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
       "CyberGym": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
       "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
       "SWE-bench Pro (no-hack)": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
@@ -19369,7 +19369,7 @@ const TIMELINE_DATA = [
       "Toolathlon-Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
       "ClawEval": "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
     },
-    "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.5-122B 열 14개 점수를 수록했습니다(카드는 소수 셋째 자리까지 인쇄). Terminal-Bench 2.1은 Claude Code 2.1.126(temperature 1.0·top-p 1.0·5회 평균), SWE-bench Verified·Pro·Multilingual은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K)에서 보상 해킹 방지 규칙을 적용해 평가했고 해킹이 확인된 풀이는 오답 처리했습니다. NL2Repo는 400K 컨텍스트·GitHub/pip 접근 차단, HLE 판정은 Claude 4.6 Opus, MCP-Atlas는 공개 500과제 부분집합(판정 Claude 4.8 Opus), Toolathlon-Verified는 공식 평가 서비스(최대 토큰 128K), ClawEval은 temperature 0.6·256K입니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+    "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.5-122B 열 14개 점수를 수록했습니다(카드는 소수 셋째 자리까지 인쇄). Terminal-Bench 2.1은 카드 각주상 Claude Code 하니스(Terminus-2 값은 카드에 없음) Claude Code 2.1.126(temperature 1.0·top-p 1.0·5회 평균), SWE-bench Verified·Pro·Multilingual은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K)에서 보상 해킹 방지 규칙을 적용해 평가했고 해킹이 확인된 풀이는 오답 처리했습니다. NL2Repo는 400K 컨텍스트·GitHub/pip 접근 차단, HLE 판정은 Claude 4.6 Opus, MCP-Atlas는 공개 500과제 부분집합(판정 Claude 4.8 Opus), Toolathlon-Verified는 공식 평가 서비스(최대 토큰 128K), ClawEval은 temperature 0.6·256K입니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
     "parameter_status": "publisher-partial",
     "verification": {
       "status": "reviewed",
@@ -19443,6 +19443,294 @@ const TIMELINE_DATA = [
     },
     "benchmark_note": "공식 카드 표에 인쇄된 논문 retained 모델의 성공률(%) 5개를 수록했습니다(추론 3회 평균 Mean@3). 평가 하니스: temperature 0.60·top-p 0.95, 턴당 최대 8,192 생성 토큰·호출당 입력 96,000 토큰, 구조화 JSON 행동, thinking 비활성, 누적 32,000 토큰에서 선제 요약. 같은 표의 Base(Qwen3.8-27B) 열(Terminal-Bench 2.1 51.70 등)은 이 하니스 기준 측정값이라 카탈로그의 Qwen3.8-27B 점수와 직접 비교할 수 없습니다. 4개 스위트 동일 가중 평균(50.58)은 파생 집계, LHTB(프로세스 보상 0.37·엄격 완료 5/46)는 비% 척도라 점수표에서 제외했습니다. 모든 수치는 개발사 자체 보고입니다.",
     "parameter_status": "publisher-partial",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-26",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-247",
+    "name": "Ornith-1.5-397B",
+    "date": "2026-08-18",
+    "sortDate": "2026-08-18",
+    "month": "2026-08",
+    "monthName": "August",
+    "company": "Ornith",
+    "family": "Ornith",
+    "type": "LLM (self-improvement MoE)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "397B MoE (모델명·카드 표기; HF 저장소 safetensors 메타데이터 합계 403,397,928,944 BF16), 활성 파라미터 카드 미명시",
+    "architecture": "MoE 모델(Qwen3_5MoeForConditionalGeneration 구조) — config.json 기준 60층·hidden 4096·라우팅 전문가 512개 중 10개 선택(전문가 FFN 1024, 공유 전문가 FFN 1024)·어텐션 32 헤드/KV 2 헤드·어휘 248,320. config에 비전 구성이 있으나 카드는 입력 모달리티를 명시하지 않습니다. Ornith-1.0(Qwen3.5·Gemma 4 기반 CPT·mid-training·post-training)을 확장해 과제 생성·스캐폴드 구성·풀이 롤아웃을 함께 최적화하는 자기 개선 루프를 RL로 학습했다고 카드가 설명합니다.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "코딩 에이전트",
+      "에이전틱 도구 사용",
+      "추론",
+      "검색·딥리서치"
+    ],
+    "open_weights": true,
+    "license": "MIT",
+    "context": "262,144 (config.json 기준)",
+    "languages": "",
+    "variants": [
+      "Ornith-1.5-397B-FP8",
+      "Ornith-1.5-397B-NVFP4",
+      "Ornith-1.5-397B-GGUF",
+      "Ornith-1.5-397B-DFlash"
+    ],
+    "reasoning_effort": [
+      "reasoning (기본 <think> 블록)"
+    ],
+    "availability": "Hugging Face ornith-ai/Ornith-1.5-397B (BF16 safetensors) 및 FP8·NVFP4·GGUF·DFlash 변형",
+    "note": "Ornith-1.5 계열의 플래그십 397B MoE 모델입니다. 블로그는 Terminal-Bench 2.1 86.1·DeepSWE 56.0으로 Claude Opus 4.8과 비슷하고 비슷한 규모의 오픈 모델(GLM-5.2·DeepSeek-V4-Flash-0731)을 앞선다고 주장합니다. 공개일은 카드·블로그(2026-08 표기)에 일자가 없어 HF 저장소 생성 시각(HF API createdAt 2026-08-18)을 근거로 했습니다. 개발 주체의 소재지는 카드·HF 조직 정보에 없어 국가를 미공개로 표기했습니다. 2026-10-26 HF 점검에서 누락이 확인돼 소급 수록했습니다.",
+    "benchmarks": {
+      "Terminal-Bench 2.1 (Terminus-2)": 86.1,
+      "Terminal-Bench 2.1 (Claude Code)": 85.2,
+      "SWE-bench Verified": 86.0,
+      "SWE-bench Pro": 65.1,
+      "SWE-bench Multilingual": 79.6,
+      "DeepSWE": 56.0,
+      "Frontier-Bench v0.1": 13.5,
+      "NL2Repo": 59.5,
+      "SWE-Atlas-QnA": 55.6,
+      "HLE (no tools)": 44.6,
+      "HLE (with tools)": 56.1,
+      "GPQA Diamond": 92.8,
+      "MCP-Atlas": 80.0,
+      "Toolathlon-Verified": 71.2,
+      "WideSearch": 80.8,
+      "BrowseComp": 86.6,
+      "ClawEval": 81.4
+    },
+    "official_id": "ornith-ai/Ornith-1.5-397B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-397B"
+      },
+      {
+        "label": "공식 블로그",
+        "url": "https://ornith.ai/ornith_1_5.html"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+    "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+    "benchmark_sources": {
+      "Terminal-Bench 2.1 (Terminus-2)": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "Terminal-Bench 2.1 (Claude Code)": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "SWE-bench Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "SWE-bench Pro": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "SWE-bench Multilingual": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "DeepSWE": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "Frontier-Bench v0.1": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "SWE-Atlas-QnA": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "HLE (no tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "HLE (with tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "GPQA Diamond": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "MCP-Atlas": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "Toolathlon-Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "WideSearch": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "BrowseComp": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+      "ClawEval": "https://huggingface.co/ornith-ai/Ornith-1.5-397B"
+    },
+    "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.5-397B 열 17개 점수를 수록했습니다(Terminal-Bench 2.1은 하니스별 두 값을 별도 항목으로 구분). 'All results reported for Ornith-1.5 are averaged over five independent runs'(5회 평균). Terminal-Bench 2.1 (Terminus-2)는 Harbor/Terminus-2(parser=json·temperature 1.0·top-p 1.0·128K 컨텍스트·4시간 타임아웃), (Claude Code)는 Claude Code 2.1.126(max_new_tokens 131072), SWE-bench 계열은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K, git 기록 제거·네트워크 차단), SWE-Atlas-QnA는 mini-SWE-agent(128K), NL2Repo는 400K 컨텍스트·GitHub/pip 접근 차단, HLE 판정은 Claude 4.6 Opus, MCP-Atlas는 공개 500과제 부분집합(판정 Claude 4.8 Opus), Toolathlon-Verified는 공식 평가 서비스(최대 토큰 128K), ClawEval은 temperature 0.6·256K입니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+    "parameter_status": "publisher-partial",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-26",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-248",
+    "name": "Ornith-1.5-35B-A3B",
+    "date": "2026-08-18",
+    "sortDate": "2026-08-18",
+    "month": "2026-08",
+    "monthName": "August",
+    "company": "Ornith",
+    "family": "Ornith",
+    "type": "LLM (self-improvement MoE)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "35B total / ~3B active per token (카드 표기 '~3B'; HF 저장소 safetensors 메타데이터 합계 35,951,822,704 BF16)",
+    "architecture": "MoE 모델(Qwen3_5MoeForConditionalGeneration 구조) — config.json 기준 40층·hidden 2048·라우팅 전문가 256개 중 8개 선택(전문가 FFN 512, 공유 전문가 FFN 512)·어텐션 16 헤드/KV 2 헤드·어휘 248,320. config에 비전 구성이 있으나 카드는 입력 모달리티를 명시하지 않습니다. 학습 방식은 Ornith-1.5 계열 공통의 자기 개선 RL입니다.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "코딩 에이전트",
+      "에이전틱 도구 사용",
+      "추론",
+      "중형 효율 배포"
+    ],
+    "open_weights": true,
+    "license": "MIT",
+    "context": "262,144 (config.json 기준)",
+    "languages": "",
+    "variants": [
+      "Ornith-1.5-35B-A3B-FP8",
+      "Ornith-1.5-35B-A3B-NVFP4",
+      "Ornith-1.5-35B-A3B-GGUF",
+      "Ornith-1.5-35B-A3B-MLX(4·6·8bit)",
+      "Ornith-1.5-35B-A3B-DFlash"
+    ],
+    "reasoning_effort": [
+      "reasoning (기본 <think> 블록)"
+    ],
+    "availability": "Hugging Face ornith-ai/Ornith-1.5-35B-A3B (BF16 safetensors) 및 FP8·NVFP4·GGUF·MLX·DFlash 변형",
+    "note": "Ornith-1.5 계열의 중형 MoE 모델로, 카드는 토큰당 약 3B만 활성화하면서도 같은 크기의 Qwen3.6-35B를 모든 코딩·에이전트 벤치마크에서 앞서고 Gemma 4-31B·Muse Glimmer-30B 같은 밀집 모델도 앞선다고 설명합니다. 공개일은 카드·블로그(2026-08 표기)에 일자가 없어 HF 저장소 생성 시각(HF API createdAt 2026-08-18)을 근거로 했습니다. 개발 주체의 소재지는 카드·HF 조직 정보에 없어 국가를 미공개로 표기했습니다. 2026-10-26 HF 점검에서 누락이 확인돼 소급 수록했습니다.",
+    "benchmarks": {
+      "Terminal-Bench 2.1 (Terminus-2)": 67.8,
+      "Terminal-Bench 2.1 (Claude Code)": 68.5,
+      "SWE-bench Verified": 79.0,
+      "SWE-bench Pro": 59.6,
+      "SWE-bench Multilingual": 71.4,
+      "DeepSWE": 22.0,
+      "Frontier-Bench v0.1": 5.1,
+      "NL2Repo": 46.2,
+      "SWE-Atlas-QnA": 39.8,
+      "HLE (no tools)": 25.6,
+      "HLE (with tools)": 33.4,
+      "GPQA Diamond": 89.2,
+      "MCP-Atlas": 70.2,
+      "Toolathlon-Verified": 48.7,
+      "WideSearch": 67.8,
+      "BrowseComp": 67.6,
+      "ClawEval": 72.5
+    },
+    "official_id": "ornith-ai/Ornith-1.5-35B-A3B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B"
+      },
+      {
+        "label": "공식 블로그",
+        "url": "https://ornith.ai/ornith_1_5.html"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+    "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+    "benchmark_sources": {
+      "Terminal-Bench 2.1 (Terminus-2)": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "Terminal-Bench 2.1 (Claude Code)": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "SWE-bench Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "SWE-bench Pro": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "SWE-bench Multilingual": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "DeepSWE": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "Frontier-Bench v0.1": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "SWE-Atlas-QnA": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "HLE (no tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "HLE (with tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "GPQA Diamond": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "MCP-Atlas": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "Toolathlon-Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "WideSearch": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "BrowseComp": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+      "ClawEval": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B"
+    },
+    "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.5-35B-A3B 열 17개 점수를 수록했습니다(Terminal-Bench 2.1은 하니스별 두 값을 별도 항목으로 구분). 'All results reported for Ornith-1.5 are averaged over five independent runs'(5회 평균). Terminal-Bench 2.1 (Terminus-2)는 Harbor/Terminus-2(parser=json·temperature 1.0·top-p 1.0·128K 컨텍스트·4시간 타임아웃), (Claude Code)는 Claude Code 2.1.126(max_new_tokens 131072), SWE-bench 계열은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K, git 기록 제거·네트워크 차단), SWE-Atlas-QnA는 mini-SWE-agent(128K), NL2Repo는 400K 컨텍스트·GitHub/pip 접근 차단, HLE 판정은 Claude 4.6 Opus, MCP-Atlas는 공개 500과제 부분집합(판정 Claude 4.8 Opus), Toolathlon-Verified는 공식 평가 서비스(최대 토큰 128K), ClawEval은 temperature 0.6·256K입니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+    "parameter_status": "publisher-approximate",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-26",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-249",
+    "name": "Ornith-1.5-9B",
+    "date": "2026-08-18",
+    "sortDate": "2026-08-18",
+    "month": "2026-08",
+    "monthName": "August",
+    "company": "Ornith",
+    "family": "Ornith",
+    "type": "LLM (self-improvement dense)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "9B dense (모델명·카드 표기; HF 저장소 safetensors 메타데이터 합계 9,653,104,368 BF16, 비전 구성 요소 포함 추정)",
+    "architecture": "밀집(dense) 모델(Qwen3_5ForConditionalGeneration 구조) — config.json 기준 32층·hidden 4096·FFN 12288·어텐션 16 헤드/KV 4 헤드·어휘 248,320. config에 비전 구성이 있으나 카드는 입력 모달리티를 명시하지 않습니다.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "코딩 에이전트",
+      "에이전틱 도구 사용",
+      "단일 GPU·모바일(양자화 Mobile 변형) 배포"
+    ],
+    "open_weights": true,
+    "license": "MIT",
+    "context": "262,144 (config.json 기준)",
+    "languages": "",
+    "variants": [
+      "Ornith-1.5-9B-NVFP4",
+      "Ornith-1.5-9B-GGUF",
+      "Ornith-1.5-9B-MLX(4·6·8bit)",
+      "Ornith-1.5-9B-DFlash",
+      "Ornith-1.5-9B-Mobile (카드·블로그 언급)"
+    ],
+    "reasoning_effort": [
+      "reasoning (기본 <think> 블록)"
+    ],
+    "availability": "Hugging Face ornith-ai/Ornith-1.5-9B (BF16 safetensors) 및 NVFP4·GGUF·MLX·DFlash 변형",
+    "note": "Ornith-1.5 계열의 가장 가벼운 9B 밀집 모델로, 단일 GPU 서빙과 양자화 Mobile 변형을 통한 iPhone·Android 배포를 내세웁니다. 공개일은 카드·블로그(2026-08 표기)에 일자가 없어 HF 저장소 생성 시각(HF API createdAt 2026-08-18)을 근거로 했습니다. 개발 주체의 소재지는 카드·HF 조직 정보에 없어 국가를 미공개로 표기했습니다. 2026-10-26 HF 점검에서 누락이 확인돼 소급 수록했습니다.",
+    "benchmarks": {
+      "Terminal-Bench 2.1 (Terminus-2)": 46.2,
+      "Terminal-Bench 2.1 (Claude Code)": 47.0,
+      "SWE-bench Verified": 70.6,
+      "SWE-bench Pro": 47.5,
+      "SWE-bench Multilingual": 54.4,
+      "NL2Repo": 32.4,
+      "SWE-Atlas-QnA": 20.6,
+      "HLE (no tools)": 20.2,
+      "HLE (with tools)": 30.5,
+      "GPQA Diamond": 86.4,
+      "MCP-Atlas": 54.2,
+      "Toolathlon-Verified": 41.2,
+      "WideSearch": 59.5,
+      "BrowseComp": 56.4,
+      "ClawEval": 66.5
+    },
+    "official_id": "ornith-ai/Ornith-1.5-9B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-9B"
+      },
+      {
+        "label": "공식 블로그",
+        "url": "https://ornith.ai/ornith_1_5.html"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+    "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+    "benchmark_sources": {
+      "Terminal-Bench 2.1 (Terminus-2)": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "Terminal-Bench 2.1 (Claude Code)": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "SWE-bench Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "SWE-bench Pro": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "SWE-bench Multilingual": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "SWE-Atlas-QnA": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "HLE (no tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "HLE (with tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "GPQA Diamond": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "MCP-Atlas": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "Toolathlon-Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "WideSearch": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "BrowseComp": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+      "ClawEval": "https://huggingface.co/ornith-ai/Ornith-1.5-9B"
+    },
+    "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.5-9B 열 15개 점수를 수록했습니다(Terminal-Bench 2.1은 하니스별 두 값을 별도 항목으로 구분, DeepSWE·Frontier-Bench 행은 이 카드에 없음). 'All results reported for Ornith-1.5 are averaged over five independent runs'(5회 평균). Terminal-Bench 2.1 (Terminus-2)는 Harbor/Terminus-2(parser=json·temperature 1.0·top-p 1.0·128K 컨텍스트·4시간 타임아웃), (Claude Code)는 Claude Code 2.1.126(max_new_tokens 131072), SWE-bench 계열은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K, git 기록 제거·네트워크 차단), SWE-Atlas-QnA는 mini-SWE-agent(128K), NL2Repo는 400K 컨텍스트·GitHub/pip 접근 차단, HLE 판정은 Claude 4.6 Opus, MCP-Atlas는 공개 500과제 부분집합(판정 Claude 4.8 Opus), Toolathlon-Verified는 공식 평가 서비스(최대 토큰 128K), ClawEval은 temperature 0.6·256K입니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+    "parameter_status": "publisher-approximate",
     "verification": {
       "status": "reviewed",
       "reviewed_on": "2026-10-26",

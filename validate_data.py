@@ -118,6 +118,9 @@ OFFICIAL_HOSTS = {
     # PyTorch official blog — Muse Spark Open deployment/Helion kernels post
     # (first-party deployment guide published with Meta). Added 2026-10-16.
     "pytorch.org",
+    # Ornith official blog — Ornith-1.5 announcement (397B / 35B-A3B / 9B).
+    # Added 2026-10-26.
+    "ornith.ai",
     "qwen.ai",
     "qwencloud.com",
     # Reflection AI official blog — Beam announcement. Added 2026-10-08 as an
