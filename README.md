@@ -1,9 +1,16 @@
 # ⚡ 2026 LLM & MLLM Release Timeline
 
 > **2026년 주요 LLM / MLLM 파운데이션 모델 출시 타임라인 및 세대별 진화 계보**  
-> 기준 기간: **2026-01-01 ~ 2026-10-25** | 수록 모델: **232개** | 표기 조직: **67개**
+> 기준 기간: **2026-01-01 ~ 2026-10-26** | 수록 모델: **236개** | 표기 조직: **70개**
 
 본 레포지토리는 2026년에 발표된 전 세계 주요 LLM, MLLM, Omni 파운데이션 모델의 릴리즈 내역을 공식 1차 자료와 함께 구조화하여 인터랙티브한 웹 타임라인으로 제공하는 **GitHub Pages** 프로젝트입니다.
+
+**2026-10-26 감사 추가분 (4개: 신규 1 + 소급 3):**
+- 신규 릴리스(1): Nanbeige **Nanbeige4.3-33B**(10/24, 4.3 시리즈 플래그십 teacher 모델 — 33B 밀집(dense)·512K 컨텍스트·Apache 2.0, 이후 소형 모델 증류의 기반, Terminal-Bench 2.1 80.9·DeepSWE 65.5·SWE-Bench Pro 60.3·GDPval 84.8·AIME 2026 95.2 — 신규 조직 🇨🇳). 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(`createdAt` 2026-10-24 02:49 UTC)을 근거로 했습니다.
+- 소급 수록(3): HF 전수 점검에서 이전 감사(10/22·10/25) 구간에 공개됐으나 후보에서 빠진 것으로 확인된 모델입니다. Shanghai AI Laboratory **Sage-A1.5**(10/15, 35B MoE 비전-언어 에이전트 모델 — Qwen3.6-35B-A3B·Agents-A1 기반·서브에이전트 오케스트레이션과 검증 모드·262,144 컨텍스트·Apache 2.0, GAIA 95.1·SWE-bench Pro 61.2·BrowseComp 81.7 — 기존 조직), **Ornith-1.5-122B**(10/16, 122B MoE·262,144 컨텍스트·MIT, Terminal-Bench 2.1 81.2·SWE-bench Pro(no-hack) 76.9·SWE-bench Verified(non-hack) 84.5 — 신규 조직, 소재지 미공개 🌐), **Terminal-RSI-27B**(10/21, Qwen3.8-27B 후학습 터미널 에이전트·Apache 2.0, Terminal-Bench 2.1 86.52·4.0 19.84 — 신규 조직, 소재지 미공개 🌐). 공개일은 세 모델 모두 카드에 표기가 없어 HF 저장소 생성 시각을 근거로 했습니다.
+- 벤치마크: 공식 카드 표에 인쇄된 **신규 62개 점수**(Nanbeige 19 + Sage-A1.5 24 + Ornith-1.5-122B 14 + Terminal-RSI-27B 5)를 반영했습니다(누적 200개 모델·3,474개 점수). Nanbeige의 YC-bench는 달러 척도라 점수표에서 제외하고 `benchmark_note`에 조건을 남겼으며, Terminal-RSI의 LHTB·파생 평균도 같은 이유로 제외했습니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.
+- 알려진 공백: Ornith-1.5의 397B·35B-A3B·9B(HF 2026-08-18 공개)는 카탈로그에 아직 없습니다.
+- 기타: `as_of`·`scope.period`·`reviewed_on`을 2026-10-26으로 갱신했습니다. 1차 도메인은 `huggingface.co`가 이미 등록돼 있어 추가가 없습니다.
 
 **2026-10-25 감사 추가분 (7개: 신규 5 + 보류 해제 2):**
 - 신규 릴리스(5): Recursive **Recursive Flint**(10/21, 코딩 에이전트용 첫 공개 모델 — 39.8B-A2.5B MoE(49층·전문가 256개 중 6개)·262,144 문서화 컨텍스트(블로그는 최대 512K)·베이스 없이 처음부터 학습·Apache 2.0, 최종 모델은 NVFP4 양자화본이며 16-bit 대비 평균 0.7점 이내, Terminal-Bench 2.1 54.9%·SWE-bench Pro v2 89.7%·SWE-bench Verified 74.2% — 신규 조직 🇺🇸), MiniMax **M3.1-Flash**(10/17, 428B-A23B 네이티브 멀티모달 MoE·1M 컨텍스트·전 층 희소 어텐션(MSA)+QAT+DSpark 추측 디코딩, MiniMax Community License 오픈웨이트), Shanghai AI Laboratory **Atria Dawn**(10/23, 9/11 Atria-Dawn-Preview의 정식 릴리스 — 744B GLM-5.2 기반·512K·MIT), NVIDIA **Nemotron Labs Dory 1.0 4B**(10/16, 순환 블록을 1~4회 반복하는 루프형 4B — 추론 시 연산·정확도 조절, OpenMDW-1.1), Moonshot AI **Kimi K3.1 Pro**(10/24, K3.1 시리즈 첫 모델 — API 즉시 제공, 전체 가중치는 11/4까지 공개 예고라 `open_weights`는 false)
@@ -174,13 +181,13 @@
   - 단순 양자화 체크포인트 (FP8, NVFP4, INT4, GGUF 등)
   - 독립 제품을 대표하지 않는 중간/베이스 체크포인트
   - 위 부류는 부류 자체로 수록이 막히지 않습니다 — 중요도 예외 기준(공식 1차 출처 + 업계 기준점)을 만족하면 예외 수록하며, 근거는 각 레코드 `note`에 남깁니다.
-- **포함 기업 (67개 표기 조직):**
+- **포함 기업 (70개 표기 조직):**
    - **미국 (US):** OpenAI, Anthropic, Google DeepMind, Meta, xAI, NVIDIA, IBM, Poolside, Thinking Machines Lab, Arcee AI, Motif Technologies, Cognition (SWE), Salesforce (Koa), Gensyn (open-1b), Accio-Lab (Occamy), TypeSafe AI (Jev), Contrastive-LM (CLM), Apple (LensVLM), Perceptron (Mk1.5), AWS Strands Labs (Strands Decider), Cloudflare (Clef), Liquid AI (LFM2.5), Inception Labs (Mercury), ElevenLabs (Eleven Realtime), H2O.ai (H2O-Lightning), Recursive (Flint), Reflection AI (Beam)
    - **한국 (KR):** NAVER Cloud (HyperCLOVA X SEED 4B), Upstage (Solar), LG AI Research (EXAONE / K-EXAONE), SK Telecom (A.X), GenON (Hunmin), VIDRAFT (Darwin), KRAFTON (Raon)
-  - **중국 (CN):** Alibaba (Qwen), DeepSeek, Baidu (ERNIE), ByteDance (Seed), Moonshot AI (Kimi), Z.ai (GLM), MiniMax, StepFun, Meituan (LongCat), Xiaomi (MiMo), Ant Group (Ling/Ring), Tencent (Hy), Shanghai Artificial Intelligence Laboratory (Atria), Nex-AGI (Nex), Tsinghua SIGS Robot Lab (VeriLoop), Bilibili (Index-Translate), OpenBMB/ModelBest (MiniCPM-V 4.7), MemTensor (MemT), iFLYTEK (Spark)
+  - **중국 (CN):** Alibaba (Qwen), DeepSeek, Baidu (ERNIE), ByteDance (Seed), Moonshot AI (Kimi), Z.ai (GLM), MiniMax, StepFun, Meituan (LongCat), Xiaomi (MiMo), Ant Group (Ling/Ring), Tencent (Hy), Shanghai Artificial Intelligence Laboratory (Atria), Nex-AGI (Nex), Tsinghua SIGS Robot Lab (VeriLoop), Bilibili (Index-Translate), OpenBMB/ModelBest (MiniCPM-V 4.7), MemTensor (MemT), iFLYTEK (Spark), Nanbeige (Nanbeige4.3)
    - **중동 (AE):** Institute of Foundation Models / MBZUAI (K2 Horizon)
    - **유럽/기타:** Mistral AI (프랑스), H Company (프랑스, Holo4), Aleph Alpha (독일, Kolibri), Cohere/Cohere Labs (캐나다), Sarvam AI (인도), Convai Innovations (인도, Laya), AutoTrust AI (싱가포르, JEV), Sber (러시아, GigaChat), Yandex (러시아, AliceAI)
-   - **국적 미공개:** IQuest (IQuest-Q1) — 모델 카드 언어가 영어·중국어이고 공식 출처에 본사·국적 표기가 없어 추정하지 않고 미상으로 두었습니다.
+   - **국적 미공개:** IQuest (IQuest-Q1), Ornith (Ornith-1.5-122B), Terminal-RSI (Terminal-RSI-27B) — 공식 출처에 본사·국적 표기가 없어 추정하지 않고 미상으로 두었습니다(IQuest는 모델 카드 언어가 영어·중국어).
 
 공식 점수가 확인되지 않은 모델은 빈 점수로 표시합니다. 이는 누락이 아니라 공식 발표 점수만 제공한다는 감사 정책의 결과입니다. 원래 목록에서 공식 출시 시점·공식 제품명·별도 모델 ID가 확인되지 않거나 중복인 5개 항목과, 2026-09-08 감사에서 1차 출처 미확보로 보류한 1개 항목(iFLYTEK Spark X2.5), 2026-09-16 감사에서 범위 제외로 판정한 3개 항목(Gemini Omni 1.1 Flash · GPT-Live-1 API 확장 · Gemini 3.5 Transcribe)과, 2026-09-19 감사에서 범위 제외·보류로 판정한 8개 항목(단순 양자화 2 · ASR 전용 1 · 도메인 특화/월드모델 3 · 배포 확장 1 · 스텔스 보류 1), 2026-09-23 감사에서 범위 제외로 판정해 원장에 남은 3개 항목(동일 가중치 서빙 티어 1 · 도메인 특화 1 · 기간 외 1 — 비LLM 결정 모델로 분류됐던 Laya는 09-29 되돌림으로 이관)과, 2026-09-29 감사에서 범위 제외·보류로 판정한 4개 항목(멀티모델 협업 시스템 1 · 포스트트레인 연구 프리뷰 1 · 라우팅 엔드포인트 1 · 스텔스 보류 1), 2026-10-01 감사에서 1차 출처 미확보·날짜 근거 미확보·범위 제외로 판정한 5개 항목(1차 출처 미확보 1 · 날짜 근거 미확보 1 · 비공개 연구 모델 1 · 범위 밖 1 · 기간 외 1)과, 2026-10-08 감사에서 보류·범위 제외·중복 배포로 판정한 3개 항목(아티팩트 미공개 보류 1 · 기존 모델 API 계층 1 · 기존 모델 배포 갱신 1 — 임베딩 전용 1건은 10-15 범위 개정으로 활성 레코드 이관)과, 2026-10-15 감사에서 ASR/TTS 전용으로 판정한 1개 항목(Muse Voice Transcribe — Muse 계열 전수 점검)과, 2026-10-16 감사에서 가중치 미공개 보류 2건(**Ultramarine 1 Flash** — API만 개방·가중치 약 2주 후 예고, **MAI-Base-2** — 사전학습 완료 공표·포스트트레이닝 중)·범위 밖 1건(**Natura-1** — 물리 세계 로봇 조작 파운데이션)을 신규 기록하고 **Reflection AI Beam** 보류 기록을 10/16 재확인 기준으로 갱신했습니다. 2026-10-22 감사에서는 리랭커·임베딩·ASR/TTS 전용 3건(**Cohere Rerank 5**·**Nemotron 3.5 Embed/Rerank**·**Voxtral 3**)을 신규 기록하고, 10/16 판정 후 원장에서 빠져 있던 2건(**GPT-Live-1.1 / 1.1 Quip** — 배포 갱신, **Timestral** — 시계열 예측 전용)을 등재했고, 2026-10-25 감사에서는 **Granite Switch 4.1**(모듈형 패키징)·**Hy-Nomas**(비디오 월드 생성 전용)·**WeVisOne-VL**(시각 인식 특화 파생)을 신규 기록하는 한편 보류 중이던 **Reflection AI Beam**·**Ling-3.1-flash**를 활성 레코드로 이관(원장 삭제)해 총 **42개 항목**은 [`조사 자료`](조사%20자료)의 제외 원장에 보존했습니다.
 

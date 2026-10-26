@@ -19083,6 +19083,371 @@ const TIMELINE_DATA = [
       "reviewed_on": "2026-10-25",
       "policy": "official-primary-only"
     }
+  },
+  {
+    "id": "model-243",
+    "name": "Nanbeige4.3-33B",
+    "date": "2026-10-24",
+    "sortDate": "2026-10-24",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Nanbeige",
+    "family": "Nanbeige",
+    "type": "LLM (agentic teacher)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "33B dense (모델명 표기; HF 저장소 safetensors 메타데이터 합계 33,118,977,024 BF16)",
+    "architecture": "밀집(dense) 디코더 전용 Transformer(LlamaForCausalLM 구조) — config.json 기준 52층·hidden 7168·FFN 22016·어텐션 56 헤드/KV 8 헤드(GQA)·어휘 166,912·RoPE base 1.2e8. 카드에 아키텍처·학습 설명은 없습니다.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "에이전틱 코딩",
+      "프로페셔널 코워크(사무·직업 과업)",
+      "도구 사용",
+      "소형 모델 증류용 teacher"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "524,288 (512K)",
+    "languages": "영어, 중국어 (HF 카드 language 태그)",
+    "variants": [
+      "Nanbeige4.3-33B-Base (베이스 체크포인트, 별도 저장소)"
+    ],
+    "reasoning_effort": [
+      "thinking (enable_thinking 기본 켜짐, 끌 수 있음)"
+    ],
+    "availability": "Hugging Face Nanbeige/Nanbeige4.3-33B (BF16 safetensors, Transformers·SGLang·vLLM 서빙 예시 제공)",
+    "note": "Nanbeige4.3 시리즈의 플래그십 'teacher' 모델 — 이후 소형 모델(예: Nanbeige4.3-3B) 증류의 기반으로 쓰겠다고 카드가 밝힙니다. 카드 연락처 도메인(kanzhun.com)으로 보아 BOSS직빙(Kanzhun) 계열 연구팀입니다. 공개일은 카드·발표문에 표기가 없어 HF 저장소 생성 시각(HF API createdAt 2026-10-24 02:49 UTC, lastModified 2026-10-25 11:11 UTC)을 근거로 했습니다. 기술 보고서·블로그 링크는 없습니다.",
+    "benchmarks": {
+      "Terminal-Bench 2.1": 80.9,
+      "Terminal-Bench 4.0": 23.8,
+      "DeepSWE": 65.5,
+      "SWE-Bench Pro": 60.3,
+      "SWE-Atlas-QnA": 50.8,
+      "NL2Repo": 53.0,
+      "SciCode": 52.6,
+      "SkillsBench": 61.1,
+      "Automation Bench": 54.2,
+      "JobBench": 44.8,
+      "GDPval": 84.8,
+      "Claw-Eval (pass^3)": 78.3,
+      "Toolathlon-Verified": 70.4,
+      "DeepPlanning": 63.3,
+      "EnterpriseOps-Gym": 41.0,
+      "Tau3-Bench": 48.8,
+      "GPQA Diamond": 89.5,
+      "AIME 2026": 95.2,
+      "AA-LCR": 84.0
+    },
+    "official_id": "Nanbeige/Nanbeige4.3-33B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+    "parameter_source": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+    "benchmark_sources": {
+      "Terminal-Bench 2.1": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "Terminal-Bench 4.0": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "DeepSWE": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "SWE-Bench Pro": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "SWE-Atlas-QnA": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "NL2Repo": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "SciCode": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "SkillsBench": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "Automation Bench": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "JobBench": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "GDPval": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "Claw-Eval (pass^3)": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "Toolathlon-Verified": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "DeepPlanning": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "EnterpriseOps-Gym": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "Tau3-Bench": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "GPQA Diamond": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "AIME 2026": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "AA-LCR": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
+    },
+    "benchmark_note": "공식 카드 본문 표에 인쇄된 19개 점수를 수록했습니다(YC-bench는 달러 척도(1,025,437달러)라 점수표에서 제외). 조건: Nanbeige는 chat template의 preserve_thinking=true, 비교 모델과 동일한 하이퍼파라미터·하니스에서 최고 thinking effort로 평가. Terminal-Bench 2.1은 Terminus 2, Terminal-Bench 4.0·DeepSWE·SWE-Atlas-QnA는 mini-swe-agent v2.4.6(SWE-Atlas-QnA 판정은 GPT-6 Sol, medium effort, 루브릭 1,304개), NL2Repo는 Claude Code, Automation Bench는 v1.0.6 공개 600과제, JobBench는 검색 도구가 달린 Claude Code 하니스, GDPval은 개정 루브릭(revised rubrics), Claw-Eval은 General 부분집합 157과제, DeepPlanning·EnterpriseOps-Gym·Tau3-Bench는 공식 저장소 사용. 비교 모델(Qwen3.8-27B·Muse-Glimmer-30B·Gemma4-31B) 점수는 수록하지 않았고, 모든 수치는 개발사 자체 보고입니다.",
+    "parameter_status": "publisher-approximate",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-26",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-244",
+    "name": "Sage-A1.5",
+    "date": "2026-10-15",
+    "sortDate": "2026-10-15",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Shanghai Artificial Intelligence Laboratory",
+    "family": "Sage",
+    "type": "MLLM (agentic science MoE)",
+    "category": "MLLM",
+    "status": "GA",
+    "parameters": "35B total MoE (HF 저장소 safetensors 메타데이터 합계 35,951,822,704 BF16), 활성 파라미터 카드 미명시",
+    "architecture": "Qwen3.6-35B-A3B와 Agents-A1을 기반으로 한 MoE 비전-언어 모델(Qwen3_5MoeForConditionalGeneration) — config.json 기준 40층(선형 어텐션 3 : 풀 어텐션 1 반복)·hidden 2048·라우팅 전문가 256개 중 8개 선택(전문가 FFN 512)·어텐션 16 헤드/KV 2 헤드(head_dim 256)·MTP 1층. 에이전트 오케스트레이션(독립 컨텍스트의 서브에이전트 병렬 수행)과 opt-in 검증 모드(사고 과정 안에서 자체 점검)를 내세웁니다.",
+    "modalities": [
+      "text",
+      "image"
+    ],
+    "focus": [
+      "장기 과제 과학 연구 에이전트",
+      "서브에이전트 병렬 오케스트레이션",
+      "자체 검증(Verification Mode)",
+      "딥리서치·검색",
+      "엔지니어링 과제"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "262,144 (네이티브) — YaRN factor 2.0으로 524,288 확장 방법 안내",
+    "languages": "",
+    "variants": [
+      "Sage-A1.5-FP8",
+      "Sage-A1.5 GGUF(Q4_K_M·Q6_K·Q8_0·F16, InternScience 공식 저장소)"
+    ],
+    "reasoning_effort": [
+      "thinking (reasoning-parser qwen3)",
+      "Verification Mode (opt-in)"
+    ],
+    "availability": "Hugging Face InternScience/Sage-A1.5, ModelScope, GitHub InternScience/Agents-A1, 무료 체험 플랫폼(discovery.intern-ai.org.cn), Transformers·vLLM·SGLang 서빙 예시 제공",
+    "note": "Shanghai AI Laboratory의 Agents-A1 후속 — 소규모(~35B) 모델로 장기 과제 검색·과학 문제 해결을 겨냥한 에이전트 모델입니다. 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(HF API createdAt 2026-10-15 08:34 UTC, lastModified 2026-10-22)을 근거로 했습니다. 카드에 활성 파라미터 수가 없어 총 파라미터만 기재했습니다. 이전 두 차례 감사(10/22·10/25) 구간에 공개됐지만 후보에서 빠졌다가 2026-10-26에 소급 수록했습니다.",
+    "benchmarks": {
+      "GAIA": 95.1,
+      "BrowseComp": 81.7,
+      "BrowseComp (Agentic Orchestration)": 82.8,
+      "DeepResearch-Bench2": 43.7,
+      "DeepResearch-Bench2 (Agentic Orchestration)": 47.5,
+      "XBench-DS-2510": 92.0,
+      "MLE-Lite": 65.2,
+      "SciCode": 44.3,
+      "SWE-bench Pro": 61.2,
+      "SWE-bench Multilingual": 72.7,
+      "IFBench": 81.6,
+      "AA-LCR": 81.0,
+      "FrontierScience-Olympiad": 81.0,
+      "FrontierScience-Research": 48.3,
+      "HiPhO": 45.3,
+      "HLE w/ tools": 55.1,
+      "CMT": 80.0,
+      "CritPt": 20.0,
+      "Agents' Last Exam (ALE-CLI)": 19.1,
+      "VitaBench": 45.4,
+      "PinchBench": 90.0,
+      "ChemCOTBench": 66.5,
+      "MatTools": 42.6,
+      "OmniDocBench": 91.5
+    },
+    "official_id": "InternScience/Sage-A1.5",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/InternScience/Sage-A1.5"
+      },
+      {
+        "label": "기술 보고서(arXiv)",
+        "url": "https://arxiv.org/abs/2610.28578"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/InternScience/Sage-A1.5",
+    "parameter_source": "https://huggingface.co/InternScience/Sage-A1.5",
+    "benchmark_sources": {
+      "GAIA": "https://huggingface.co/InternScience/Sage-A1.5",
+      "BrowseComp": "https://huggingface.co/InternScience/Sage-A1.5",
+      "BrowseComp (Agentic Orchestration)": "https://huggingface.co/InternScience/Sage-A1.5",
+      "DeepResearch-Bench2": "https://huggingface.co/InternScience/Sage-A1.5",
+      "DeepResearch-Bench2 (Agentic Orchestration)": "https://huggingface.co/InternScience/Sage-A1.5",
+      "XBench-DS-2510": "https://huggingface.co/InternScience/Sage-A1.5",
+      "MLE-Lite": "https://huggingface.co/InternScience/Sage-A1.5",
+      "SciCode": "https://huggingface.co/InternScience/Sage-A1.5",
+      "SWE-bench Pro": "https://huggingface.co/InternScience/Sage-A1.5",
+      "SWE-bench Multilingual": "https://huggingface.co/InternScience/Sage-A1.5",
+      "IFBench": "https://huggingface.co/InternScience/Sage-A1.5",
+      "AA-LCR": "https://huggingface.co/InternScience/Sage-A1.5",
+      "FrontierScience-Olympiad": "https://huggingface.co/InternScience/Sage-A1.5",
+      "FrontierScience-Research": "https://huggingface.co/InternScience/Sage-A1.5",
+      "HiPhO": "https://huggingface.co/InternScience/Sage-A1.5",
+      "HLE w/ tools": "https://huggingface.co/InternScience/Sage-A1.5",
+      "CMT": "https://huggingface.co/InternScience/Sage-A1.5",
+      "CritPt": "https://huggingface.co/InternScience/Sage-A1.5",
+      "Agents' Last Exam (ALE-CLI)": "https://huggingface.co/InternScience/Sage-A1.5",
+      "VitaBench": "https://huggingface.co/InternScience/Sage-A1.5",
+      "PinchBench": "https://huggingface.co/InternScience/Sage-A1.5",
+      "ChemCOTBench": "https://huggingface.co/InternScience/Sage-A1.5",
+      "MatTools": "https://huggingface.co/InternScience/Sage-A1.5",
+      "OmniDocBench": "https://huggingface.co/InternScience/Sage-A1.5"
+    },
+    "benchmark_note": "공식 카드 비교표의 Sage-A1.5 열 24개 점수를 수록했습니다. BrowseComp·DeepResearch-Bench2는 에이전트 오케스트레이션 미사용/사용 값이 함께 인쇄돼 별도 항목으로 나눴습니다. SWE-bench 계열은 mini-SWE-agent 하니스(temperature 1.0·top-p 0.95·200K 컨텍스트·자동 컨텍스트 압축, 인터넷 차단 오프라인 환경)에서 평가했습니다. 비교 모델(Agents-A1·Qwen3.6-35B-A3B·Ornith-1.5·Kimi-K3·GLM-5.3·GPT-5.6-sol)의 점수와 카드의 🥇/🟢 순위 표식(개발사 주장)은 수록하지 않았고, 모든 수치는 개발사 자체 보고입니다.",
+    "parameter_status": "publisher-partial",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-26",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-245",
+    "name": "Ornith-1.5-122B",
+    "date": "2026-10-16",
+    "sortDate": "2026-10-16",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Ornith",
+    "family": "Ornith",
+    "type": "LLM (self-improvement MoE)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "122B MoE (모델명·카드 표기; HF 저장소 safetensors 메타데이터 합계 125,086,497,008 BF16), 활성 파라미터 카드 미명시",
+    "architecture": "MoE 모델(Qwen3_5MoeForConditionalGeneration 구조) — config.json 기준 48층·hidden 3072·라우팅 전문가 256개 중 8개 선택(전문가 FFN 1024, 공유 전문가 FFN 1024)·어텐션 32 헤드/KV 2 헤드·어휘 248,320. config에 비전 구성이 있으나 카드는 입력 모달리티를 명시하지 않습니다. Ornith-1.0은 Qwen3.5·Gemma 4 위에서 CPT·mid-training·post-training으로 개발했고, 1.5는 과제 생성·스캐폴드 구성·풀이 롤아웃을 함께 최적화하는 자기 개선 루프를 RL로 학습했다고 카드가 설명합니다. 단일 80GB GPU 서빙을 내세웁니다.",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "코딩 에이전트",
+      "에이전틱 도구 사용",
+      "추론",
+      "단일 GPU 배포"
+    ],
+    "open_weights": true,
+    "license": "MIT",
+    "context": "262,144 — YaRN factor 4.0으로 약 1M 확장 방법 안내",
+    "languages": "",
+    "variants": [
+      "Ornith-1.5-122B-FP8",
+      "Ornith-1.5-122B-NVFP4",
+      "Ornith-1.5-122B-GGUF",
+      "Ornith-1.5-122B-MLX(4·8bit)"
+    ],
+    "reasoning_effort": [
+      "reasoning (기본 <think> 블록, reasoning-parser qwen3)"
+    ],
+    "availability": "Hugging Face ornith-ai/Ornith-1.5-122B, Transformers ≥5.8.1·vLLM ≥0.19.1·SGLang ≥0.5.9 서빙 예시 제공",
+    "note": "Ornith-1.5 계열의 122B MoE 모델로, 카드는 가장 유능하고 효율적인 구성이며 양자화 Ornith-1.5-122B-Mobile 변형으로 모바일 배포도 가능하다고 설명합니다. 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(HF API createdAt 2026-10-16 07:14 UTC, lastModified 2026-10-21)을 근거로 했습니다. 공식 블로그(ornith.ai, 2026-08)는 397B·35B·9B만 다루고 122B는 없으며, 개발 주체의 소재지는 카드·HF 조직 정보에 없어 국가를 미공개로 표기했습니다. Ornith-1.5의 397B·35B-A3B·9B(2026-08-18 HF 공개) 등 다른 구성원은 카탈로그에 아직 없습니다.",
+    "benchmarks": {
+      "Terminal-Bench 2.1": 81.2,
+      "CyberGym": 80.0,
+      "NL2Repo": 51.2,
+      "SWE-bench Pro (no-hack)": 76.9,
+      "SWE-bench Verified (non-hack)": 84.5,
+      "SWE-bench Multilingual (non-hack)": 76.4,
+      "HLE (with tools)": 48.0,
+      "HLE (w/o tools)": 37.68,
+      "SciCode": 53.8,
+      "WideSearch": 75.2,
+      "BrowseComp": 78.5,
+      "MCP-Atlas": 74.6,
+      "Toolathlon-Verified": 70.8,
+      "ClawEval": 79.4
+    },
+    "official_id": "ornith-ai/Ornith-1.5-122B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+    "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+    "benchmark_sources": {
+      "Terminal-Bench 2.1": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "CyberGym": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "SWE-bench Pro (no-hack)": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "SWE-bench Verified (non-hack)": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "SWE-bench Multilingual (non-hack)": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "HLE (with tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "HLE (w/o tools)": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "SciCode": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "WideSearch": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "BrowseComp": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "MCP-Atlas": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "Toolathlon-Verified": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+      "ClawEval": "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
+    },
+    "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.5-122B 열 14개 점수를 수록했습니다(카드는 소수 셋째 자리까지 인쇄). Terminal-Bench 2.1은 Claude Code 2.1.126(temperature 1.0·top-p 1.0·5회 평균), SWE-bench Verified·Pro·Multilingual은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K)에서 보상 해킹 방지 규칙을 적용해 평가했고 해킹이 확인된 풀이는 오답 처리했습니다. NL2Repo는 400K 컨텍스트·GitHub/pip 접근 차단, HLE 판정은 Claude 4.6 Opus, MCP-Atlas는 공개 500과제 부분집합(판정 Claude 4.8 Opus), Toolathlon-Verified는 공식 평가 서비스(최대 토큰 128K), ClawEval은 temperature 0.6·256K입니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+    "parameter_status": "publisher-partial",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-26",
+      "policy": "official-primary-only"
+    }
+  },
+  {
+    "id": "model-246",
+    "name": "Terminal-RSI-27B",
+    "date": "2026-10-21",
+    "sortDate": "2026-10-21",
+    "month": "2026-10",
+    "monthName": "October",
+    "company": "Terminal-RSI",
+    "family": "Terminal-RSI",
+    "type": "LLM (terminal agent)",
+    "category": "LLM",
+    "status": "GA",
+    "parameters": "27B dense (카드 기재: 패키지된 비전 구성 요소 포함 텐서 합계 27,781,427,952 BF16)",
+    "architecture": "Qwen3.8-27B를 백본으로 한 후학습 모델(직렬화 구조 Qwen3_5ForConditionalGeneration) — 64층·hidden 5,120·구성 컨텍스트 262,144. 검증된 실행 궤적을 런북으로 다시 쓰는 Recursive Self-Rewrite(RSR)와 critic을 물려받는 Recursive Policy-Refine(RPR)을 번갈아 적용합니다(Base → RSR-1 → RPR-1 → RSR-2 → RPR-2).",
+    "modalities": [
+      "text"
+    ],
+    "focus": [
+      "터미널 에이전트",
+      "저장소 점검·코드 수정",
+      "의존성 복구",
+      "과학 워크플로 재구성"
+    ],
+    "open_weights": true,
+    "license": "Apache 2.0",
+    "context": "262,144 (구성 용량)",
+    "languages": "영어, 중국어 (HF 카드 language 태그)",
+    "variants": [],
+    "reasoning_effort": [
+      "thinking 비활성(논문 평가 설정)"
+    ],
+    "availability": "Hugging Face Teriminal-RSI/Terminal-RSI-27B (BF16 safetensors 13개 파일, 약 55.56GB)",
+    "note": "Terminal-RSI 프로젝트가 Qwen3.8-27B 위에 재귀적 자기 개선 학습을 적용해 공개한 터미널 에이전트입니다. 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(HF API createdAt 2026-10-21 04:52 UTC)을 근거로 했고, 논문(arXiv:2610.22192)은 2026-10-15 제출입니다. 카드는 점수가 '논문의 retained RPR-2 step-18 모델' 기준이라 밝히면서 참조하는 '체크포인트 구분' 절이 카드 본문에 없고, 이번 업로드에 대한 새 벤치마크 실행·전체 추론 검증·독립 안전성 평가는 하지 않았다고 명시합니다. 개발 주체의 소속·소재지는 카드에 없어 국가를 미공개로 표기했습니다.",
+    "benchmarks": {
+      "Terminal-Bench 4.0": 19.84,
+      "Terminal-Bench 2.1": 86.52,
+      "Terminal-Bench 3.0": 16.95,
+      "Terminal-Bench Hard": 79.0,
+      "SWR100": 6.0
+    },
+    "official_id": "Teriminal-RSI/Terminal-RSI-27B",
+    "official_sources": [
+      {
+        "label": "공식 모델 카드(Hugging Face)",
+        "url": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B"
+      },
+      {
+        "label": "기술 보고서(arXiv)",
+        "url": "https://arxiv.org/abs/2610.22192"
+      },
+      {
+        "label": "프로젝트 페이지",
+        "url": "https://jyyang26.github.io/terminal-rsi/"
+      }
+    ],
+    "release_date_source": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B",
+    "parameter_source": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B",
+    "benchmark_sources": {
+      "Terminal-Bench 4.0": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B",
+      "Terminal-Bench 2.1": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B",
+      "Terminal-Bench 3.0": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B",
+      "Terminal-Bench Hard": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B",
+      "SWR100": "https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B"
+    },
+    "benchmark_note": "공식 카드 표에 인쇄된 논문 retained 모델의 성공률(%) 5개를 수록했습니다(추론 3회 평균 Mean@3). 평가 하니스: temperature 0.60·top-p 0.95, 턴당 최대 8,192 생성 토큰·호출당 입력 96,000 토큰, 구조화 JSON 행동, thinking 비활성, 누적 32,000 토큰에서 선제 요약. 같은 표의 Base(Qwen3.8-27B) 열(Terminal-Bench 2.1 51.70 등)은 이 하니스 기준 측정값이라 카탈로그의 Qwen3.8-27B 점수와 직접 비교할 수 없습니다. 4개 스위트 동일 가중 평균(50.58)은 파생 집계, LHTB(프로세스 보상 0.37·엄격 완료 5/46)는 비% 척도라 점수표에서 제외했습니다. 모든 수치는 개발사 자체 보고입니다.",
+    "parameter_status": "publisher-partial",
+    "verification": {
+      "status": "reviewed",
+      "reviewed_on": "2026-10-26",
+      "policy": "official-primary-only"
+    }
   }
 ];
 
@@ -19488,6 +19853,24 @@ const COMPANY_META = {
     "flag": "🇺🇸",
     "color": "from-violet-500 to-fuchsia-500",
     "badge": "bg-violet-500/10 text-violet-400 border-violet-500/30"
+  },
+  "Nanbeige": {
+    "country": "CN",
+    "flag": "🇨🇳",
+    "color": "from-sky-500 to-indigo-500",
+    "badge": "bg-sky-500/10 text-sky-400 border-sky-500/30"
+  },
+  "Ornith": {
+    "country": "미공개",
+    "flag": "🌐",
+    "gradient": "linear-gradient(135deg,#f97316,#ef4444)",
+    "badge": "자기 개선 오픈 모델"
+  },
+  "Terminal-RSI": {
+    "country": "미공개",
+    "flag": "🌐",
+    "gradient": "linear-gradient(135deg,#14b8a6,#6366f1)",
+    "badge": "터미널 에이전트 연구"
   }
 };
 
@@ -19783,7 +20166,7 @@ const FAMILY_FLOWS = [
 const UNCONFIRMED_DATA = [];
 
 const SCOPE_DATA = {
-  "period": "2026-01-01 ~ 2026-10-25",
+  "period": "2026-01-01 ~ 2026-10-26",
   "scope": [
     "LLM (Large Language Models)",
     "MLLM / VLM / Omni foundation models",
@@ -19801,7 +20184,7 @@ const SCOPE_DATA = {
   ],
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-  "reviewed_on": "2026-10-25",
+  "reviewed_on": "2026-10-26",
   "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
 };
 
