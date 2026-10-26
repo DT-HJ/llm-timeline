@@ -19738,6 +19738,244 @@
         "reviewed_on": "2026-10-26",
         "policy": "official-primary-only"
       }
+    },
+    {
+      "id": "model-250",
+      "name": "Ornith-1.0-397B",
+      "date": "2026-06-23",
+      "sortDate": "2026-06-23",
+      "month": "2026-06",
+      "monthName": "June",
+      "company": "Ornith",
+      "family": "Ornith",
+      "type": "LLM (self-scaffolding coding MoE)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "397B MoE (모델명·카드 표기; HF 저장소 safetensors 메타데이터 합계 396,802,360,816), 활성 파라미터 카드 미명시",
+      "architecture": "MoE 모델(Qwen3_5MoeForConditionalGeneration 구조) — config.json 기준 60층·hidden 4096·라우팅 전문가 512개 중 10개 선택(전문가 FFN 1024, 공유 전문가 FFN 1024)·어텐션 32 헤드/KV 2 헤드·어휘 248,320. config에 비전 구성이 있으나 카드는 입력 모달리티를 명시하지 않습니다. Ornith-1.0은 Gemma 4와 Qwen 3.5 위에서 후학습한 자기 개선(self-scaffolding) 에이전틱 코딩 모델 계열로, 풀이 롤아웃뿐 아니라 그 롤아웃을 이끄는 스캐폴드도 RL로 함께 생성하도록 학습했다고 카드가 설명합니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "에이전틱 코딩",
+        "코드베이스 수정·테스트",
+        "터미널 에이전트"
+      ],
+      "open_weights": true,
+      "license": "MIT",
+      "context": "262,144 (config.json 기준)",
+      "languages": "",
+      "variants": [
+        "Ornith-1.0-397B-FP8"
+      ],
+      "reasoning_effort": [
+        "reasoning (기본 <think> 블록)"
+      ],
+      "availability": "Hugging Face ornith-ai/Ornith-1.0-397B (BF16 safetensors) 및 FP8 변형",
+      "note": "Ornith-1.0 계열의 최대 구성인 397B MoE 모델입니다(카드 소개 문장은 'lightweight member…single-GPU deployment'로 다른 크기 카드와 같은 문구를 재사용). 공개일은 카드·블로그(2026-06 표기)에 일자가 없어 HF 저장소 생성 시각(HF API createdAt 2026-06-23T21:31:47Z)을 근거로 했습니다. 카드의 Terminus-2 각주 링크가 `deepreinforce-ai/Ornith-1.0-397B`를 가리키지만 그 조직 페이지는 확인되지 않아 개발 주체의 소재지는 미공개로 표기했습니다. 블로그는 31B 밀집 구성도 언급하지만 HF에서 해당 저장소를 찾지 못해 수록하지 않았습니다. 2026-10-26 점검에서 누락이 확인돼 소급 수록했습니다.",
+      "benchmarks": {
+        "Terminal-Bench 2.1 (Terminus-2)": 77.5,
+        "Terminal-Bench 2.1 (Claude Code)": 78.2,
+        "SWE-bench Verified": 82.4,
+        "SWE-bench Pro": 62.2,
+        "SWE-bench Multilingual": 78.9,
+        "NL2Repo": 48.2,
+        "Claw-eval Avg": 77.1,
+        "SWE-Atlas-QnA": 41.2,
+        "SWE-Atlas-RF": 42.6,
+        "SWE-Atlas-TW": 39.1
+      },
+      "official_id": "ornith-ai/Ornith-1.0-397B",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/ornith-ai/Ornith-1.0-397B"
+        },
+        {
+          "label": "공식 블로그",
+          "url": "https://ornith.ai/ornith_1_0.html"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+      "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+      "benchmark_sources": {
+        "Terminal-Bench 2.1 (Terminus-2)": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "Terminal-Bench 2.1 (Claude Code)": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "SWE-bench Verified": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "SWE-bench Pro": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "SWE-bench Multilingual": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "Claw-eval Avg": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "SWE-Atlas-QnA": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "SWE-Atlas-RF": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "SWE-Atlas-TW": "https://huggingface.co/ornith-ai/Ornith-1.0-397B"
+      },
+      "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.0-397B 열 10개 점수를 수록했습니다(Terminal-Bench 2.1은 하니스별 두 값을 별도 항목으로 구분). 'SWE Atlas - RF/TW'는 카드 표기를 SWE-Atlas-RF/TW로 옮겼으며 약어 풀이는 카드에 없습니다. 평가 조건은 카드 각주 기준입니다. Terminal-Bench 2.1 (Terminus-2)는 Harbor/Terminus-2(parser=json·temperature 1.0·top-p 1.0·128K 컨텍스트·4시간 타임아웃·5회 평균), (Claude Code)는 Claude Code 2.1.126(max_new_tokens 131072·5회 평균), SWE-bench 계열은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K), SWE-Atlas QnA·RF·TW는 mini-SWE-agent(128K·5회 평균), NL2Repo는 400K 컨텍스트·48K 출력·해킹 방지 필터, Claw-eval Avg는 temperature 0.6·256K입니다. 1.5 카드와 달리 SWE-bench 해킹 방지 규칙 문구가 없습니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+      "parameter_status": "publisher-partial",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-26",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-251",
+      "name": "Ornith-1.0-35B",
+      "date": "2026-06-21",
+      "sortDate": "2026-06-21",
+      "month": "2026-06",
+      "monthName": "June",
+      "company": "Ornith",
+      "family": "Ornith",
+      "type": "LLM (self-scaffolding coding MoE)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "35B MoE (모델명·카드 표기), 활성 파라미터 카드 미명시",
+      "architecture": "MoE 모델(Qwen3_5MoeForConditionalGeneration 구조) — config.json 기준 40층·hidden 2048·라우팅 전문가 256개 중 8개 선택(전문가 FFN 512, 공유 전문가 FFN 512)·어텐션 16 헤드/KV 2 헤드·어휘 248,320. config에 비전 구성이 있으나 카드는 입력 모달리티를 명시하지 않습니다. Ornith-1.0은 Gemma 4와 Qwen 3.5 위에서 후학습한 자기 개선(self-scaffolding) 에이전틱 코딩 모델 계열로, 풀이 롤아웃뿐 아니라 그 롤아웃을 이끄는 스캐폴드도 RL로 함께 생성하도록 학습했다고 카드가 설명합니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "에이전틱 코딩",
+        "코드베이스 수정·테스트",
+        "단일 GPU 배포"
+      ],
+      "open_weights": true,
+      "license": "MIT",
+      "context": "262,144 (config.json 기준)",
+      "languages": "",
+      "variants": [
+        "Ornith-1.0-35B-FP8",
+        "Ornith-1.0-35B-GGUF"
+      ],
+      "reasoning_effort": [
+        "reasoning (기본 <think> 블록)"
+      ],
+      "availability": "Hugging Face ornith-ai/Ornith-1.0-35B (BF16 safetensors) 및 FP8·GGUF 변형",
+      "note": "Ornith-1.0 계열의 35B MoE 모델로, 블로그는 35B 파라미터만으로 Gemma 4-31B를 앞선다고 주장합니다(후속 Ornith-1.5-35B-A3B로 이어짐). 공개일은 카드·블로그(2026-06 표기)에 일자가 없어 HF 저장소 생성 시각(HF API createdAt 2026-06-21T03:30:07Z)을 근거로 했습니다. 카드의 Terminus-2 각주 링크가 `deepreinforce-ai/Ornith-1.0-397B`를 가리키지만 그 조직 페이지는 확인되지 않아 개발 주체의 소재지는 미공개로 표기했습니다. 블로그는 31B 밀집 구성도 언급하지만 HF에서 해당 저장소를 찾지 못해 수록하지 않았습니다. 2026-10-26 점검에서 누락이 확인돼 소급 수록했습니다.",
+      "benchmarks": {
+        "Terminal-Bench 2.1 (Terminus-2)": 64.2,
+        "Terminal-Bench 2.1 (Claude Code)": 62.8,
+        "SWE-bench Verified": 75.6,
+        "SWE-bench Pro": 50.4,
+        "SWE-bench Multilingual": 69.3,
+        "NL2Repo": 34.6,
+        "Claw-eval Avg": 69.8,
+        "SWE-Atlas-QnA": 37.1,
+        "SWE-Atlas-RF": 29.7,
+        "SWE-Atlas-TW": 27.8
+      },
+      "official_id": "ornith-ai/Ornith-1.0-35B",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/ornith-ai/Ornith-1.0-35B"
+        },
+        {
+          "label": "공식 블로그",
+          "url": "https://ornith.ai/ornith_1_0.html"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+      "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+      "benchmark_sources": {
+        "Terminal-Bench 2.1 (Terminus-2)": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "Terminal-Bench 2.1 (Claude Code)": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "SWE-bench Verified": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "SWE-bench Pro": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "SWE-bench Multilingual": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "Claw-eval Avg": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "SWE-Atlas-QnA": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "SWE-Atlas-RF": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "SWE-Atlas-TW": "https://huggingface.co/ornith-ai/Ornith-1.0-35B"
+      },
+      "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.0-35B 열 10개 점수를 수록했습니다(Terminal-Bench 2.1은 하니스별 두 값을 별도 항목으로 구분). 'SWE Atlas - RF/TW'는 카드 표기를 SWE-Atlas-RF/TW로 옮겼으며 약어 풀이는 카드에 없습니다. 평가 조건은 카드 각주 기준입니다. Terminal-Bench 2.1 (Terminus-2)는 Harbor/Terminus-2(parser=json·temperature 1.0·top-p 1.0·128K 컨텍스트·4시간 타임아웃·5회 평균), (Claude Code)는 Claude Code 2.1.126(max_new_tokens 131072·5회 평균), SWE-bench 계열은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K), SWE-Atlas QnA·RF·TW는 mini-SWE-agent(128K·5회 평균), NL2Repo는 400K 컨텍스트·48K 출력·해킹 방지 필터, Claw-eval Avg는 temperature 0.6·256K입니다. 1.5 카드와 달리 SWE-bench 해킹 방지 규칙 문구가 없습니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+      "parameter_status": "publisher-partial",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-26",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-252",
+      "name": "Ornith-1.0-9B",
+      "date": "2026-06-21",
+      "sortDate": "2026-06-21",
+      "month": "2026-06",
+      "monthName": "June",
+      "company": "Ornith",
+      "family": "Ornith",
+      "type": "LLM (self-scaffolding coding dense)",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "9B dense (모델명·카드 표기)",
+      "architecture": "밀집(dense) 모델(Qwen3_5ForConditionalGeneration 구조) — config.json 기준 32층·hidden 4096·FFN 12288·어텐션 16 헤드/KV 4 헤드·어휘 248,320. config에 비전 구성이 있으나 카드는 입력 모달리티를 명시하지 않습니다. Ornith-1.0은 Gemma 4와 Qwen 3.5 위에서 후학습한 자기 개선(self-scaffolding) 에이전틱 코딩 모델 계열로, 풀이 롤아웃뿐 아니라 그 롤아웃을 이끄는 스캐폴드도 RL로 함께 생성하도록 학습했다고 카드가 설명합니다.",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "에이전틱 코딩",
+        "코드베이스 수정·테스트",
+        "단일 GPU 배포"
+      ],
+      "open_weights": true,
+      "license": "MIT",
+      "context": "262,144 (config.json 기준)",
+      "languages": "",
+      "variants": [
+        "Ornith-1.0-9B-GGUF"
+      ],
+      "reasoning_effort": [
+        "reasoning (기본 <think> 블록)"
+      ],
+      "availability": "Hugging Face ornith-ai/Ornith-1.0-9B (BF16 safetensors) 및 GGUF 변형",
+      "note": "Ornith-1.0 계열의 가장 가벼운 9B 밀집 모델입니다(후속 Ornith-1.5-9B로 이어짐). 공개일은 카드·블로그(2026-06 표기)에 일자가 없어 HF 저장소 생성 시각(HF API createdAt 2026-06-21T04:27:07Z)을 근거로 했습니다. 카드의 Terminus-2 각주 링크가 `deepreinforce-ai/Ornith-1.0-397B`를 가리키지만 그 조직 페이지는 확인되지 않아 개발 주체의 소재지는 미공개로 표기했습니다. 블로그는 31B 밀집 구성도 언급하지만 HF에서 해당 저장소를 찾지 못해 수록하지 않았습니다. 2026-10-26 점검에서 누락이 확인돼 소급 수록했습니다.",
+      "benchmarks": {
+        "Terminal-Bench 2.1 (Terminus-2)": 43.1,
+        "Terminal-Bench 2.1 (Claude Code)": 40.6,
+        "SWE-bench Verified": 69.4,
+        "SWE-bench Pro": 42.9,
+        "SWE-bench Multilingual": 52.0,
+        "NL2Repo": 27.2,
+        "Claw-eval Avg": 63.1,
+        "SWE-Atlas-QnA": 17.9,
+        "SWE-Atlas-RF": 16.6,
+        "SWE-Atlas-TW": 15.3
+      },
+      "official_id": "ornith-ai/Ornith-1.0-9B",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/ornith-ai/Ornith-1.0-9B"
+        },
+        {
+          "label": "공식 블로그",
+          "url": "https://ornith.ai/ornith_1_0.html"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+      "parameter_source": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+      "benchmark_sources": {
+        "Terminal-Bench 2.1 (Terminus-2)": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "Terminal-Bench 2.1 (Claude Code)": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "SWE-bench Verified": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "SWE-bench Pro": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "SWE-bench Multilingual": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "NL2Repo": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "Claw-eval Avg": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "SWE-Atlas-QnA": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "SWE-Atlas-RF": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "SWE-Atlas-TW": "https://huggingface.co/ornith-ai/Ornith-1.0-9B"
+      },
+      "benchmark_note": "공식 카드 본문 비교표의 Ornith-1.0-9B 열 10개 점수를 수록했습니다(Terminal-Bench 2.1은 하니스별 두 값을 별도 항목으로 구분). 'SWE Atlas - RF/TW'는 카드 표기를 SWE-Atlas-RF/TW로 옮겼으며 약어 풀이는 카드에 없습니다. 평가 조건은 카드 각주 기준입니다. Terminal-Bench 2.1 (Terminus-2)는 Harbor/Terminus-2(parser=json·temperature 1.0·top-p 1.0·128K 컨텍스트·4시간 타임아웃·5회 평균), (Claude Code)는 Claude Code 2.1.126(max_new_tokens 131072·5회 평균), SWE-bench 계열은 OpenHands 하니스(temperature 1.0·top-p 0.95·256K), SWE-Atlas QnA·RF·TW는 mini-SWE-agent(128K·5회 평균), NL2Repo는 400K 컨텍스트·48K 출력·해킹 방지 필터, Claw-eval Avg는 temperature 0.6·256K입니다. 1.5 카드와 달리 SWE-bench 해킹 방지 규칙 문구가 없습니다. 비교 모델 점수는 수록하지 않았고 모든 수치는 개발사 자체 보고입니다.",
+      "parameter_status": "publisher-approximate",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-10-26",
+        "policy": "official-primary-only"
+      }
     }
   ],
   "excluded": [
@@ -20821,6 +21059,13 @@
         "MiniMax-M3",
         "MiniMax M3.1-Flash-Preview",
         "MiniMax M3.1-Flash"
+      ]
+    },
+    {
+      "family": "Ornith",
+      "steps": [
+        "Ornith-1.0",
+        "Ornith-1.5"
       ]
     }
   ],
