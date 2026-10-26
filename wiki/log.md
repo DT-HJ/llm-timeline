@@ -195,3 +195,20 @@ Validation:
 - python3 /Users/studio/.claude/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 0 warnings)
 Open:
 - none
+
+## [2026-10-26] update | HF-sweep retroactive additions (Nanbeige, Sage, Ornith, Terminal-RSI) and nine ledger entries
+
+Source HEAD: 762ce7601612a3a95df067d1a9e066e798c93f6c
+Wiki:
+- updated current.md — recomputed: 242 models / 51 ledger entries / 70 organizations / 206 scored models / 3,553 scores; 10/25 and 10/26 audits summarized; the 10/26 push and live-site observations; "audit timing" risk widened to HF coverage gaps; unknown-origin organizations; pending list pruned (Beam, Ling-3.1-flash, Gemini 4 Argon resolved) and extended (Ornith-1.0 31B, Muse Video)
+- updated components/catalog-pipeline.md — `ornith.ai` and `recursive.com` hosts, `build_data.py` has no CLI flags, 2026-10-26 operator decisions on HF finds, harness-keyed benchmark names, README organization count = `len(company_meta)`, generation-level `family_flows`, retroactive additions list, last URL sweep
+- updated runbooks/audit-update.md — HF sweep method in step 1, harness-keyed benchmark keys in step 4, organization-count rule in step 7, new failure mode for a family missing altogether
+- reviewed, no edit: index.md, overview.md, components/web-dashboard.md (no change to `app.js`, `index.html`, `style.css` in the range)
+- source range `fa34940..762ce76` (README, data.js, models_catalog.json, validate_data.py, 조사 자료) reviewed through the catalog, README, and validator; `changed_wiki` entries from `a1b0e30` were already logged in the 2026-10-22 maintenance entry
+Validation:
+- python3 validate_data.py — PASS (`OK: 242 models, 51 excluded, 206 with official scores`)
+- python3 validate_data.py --check-urls — 0 failures (373 URLs, 8 warnings), run earlier in this work unit at 236 models; later URLs spot-checked with HTTP 200
+- python3 /Users/studio/.claude/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 0 warnings)
+Open:
+- Re-investigate OpenCSG Agentic-27B, Heimr 570M, Muse Video, and the Ornith-1.0 31B member
+- Operator decision pending on applying the "low-importance derivatives or snapshots" clause to existing records
