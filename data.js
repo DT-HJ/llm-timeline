@@ -21093,5 +21093,104 @@ const AUDIT_EXCLUDED = [
     "reason": "Qwen3-VL 기반에 9.6M 픽셀 디코더를 붙여 검출·지칭·카운팅·OCR 위치·분할·알파 매팅을 수행하는 시각 인식 특화 연구 릴리스 — 범용 LLM/MLLM이 아니라 단일 턴 인식 전용 파생 모델이고 카드에 벤치마크 점수가 없어 수록하지 않았습니다.",
     "source": "https://huggingface.co/tencent/WeVisOne-VL-4B",
     "reviewed_on": "2026-10-25"
+  },
+  {
+    "id": "excluded-2026-10-26-1",
+    "name": "Ling-3.0-flash-Sante",
+    "original_name": "inclusionAI/Ling-3.0-flash-Sante",
+    "date": "2026-10-19",
+    "company": "Ant Group / InclusionAI",
+    "country": "CN",
+    "reason": "Ling-3.0-flash(model-108)를 기반으로 한 124B 총 / 5.1B 활성 의료·헬스케어 특화 파생 모델(MIT 가중치 공개, 카드가 '의료기기가 아닌 연구 모델'이라 명시) — 도메인 특화 후속이고 카드에 업계 최초·최고·최대 기준점을 주장하는 문구가 없어 중요도 예외 대상이 아닙니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-2",
+    "name": "GLiDE",
+    "original_name": "fastino/GLiDE",
+    "date": "2026-10-19",
+    "company": "Fastino",
+    "country": "미공개",
+    "reason": "상태와 질문을 받아 각 선택지의 확률을 반환하는 결정(decision) 모델(라이선스 'other'·Fastino 호스티드 API 중심) — 카드의 'Decision Index 0.4.1 1위(71.5)'는 서드파티 리더보드 순위라 벤치마크 정책상 점수로 수록할 수 없고, 같은 부류 선례(Jev·CLM)와 달리 독립 제품으로 수록할 근거를 이번 점검에서 확정하지 못했습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/fastino/GLiDE",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-3",
+    "name": "Youtu-Parsing-Omni",
+    "original_name": "tencent/Youtu-Parsing-Omni",
+    "date": "2026-10-09",
+    "company": "Tencent",
+    "country": "CN",
+    "reason": "문서·이미지·차트·도형·오디오·비디오를 구조화 JSON으로 파싱하는 5B 옴니모달 파싱 전용 모델(라이선스 'youtu-parsing', custom_code) — 파싱·OCR 부류라 범위 밖입니다. 카드는 OmniDocBench v1.6 Overall 96.96 SOTA를 주장하지만 파싱 전용 부류 안의 지표라 중요도 예외를 적용하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/tencent/Youtu-Parsing-Omni",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-4",
+    "name": "LightOnOCR-3-4B",
+    "original_name": "lightonai/LightOnOCR-3-4B",
+    "date": "2026-10-06",
+    "company": "LightOn",
+    "country": "미공개",
+    "reason": "LightOnOCR-3 계열의 최대·최고 정확도 구성이라는 4B OCR 전용 비전-언어 모델(Apache 2.0) — OCR 전용 부류이고 카드의 'Best OCR model'은 자사 계열 안의 비교 문구라 중요도 예외를 적용하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/lightonai/LightOnOCR-3-4B",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-5",
+    "name": "KLM-1.5",
+    "original_name": "MinimaLabs/KLM-1.5",
+    "date": "2026-10-22",
+    "company": "MinimaLabs",
+    "country": "미공개",
+    "reason": "약 9,900만 파라미터(98,975,308)의 사전학습 베이스 소형 연구 모델(Apache 2.0, custom_code) — 카드가 100M 미만 모델 중 1위라고 내세우는 근거는 서드파티 리더보드 Intelligence Index이고 지시 추종 모델이 아닌 베이스 체크포인트라 수록하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/MinimaLabs/KLM-1.5",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-6",
+    "name": "Nanbeige4.3-33B-Base",
+    "original_name": "Nanbeige/Nanbeige4.3-33B-Base",
+    "date": "2026-10-24",
+    "company": "Nanbeige",
+    "country": "CN",
+    "reason": "Nanbeige4.3-33B(model-243)의 베이스 체크포인트 — 독립 제품을 대표하지 않는 중간/베이스 체크포인트 제외 규칙에 해당합니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B-Base",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-7",
+    "name": "Spark-X2.6-4B-Base",
+    "original_name": "XHToken/Spark-X2.6-4B-Base",
+    "date": "2026-10-19",
+    "company": "iFLYTEK",
+    "country": "CN",
+    "reason": "Spark-X2.6-4B(model-234)의 베이스 체크포인트 — 독립 제품을 대표하지 않는 중간/베이스 체크포인트 제외 규칙에 해당합니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/XHToken/Spark-X2.6-4B-Base",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-8",
+    "name": "NCM checkpoints",
+    "original_name": "hazyresearch/ncm-checkpoints",
+    "date": "2026-10-13",
+    "company": "Hazy Research (Stanford)",
+    "country": "US",
+    "reason": "Next-Concept Modeling 논문(arXiv:2610.14162)의 토크나이저·생성기 체크포인트 묶음(MIT) — XSum 요약·WMT14 번역·스도쿠 등 과제별 연구용 체크포인트이고 범용 LLM/MLLM 릴리스가 아니라 수록하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/hazyresearch/ncm-checkpoints",
+    "reviewed_on": "2026-10-26"
+  },
+  {
+    "id": "excluded-2026-10-26-9",
+    "name": "Qwen3-8B-DSpine-b16",
+    "original_name": "tencent/Qwen3-8B-DSpine-b16",
+    "date": "2026-10-16",
+    "company": "Tencent",
+    "country": "CN",
+    "reason": "Qwen3-8B용 병렬 추측적 디코딩 드래프터(arXiv:2609.36173, Apache 2.0) — 독립적인 언어 모델이 아니라 추론 가속 구성요소라 수록하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.",
+    "source": "https://huggingface.co/tencent/Qwen3-8B-DSpine-b16",
+    "reviewed_on": "2026-10-26"
   }
 ];

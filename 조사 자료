@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-10-26** | 활성 레코드: **242개** | 제외 원장: **42개** | 공식 점수가 확인된 모델: **206개** | 공식 점수: **3553개**
+> 최종 감사일: **2026-10-26** | 활성 레코드: **242개** | 제외 원장: **51개** | 공식 점수가 확인된 모델: **206개** | 공식 점수: **3553개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -8616,6 +8616,60 @@
 - 원래 이름: `tencent/WeVisOne-VL-2B · WeVisOne-VL-4B`
 - 제외 사유: Qwen3-VL 기반에 9.6M 픽셀 디코더를 붙여 검출·지칭·카운팅·OCR 위치·분할·알파 매팅을 수행하는 시각 인식 특화 연구 릴리스 — 범용 LLM/MLLM이 아니라 단일 턴 인식 전용 파생 모델이고 카드에 벤치마크 점수가 없어 수록하지 않았습니다.
 - 확인 출처: [공식 1차 출처](https://huggingface.co/tencent/WeVisOne-VL-4B)
+
+### `excluded-2026-10-26-1` — Ling-3.0-flash-Sante
+
+- 원래 이름: `inclusionAI/Ling-3.0-flash-Sante`
+- 제외 사유: Ling-3.0-flash(model-108)를 기반으로 한 124B 총 / 5.1B 활성 의료·헬스케어 특화 파생 모델(MIT 가중치 공개, 카드가 '의료기기가 아닌 연구 모델'이라 명시) — 도메인 특화 후속이고 카드에 업계 최초·최고·최대 기준점을 주장하는 문구가 없어 중요도 예외 대상이 아닙니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante)
+
+### `excluded-2026-10-26-2` — GLiDE
+
+- 원래 이름: `fastino/GLiDE`
+- 제외 사유: 상태와 질문을 받아 각 선택지의 확률을 반환하는 결정(decision) 모델(라이선스 'other'·Fastino 호스티드 API 중심) — 카드의 'Decision Index 0.4.1 1위(71.5)'는 서드파티 리더보드 순위라 벤치마크 정책상 점수로 수록할 수 없고, 같은 부류 선례(Jev·CLM)와 달리 독립 제품으로 수록할 근거를 이번 점검에서 확정하지 못했습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/fastino/GLiDE)
+
+### `excluded-2026-10-26-3` — Youtu-Parsing-Omni
+
+- 원래 이름: `tencent/Youtu-Parsing-Omni`
+- 제외 사유: 문서·이미지·차트·도형·오디오·비디오를 구조화 JSON으로 파싱하는 5B 옴니모달 파싱 전용 모델(라이선스 'youtu-parsing', custom_code) — 파싱·OCR 부류라 범위 밖입니다. 카드는 OmniDocBench v1.6 Overall 96.96 SOTA를 주장하지만 파싱 전용 부류 안의 지표라 중요도 예외를 적용하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/tencent/Youtu-Parsing-Omni)
+
+### `excluded-2026-10-26-4` — LightOnOCR-3-4B
+
+- 원래 이름: `lightonai/LightOnOCR-3-4B`
+- 제외 사유: LightOnOCR-3 계열의 최대·최고 정확도 구성이라는 4B OCR 전용 비전-언어 모델(Apache 2.0) — OCR 전용 부류이고 카드의 'Best OCR model'은 자사 계열 안의 비교 문구라 중요도 예외를 적용하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/lightonai/LightOnOCR-3-4B)
+
+### `excluded-2026-10-26-5` — KLM-1.5
+
+- 원래 이름: `MinimaLabs/KLM-1.5`
+- 제외 사유: 약 9,900만 파라미터(98,975,308)의 사전학습 베이스 소형 연구 모델(Apache 2.0, custom_code) — 카드가 100M 미만 모델 중 1위라고 내세우는 근거는 서드파티 리더보드 Intelligence Index이고 지시 추종 모델이 아닌 베이스 체크포인트라 수록하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/MinimaLabs/KLM-1.5)
+
+### `excluded-2026-10-26-6` — Nanbeige4.3-33B-Base
+
+- 원래 이름: `Nanbeige/Nanbeige4.3-33B-Base`
+- 제외 사유: Nanbeige4.3-33B(model-243)의 베이스 체크포인트 — 독립 제품을 대표하지 않는 중간/베이스 체크포인트 제외 규칙에 해당합니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/Nanbeige/Nanbeige4.3-33B-Base)
+
+### `excluded-2026-10-26-7` — Spark-X2.6-4B-Base
+
+- 원래 이름: `XHToken/Spark-X2.6-4B-Base`
+- 제외 사유: Spark-X2.6-4B(model-234)의 베이스 체크포인트 — 독립 제품을 대표하지 않는 중간/베이스 체크포인트 제외 규칙에 해당합니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/XHToken/Spark-X2.6-4B-Base)
+
+### `excluded-2026-10-26-8` — NCM checkpoints
+
+- 원래 이름: `hazyresearch/ncm-checkpoints`
+- 제외 사유: Next-Concept Modeling 논문(arXiv:2610.14162)의 토크나이저·생성기 체크포인트 묶음(MIT) — XSum 요약·WMT14 번역·스도쿠 등 과제별 연구용 체크포인트이고 범용 LLM/MLLM 릴리스가 아니라 수록하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/hazyresearch/ncm-checkpoints)
+
+### `excluded-2026-10-26-9` — Qwen3-8B-DSpine-b16
+
+- 원래 이름: `tencent/Qwen3-8B-DSpine-b16`
+- 제외 사유: Qwen3-8B용 병렬 추측적 디코딩 드래프터(arXiv:2609.36173, Apache 2.0) — 독립적인 언어 모델이 아니라 추론 가속 구성요소라 수록하지 않았습니다. 운영자 결정(2026-10-26)으로 미포함 판정했습니다.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/tencent/Qwen3-8B-DSpine-b16)
 
 ## 패밀리 흐름
 
