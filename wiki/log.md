@@ -212,3 +212,21 @@ Validation:
 Open:
 - Re-investigate OpenCSG Agentic-27B, Heimr 570M, Muse Video, and the Ornith-1.0 31B member
 - Operator decision pending on applying the "low-importance derivatives or snapshots" clause to existing records
+
+## [2026-11-08] update | 2026-11-06 audit (16 new models, 2 updates, 8 ledger entries)
+
+Source HEAD: 21a6c57ea108e6515f8a99908e6cf21ba2327796
+Wiki:
+- updated current.md — recomputed: 258 models / 59 ledger entries / 74 organizations / 219 scored models / 3,797 scores / 34 family flows; 11/06 audit summary and 11/06 deployment observation; new risks (provisional limited-access records, third-party provenance inside vendor tables); pending list now includes Ling-3.1-flash-1019 and Gemini 4 Carbon GA
+- updated components/catalog-pipeline.md — new invariants: provider-published scores only inside vendor tables (Artificial Analysis rows, non-% scales, negative-capable indices), decision models with 0–100 indices keep empty score tables, limited-access first-announcement dates, weights/GA updates edit the existing record, third-party-only evidence goes to the ledger; README org count 74; Liquid LFM flow; URL sweep record
+- updated runbooks/audit-update.md — scores step reads footnotes for AA-sourced rows; OpenAI mirror reading; update-in-place failure mode
+- updated overview.md — System One terminology list gains Kanana-2-v-decide-3b-2611 and Sarvam-Prism
+- reviewed, no edit: index.md, components/web-dashboard.md (range `762ce76..21a6c57` touches only README, data.js, models_catalog.json, 조사 자료; no UI code)
+Validation:
+- python3 validate_data.py — PASS (`OK: 258 models, 59 excluded, 219 with official scores`)
+- direct count of models_catalog.json — 258 / 59 / 74 company_meta / 3,797 scores / 34 flows
+- python3 /Users/studio/.claude/skills/wiki-update/core/scripts/wiki_lint.py . — PASS (0 errors, 0 warnings)
+Open:
+- `--check-urls` was not re-run by this wiki run; the 11/06 sweep's exact warning count was not preserved
+- Operator decision pending on applying the "low-importance derivatives or snapshots" clause to existing records
+- Re-investigate Ling-3.1-flash-1019, OpenCSG Agentic-27B, Heimr 570M, Muse Video, Ornith-1.0 31B, Gemini 4 Carbon GA

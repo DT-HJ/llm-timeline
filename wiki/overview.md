@@ -2,7 +2,7 @@
 title: Overview
 type: overview
 status: current
-updated: 2026-10-22
+updated: 2026-11-08
 ---
 
 # Overview
@@ -52,7 +52,7 @@ Research official first-party material
 - **SSOT**: `models_catalog.json` — the single source of truth for model names, release dates, parameters, official scores, and sources.
 - **Excluded ledger**: the record of items judged out of scope, with reason and source. On a reversal the item moves to an active record and a README footnote records why (precedents: Muse Spark 1.2/1.3, Jev·Solar Jev, Laya).
 - **parameter_status**: `verified` / `publisher-approximate` / `publisher-partial` / `undisclosed` — how strongly an official source backs the parameter value.
-- **System One / structured decision·extraction**: a model class that returns a choice/score/noul decision with probabilities, or a typed value, instead of generating prose (Jev, Solar Jev, Laya, JEV-9B/27B, Strands Decider 2B, Clef/Clef-flash, H2O-Lightning-31B, Clairic). Included once officially released as a standalone API product with its own model ID.
+- **System One / structured decision·extraction**: a model class that returns a choice/score/noul decision with probabilities, or a typed value, instead of generating prose (Jev, Solar Jev, Laya, JEV-9B/27B, Strands Decider 2B, Clef/Clef-flash, H2O-Lightning-31B, Clairic, Kanana-2-v-decide-3b-2611, Sarvam-Prism). Included once officially released as a standalone API product with its own model ID.
 - **Inclusion exception (2026-10-15)**: a release in a `scope.excluded` category is included if it has an official first-party source and sets an industry reference point (first, best, largest) in that category. Such records put a category-revealing value in `category` (`Embedding`, `Image generation`, `Music generation`, `Memory`, ...) to separate them from LLM/MLLM, and record the rationale in `note`.
 - **Memory-specialized model (2026-10-22)**: a model dedicated to the write path of an external memory framework (Hy-Memory-30B-A3B). Not a general LLM/MLLM, but it is a standalone product with an official first-party source and open weights, so it is included under the `category: Memory` exception; its 0–100 aggregate on a 20% subsample goes into `benchmark_note` with conditions and values instead of the score table.
 - **Excluded-ledger reversal**: when an exception inclusion or re-judgment moves a ledger item to an active record, delete that `excluded` entry and record why in a README footnote (precedents: Muse Spark 1.2/1.3, Jev·Solar Jev, Laya, EmbeddingGemma 2).

@@ -2,7 +2,7 @@
 title: Audit Update
 type: runbook
 status: current
-updated: 2026-10-26
+updated: 2026-11-08
 ---
 
 # Runbook: Audit Update
@@ -26,7 +26,7 @@ The recurring procedure for researching new LLM/MLLM releases, bringing the cata
 4. **Edit the catalog**: change `models_catalog.json` only.
    - New record: the next `model-###` ID, with fields in the same order as existing records.
    - Parameters: the officially stated value + `parameter_status`; undisclosed values are `정확한 수치 미공개` + `undisclosed`.
-   - Scores: only officially printed ones go into `benchmarks{}`, each with its source URL in `benchmark_sources{}`. When a card prints one benchmark under several harnesses, key each separately with the harness in the name (e.g. `Terminal-Bench 2.1 (Claude Code)`); read the footnotes to see which harness an unlabeled row used. Otherwise an empty object + the reason in `benchmark_note`.
+   - Scores: only provider-published ones go into `benchmarks{}` — read table footnotes and methodology notes first and drop rows the vendor sources from Artificial Analysis (2026-11-06; rules in `components/catalog-pipeline.md`), each with its source URL in `benchmark_sources{}`. When a card prints one benchmark under several harnesses, key each separately with the harness in the name (e.g. `Terminal-Bench 2.1 (Claude Code)`); read the footnotes to see which harness an unlabeled row used. Otherwise an empty object + the reason in `benchmark_note`.
    - `release_date_source` and `parameter_source` must also be listed in `official_sources`.
    - A new organization gets `country`/`flag`/`color`/`badge` in `company_meta` (appended at the end by convention — the UI uses only `country`). For a country code not seen before, download `assets/flags/<code>.svg` and add the code to `app.js` `FLAG_CODES` (`assets/flags/README.md`). If search aliases are needed, also update the Korean alias rules in `app.js` `buildIndexes`.
    - Update `family_flows` when a family advances a generation. Update `as_of` and `scope.reviewed_on`.
@@ -62,6 +62,8 @@ The recurring procedure for researching new LLM/MLLM releases, bringing the cata
 - **No first-party source for the release date**: if the model card has no date and the repository creation date disagrees with the announcement date, hold the date instead of fixing it (precedent: OpenCSG Agentic-27B — Hugging Face repository 2026-09-11 vs. announcement 2026-09-30). When the repository's public date is used as `date`, record its basis (Hugging Face API `createdAt`) in `note` (precedent: Darwin-180B-RSI `model-200`).
 - **Audit timing vs. a late card update**: if an HF repository opens just before an audit and its model card and benchmarks are completed after the audit commit, it is missed as a candidate (precedent: Hy-Memory-30B-A3B — public on HF 10/15, card updated 10/16 17:12 KST, audit 10/16 12:29 KST). In the next audit, re-check the previous window's new HF repos, and record a late-completed card as a retroactive addition with a README footnote.
 - **A family or organization missing from the catalog altogether**: Ornith's 1.0 (June) and 1.5 (August) releases, with millions of HF downloads, were absent until the 2026-10-26 sweep because no audit saw an announcement. After finding one member, list the organization's repos (`author=<org>`) and add or judge every sibling in the same run; record the unknown-origin organization with `country: "미공개"` rather than guessing.
+- **OpenAI announcements and system cards**: pages return 403 to `curl`; read them through the `r.jina.ai` mirror with `X-Return-Format: html` and parse the chart JSON from the HTML (2026-11-06 GPT-6.1 Terra, GPT-6 Cyber). The URL sweep treats them as bot-protected warnings.
+- **Weights or GA arriving for an earlier preview record**: check the catalog for the model before adding a duplicate; update the existing record in place (Kimi K3.1 Pro, Mistral Large 4 on 2026-11-06).
 - **HF organization of uncertain official attribution**: cross-check against the model's listing on the developer's own site (precedent: iFLYTEK Spark-X2.6 — official attribution of `XHToken` confirmed by its listing in the `xfyun.cn` MaaS model square).
 
 ## Relevant Files
