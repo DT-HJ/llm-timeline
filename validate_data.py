@@ -26,6 +26,9 @@ OFFICIAL_HOSTS = {
     # Aleph Alpha official blog — Kolibri-1 launch post. Added 2026-10-08.
     "aleph-alpha.com",
     "alibabagroup.com",
+    # Alibaba Cloud Model Studio docs — qwen4-max-preview spec & availability.
+    # Added 2026-11-15.
+    "alibabacloud.com",
     "anthropic.com",
     # Nemotron 3.5 Super VL / Bolt launch post. Added 2026-10-16.
     "blogs.nvidia.com",
@@ -33,6 +36,9 @@ OFFICIAL_HOSTS = {
     "bytednsdoc.com",
     # NAVER CLOVA tech blog — official HyperCLOVA X SEED 4B benchmarks.
     "clova.ai",
+    # Anthropic Claude Platform docs — claude-fable-5-2 / claude-mythos-5-2 specs.
+    # Added 2026-11-15.
+    "claude.com",
     # Cloudflare blog & developers changelog — Clef/Clef-flash launch (Workers AI).
     # Added 2026-10-08.
     "cloudflare.com",
@@ -84,6 +90,8 @@ OFFICIAL_HOSTS = {
     # benchmark table (webarena verified + WebArena (vision) rows).
     # Added 2026-10-16.
     "liquid.ai",
+    # Meituan LongCat official tech blog — LongCat-2.5 launch post. Added 2026-11-15.
+    "longcat.ai",
     # MemTensor official site — MemT-1.0 memory-native model family.
     # Added 2026-10-22.
     "memtensor.cn",
@@ -141,6 +149,9 @@ OFFICIAL_HOSTS = {
     # blog CDN that already backed Step 3.5 Flash. Added 2026-10-15.
     "stepfun.com",
     "stepfun.ai",
+    # Google DeepMind official model-card PDF CDN — Gemini 4 Carbon / Hydrogen.
+    # Added 2026-11-15.
+    "storage.googleapis.com",
     "tech.meituan.com",
     "thinkingmachines.ai",
     # TypeSafe AI official blog (typesafe.ai) and docs (docs.typesafe.ai)

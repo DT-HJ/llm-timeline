@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "as_of": "2026-11-06",
+  "as_of": "2026-11-15",
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
   "models": [
@@ -20875,13 +20875,16 @@
       "monthName": "October",
       "company": "Google DeepMind",
       "family": "Gemini",
-      "type": "MLLM (frontier, cyber-first rollout)",
+      "type": "MLLM",
       "category": "MLLM",
-      "status": "Limited release (Fairwind Program)",
+      "status": "GA",
       "parameters": "정확한 수치 미공개",
       "architecture": "발표문·DeepMind 모델 페이지에 아키텍처·파라미터가 공개되지 않았습니다. Gemini 4 세대의 최신 프런티어 모델로, 사이버 보안과 장기 다단계 작업(대형 소프트웨어 프로젝트)에 최고 수준이라고 소개합니다.",
       "modalities": [
-        "text"
+        "text",
+        "image",
+        "audio",
+        "video"
       ],
       "focus": [
         "사이버 방어",
@@ -20891,14 +20894,14 @@
       ],
       "open_weights": false,
       "license": "독점",
-      "context": "미공개",
+      "context": "1,048,576 (입력·출력 통합 1M 토큰 한도)",
       "languages": "",
       "variants": [],
       "reasoning_effort": [
         "highest thinking (벤치마크 설정)"
       ],
-      "availability": "Fairwind Program의 일부 사이버 방어자에게 먼저 제공하고 신뢰 파트너로 단계 확대 — 개발자·기업·소비자 제품 노출은 '가능한 한 빨리' 예고(2026-11-06 확인 시점 미제공). 도입가 $2/$10 per 1M(캐시 입력 95% 할인), 이후 $4/$20 예정",
-      "note": "Gemini 4 Argon(GA, 10/13)의 약 2주 뒤 발표된 후속 프런티어 모델로, Argon을 대체한다고 밝히지는 않았습니다. 사이버 가드레일 조정을 마치기 전까지 접근을 제한합니다. 입력 모달리티·컨텍스트는 발표문·DeepMind 페이지에 명시가 없어 보수적으로 text만 기재했고(Argon은 멀티모달) 공개 접근이 열리면 확인이 필요합니다. Gray Swan 간접 프롬프트 주입 공격 성공률 0.0%(Argon 0.7%)를 보고합니다. 레코드 날짜는 최초 발표일(2026-10-28)입니다 — Argon 선례처럼 일반 공개 시 상태를 갱신해야 합니다.",
+      "availability": "2026-11-10 일반 공개(GA): Gemini API 유료 티어(Google AI Studio·Android Studio), Gemini for business, Google Antigravity·Gemini 앱·검색 AI Mode(Google AI Ultra 구독자), Fairwind Program(승인된 사이버 방어자 대상 사이버 특화 접근). 도입가 $2/$10 per 1M(캐시 입력 95% 할인, 2026-11-30까지), 이후 $4/$20",
+      "note": "2026-10-28 Fairwind Program 한정 공개로 첫 발표된 뒤 2026-11-10 일반 공개(GA)로 전환됐습니다. 공식 모델 카드에서 입력 모달리티(텍스트·이미지·오디오·비디오)와 통합 1M 컨텍스트가 확인돼 보수적 text 표기를 갱신했습니다. Gray Swan 간접 프롬프트 주입 공격 성공률 0.0%(Argon 0.7%)를 보고합니다. 레코드 날짜는 Argon 선례에 따라 최초 발표일(2026-10-28)을 유지합니다.",
       "benchmarks": {
         "SWE-sweep": 9.6,
         "FrontierSWE 2": 61.2,
@@ -20926,6 +20929,14 @@
         {
           "label": "Gemini 4 Carbon 모델 평가 방법론(PDF)",
           "url": "https://deepmind.google/models/evals-methodology/gemini-4-carbon"
+        },
+        {
+          "label": "Google 공식 일반 공개(GA) 발표문(11/10)",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
+        },
+        {
+          "label": "Gemini 4 Carbon 공식 모델 카드(PDF)",
+          "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Carbon-Model-Card.pdf"
         }
       ],
       "release_date_source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
@@ -20948,7 +20959,7 @@
       "parameter_status": "undisclosed",
       "verification": {
         "status": "reviewed",
-        "reviewed_on": "2026-11-06",
+        "reviewed_on": "2026-11-15",
         "policy": "official-primary-only"
       }
     },
@@ -21421,6 +21432,762 @@
       "verification": {
         "status": "reviewed",
         "reviewed_on": "2026-11-06",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-269",
+      "name": "Claude Fable 5.2",
+      "date": "2026-11-09",
+      "sortDate": "2026-11-09",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Anthropic",
+      "family": "Claude",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "정확한 수치 미공개",
+      "architecture": "Claude Mythos 5.2와 동일한 기반 모델에 일반 배포용 사이버 보안·생물학 세이프가드를 적용한 프런티어 모델.",
+      "modalities": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "focus": [
+        "장기 호라이즌 에이전트 작업",
+        "에이전틱 코딩",
+        "과학·수학 추론",
+        "컴퓨터 유스",
+        "멀티에이전트 조율"
+      ],
+      "open_weights": false,
+      "license": "독점",
+      "context": "1,000,000 (최대 출력 128,000)",
+      "languages": "",
+      "variants": [],
+      "reasoning_effort": [
+        "low",
+        "medium (default)",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "availability": "Claude API(claude-fable-5-2)·Claude.ai·Claude Code·AWS Bedrock·Google Cloud Vertex AI·Microsoft Foundry. 입력 $8 / 출력 $40 per 1M(Fast mode $16/$80, 최대 2.5배 속도)",
+      "note": "Fable 5.1 대비 출력 속도 최대 30% 향상 및 단가 인하($8/$40). Advisor·Orchestrator 역할 지원. Claude Mythos 5.2와 동일 기반 모델이며 사이버·생물학 오남용 분류기 오탐을 Fable 5.1 대비 약 55% 줄였습니다.",
+      "benchmarks": {
+        "FrontierCode 2.0": 49.1,
+        "FrontierSWE v2": 69.9,
+        "AutomationBench": 51.4,
+        "Terminal-Bench Science 0.1": 74.6,
+        "WANDR (relaxed score)": 82.1,
+        "OSWorld 2.1 (offline set, partial)": 89.3,
+        "RoboDojo Sim": 64.9,
+        "Remote Labor Index (RLI)": 41.3,
+        "Humanity's Last Exam (with tools)": 74.2,
+        "Chartography (no tools)": 73.4
+      },
+      "official_id": "claude-fable-5-2",
+      "official_sources": [
+        {
+          "label": "Anthropic 공식 발표문",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+        },
+        {
+          "label": "Claude Fable 5.2 & Mythos 5.2 System Card",
+          "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
+        },
+        {
+          "label": "Claude Platform 모델 문서",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        }
+      ],
+      "release_date_source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "parameter_source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "benchmark_sources": {
+        "FrontierCode 2.0": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "FrontierSWE v2": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "AutomationBench": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "Terminal-Bench Science 0.1": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "WANDR (relaxed score)": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "OSWorld 2.1 (offline set, partial)": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "RoboDojo Sim": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "Remote Labor Index (RLI)": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "Humanity's Last Exam (with tools)": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "Chartography (no tools)": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+      },
+      "benchmark_note": "Anthropic 공식 발표 표의 Fable 5.2 % 단위 벤치마크 10개를 수록했습니다(FrontierCode 2.0은 Xhigh effort, Remote Labor Index는 High effort, 나머지는 최고 가용 effort 기준). AA-Briefcase v1.1(66.1% rubric, 1785 Elo)은 Artificial Analysis/Elo 정책에 따라 점수표에서 제외했습니다.",
+      "parameter_status": "undisclosed",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-270",
+      "name": "Claude Mythos 5.2",
+      "date": "2026-11-09",
+      "sortDate": "2026-11-09",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Anthropic",
+      "family": "Claude",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "정확한 수치 미공개",
+      "architecture": "Claude Fable 5.2와 동일한 기반 모델(사이버 보안·생물학 세이프가드 완화형).",
+      "modalities": [
+        "text",
+        "image",
+        "pdf"
+      ],
+      "focus": [
+        "방어적 사이버 보안",
+        "생명의학·단백질 설계",
+        "장기 호라이즌 과학·수학 추론",
+        "멀티에이전트 조율"
+      ],
+      "open_weights": false,
+      "license": "독점",
+      "context": "1,000,000 (최대 출력 128,000)",
+      "languages": "",
+      "variants": [],
+      "reasoning_effort": [
+        "low",
+        "medium (default)",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "availability": "restricted (Cyber Verification Program · Life Sciences Verification Program 승인 조직 및 Claude Security 기업 고객 대상, $8/$40 per 1M, Fast mode $16/$80)",
+      "note": "Claude Fable 5.2와 동일 기반 모델이며 사이버 보안·생물학 이중용도 연구를 위해 세이프가드를 완화한 제한 접근 모델입니다.",
+      "benchmarks": {
+        "Terminal-Bench Science 0.1": 75.3,
+        "CyScenarioBench": 76.3,
+        "CVE Rediscovery": 89.6
+      },
+      "official_id": "claude-mythos-5-2",
+      "official_sources": [
+        {
+          "label": "Anthropic 공식 발표문",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+        },
+        {
+          "label": "Claude Fable 5.2 & Mythos 5.2 System Card",
+          "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card"
+        },
+        {
+          "label": "Claude Platform 모델 문서",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        }
+      ],
+      "release_date_source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "parameter_source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "benchmark_sources": {
+        "Terminal-Bench Science 0.1": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "CyScenarioBench": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "CVE Rediscovery": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+      },
+      "benchmark_note": "Anthropic 공식 발표 표에서 Mythos 5.2 고유 수치가 병기된 % 단위 벤치마크 3개(Terminal-Bench Science 0.1 75.3%, CyScenarioBench 76.3%, CVE Rediscovery 89.6%)를 수록했습니다. De novo binder design (24 hr) 85.1은 % 단위 표기가 없어 점수표에서 제외했고, 나머지 일반 벤치마크는 Fable 5.2 레코드에 수록돼 있습니다.",
+      "parameter_status": "undisclosed",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-271",
+      "name": "Gemini 4 Hydrogen",
+      "date": "2026-11-12",
+      "sortDate": "2026-11-12",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Google DeepMind",
+      "family": "Gemini",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "정확한 수치 미공개",
+      "architecture": "Gemini 4 Carbon에서 파생된 고속·저비용 실행 엔진 모델.",
+      "modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "focus": [
+        "일상 코딩·디버깅",
+        "고속 에이전트 실행",
+        "멀티모달 지식 업무",
+        "멀티모델 오케스트레이션"
+      ],
+      "open_weights": false,
+      "license": "독점",
+      "context": "1,048,576 (입력·출력 통합 1M 토큰 한도 — 동기 기본 출력 65,536, long decode 시 1,048,576)",
+      "languages": "",
+      "variants": [],
+      "reasoning_effort": [
+        "low",
+        "medium",
+        "high (default)",
+        "xhigh"
+      ],
+      "availability": "Gemini API·Google AI Studio·Android Studio·Gemini for business·Gemini 앱·Google Search(전 사용자)·Google Antigravity(Pro/Ultra 유료 구독자). $1.50/$7.50 per 1M 단일 가격",
+      "note": "Gemini 3.8 Flash의 후속 고속·고효율 Gemini 4 라인업 모델로, Google Antigravity의 Orchestrator에서 Carbon/Argon과 조합되는 실행 엔진 역할을 맡습니다.",
+      "benchmarks": {
+        "SWE-sweep": 13.5,
+        "Terminal-Bench 4.1": 57.0,
+        "Agents' Last Exam v1.1": 71.6,
+        "OSWorld 2.1 (offline subset)": 77.6,
+        "MKA": 53.4,
+        "Chartography": 66.6,
+        "Terminal-Bench-Science 0.1": 51.4
+      },
+      "official_id": "gemini-4-hydrogen",
+      "official_sources": [
+        {
+          "label": "Google 공식 발표문",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+        },
+        {
+          "label": "Google 개발자 블로그",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/"
+        },
+        {
+          "label": "Gemini 4 Hydrogen 공식 모델 카드(PDF)",
+          "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Hydrogen-Model-Card.pdf"
+        },
+        {
+          "label": "DeepMind Gemini 모델 페이지(벤치마크 표)",
+          "url": "https://deepmind.google/models/gemini/"
+        },
+        {
+          "label": "Gemini 4 Hydrogen 평가 방법론(PDF)",
+          "url": "https://deepmind.google/models/evals-methodology/gemini-4-hydrogen"
+        }
+      ],
+      "release_date_source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+      "parameter_source": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Hydrogen-Model-Card.pdf",
+      "benchmark_sources": {
+        "SWE-sweep": "https://deepmind.google/models/gemini/",
+        "Terminal-Bench 4.1": "https://deepmind.google/models/gemini/",
+        "Agents' Last Exam v1.1": "https://deepmind.google/models/gemini/",
+        "OSWorld 2.1 (offline subset)": "https://deepmind.google/models/gemini/",
+        "MKA": "https://deepmind.google/models/gemini/",
+        "Chartography": "https://deepmind.google/models/gemini/",
+        "Terminal-Bench-Science 0.1": "https://deepmind.google/models/gemini/"
+      },
+      "benchmark_note": "DeepMind 모델 페이지 표 중 평가 방법론 PDF상 Google 자체 측정으로 확인된 7개(SWE-sweep, Terminal-Bench 4.1 cheating-adjusted, Agents' Last Exam v1.1, OSWorld 2.1 오프라인 82과제 부분 점수, MKA, Chartography, Terminal-Bench-Science 0.1)를 수록했습니다. 방법론 문서상 Artificial Analysis 리더보드 출처인 AutomationBench-AA(76.1%)·HLE-Diamond(58.8%)와 달러 지표 Vending-Bench 2($14,549), 블로그 본문의 AA Intelligence Index(high 51, xhigh 54)는 정책상 점수표에서 제외했습니다.",
+      "parameter_status": "undisclosed",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-272",
+      "name": "Qwen4-Max-Preview",
+      "date": "2026-11-11",
+      "sortDate": "2026-11-11",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Alibaba",
+      "family": "Qwen",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "Preview",
+      "parameters": "정확한 수치 미공개",
+      "architecture": "Qwen 4 세대의 첫 플래그십 멀티모달 추론 모델 프리뷰.",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "focus": [
+        "복합 추론·코딩",
+        "이미지·비디오 이해",
+        "에이전트·도구 호출"
+      ],
+      "open_weights": false,
+      "license": "독점",
+      "context": "1,000,000 (최대 출력 393,216 — 사고·응답 합산)",
+      "languages": "",
+      "variants": [],
+      "reasoning_effort": [
+        "low",
+        "medium",
+        "xhigh (default)"
+      ],
+      "availability": "Alibaba Cloud Model Studio Token Plan 구독 전용 프리뷰(2026-11-11 ~ 2026-11-25, 모델 ID qwen4-max-preview) 및 Qwen Chat",
+      "note": "Qwen 4 세대 첫 공개 프리뷰 모델로, 1M 컨텍스트와 기본 활성화 사고 모드(reasoning_effort 조절), OpenAI·Anthropic 호환 API를 지원합니다.",
+      "benchmarks": {},
+      "official_id": "qwen4-max-preview",
+      "official_sources": [
+        {
+          "label": "Alibaba Cloud Model Studio 공식 모델 문서",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/models"
+        }
+      ],
+      "release_date_source": "https://www.alibabacloud.com/help/en/model-studio/models",
+      "parameter_source": "https://www.alibabacloud.com/help/en/model-studio/models",
+      "benchmark_sources": {},
+      "benchmark_note": "Alibaba Cloud Model Studio 공식 문서에 프리뷰 스펙·가용성만 게시됐고 정량 벤치마크 표는 공개되지 않았습니다.",
+      "parameter_status": "undisclosed",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-273",
+      "name": "Nex-N2.6",
+      "date": "2026-11-10",
+      "sortDate": "2026-11-10",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Nex-AGI",
+      "family": "Nex",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "약 321B (FP8 가중치 기준, 카드 표기)",
+      "architecture": "GLM-5.3-Flash 기반 멀티모달 에이전트 모델(HF safetensors 321.3B).",
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "focus": [
+        "컴퓨터 유스",
+        "에이전틱 코딩",
+        "장기 도구 사용"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "카드에 명시 없음",
+      "languages": "",
+      "variants": [],
+      "reasoning_effort": [],
+      "availability": "Hugging Face nex-agi/Nex-N2.6(FP8 가중치) · OpenRouter API(nex-agi/nex-n2.6)",
+      "note": "Nex-N2.5 시리즈 후속 멀티모달 에이전트 모델로, 내부 체크포인트 리플레이 평가에서 반복 추론 비율을 16.0%→1.6%로 줄이고 도구 목록 준수율 100%를 보고합니다.",
+      "benchmarks": {
+        "OSWorld": 83.0,
+        "Terminal-Bench 2.1": 84.1,
+        "AutomationBench": 45.7
+      },
+      "official_id": "nex-agi/Nex-N2.6",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/nex-agi/Nex-N2.6"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/nex-agi/Nex-N2.6",
+      "parameter_source": "https://huggingface.co/nex-agi/Nex-N2.6",
+      "benchmark_sources": {
+        "OSWorld": "https://huggingface.co/nex-agi/Nex-N2.6",
+        "Terminal-Bench 2.1": "https://huggingface.co/nex-agi/Nex-N2.6",
+        "AutomationBench": "https://huggingface.co/nex-agi/Nex-N2.6"
+      },
+      "benchmark_note": "HF 모델 카드가 보고한 모델 수준(model-level) 공식 벤치마크 3개(OSWorld, Terminal-Bench 2.1, AutomationBench)를 수록했습니다.",
+      "parameter_status": "publisher-approximate",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-274",
+      "name": "LongCat-2.5",
+      "date": "2026-11-04",
+      "sortDate": "2026-11-04",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Meituan",
+      "family": "LongCat",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "1.6T 총 / 약 48B 활성 (MoE, 카드 표기)",
+      "architecture": "네이티브 멀티모달 MoE(1.6T 총 / 48B 활성, W4A4 양자화 지원).",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "focus": [
+        "장기 호라이즌 에이전트 코딩",
+        "시각 이해·3D·웹 개발",
+        "일반 에이전트·검색"
+      ],
+      "open_weights": true,
+      "license": "MIT",
+      "context": "512K~1M (벤치마크별 256K/512K/1M 평가)",
+      "languages": "",
+      "variants": [
+        "LongCat-2.5-W4A4"
+      ],
+      "reasoning_effort": [
+        "enable_thinking on/off"
+      ],
+      "availability": "Hugging Face meituan-longcat/LongCat-2.5(MIT) · LongCat-2.5-W4A4",
+      "note": "LongCat-2.0 후속 세대 모델. 2026-11-06 감사 이후 HF 스윕으로 소급 수록했습니다(HF API createdAt 2026-11-04).",
+      "benchmarks": {
+        "Terminal Bench v2.1": 88.4,
+        "Terminal Bench v4.0": 38.5,
+        "Program Bench (Almost Resolved)": 25.5,
+        "DeepSWE (v1.1)": 64.6,
+        "PaperBench": 82.1,
+        "SWE Atlas - Codebase QnA": 58.3,
+        "SWE Atlas - Refactoring": 55.2,
+        "SWE Atlas - Test Writing": 47.8,
+        "NL2Repo": 60.5,
+        "BrowseComp": 91.9,
+        "AutomationBench (v1.0.6)": 51.8,
+        "HLE (w/ tools)": 63.1,
+        "ALE (v1.1)": 38.5,
+        "ResearchRubrics": 81.0,
+        "MCP Atlas": 83.1,
+        "JobBench": 65.4,
+        "SkillsBench": 63.3,
+        "FrontierScience": 77.0,
+        "SpreadsheetBench 2": 34.9,
+        "FinSearchComp (T3)": 63.4,
+        "Claw-Eval (Pass^3)": 78.3,
+        "LongCatClawBench (FORTE)": 83.3,
+        "3DCodeBench (Text->3D)": 55.4,
+        "Vision2Web": 78.6,
+        "CharXiv-RQ (w/ tools)": 90.2,
+        "MathVision (w/ tools)": 96.5,
+        "VideoMME": 85.2,
+        "PosterBench": 77.4,
+        "LongCatClawBench-MM (FORTE-MM)": 72.1
+      },
+      "official_id": "meituan-longcat/LongCat-2.5",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+        },
+        {
+          "label": "LongCat 공식 기술 블로그",
+          "url": "https://longcat.ai/blog/longcat-2.5/"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+      "parameter_source": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+      "benchmark_sources": {
+        "Terminal Bench v2.1": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "Terminal Bench v4.0": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "Program Bench (Almost Resolved)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "DeepSWE (v1.1)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "PaperBench": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "SWE Atlas - Codebase QnA": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "SWE Atlas - Refactoring": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "SWE Atlas - Test Writing": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "NL2Repo": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "BrowseComp": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "AutomationBench (v1.0.6)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "HLE (w/ tools)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "ALE (v1.1)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "ResearchRubrics": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "MCP Atlas": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "JobBench": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "SkillsBench": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "FrontierScience": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "SpreadsheetBench 2": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "FinSearchComp (T3)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "Claw-Eval (Pass^3)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "LongCatClawBench (FORTE)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "3DCodeBench (Text->3D)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "Vision2Web": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "CharXiv-RQ (w/ tools)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "MathVision (w/ tools)": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "VideoMME": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "PosterBench": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "LongCatClawBench-MM (FORTE-MM)": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+      },
+      "benchmark_note": "HF 모델 카드 평가표의 29개 공식 벤치마크를 수록했습니다(enable_thinking=on 기준). GDPVal-AA rubrics(84.8%)는 Artificial Analysis 지표 정책에 따라 제외했고, 사내 전용 LongCat AppDev(73.7%)는 별도 표기했습니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-275",
+      "name": "Inkling-2-Small",
+      "date": "2026-11-04",
+      "sortDate": "2026-11-04",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Thinking Machines Lab",
+      "family": "Inkling",
+      "type": "MLLM",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "594B 총 / 17B 활성 (MoE, 카드 표기)",
+      "architecture": "48층 하이브리드 로컬/글로벌 어텐션 MoE(384개 중 토큰당 8개 전문가 활성) + 네이티브 비전 인코더.",
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "focus": [
+        "에이전틱 코딩·리서치",
+        "재무·법률·엔터프라이즈 업무",
+        "시각 이해·문서 추론"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "1,000,000",
+      "languages": "",
+      "variants": [
+        "Inkling-2-Small-MXFP8"
+      ],
+      "reasoning_effort": [],
+      "availability": "Hugging Face thinkingmachines/Inkling-2-Small(Apache 2.0, MXFP8/NVFP4 지원)",
+      "note": "Inkling / Inkling-Small의 후속 2세대 소형 MoE 모델. 2026-11-06 감사 이후 HF 스윕으로 소급 수록했습니다(HF API createdAt 2026-11-04).",
+      "benchmarks": {
+        "Vals Index (v2.2)": 56.1,
+        "FrontierCode v2.0 (stirrup v0.2.1)": 25.4,
+        "DeepSWE v1.1 (mini-swe-agent v2.4.6)": 72.1,
+        "Terminal Bench Science v0.1 (mini-swe-agent v2.4.6)": 5.7,
+        "Vibe Code Bench v1.1 (openhands)": 81.6,
+        "SWE-Atlas v1.1 (mini-swe-agent v2.4.6)": 61.9,
+        "SWEBench Pro v2 (Hard)": 86.3,
+        "Sudo L7": 14.1,
+        "PostTrainBench v1.2": 31.9,
+        "BioMysteryBench (terminus v2)": 70.0,
+        "BrowseComp (with compaction)": 90.2,
+        "DeepSearchQA (with compaction)": 90.9,
+        "MCP Atlas (Full)": 85.4,
+        "MCP Atlas (Public)": 85.0,
+        "JobBench": 70.5,
+        "DAYJOB (Healthcare)": 6.4,
+        "EnterpriseOps-Gym": 46.8,
+        "EnterpriseBench-CoreCraft": 71.8,
+        "Finance Agent v2.1": 67.5,
+        "Excel Modeling Benchmark v1.1": 69.5,
+        "Tax Agent Bench": 65.8,
+        "Apex-Accounting v1.1 (pass@1)": 14.5,
+        "DAYJOB (Finance)": 14.3,
+        "DeepFinance": 29.8,
+        "Diligence Bench": 58.1,
+        "Tau 3 Banking v1.0.1": 40.4,
+        "ATLAS-Finance v1.1": 6.0,
+        "Harvey LAB v1.1": 21.7,
+        "Legal Research Bench": 46.6,
+        "BVB": 71.6,
+        "PerceptionBench": 64.7,
+        "Humanity's Sixth Sense": 33.3,
+        "OmniDocBench v1.6": 94.6,
+        "SimpleVQA (with search and tools)": 68.2,
+        "GDP.pdf": 25.2,
+        "MMMU Pro (Standard 10)": 81.6,
+        "SAGE v1.1": 88.6,
+        "MuirBench": 79.2,
+        "HLE-Diamond": 28.7,
+        "HLE (text only)": 44.1
+      },
+      "official_id": "thinkingmachines/Inkling-2-Small",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+      "parameter_source": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+      "benchmark_sources": {
+        "Vals Index (v2.2)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "FrontierCode v2.0 (stirrup v0.2.1)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "DeepSWE v1.1 (mini-swe-agent v2.4.6)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Terminal Bench Science v0.1 (mini-swe-agent v2.4.6)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Vibe Code Bench v1.1 (openhands)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "SWE-Atlas v1.1 (mini-swe-agent v2.4.6)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "SWEBench Pro v2 (Hard)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Sudo L7": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "PostTrainBench v1.2": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "BioMysteryBench (terminus v2)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "BrowseComp (with compaction)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "DeepSearchQA (with compaction)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "MCP Atlas (Full)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "MCP Atlas (Public)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "JobBench": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "DAYJOB (Healthcare)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "EnterpriseOps-Gym": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "EnterpriseBench-CoreCraft": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Finance Agent v2.1": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Excel Modeling Benchmark v1.1": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Tax Agent Bench": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Apex-Accounting v1.1 (pass@1)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "DAYJOB (Finance)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "DeepFinance": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Diligence Bench": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Tau 3 Banking v1.0.1": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "ATLAS-Finance v1.1": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Harvey LAB v1.1": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Legal Research Bench": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "BVB": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "PerceptionBench": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "Humanity's Sixth Sense": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "OmniDocBench v1.6": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "SimpleVQA (with search and tools)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "GDP.pdf": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "MMMU Pro (Standard 10)": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "SAGE v1.1": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "MuirBench": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "HLE-Diamond": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+        "HLE (text only)": "https://huggingface.co/thinkingmachines/Inkling-2-Small"
+      },
+      "benchmark_note": "HF 모델 카드 평가표의 % 단위 비-AA/비-Arena 벤치마크 40개를 수록했습니다. AA Index v5.0(30.6), AA-Briefcase v1.1(1527), GDPVal-AA v2.1(1630), AA-AnalystAgent(51.2%), AA-3D(1021), Code2Video-AA(1020), DesignArena(1286~1457), Code Arena(1653), PMPP-Hard(AUC 494.27)는 정책상 제외했습니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-276",
+      "name": "Raon-1 nano",
+      "date": "2026-10-29",
+      "sortDate": "2026-10-29",
+      "month": "2026-10",
+      "monthName": "October",
+      "company": "KRAFTON",
+      "family": "Raon",
+      "type": "LLM",
+      "category": "LLM",
+      "status": "GA",
+      "parameters": "3.1B 총 (per-layer embedding 1.5B 포함, 카드 표기; 체크포인트 3.2B)",
+      "architecture": "24층 하이브리드 밀집 모델(Raon Delta Attention 18층 + Gated MLA 6층, Raon-mHC, 55M MTP).",
+      "modalities": [
+        "text"
+      ],
+      "focus": [
+        "한국어·경량 온디바이스",
+        "도구 사용·지시 이행",
+        "장문 맥락 처리"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "262,144",
+      "languages": "",
+      "variants": [
+        "Raon-1-nano-gguf",
+        "Raon-1-nano-mlx",
+        "Raon-1-nano-litert-lm"
+      ],
+      "reasoning_effort": [],
+      "availability": "Hugging Face KRAFTON/Raon-1-nano(Apache 2.0) 및 GGUF·MLX·LiteRT-LM 배포본",
+      "note": "Raon-1 mini preview(30B-A4B)에서 MoE-to-Dense 가지치기·증류로 파생된 3.1B 온디바이스 경량 모델. 2026-11-06 감사 이후 HF 스윕으로 소급 수록했습니다(HF API createdAt 2026-10-29).",
+      "benchmarks": {
+        "MMLU-Redux": 81.1,
+        "KMMLU-Redux (ko)": 50.9,
+        "HAE-RAE 1.1 (ko)": 44.2,
+        "CLIcK (ko)": 65.2,
+        "IFBench": 75.9,
+        "MultiChallenge": 40.5,
+        "FACTS Grounding": 44.4,
+        "PersonaMem v2": 38.8,
+        "PrefEval": 44.0,
+        "Office Work Bench (ko, internal)": 49.2,
+        "BFCL v4": 56.3,
+        "AndroidControl": 36.0,
+        "NL2SH-ALFA": 58.0,
+        "BrowseComp Plus": 34.5,
+        "Chatbot Korean (ko, internal)": 91.0
+      },
+      "official_id": "KRAFTON/Raon-1-nano",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/KRAFTON/Raon-1-nano"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/KRAFTON/Raon-1-nano",
+      "parameter_source": "https://huggingface.co/KRAFTON/Raon-1-nano",
+      "benchmark_sources": {
+        "MMLU-Redux": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "KMMLU-Redux (ko)": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "HAE-RAE 1.1 (ko)": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "CLIcK (ko)": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "IFBench": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "MultiChallenge": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "FACTS Grounding": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "PersonaMem v2": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "PrefEval": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "Office Work Bench (ko, internal)": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "BFCL v4": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "AndroidControl": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "NL2SH-ALFA": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "BrowseComp Plus": "https://huggingface.co/KRAFTON/Raon-1-nano",
+        "Chatbot Korean (ko, internal)": "https://huggingface.co/KRAFTON/Raon-1-nano"
+      },
+      "benchmark_note": "HF 모델 카드 벤치마크 표 15개 전량을 수록했습니다(PersonaMem v2 32k, PrefEval 10/70/150턴 평균, AndroidControl HL/LL 평균).",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-277",
+      "name": "MiniMax-H3-Image",
+      "date": "2026-11-03",
+      "sortDate": "2026-11-03",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "MiniMax",
+      "family": "MiniMax H3",
+      "type": "Image generation / editing",
+      "category": "Image generation",
+      "status": "GA",
+      "parameters": "33.1B (DiT, 카드 표기; MiniMax-H3 Qwen3-VL 텍스트 인코더 별도)",
+      "architecture": "50층 단일 스트림 DiT(33.1B, 6스텝 증류·CFG 없음) + MiniMax-H3 텍스트 인코더·24층 ViT VAE.",
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "focus": [
+        "16MP 네이티브 이미지 생성",
+        "다중 참조 이미지 편집(최대 16장)",
+        "오픈 웨이트 이미지 모델"
+      ],
+      "open_weights": true,
+      "license": "MiniMax-H3-Image Community License Agreement",
+      "context": "프롬프트 최대 4,096 토큰",
+      "languages": "",
+      "variants": [
+        "MiniMax-H3-Image-PE"
+      ],
+      "reasoning_effort": [],
+      "availability": "Hugging Face MiniMaxAI/MiniMax-H3-Image · MiniMax API(/v1/images/generations, /v1/images/edits)",
+      "note": "중요도 예외 수록(2026-10-15 정책 개정): 업스케일러 없이 네이티브 16MP(4096×4096~6272×2688) 생성과 6스텝 추론·최대 16장 참조 편집을 지원하는 33.1B 오픈 웨이트 이미지 생성·편집 모델로, Qwen-Image-2.1·Muse Image 선례에 따라 수록했습니다.",
+      "benchmarks": {},
+      "official_id": "MiniMaxAI/MiniMax-H3-Image",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "parameter_source": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "benchmark_sources": {},
+      "benchmark_note": "공식 모델 카드·API 문서에 정량 벤치마크 표가 게시되지 않았습니다.",
+      "parameter_status": "verified",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-15",
         "policy": "official-primary-only"
       }
     }
@@ -21984,6 +22751,61 @@
       "reason": "영상 생성·대화형 편집(최대 15초 생성·연장 30초) 전용 모델의 GA — 기존 Gemini Omni 1.1 Flash(model-162, 제외)와 같은 video-generation-only 계열의 증분 버전이라 제외 판정을 유지합니다.",
       "source": "https://aistudio.google.com/docs/models/gemini-omni-flash",
       "reviewed_on": "2026-11-06"
+    },
+    {
+      "id": "excluded-2026-11-15-1",
+      "name": "KLM-1.6",
+      "original_name": "KLM 1.6",
+      "date": "2026-11-09",
+      "company": "MinimaLabs",
+      "country": "미공개",
+      "reason": "약 99M(98,975,308) 파라미터의 사전학습 베이스 소형 연구 모델(KLM 1.5의 100B 토큰 감쇠 단계 연장 증분 업데이트)로, KLM-1.5(excluded-2026-10-26-5)와 동일하게 범용 제품·프런티어 LLM/MLLM 범위 외로 제외.",
+      "source": "https://huggingface.co/MinimaLabs/KLM-1.6",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "excluded-2026-11-15-2",
+      "name": "S5-nano",
+      "original_name": "S5-nano",
+      "date": "2026-11-02",
+      "company": "Maritaca AI",
+      "country": "BR",
+      "reason": "이미 수록된 Qwen3.5-4B를 기반으로 포르투갈어·브라질 벤치마크용 지속 사전학습·사후학습을 거친 4B 지역 특화 파생 모델로 제외.",
+      "source": "https://huggingface.co/maritaca-ai/S5-nano",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "excluded-2026-11-15-3",
+      "name": "Qwen3.8-27B-DSpine-b16",
+      "original_name": "Qwen3.8-27B-DSpine-b16",
+      "date": "2026-11-07",
+      "company": "Tencent",
+      "country": "CN",
+      "reason": "투기적 디코딩(speculative decoding)용 드래프트 모델로, 단독 범용 LLM/MLLM 제품이 아니므로 제외.",
+      "source": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "excluded-2026-11-15-4",
+      "name": "Unlimited-OCR-2",
+      "original_name": "Unlimited-OCR-2",
+      "date": "2026-10-26",
+      "company": "Baidu",
+      "country": "CN",
+      "reason": "OCR 전용 비전-언어 모델로, scope.excluded의 OCR-only 항목에 해당해 제외.",
+      "source": "https://huggingface.co/baidu/Unlimited-OCR-2",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "excluded-2026-11-15-5",
+      "name": "mirage",
+      "original_name": "mirage",
+      "date": "2026-11-05",
+      "company": "Cactus Compute",
+      "country": "미공개",
+      "reason": "객체 탐지(zero-shot object detection)·이미지 분할 전용 비전 모델로 LLM/MLLM 범위 외로 제외.",
+      "source": "https://huggingface.co/Cactus-Compute/mirage",
+      "reviewed_on": "2026-11-15"
     }
   ],
   "company_meta": {
@@ -22441,7 +23263,8 @@
         "Qwen3.7",
         "Qwen3.8",
         "Qwen3.8-Flash-Next",
-        "Qwen3.8-Omni-Flash"
+        "Qwen3.8-Omni-Flash",
+        "Qwen4"
       ]
     },
     {
@@ -22468,7 +23291,8 @@
         "Fable/Mythos 5.1",
         "Opus 5.5",
         "Sonnet 5.5",
-        "Haiku 5.5"
+        "Haiku 5.5",
+        "Fable/Mythos 5.2"
       ]
     },
     {
@@ -22496,7 +23320,8 @@
         "Gemini 3.8 Live",
         "Gemini 3.8 Live Extended Thinking",
         "Gemini 4 Argon",
-        "Gemini 4 Carbon"
+        "Gemini 4 Carbon",
+        "Gemini 4 Hydrogen"
       ]
     },
     {
@@ -22526,7 +23351,8 @@
         "LongCat-Flash-Thinking-2601",
         "LongCat-Flash-Lite",
         "LongCat-Flash-Omni",
-        "LongCat-2.0"
+        "LongCat-2.0",
+        "LongCat-2.5"
       ]
     },
     {
@@ -22625,7 +23451,8 @@
       "steps": [
         "Nex-N2.5-mini",
         "Nex-N2.5-Pro",
-        "Nex-N2.5-Max"
+        "Nex-N2.5-Max",
+        "Nex-N2.6"
       ]
     },
     {
@@ -22653,7 +23480,8 @@
     {
       "family": "Raon",
       "steps": [
-        "Raon-1 mini"
+        "Raon-1 mini",
+        "Raon-1 nano"
       ]
     },
     {
@@ -22734,11 +23562,20 @@
         "LFM2.5-24B-A2B",
         "LFM3-1.7B"
       ]
+    },
+    {
+      "family": "Inkling",
+      "company": "Thinking Machines Lab",
+      "steps": [
+        "Inkling",
+        "Inkling-Small",
+        "Inkling-2-Small"
+      ]
     }
   ],
   "unconfirmed": [],
   "scope": {
-    "period": "2026-01-01 ~ 2026-11-06",
+    "period": "2026-01-01 ~ 2026-11-15",
     "scope": [
       "LLM (Large Language Models)",
       "MLLM / VLM / Omni foundation models",
@@ -22756,7 +23593,7 @@
     ],
     "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
     "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-    "reviewed_on": "2026-11-06",
+    "reviewed_on": "2026-11-15",
     "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
   }
 }
