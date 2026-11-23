@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-11-15** | 활성 레코드: **267개** | 제외 원장: **64개** | 공식 점수가 확인된 모델: **226개** | 공식 점수: **3904개**
+> 최종 감사일: **2026-11-23** | 활성 레코드: **270개** | 제외 원장: **64개** | 공식 점수가 확인된 모델: **227개** | 공식 점수: **3945개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -9219,6 +9219,109 @@
 - 모델 메모: 중요도 예외 수록(2026-10-15 정책 개정): 업스케일러 없이 네이티브 16MP(4096×4096~6272×2688) 생성과 6스텝 추론·최대 16장 참조 편집을 지원하는 33.1B 오픈 웨이트 이미지 생성·편집 모델로, Qwen-Image-2.1·Muse Image 선례에 따라 수록했습니다.
 - 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-11-15`
 
+### 268. 2026-11-20 — Inkling-2-Mini
+
+- 레코드 ID: `model-278`
+- **공식 모델명:** `Inkling-2-Mini`
+- 제공사 / 패밀리: `Thinking Machines Lab` / `Inkling`
+- 모델 유형 / 상태: `MLLM (looped decoder, local-first)` / `GA`
+- 공개일(레포 기준): `2026-11-20` — [출시일 공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- **파라미터:** `26.4B 총 / 3.4B 활성 (MoE, 카드 표기; 중간 12층을 3회 반복해 토큰당 유효 활성 5.4B)` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- 아키텍처: `24층 디코더 전용 트랜스포머 + 희소 MoE(층마다 128개 중 토큰당 8개 전문가) — 중간 12층을 가중치 공유로 3회 실행해 토큰당 48회 층 적용, 로컬/글로벌 하이브리드 어텐션, 비전 트랜스포머로 이미지를 인코딩하는 네이티브 멀티모달. NVFP4·MXFP8 혼합 정밀도 단일 체크포인트(약 20GB).`
+- 공식 모델 ID: `thinkingmachines/Inkling-2-Mini`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/thinkingmachines/Inkling-2-Mini), [공식 발표 블로그](https://thinkingmachines.ai/news/inkling-2-mini/)
+
+#### 공식 발표 벤치마크 점수
+
+- `Vals Index (v2.2)`: **46.5%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Vals Finance Index`: **50.1%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `FrontierCode v2.0 (stirrup v0.2.1)`: **15.1%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `DeepSWE v1.1 (mini-swe-agent v2.4.6)`: **48.2%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Terminal Bench v4.0 (mini-swe-agent v2.4.6)`: **5.6%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Terminal Bench v2.1 (Inkling 2 Mini in pi v0.83.0)`: **71.6%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `SWEBench Pro v2 (Hard, mini-swe-agent v2.4.6)`: **77.9%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `SWEBench Multilingual (bash only)`: **73.7%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `SWEBench Verified (bash only)`: **79.2%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Vibe Code Bench v1.1 (openhands)`: **77.9%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `BrowseComp (with compaction)`: **79.0%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `DeepSearchQA (with compaction)`: **85.3%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `MCP Atlas (Public)`: **82.7%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `JobBench`: **49.6%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `EnterpriseOps-Gym`: **42.0%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Diligence Bench (best harness)`: **48.6%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `GDP.pdf`: **16.8%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `PerceptionBench`: **57.5%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `MMMU Pro (Standard 10)`: **74.9%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `OmniDocBench v1.6`: **92.8%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `ScreenSpot Pro (original)`: **76.5%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `ScreenSpot Pro (with Python)`: **87.7%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Chartography (original)`: **22.1%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Chartography (with Python)`: **72.5%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `ZeroBench main (original)`: **17.0%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `ZeroBench main (with Python)`: **34.0%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `MuirBench`: **77.5%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `BVB`: **68.4%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `HLE-Diamond`: **15.2%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `CritPt v2 (Full)`: **31.4%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `CritPt v2 (Hard)`: **17.0%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `Apex 2025`: **34.4%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `ARC-AGI-1`: **84.5%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `ARC-AGI-2`: **49.3%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `LongBench v2`: **66.9%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `GraphWalks BFS 256K`: **69.7%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `MRCR v2 8-needle 256K-512K`: **46.4%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `ComplexConstraints v1.1 (openhands v1.45.0)`: **33.4%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `FORTRESS (adversarial, Public)`: **89.5%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `FORTRESS (benign, Public)`: **96.4%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- `StrongREJECT (none)`: **97.8%** — [공식 출처](https://huggingface.co/thinkingmachines/Inkling-2-Mini)
+- 점수 메모: HF 모델 카드 평가표의 % 단위 항목 41개를 수록했습니다. 한 칸에 두 값을 병기한 행(ScreenSpot Pro·Chartography·ZeroBench의 original/with Python, CritPt v2 Full/Hard, ARC-AGI v1/v2)은 각각 별도 항목으로 나눴습니다. 정책상 제외: AA Index v5.0(20.1), AA-Briefcase v1.1(1263), GDPVal-AA v2.1(1319), AutomationBench-AA v1.0.6(41.8%), AA-AnalystAgent(46.3%), AA-Omniscience v1.1(점수 -8.6, 비환각률 63.4%) — 모두 Artificial Analysis 계열; PMPP-Hard(AUC 455.82, % 아님); 개발사 내부 지표 Misbehavior 9.8%·Covert misbehavior 8.3%·Destructive actions 10.2%(낮을수록 좋음). 비교 모델 수치는 수록하지 않았습니다.
+- 모델 메모: Thinking Machines Lab 최초의 루프형(looped) 트랜스포머 공개 모델로, Inkling-2-Small보다 작은 로컬 실행용(DGX Spark 1대, 메모리 32GB 이상 Apple 실리콘) 라인입니다. 공식 블로그는 100B 미만 오픈웨이트 모델 중 DeepSWE v1.1(48.2%)·Vals Index v2.2(46.5%) 선두라고 밝힙니다(개발사 주장). 출시일은 카드·블로그의 2026-11-20(HF 저장소는 11/17 생성)입니다. 같은 시기에 연구용 가변 루프 변형(thinkingmachines/TML-d24-varloop-research)이 함께 공개됐으나 별도 제품이 아니라 연구 릴리스라 수록하지 않았습니다. 카드는 Small보다 지식·사실 회상이 약하고 장시간 추론에서 반복 루프에 빠질 수 있으며 확인 없이 파괴적 동작을 할 수 있다고 한계를 명시합니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-11-23`
+
+### 269. 2026-11-17 — Hy4-flash
+
+- 레코드 ID: `model-279`
+- **공식 모델명:** `Hy4-flash`
+- 제공사 / 패밀리: `Tencent` / `Hy / Hunyuan`
+- 모델 유형 / 상태: `MLLM (cost-efficient MoE)` / `GA`
+- 공개일(레포 기준): `2026-11-17` — [출시일 공식 출처](https://huggingface.co/tencent/Hy4-flash)
+- **파라미터:** `220B 총(Engram 약 64B 포함) / 12B 활성 (MoE, 카드 표기; 텍스트 활성 11.3B + 비전 0.43B)` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/tencent/Hy4-flash)
+- 아키텍처: `42층(밀집 FFN 1 + MoE 41) 언어 백본 — 희소 어텐션(IndexPool)과 슬라이딩 윈도 어텐션을 1:3으로 교차한 하이브리드 어텐션(MLA), LatentMoE(라우팅 전문가 512개 중 16개 + 공유 전문가 1개), N-gram 임베딩(Engram), iHC 잔차 연결. SigLIP2 기반 비전 인코더와 0.85B 내장 드래프터 DFly2.`
+- 공식 모델 ID: `tencent/Hy4-flash`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/tencent/Hy4-flash)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 지시(instruct) 모델의 벤치마크 표는 카드에 이미지(assets/benchmark.png)로만 제공돼 판독하지 않았고, 텍스트로 인쇄된 % 점수는 사전학습 베이스 모델(Hy4 flash Base)의 few-shot 평가뿐이라 점수표에 넣지 않았습니다. 카드 본문의 비-% 지표는 참고로만 남깁니다 — 내부 WorkIndex 42.1(Hy4 preview 39.7·Hy4 51.4), 사용자 블라인드 평가 만족도 2.79/4(Claude Haiku 5.5 2.81/4, 내부 사용자 85명·259작업), 작업당 비용 RMB 0.26. 베이스 모델 대표값: MMLU 88.7, MMLU-Pro 71.1, SuperGPQA 57.8.
+- 모델 메모: Hy4의 저비용 라인으로, 카드는 Hy4 preview보다 종합 작업 성능이 약간 높고 작업당 비용은 1/13이라고 밝힙니다(내부 WorkIndex 기준 42.1 대 39.7, 개발사 주장). 카드는 복잡한 장기 소프트웨어 엔지니어링에는 Hy4를 권장합니다. 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(createdAt 2026-11-17)을 근거로 했습니다. 라이선스는 Hy4-preview의 Apache 2.0과 달리 Tencent Hy License입니다. 총 파라미터는 카드 본문 220B 기준이며, 외부 보도에는 224B로 적힌 곳이 있어 카드 표기를 따랐습니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-11-23`
+
+### 270. 2026-11-20 — Depth Pro 2
+
+- 레코드 ID: `model-280`
+- **공식 모델명:** `Depth Pro 2`
+- 제공사 / 패밀리: `Apple` / `Depth Pro`
+- 모델 유형 / 상태: `Depth estimation model` / `GA`
+- 공개일(레포 기준): `2026-11-20` — [출시일 공식 출처](https://huggingface.co/apple/DepthPro2)
+- **파라미터:** `S 24M · B 97M · L 334M · H+ 872M (크기별 별도 저장소) + 공통 초점거리 추정기 23.5M` — 공식 수치 확인
+- 파라미터 출처: [공식 파라미터 출처](https://huggingface.co/apple/DepthPro2)
+- 아키텍처: `멀티뷰 트랜스포머가 한 장 또는 여러 프레임을 함께 처리(블록 앞 1/3 이후 프레임 내 어텐션과 프레임 간 어텐션을 교차)하고 프레임마다 DPT 디코더가 역깊이(inverse depth) 맵을 예측합니다. 단일 이미지·영상·라이브 피드를 입력 해상도 그대로 처리해 미터 단위 깊이를 출력합니다.`
+- 공식 모델 ID: `apple/DepthPro2`
+- 오픈 웨이트: `예`
+- 공식 모델 출처: [공식 모델 카드(Hugging Face)](https://huggingface.co/apple/DepthPro2), [기술 보고서(arXiv 2611.26603)](https://arxiv.org/abs/2611.26603), [공식 프로젝트 페이지](https://apple-aiml-research.github.io/ml-depth-pro-2/)
+
+#### 공식 발표 벤치마크 점수
+
+- 이 감사 원장에 기록한 공식 1차 출처 공개 점수 없음. 추정치·제3자 점수는 표시하지 않음.
+- 점수 메모: 카드·프로젝트 페이지의 평가는 선명도 대 시간 일관성 산점도 이미지뿐이고 % 척도 점수표가 없어 빈 점수로 둡니다(Boundary F1·Jitter 수치는 본문에 인쇄되지 않음). 기술 보고서 표는 판독하지 않았습니다.
+- 모델 메모: 2024-10 Depth Pro의 후속으로, 단일 프레임 방식과 다중 프레임 방식 모두보다 경계 선명도(Boundary F1)와 시간 일관성(Jitter)이 높다고 프로젝트 페이지·카드가 밝힙니다(Sintel·Spring 평균, 개발사 주장). 비-LLM 비전 모델로, 운영자 요청(2026-11-23)으로 중요도 예외를 적용해 수록했으며 지금까지 이 예외를 언어·멀티모달 인접 부류에서 확장한 첫 사례입니다(시계열 예측 Timestral은 2026-10-16에 미수록). HF 저장소는 11/3~5에 생성됐으나 비공개였고 커밋 기록이 모두 2026-11-20 'init'이라 공개 전환일 11/20을 출시일로 했습니다(arXiv 2611.26603은 11/19 제출). 가중치는 연구 목적 비상업 사용만 허용합니다.
+- 검증 상태: `reviewed` / 정책 `official-primary-only` / 검토일 `2026-11-23`
+
 ## 제외·보류한 기존 레코드
 
 ### `model-045` — LongCat-2.0 Preview
@@ -9641,7 +9744,7 @@
 - **MiniMax M:** `MiniMax-M3` → `MiniMax M3.1-Flash-Preview` → `MiniMax M3.1-Flash`
 - **Ornith:** `Ornith-1.0` → `Ornith-1.5`
 - **Liquid LFM:** `LFM2.5-24B-A2B` → `LFM3-1.7B`
-- **Inkling:** `Inkling` → `Inkling-Small` → `Inkling-2-Small`
+- **Inkling:** `Inkling` → `Inkling-Small` → `Inkling-2-Small` → `Inkling-2-Mini`
 
 ## 재현 명령
 

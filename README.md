@@ -1,9 +1,16 @@
 # ⚡ 2026 LLM & MLLM Release Timeline
 
 > **2026년 주요 LLM / MLLM 파운데이션 모델 출시 타임라인 및 세대별 진화 계보**  
-> 기준 기간: **2026-01-01 ~ 2026-11-15** | 수록 모델: **267개** | 표기 조직: **74개**
+> 기준 기간: **2026-01-01 ~ 2026-11-23** | 수록 모델: **270개** | 표기 조직: **74개**
 
 본 레포지토리는 2026년에 발표된 전 세계 주요 LLM, MLLM, Omni 파운데이션 모델의 릴리즈 내역을 공식 1차 자료와 함께 구조화하여 인터랙티브한 웹 타임라인으로 제공하는 **GitHub Pages** 프로젝트입니다.
+
+**2026-11-23 추가분 (운영자 요청 3개, 신규 3개):**
+- 신규 릴리스(3): Thinking Machines Lab **Inkling-2-Mini**(11/20 — 26.4B 총/3.4B 활성 MoE, 중간 12층을 3회 반복하는 첫 루프형 공개 모델, 1M 컨텍스트·Apache 2.0·약 20GB 단일 체크포인트로 로컬 실행 가능, DeepSWE v1.1 48.2·Vals Index v2.2 46.5·SWEBench Pro v2 Hard 77.9, 41개 점수), Tencent **Hy4-flash**(11/17 — 220B 총/12B 활성(Engram 약 64B 포함) 텍스트·이미지 입력 MoE, 1M 컨텍스트, Tencent Hy License 오픈웨이트·FP8·베이스 동시 공개; 지시 모델 벤치마크가 카드에 이미지뿐이라 빈 점수), Apple **Depth Pro 2**(11/20 — 단일 이미지·영상·라이브 피드의 미터 단위 깊이 추정, S 24M·B 97M·L 334M·H+ 872M, 연구용 비상업 라이선스; 점수표는 이미지뿐이라 빈 점수).
+- **중요도 예외(운영자 요청) — Depth Pro 2:** 비-LLM 비전(깊이 추정) 모델로, 이 예외를 언어·멀티모달 인접 부류 밖으로 확장한 첫 사례입니다. `category: Depth estimation`으로 LLM/MLLM과 구분하고 근거는 레코드 `note`에 남겼습니다(시계열 예측 Timestral은 2026-10-16에 미수록으로 판단했던 선례와 기준이 달라짐). 출시일은 HF 저장소가 11/3~5에 비공개로 생성된 뒤 커밋 기록이 모두 2026-11-20 `init`이라 공개 전환일을 따랐습니다(arXiv 2611.26603은 11/19 제출).
+- 벤치마크: 순증 **41개 점수**(Inkling-2-Mini 전부; 누적 227개 모델·3,945개 점수). AA 계열(AA Index v5.0·AA-Briefcase·GDPVal-AA·AutomationBench-AA·AA-AnalystAgent·AA-Omniscience), % 아닌 PMPP-Hard(AUC)와 개발사 내부 안전 지표 3종은 정책상 제외했고, 한 칸에 두 값을 병기한 행은 항목을 나눠 수록했습니다. Hy4-flash의 WorkIndex·블라인드 평가 등 비-% 수치는 `benchmark_note`에만 남겼습니다.
+- 알려진 공백: **Hy4**(본 플래그십, 770B-A49B — HF `tencent/Hy4`는 10/29 생성이나 커밋 기록이 11/20 `init`, FP8·베이스 11/18 생성)는 아직 수록하지 않았습니다. 공식 보도자료(`tencent.com`)가 봇 차단으로 읽히지 않아 공개일 근거를 확정하지 못했습니다. Hy4-flash 공개일(11/17)도 HF `createdAt` 기준이며 보도자료는 11/16~17로 보도됩니다.
+- 기타: `as_of`·`scope.period`·`reviewed_on`을 2026-11-23으로 갱신했고 Inkling `family_flows`를 Inkling-2-Mini로 연장했습니다. 11월 월 칩은 이미 있어 `index.html`·`app.js` 변경은 없으며, 신규 1차 도메인 등록도 필요하지 않았습니다.
 
 **2026-11-15 감사 추가분 (신규 9개 + 기존 레코드 갱신 1건):**
 - 신규 릴리스(9): Anthropic **Claude Fable 5.2** · **Claude Mythos 5.2**(11/9 — 동일 기반 모델·1M 컨텍스트·128K 출력·$8/$40 per 1M, Fable 5.2 일반 공개 FrontierCode 2.0 49.1·FrontierSWE v2 69.9·Terminal-Bench Science 0.1 74.6·HLE w/ tools 74.2, Mythos 5.2 검증 조직 제한 접근 CVE Rediscovery 89.6·CyScenarioBench 76.3·Terminal-Bench Science 0.1 75.3), Google DeepMind **Gemini 4 Hydrogen**(11/12 — Carbon 파생 고속·저비용 실행 엔진·1.05M 통합 컨텍스트·$1.50/$7.50 per 1M·4단계 thinking, SWE-sweep 13.5·Terminal-Bench 4.1 57.0·Agents' Last Exam v1.1 71.6·MKA 53.4), Alibaba **Qwen4-Max-Preview**(11/11 — Qwen 4 세대 첫 플래그십 프리뷰·1M 컨텍스트·최대 393K 출력·Token Plan 전용 11/11~11/25), Nex-AGI **Nex-N2.6**(11/10 — GLM-5.3-Flash 기반 약 321B Apache 2.0, OSWorld 83.0·Terminal-Bench 2.1 84.1·AutomationBench 45.7), 그리고 11/06 감사 이후 HF 스윕으로 소급 수록한 Meituan **LongCat-2.5**(11/4 — 1.6T-A48B MIT, 29개 점수), Thinking Machines Lab **Inkling-2-Small**(11/4 — 594B-A17B Apache 2.0·1M 컨텍스트, 40개 점수), KRAFTON **Raon-1 nano**(10/29 — 3.1B 하이브리드 밀집 Apache 2.0·262K 컨텍스트, 15개 점수), MiniMax **MiniMax-H3-Image**(11/3 — 33.1B DiT 네이티브 16MP 이미지 생성·편집 오픈웨이트, 중요도 예외 `Image generation`).
