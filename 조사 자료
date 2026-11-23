@@ -1,6 +1,6 @@
 # 조사 자료 — 2026 LLM / MLLM 공개 기록 감사 원장
 
-> 최종 감사일: **2026-11-23** | 활성 레코드: **271개** | 제외 원장: **64개** | 공식 점수가 확인된 모델: **227개** | 공식 점수: **3945개**
+> 최종 감사일: **2026-11-23** | 활성 레코드: **271개** | 제외 원장: **66개** | 공식 점수가 확인된 모델: **227개** | 공식 점수: **3945개**
 >
 > 이 문서는 `models_catalog.json`에서 생성된 사람 검토용 감사 원장입니다. 브라우저용 `data.js`를 직접 수정하지 말고 SSOT를 수정한 뒤 `python3 build_data.py`로 재생성하세요.
 
@@ -9728,6 +9728,18 @@
 - 원래 이름: `mirage`
 - 제외 사유: 객체 탐지(zero-shot object detection)·이미지 분할 전용 비전 모델로 LLM/MLLM 범위 외로 제외.
 - 확인 출처: [공식 1차 출처](https://huggingface.co/Cactus-Compute/mirage)
+
+### `excluded-2026-11-23-1` — FastFrames-L
+
+- 원래 이름: `FastFrames-L`
+- 제외 사유: 텍스트→비디오 생성 전용 모델(14B, Wan2.1 계열 파생 증류·480p 상호작용 지연 시간 목표)로 LLM/MLLM 범위 밖이며 부류 내 업계 기준점 근거도 카드에 없어 제외. 운영자 결정(2026-11-23)으로 미포함.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/apple/FastFrames-L)
+
+### `excluded-2026-11-23-2` — FastFrames-S
+
+- 원래 이름: `FastFrames-S`
+- 제외 사유: 텍스트→비디오 생성 전용 모델(1.3B, HF base_model 태그상 Wan2.1-T2V-1.3B 파생·480p 상호작용 지연 시간 목표)로 LLM/MLLM 범위 밖이며 부류 내 업계 기준점 근거도 카드에 없어 제외. 운영자 결정(2026-11-23)으로 미포함.
+- 확인 출처: [공식 1차 출처](https://huggingface.co/apple/FastFrames-S)
 
 ## 패밀리 흐름
 
