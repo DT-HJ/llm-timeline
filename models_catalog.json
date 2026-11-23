@@ -22447,6 +22447,65 @@
         "reviewed_on": "2026-11-23",
         "policy": "official-primary-only"
       }
+    },
+    {
+      "id": "model-281",
+      "name": "Hy4",
+      "date": "2026-11-20",
+      "sortDate": "2026-11-20",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Tencent",
+      "family": "Hy / Hunyuan",
+      "type": "MLLM (flagship MoE)",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "770B 총(ViT·어댑터·DFly2 제외) / 49B 활성 (MoE, 카드 표기; 텍스트 활성 49B + 비전 1.23B, 내장 드래프터 DFly2 3.3B)",
+      "parameter_status": "verified",
+      "architecture": "78층(밀집 FFN 1 + MoE 77) 언어 백본 — 게이티드 DeepSeek Sparse Attention(Gated DSA)+IndexCache 기반 MLA, 층마다 256개 라우팅 전문가 중 8개와 공유 전문가 1개 활성, iHC 잔차 연결. 40층 ViT가 동적 해상도 이미지·영상 프레임을 인코딩하는 네이티브 비전 입력, 5층 DFly2 투기적 디코딩 드래프터 내장.",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "focus": [
+        "컴퓨터 사용(CLI·GUI)",
+        "프론트엔드·게임 개발",
+        "금융·오피스 워크플로",
+        "과학 연구·AI R&D",
+        "장기 개인 비서"
+      ],
+      "open_weights": true,
+      "license": "Tencent Hy License",
+      "context": "1,048,576",
+      "languages": "",
+      "variants": [
+        "Hy4-FP8",
+        "Hy4-base"
+      ],
+      "reasoning_effort": [
+        "high",
+        "no_think"
+      ],
+      "availability": "Hugging Face tencent/Hy4·ModelScope·GitCode 오픈웨이트(FP8·베이스 동시 공개), vLLM·SGLang 공식 레시피",
+      "note": "Hy4-preview(2026-08-28, 텍스트 전용·Apache 2.0)의 정식판으로, 카드는 사전·사후 학습을 대폭 키우고 비전을 추가했으며 지시 따르기·장문 컨텍스트·장기 과제·딥리서치가 크게 개선됐다고 밝힙니다. 라이선스는 preview의 Apache 2.0에서 Tencent Hy License로 바뀌었습니다. 공개일은 카드에 표기가 없어 HF 가중치 공개 시점을 근거로 했습니다 — 저장소는 10/29에 생성됐으나 비공개였고(FP8·베이스는 11/18 생성) 커밋 기록이 모두 2026-11-20 'update'입니다. 외부 보도에는 11/4 제품 출시로 적힌 곳이 있으나 공식 보도자료(tencent.com)가 봇 차단으로 읽히지 않아 확인하지 못했고, 확인되면 날짜 갱신이 필요합니다. 카드는 연구 수준 수학·장기 코딩·모델 자기 개선·고난도 시각 질의응답에서 최상위 비공개 모델과 격차가 있다고 한계를 명시합니다.",
+      "benchmarks": {},
+      "official_id": "tencent/Hy4",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/tencent/Hy4"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/tencent/Hy4",
+      "parameter_source": "https://huggingface.co/tencent/Hy4",
+      "benchmark_sources": {},
+      "benchmark_note": "지시(instruct) 모델의 벤치마크 표(핵심 성능·한계·부록)는 카드에 이미지(benchmark.jpg 등)로만 제공돼 판독하지 않았고, 텍스트로 인쇄된 % 점수는 사전학습 베이스 모델(Hy4 Base)의 few-shot 평가뿐이라 점수표에 넣지 않았습니다. 카드 본문의 비-% 수치는 참고로만 남깁니다 — 금융 전문가 213명 평가 579개 과제 평균 3.04/4(DeepSeek-V4.1-Flash-1017 2.97, Kimi K3.1 Pro 2.68, GLM-5.3 2.68; 내부 평가), 내부 평가 환각률 15.76%(preview)→5.45%·추측 오류 23.1%→5.6%, GameDev +19.1%·GameLogic +9.8%(preview 대비). 베이스 모델 대표값: MMLU 91.6, MMLU-Pro 73.9, SuperGPQA 62.7, MMMU-Pro 59.6.",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-23",
+        "policy": "official-primary-only"
+      }
     }
   ],
   "excluded": [
