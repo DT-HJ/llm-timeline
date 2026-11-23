@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "as_of": "2026-11-15",
+  "as_of": "2026-11-23",
   "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
   "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
   "models": [
@@ -22190,6 +22190,263 @@
         "reviewed_on": "2026-11-15",
         "policy": "official-primary-only"
       }
+    },
+    {
+      "id": "model-278",
+      "name": "Inkling-2-Mini",
+      "date": "2026-11-20",
+      "sortDate": "2026-11-20",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Thinking Machines Lab",
+      "family": "Inkling",
+      "type": "MLLM (looped decoder, local-first)",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "26.4B 총 / 3.4B 활성 (MoE, 카드 표기; 중간 12층을 3회 반복해 토큰당 유효 활성 5.4B)",
+      "parameter_status": "verified",
+      "architecture": "24층 디코더 전용 트랜스포머 + 희소 MoE(층마다 128개 중 토큰당 8개 전문가) — 중간 12층을 가중치 공유로 3회 실행해 토큰당 48회 층 적용, 로컬/글로벌 하이브리드 어텐션, 비전 트랜스포머로 이미지를 인코딩하는 네이티브 멀티모달. NVFP4·MXFP8 혼합 정밀도 단일 체크포인트(약 20GB).",
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "focus": [
+        "로컬 실행 가능한 소형 에이전틱 코딩",
+        "에이전틱 검색·툴 사용",
+        "시각 이해·문서 추론"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "context": "1,000,000",
+      "languages": "영어 및 일반 다국어",
+      "variants": [],
+      "reasoning_effort": [],
+      "availability": "Hugging Face thinkingmachines/Inkling-2-Mini(Apache 2.0), Tinker API·플레이그라운드, vLLM·SGLang·llama.cpp·Ollama 등",
+      "note": "Thinking Machines Lab 최초의 루프형(looped) 트랜스포머 공개 모델로, Inkling-2-Small보다 작은 로컬 실행용(DGX Spark 1대, 메모리 32GB 이상 Apple 실리콘) 라인입니다. 공식 블로그는 100B 미만 오픈웨이트 모델 중 DeepSWE v1.1(48.2%)·Vals Index v2.2(46.5%) 선두라고 밝힙니다(개발사 주장). 출시일은 카드·블로그의 2026-11-20(HF 저장소는 11/17 생성)입니다. 같은 시기에 연구용 가변 루프 변형(thinkingmachines/TML-d24-varloop-research)이 함께 공개됐으나 별도 제품이 아니라 연구 릴리스라 수록하지 않았습니다. 카드는 Small보다 지식·사실 회상이 약하고 장시간 추론에서 반복 루프에 빠질 수 있으며 확인 없이 파괴적 동작을 할 수 있다고 한계를 명시합니다.",
+      "benchmarks": {
+        "Vals Index (v2.2)": 46.5,
+        "Vals Finance Index": 50.1,
+        "FrontierCode v2.0 (stirrup v0.2.1)": 15.1,
+        "DeepSWE v1.1 (mini-swe-agent v2.4.6)": 48.2,
+        "Terminal Bench v4.0 (mini-swe-agent v2.4.6)": 5.6,
+        "Terminal Bench v2.1 (Inkling 2 Mini in pi v0.83.0)": 71.6,
+        "SWEBench Pro v2 (Hard, mini-swe-agent v2.4.6)": 77.9,
+        "SWEBench Multilingual (bash only)": 73.7,
+        "SWEBench Verified (bash only)": 79.2,
+        "Vibe Code Bench v1.1 (openhands)": 77.9,
+        "BrowseComp (with compaction)": 79.0,
+        "DeepSearchQA (with compaction)": 85.3,
+        "MCP Atlas (Public)": 82.7,
+        "JobBench": 49.6,
+        "EnterpriseOps-Gym": 42.0,
+        "Diligence Bench (best harness)": 48.6,
+        "GDP.pdf": 16.8,
+        "PerceptionBench": 57.5,
+        "MMMU Pro (Standard 10)": 74.9,
+        "OmniDocBench v1.6": 92.8,
+        "ScreenSpot Pro (original)": 76.5,
+        "ScreenSpot Pro (with Python)": 87.7,
+        "Chartography (original)": 22.1,
+        "Chartography (with Python)": 72.5,
+        "ZeroBench main (original)": 17.0,
+        "ZeroBench main (with Python)": 34.0,
+        "MuirBench": 77.5,
+        "BVB": 68.4,
+        "HLE-Diamond": 15.2,
+        "CritPt v2 (Full)": 31.4,
+        "CritPt v2 (Hard)": 17.0,
+        "Apex 2025": 34.4,
+        "ARC-AGI-1": 84.5,
+        "ARC-AGI-2": 49.3,
+        "LongBench v2": 66.9,
+        "GraphWalks BFS 256K": 69.7,
+        "MRCR v2 8-needle 256K-512K": 46.4,
+        "ComplexConstraints v1.1 (openhands v1.45.0)": 33.4,
+        "FORTRESS (adversarial, Public)": 89.5,
+        "FORTRESS (benign, Public)": 96.4,
+        "StrongREJECT (none)": 97.8
+      },
+      "official_id": "thinkingmachines/Inkling-2-Mini",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
+        },
+        {
+          "label": "공식 발표 블로그",
+          "url": "https://thinkingmachines.ai/news/inkling-2-mini/"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+      "parameter_source": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+      "benchmark_sources": {
+        "Vals Index (v2.2)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Vals Finance Index": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "FrontierCode v2.0 (stirrup v0.2.1)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "DeepSWE v1.1 (mini-swe-agent v2.4.6)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Terminal Bench v4.0 (mini-swe-agent v2.4.6)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Terminal Bench v2.1 (Inkling 2 Mini in pi v0.83.0)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "SWEBench Pro v2 (Hard, mini-swe-agent v2.4.6)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "SWEBench Multilingual (bash only)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "SWEBench Verified (bash only)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Vibe Code Bench v1.1 (openhands)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "BrowseComp (with compaction)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "DeepSearchQA (with compaction)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "MCP Atlas (Public)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "JobBench": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "EnterpriseOps-Gym": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Diligence Bench (best harness)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "GDP.pdf": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "PerceptionBench": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "MMMU Pro (Standard 10)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "OmniDocBench v1.6": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "ScreenSpot Pro (original)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "ScreenSpot Pro (with Python)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Chartography (original)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Chartography (with Python)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "ZeroBench main (original)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "ZeroBench main (with Python)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "MuirBench": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "BVB": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "HLE-Diamond": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "CritPt v2 (Full)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "CritPt v2 (Hard)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "Apex 2025": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "ARC-AGI-1": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "ARC-AGI-2": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "LongBench v2": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "GraphWalks BFS 256K": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "MRCR v2 8-needle 256K-512K": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "ComplexConstraints v1.1 (openhands v1.45.0)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "FORTRESS (adversarial, Public)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "FORTRESS (benign, Public)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+        "StrongREJECT (none)": "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
+      },
+      "benchmark_note": "HF 모델 카드 평가표의 % 단위 항목 41개를 수록했습니다. 한 칸에 두 값을 병기한 행(ScreenSpot Pro·Chartography·ZeroBench의 original/with Python, CritPt v2 Full/Hard, ARC-AGI v1/v2)은 각각 별도 항목으로 나눴습니다. 정책상 제외: AA Index v5.0(20.1), AA-Briefcase v1.1(1263), GDPVal-AA v2.1(1319), AutomationBench-AA v1.0.6(41.8%), AA-AnalystAgent(46.3%), AA-Omniscience v1.1(점수 -8.6, 비환각률 63.4%) — 모두 Artificial Analysis 계열; PMPP-Hard(AUC 455.82, % 아님); 개발사 내부 지표 Misbehavior 9.8%·Covert misbehavior 8.3%·Destructive actions 10.2%(낮을수록 좋음). 비교 모델 수치는 수록하지 않았습니다.",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-23",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-279",
+      "name": "Hy4-flash",
+      "date": "2026-11-17",
+      "sortDate": "2026-11-17",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Tencent",
+      "family": "Hy / Hunyuan",
+      "type": "MLLM (cost-efficient MoE)",
+      "category": "MLLM",
+      "status": "GA",
+      "parameters": "220B 총(Engram 약 64B 포함) / 12B 활성 (MoE, 카드 표기; 텍스트 활성 11.3B + 비전 0.43B)",
+      "parameter_status": "verified",
+      "architecture": "42층(밀집 FFN 1 + MoE 41) 언어 백본 — 희소 어텐션(IndexPool)과 슬라이딩 윈도 어텐션을 1:3으로 교차한 하이브리드 어텐션(MLA), LatentMoE(라우팅 전문가 512개 중 16개 + 공유 전문가 1개), N-gram 임베딩(Engram), iHC 잔차 연결. SigLIP2 기반 비전 인코더와 0.85B 내장 드래프터 DFly2.",
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "focus": [
+        "비용 효율적 일상 업무(딥서치·문서·슬라이드·간단 프론트엔드·컴퓨터 사용)",
+        "장문 컨텍스트"
+      ],
+      "open_weights": true,
+      "license": "Tencent Hy License",
+      "context": "1,048,576",
+      "languages": "",
+      "variants": [
+        "Hy4-flash-FP8",
+        "Hy4-flash-base"
+      ],
+      "reasoning_effort": [
+        "high",
+        "no_think"
+      ],
+      "availability": "Hugging Face tencent/Hy4-flash·ModelScope·GitCode 오픈웨이트(FP8·베이스 동시 공개), Tencent Cloud TokenHub·WorkBuddy 등",
+      "note": "Hy4의 저비용 라인으로, 카드는 Hy4 preview보다 종합 작업 성능이 약간 높고 작업당 비용은 1/13이라고 밝힙니다(내부 WorkIndex 기준 42.1 대 39.7, 개발사 주장). 카드는 복잡한 장기 소프트웨어 엔지니어링에는 Hy4를 권장합니다. 공개일은 카드에 표기가 없어 HF 저장소 생성 시각(createdAt 2026-11-17)을 근거로 했습니다. 라이선스는 Hy4-preview의 Apache 2.0과 달리 Tencent Hy License입니다. 총 파라미터는 카드 본문 220B 기준이며, 외부 보도에는 224B로 적힌 곳이 있어 카드 표기를 따랐습니다.",
+      "benchmarks": {},
+      "official_id": "tencent/Hy4-flash",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/tencent/Hy4-flash"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/tencent/Hy4-flash",
+      "parameter_source": "https://huggingface.co/tencent/Hy4-flash",
+      "benchmark_sources": {},
+      "benchmark_note": "지시(instruct) 모델의 벤치마크 표는 카드에 이미지(assets/benchmark.png)로만 제공돼 판독하지 않았고, 텍스트로 인쇄된 % 점수는 사전학습 베이스 모델(Hy4 flash Base)의 few-shot 평가뿐이라 점수표에 넣지 않았습니다. 카드 본문의 비-% 지표는 참고로만 남깁니다 — 내부 WorkIndex 42.1(Hy4 preview 39.7·Hy4 51.4), 사용자 블라인드 평가 만족도 2.79/4(Claude Haiku 5.5 2.81/4, 내부 사용자 85명·259작업), 작업당 비용 RMB 0.26. 베이스 모델 대표값: MMLU 88.7, MMLU-Pro 71.1, SuperGPQA 57.8.",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-23",
+        "policy": "official-primary-only"
+      }
+    },
+    {
+      "id": "model-280",
+      "name": "Depth Pro 2",
+      "date": "2026-11-20",
+      "sortDate": "2026-11-20",
+      "month": "2026-11",
+      "monthName": "November",
+      "company": "Apple",
+      "family": "Depth Pro",
+      "type": "Depth estimation model",
+      "category": "Depth estimation",
+      "status": "GA",
+      "parameters": "S 24M · B 97M · L 334M · H+ 872M (크기별 별도 저장소) + 공통 초점거리 추정기 23.5M",
+      "parameter_status": "verified",
+      "architecture": "멀티뷰 트랜스포머가 한 장 또는 여러 프레임을 함께 처리(블록 앞 1/3 이후 프레임 내 어텐션과 프레임 간 어텐션을 교차)하고 프레임마다 DPT 디코더가 역깊이(inverse depth) 맵을 예측합니다. 단일 이미지·영상·라이브 피드를 입력 해상도 그대로 처리해 미터 단위 깊이를 출력합니다.",
+      "modalities": [
+        "image",
+        "video"
+      ],
+      "focus": [
+        "미터 단위 단안 깊이 추정",
+        "경계 선명도",
+        "프레임 간 시간 일관성"
+      ],
+      "open_weights": true,
+      "license": "Apple Machine Learning Research Model License (연구용·비상업)",
+      "context": "",
+      "languages": "",
+      "variants": [
+        "DepthPro2-S",
+        "DepthPro2-B",
+        "DepthPro2-L",
+        "DepthPro2-H",
+        "DepthPro2-focal"
+      ],
+      "reasoning_effort": [],
+      "availability": "Hugging Face apple/DepthPro2(크기별 S·B·L·H 저장소와 focal 추정기), GitHub apple-aiml-research/ml-depth-pro-2, CoreML 변환본(apple/DepthPro2-coreml)",
+      "note": "2024-10 Depth Pro의 후속으로, 단일 프레임 방식과 다중 프레임 방식 모두보다 경계 선명도(Boundary F1)와 시간 일관성(Jitter)이 높다고 프로젝트 페이지·카드가 밝힙니다(Sintel·Spring 평균, 개발사 주장). 비-LLM 비전 모델로, 운영자 요청(2026-11-23)으로 중요도 예외를 적용해 수록했으며 지금까지 이 예외를 언어·멀티모달 인접 부류에서 확장한 첫 사례입니다(시계열 예측 Timestral은 2026-10-16에 미수록). HF 저장소는 11/3~5에 생성됐으나 비공개였고 커밋 기록이 모두 2026-11-20 'init'이라 공개 전환일 11/20을 출시일로 했습니다(arXiv 2611.26603은 11/19 제출). 가중치는 연구 목적 비상업 사용만 허용합니다.",
+      "benchmarks": {},
+      "official_id": "apple/DepthPro2",
+      "official_sources": [
+        {
+          "label": "공식 모델 카드(Hugging Face)",
+          "url": "https://huggingface.co/apple/DepthPro2"
+        },
+        {
+          "label": "기술 보고서(arXiv 2611.26603)",
+          "url": "https://arxiv.org/abs/2611.26603"
+        },
+        {
+          "label": "공식 프로젝트 페이지",
+          "url": "https://apple-aiml-research.github.io/ml-depth-pro-2/"
+        }
+      ],
+      "release_date_source": "https://huggingface.co/apple/DepthPro2",
+      "parameter_source": "https://huggingface.co/apple/DepthPro2",
+      "benchmark_sources": {},
+      "benchmark_note": "카드·프로젝트 페이지의 평가는 선명도 대 시간 일관성 산점도 이미지뿐이고 % 척도 점수표가 없어 빈 점수로 둡니다(Boundary F1·Jitter 수치는 본문에 인쇄되지 않음). 기술 보고서 표는 판독하지 않았습니다.",
+      "verification": {
+        "status": "reviewed",
+        "reviewed_on": "2026-11-23",
+        "policy": "official-primary-only"
+      }
     }
   ],
   "excluded": [
@@ -23569,13 +23826,14 @@
       "steps": [
         "Inkling",
         "Inkling-Small",
-        "Inkling-2-Small"
+        "Inkling-2-Small",
+        "Inkling-2-Mini"
       ]
     }
   ],
   "unconfirmed": [],
   "scope": {
-    "period": "2026-01-01 ~ 2026-11-15",
+    "period": "2026-01-01 ~ 2026-11-23",
     "scope": [
       "LLM (Large Language Models)",
       "MLLM / VLM / Omni foundation models",
@@ -23593,7 +23851,7 @@
     ],
     "benchmark_policy": "공식 모델 카드·기술 보고서·개발사 공식 발표문에 모델 제공자가 직접 명시한 점수만 수록. Chatbot Arena/ELO, Artificial Analysis, 제3자 leaderboard, 추정·역산 점수는 제외.",
     "parameter_policy": "개발사가 명시한 총/활성 파라미터만 사용. 공개하지 않은 값은 정확한 수치 미공개로 표시하고, 모델 크기·가중치 파일 용량·양자화 크기를 파라미터 수로 대체하지 않음.",
-    "reviewed_on": "2026-11-15",
+    "reviewed_on": "2026-11-23",
     "inclusion_exception": "수록 여부는 부류만으로 결정하지 않는다(2026-10-15 개정). excluded 부류에 속하더라도 (1) 개발사 공식 1차 출처가 있고 (2) 그 부류에서 최초·최고·최대 규모 등 업계 기준점을 세운 릴리스면 수록한다 — 예: EmbeddingGemma 2(멀티모달 통합 임베딩), Qwen-Image-2.1(오픈웨이트 7B 생성·편집), Muse Image(MSL 첫 이미지 생성 모델), MiniMax Music 3.0(오픈웨이트 5분 완성곡 생성). 반대로 부류상 포함 대상이어도 중요도가 낮은 파생·스냅샷·서빙 변형은 수록을 보류할 수 있다 — 수록은 룰 충족이 아니라 중요도 판단으로 결정한다. 예외 수록은 레코드 note에 근거를 남기고 README에 예외·되돌림 각주를 단다."
   }
 }
