@@ -23122,6 +23122,28 @@
       "reason": "객체 탐지(zero-shot object detection)·이미지 분할 전용 비전 모델로 LLM/MLLM 범위 외로 제외.",
       "source": "https://huggingface.co/Cactus-Compute/mirage",
       "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "excluded-2026-11-23-1",
+      "name": "FastFrames-L",
+      "original_name": "FastFrames-L",
+      "date": "2026-11-20",
+      "company": "Apple",
+      "country": "US",
+      "reason": "텍스트→비디오 생성 전용 모델(14B, Wan2.1 계열 파생 증류·480p 상호작용 지연 시간 목표)로 LLM/MLLM 범위 밖이며 부류 내 업계 기준점 근거도 카드에 없어 제외. 운영자 결정(2026-11-23)으로 미포함.",
+      "source": "https://huggingface.co/apple/FastFrames-L",
+      "reviewed_on": "2026-11-23"
+    },
+    {
+      "id": "excluded-2026-11-23-2",
+      "name": "FastFrames-S",
+      "original_name": "FastFrames-S",
+      "date": "2026-11-20",
+      "company": "Apple",
+      "country": "US",
+      "reason": "텍스트→비디오 생성 전용 모델(1.3B, HF base_model 태그상 Wan2.1-T2V-1.3B 파생·480p 상호작용 지연 시간 목표)로 LLM/MLLM 범위 밖이며 부류 내 업계 기준점 근거도 카드에 없어 제외. 운영자 결정(2026-11-23)으로 미포함.",
+      "source": "https://huggingface.co/apple/FastFrames-S",
+      "reviewed_on": "2026-11-23"
     }
   ],
   "company_meta": {
