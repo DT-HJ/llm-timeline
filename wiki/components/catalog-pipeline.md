@@ -52,6 +52,8 @@ Maintains the single source of truth (SSOT) for model data, generates the browse
 - **Third-party-only evidence goes to the ledger, not the catalog (2026-11-06)**: Ling-3.1-flash-1019 has only Artificial Analysis-measured numbers (`excluded-2026-11-06-2`). Other ledger entries that day: base checkpoint (LFM3-1.7B-Base), specialised derivatives (SenseNova-U1.5-8B-MoT-TailSteer, SenseNova 6.8 Code2Video), image-generation-only (GPT-Image-2.6 Flare/Sunburst), and Cola2, LBS-27B, Gemini Omni 1.2 Flash — reasons are in the ledger.
 - **Fast serving tiers re-judged (2026-09-30)**: speed-only serving tiers over the same weights (GLM-5.3-FlashX, Qwen3.8-Max-Prime) keep their earlier judgment and stay in the excluded ledger, even when official docs give them separate model codes.
 
+- **Scores published only as images stay empty; the release date follows the first official source (2026-11-23)**: Hy4 and Hy4-flash instruct scores exist only as card images, so `benchmarks{}` stays empty; Hy4 is dated by its HF weight release (11/20) because the 11/4 product-launch reports had no first-party source, which is recorded in the record note.
+
 ## Relevant Paths
 
 - `models_catalog.json`, `build_data.py`, `validate_data.py`, `data.js`, `조사 자료`
